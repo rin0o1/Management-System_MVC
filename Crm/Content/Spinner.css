@@ -1,0 +1,18 @@
+﻿.loading-spinner {
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    background-image: url(Images/Spinner/Spin_Gif.gif);
+    background-position: center;
+    border: 0 !important;
+    background-size: cover;
+}
+
+    .loading-spinner.small {
+        width: 32px;
+        height: 32px;
+        background-image: url(Images/Spinner/Spin_Gif.gif);
+        background-size: cover;
+    }
