@@ -8,15 +8,6 @@ img.lazyload {
 }
 
 
-.my-nav-bar {
-    background: #42b71a;
-    position: relative;
-    z-index: 1000;
-    min-height: 40px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-}
-
 #LoginBackround {
     background: rgba(0, 0, 0, 0) no-repeat scroll center center;
     background-size: cover;
@@ -1878,4 +1869,79 @@ table td.center-cell {
     100% {
         opacity: 1;
     }
+}
+
+
+
+
+/*Button styles*/
+
+.animated_div:hover {
+    opacity: 1;
+    background: #1ec7e6;
+    width: 80px;
+    height: 70px;
+    font-size: 35px;
+}
+
+.animated_div {
+    width: 60px;
+    height: 40px;
+    background: #92B901;
+    color: #ffffff;
+    position: absolute;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    float: left;
+    margin: 5px;
+    -webkit-transition: -webkit-transform 1s,opacity 1s,background 1s,width 1s,height 1s,font-size 1s;
+    -webkit-border-radius: 5px;
+    -o-transition-property: width,height,-o-transform,background,font-size,opacity;
+    -o-transition-duration: 1s,1s,1s,1s,1s,1s;
+    -moz-transition-property: width,height,-o-transform,background,font-size,opacity;
+    -moz-transition-duration: 1s,1s,1s,1s,1s,1s;
+    transition-property: width,height,transform,background,font-size,opacity;
+    transition-duration: 1s,1s,1s,1s,1s,1s;
+    border-radius: 5px;
+    opacity: 0.4;
+}
+
+
+
+/*Blue*/
+.reminder-modal.color-5 {
+    color: #ecf0f1;
+    background-color: #3498db;
+    border-color: #2980b9;
+}
+/*Arancione*/
+.reminder-modal.color-4 {
+    color: #ecf0f1;
+    background-color: #e67e22;
+    border-color: #d35400;
+}
+/*Giallo*/
+.reminder-modal.color-3 {
+    color: #ecf0f1;
+    background-color: #f1c40f;
+    border-color: #f39c12;
+}
+/*Verde*/
+.reminder-modal.color-2 {
+    color: #ecf0f1 !important;
+    background-color: #2ecc71;
+    border-color: #27AE60;
+}
+/*Rosso*/
+.reminder-modal.color-1 {
+    color: #ecf0f1 !important;
+    background-color: #e74c3c;
+    border-color: #c0392b;
+}
+
+.reminder-modal.color-0 {
+    color: black !important;
+    background-color: #eee;
+    border-color: #bdc3c7;
 }
