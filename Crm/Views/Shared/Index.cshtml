@@ -1,3 +1,32 @@
-﻿
+﻿@using Crm_DataUtilities.Repository;
+@using Crm_DataUtilities.ViewModel;
 
-@Html.Partial("PartialIndex")
+@{
+
+    PageParameters _pageParameters = ViewBag.pageParameters;
+
+    if (ViewBag.pageTitle == null)
+    {
+        ViewBag.Title = _pageParameters.PageTitle;
+    }
+}
+    
+<div   class="index-header col-md-12 SendBack no-padding ">
+    <span class="index-title col-md-12 no-padding  SendBack">@_pageParameters.PageTitle</span>
+</div>
+
+
+<div class="index-undertitle-line"></div>
+
+@if (_pageParameters._filterfordata != null)
+ {
+    <div class=" filterzone SendBack no-padding">
+        @Html.Partial("PartialIndexFilter")
+    </div>
+ }
+
+
+<div class="partialindexzone SendBack ">
+    @Html.Partial("PartialIndex")
+</div>
+

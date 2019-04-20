@@ -27,7 +27,9 @@ namespace Crm
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/Spinner.css",
-                      "~/Content/NavigationBar.css"
+                      "~/Content/NavigationBar.css",
+                      "~/Content/FilterForDataVisualization.css",
+                      "~/Content/crm-graphic.css"
                       ));
         }
     }

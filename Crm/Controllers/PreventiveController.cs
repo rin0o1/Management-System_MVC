@@ -19,6 +19,7 @@ namespace Crm.Controllers
     public class PreventiveController : Controller
     {
         private PreventiveRepository _preventiveRepository;
+        private string Title = "Gestione preventivi";
 
         protected override void Initialize(RequestContext requestContext)
         {
@@ -29,6 +30,14 @@ namespace Crm.Controllers
 
         public ActionResult Index()
         {
+
+            PageParameters _pageParameters = new PageParameters();
+            _pageParameters.PageTitle = this.Title;
+
+            ViewBag.pageParameters = _pageParameters;
+            ViewBag.pageTitle = Title;
+
+
             return View();
         }
     }

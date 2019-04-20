@@ -1,12 +1,18 @@
-﻿
+﻿     
 
 
 /*CollabNet branding*/
+
 
 img.lazyload {
     display: none;
 }
 
+.container_ {
+    width: 100%;
+    height: -webkit-fill-available;
+    overflow:hidden;
+}
 
 #LoginBackround {
     background: rgba(0, 0, 0, 0) no-repeat scroll center center;
@@ -49,6 +55,8 @@ button.glyphicon {
 .btn-default.badge {
     background-color: #428bca !important;
 }
+
+
 
 .document-container {
     border: 1px solid #bdc3c7;
@@ -507,6 +515,10 @@ div#collabnet {
 }
 
 
+.SendBack
+{
+    position:inherit;
+}
 
 /*sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss*/
 

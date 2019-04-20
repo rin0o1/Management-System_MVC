@@ -13,25 +13,8 @@
 </head>
 
 
-<body>
+<body> 
 
-    @* Inserire un immagine al posto del tasto home, rivedere la navigation bar*@
-
-    @*<div class="my-nav-bar_" id="navigation_">
-                <ul >
-                    <li style="float:left"> <a style="text-decoration:none;" href="Home">HOME</a></li>
-                    <li style="text-decoration:none" >
-                        GESTIONE
-                        <ul>
-                            <a style="text-decoration:none" @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</a>
-                            <a style="text-decoration:none" @Html.ActionLink("ORDINI", "Index", "Order")</a>
-                        </ul>
-                    </li>
-                    <li >
-                        AMMINISTRAZIONE
-                    </li>
-                </ul>
-        </div>*@
 
     <nav class="col-md-12">
         <ul style="float:left">
@@ -40,8 +23,12 @@
             </li>
             <li>
                 <a href="">AMMINISTRAZIONE</a>
+                <ul>
+                    <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
+                    <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
+                </ul>
             </li>
-            <li>
+            <li >
                 <a href="">GESTIONE</a>
                 <ul>
                     <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
@@ -49,30 +36,13 @@
                 </ul>
             </li>
         </ul>
-
-
-
     </nav>
 
 
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                 
-            </button>
-        </div>
-    </div>
 
-
-
-
-
-    <div class="container body-content">
-
+    <div class=" container_ body-content ">
         @RenderBody()
-
     </div>
-
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

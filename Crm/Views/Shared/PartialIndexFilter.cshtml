@@ -1,0 +1,38 @@
+﻿
+@using Crm_DataUtilities.Repository;
+@using Crm_DataUtilities.ViewModel;
+
+@{
+
+
+    List<FilterForDataVisualization> fltrForDataVlize = ViewBag.filterForDataVisualization;
+
+    if (fltrForDataVlize != null && fltrForDataVlize.Count > 0)
+    {
+            foreach (var item in fltrForDataVlize)
+            {
+                <div id="Filter" style="text-decoration:none;" class="filter " Value="@item.Value"onclick="Get(@item.Value)"> @item.TextToShow</div>
+            }
+    }
+}
+
+
+
+<script type="text/javascript">
+
+    var FilterValue;
+
+
+     function Get(_filtervalue) {
+         FilterValue = _filtervalue;
+         GetData();
+    };
+
+
+    function GetData()
+    {
+        
+    };
+
+
+</script>
