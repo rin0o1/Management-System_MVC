@@ -9,6 +9,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 
@@ -22,14 +24,9 @@
                 <a href="/Home">HOME</a>
             </li>
             <li>
-                <a href="">AMMINISTRAZIONE</a>
-                <ul>
-                    <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
-                    <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
-                </ul>
-            </li>
+                <a >AMMINISTRAZIONE</a>
             <li >
-                <a href="">GESTIONE</a>
+                <a >GESTIONE</a>
                 <ul>
                     <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
                     <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
@@ -44,8 +41,6 @@
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
 </body>

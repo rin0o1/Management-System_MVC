@@ -16,3 +16,16 @@
         background-image: url(Images/Spinner/Spin_Gif.gif);
         background-size: cover;
     }
+
+    .loading-spinner.medium {
+        width: 60px;
+        height: 60px;
+        background-image: url(Images/Spinner/Spin_Gif.gif);
+        background-size: cover;
+    }
+    .loading-spinner.big{
+        width: 90px;
+        height: 90px;
+        background-image: url(Images/Spinner/Spin_Gif.gif);
+        background-size: cover;
+    }

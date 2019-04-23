@@ -40,9 +40,10 @@ body {
 }
 
 
-.filterzone :hover {
-    background-color: #9f496e;
-}
+    .filterzone :hover {
+        background-color: #9f496e;
+        cursor: pointer;
+    }
 
 
 .filter-container .filterlist{

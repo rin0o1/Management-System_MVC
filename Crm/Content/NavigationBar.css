@@ -79,6 +79,7 @@ nav {
             background: #FFF;
             color: #9f496e;
             text-decoration: none;
+            cursor: pointer;
             box-shadow: 0 8px 16px 0 rgba(0,0,0,1), 0 20px 20px 0 rgba(0,0,0,1);
             transition: 0.3s;
         }

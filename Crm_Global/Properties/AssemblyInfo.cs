@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Le informazioni generali relative a un assembly sono controllate dal seguente 
 // set di attributi. Modificare i valori di questi attributi per modificare le informazioni
 // associate a un assembly.
-[assembly: AssemblyTitle("Crm_Data_Utilities")]
+[assembly: AssemblyTitle("Crm_Global")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Crm_Data_Utilities")]
+[assembly: AssemblyProduct("Crm_Global")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Se il progetto viene esposto a COM, il GUID seguente verrà utilizzato come ID della libreria dei tipi
-[assembly: Guid("9966db7c-1998-40f0-8256-a8744989612e")]
+[assembly: Guid("521bafb0-ae72-4a3b-ae4b-df2d249bd98e")]
 
 // Le informazioni sulla versione di un assembly sono costituite dai seguenti quattro valori:
 //

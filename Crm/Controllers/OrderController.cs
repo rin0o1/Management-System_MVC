@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 using Crm_DataUtilities.ViewModel;
 using Crm_DataUtilities.Repository;
+using Crm_Global;
 
 namespace Crm.Controllers
 {
@@ -18,44 +19,54 @@ namespace Crm.Controllers
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
-
             //if (User.Identity.IsAuthenticated)
             //{
             //}
-
         }
 
         // GET: Order
         public ActionResult Index()
         {
             //Utility per poter aggiunere dinamicamente i filtri per ogni pagina
-            List<FilterForDataVisualization> _filterForDataVisualization = new List<FilterForDataVisualization>()
+            #region FILTER FOR DATA VISUALIZATION
+            List<FilterForDataVisualization> FilterForDataVisualization = new List<FilterForDataVisualization>()
             {
+                new FilterForDataVisualization(),
                 new FilterForDataVisualization()
                 {
                     Value= 0,
-                    TextToShow= "Annullato"
+                    TextToShow= "Annullato",
+                    
                 },
                 new FilterForDataVisualization()
                 {
                     Value= 1,
                     TextToShow= "Aperto"
+                },
+                new FilterForDataVisualization()
+                {
+                    Value= 2,
+                    TextToShow= "CHiuso"
                 }
             };
 
-            ViewBag.filterForDataVisualization = _filterForDataVisualization;
+            #endregion
 
-            PageParameters _pageParameters = new PageParameters();
-            _pageParameters.PageTitle = this.Title;
-            _pageParameters._filterfordata = _filterForDataVisualization;
 
+            ViewBag.filterForDataVisualization = FilterForDataVisualization;
+
+            PageParameters _pageParameters = new PageParameters()
+            {
+                PageTitle = this.Title,
+                FilterForData = FilterForDataVisualization,
+                ControllerName = ControllerName.OrderController
+            };
+            
             ViewBag.pageParameters = _pageParameters;
             ViewBag.pageTitle = Title;
 
             return View();
         }
-
-
 
     }
 }

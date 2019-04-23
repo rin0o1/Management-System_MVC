@@ -11,22 +11,30 @@
     }
 }
     
-<div   class="index-header col-md-12 SendBack no-padding ">
+<div  class="index-header col-md-12 SendBack no-padding ">
     <span class="index-title col-md-12 no-padding  SendBack">@_pageParameters.PageTitle</span>
 </div>
 
 
-<div class="index-undertitle-line"></div>
+<div class="index-underlinetitle-line"></div>
 
-@if (_pageParameters._filterfordata != null)
- {
+@if (_pageParameters.FilterForData != null)
+{
     <div class=" filterzone SendBack no-padding">
-        @Html.Partial("PartialIndexFilter")
+        @Html.Partial("PartialIndexFilter", (PageParameters)_pageParameters)
     </div>
  }
 
 
 <div class="partialindexzone SendBack ">
     @Html.Partial("PartialIndex")
+
+    <div onclick="topFunction()" id="myBtn" class="go_top_button"></div>
+
 </div>
 
+<script>
+
+    window.onscroll = function() {scrollFunction()};
+
+</script>

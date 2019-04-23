@@ -13,14 +13,15 @@ namespace Crm_DataUtilities.ViewModel
     }
 
     //Filtro per poter filtrare i tipo di dati da visualizzare ES: Mostrare solo gli elementi che hanno cose in comune
-
+    //-1 valore utilizzato per indicare il primo filtro
     public class FilterForDataVisualization
     {
         public FilterForDataVisualization() ///Da rivedere, se non ci sono filtri bisognerebbe mostare tutto 
         {
             Value = -1;
-            TextToShow = "Tutti";
+            TextToShow = "Tutti";            
         }
+      
         public int  Value { get; set; }
         public string TextToShow { get; set; }
     }
@@ -39,7 +40,9 @@ namespace Crm_DataUtilities.ViewModel
     public class PageParameters
     {
         public string PageTitle { get; set; }
-        public List<FilterForDataVisualization> _filterfordata { get; set; }
+        public List<FilterForDataVisualization> FilterForData { get; set; }
+
+        public string ControllerName { get; set; }
     }
         
 
