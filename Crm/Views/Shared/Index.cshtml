@@ -27,14 +27,23 @@
 
 
 <div class="partialindexzone SendBack ">
+
     @Html.Partial("PartialIndex")
 
-    <div onclick="topFunction()" id="myBtn" class="go_top_button"></div>
+    <div id="MenuContainer">
+        @Html.Partial("PartialMenuIndex");
+        @if (_pageParameters.HasScrollButton)
+        {<div onclick="topFunction()" id="btn_scrolltop" class="go_top_button"></div>}
+    </div>
+
+
+    
+
 
 </div>
 
 <script>
-
-    window.onscroll = function() {scrollFunction()};
+        window.onscroll = function () { scrollFunction() };
 
 </script>
+

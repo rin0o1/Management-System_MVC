@@ -13,7 +13,7 @@ using System.Web.SessionState;
 
 using Crm_DataUtilities.Repository;
 using Crm_DataUtilities.ViewModel;
-
+using Crm_Global;
 namespace Crm.Controllers
 {
     public class PreventiveController : Controller
@@ -31,14 +31,32 @@ namespace Crm.Controllers
         public ActionResult Index()
         {
 
-            PageParameters _pageParameters = new PageParameters();
-            _pageParameters.PageTitle = this.Title;
+
+
+
+            PageParameters _pageParameters = new PageParameters()
+            {
+                PageTitle = this.Title,
+                ControllerName = ControllerName.OrderController,
+                
+            };
+
 
             ViewBag.pageParameters = _pageParameters;
             ViewBag.pageTitle = Title;
 
+            var Data = this.LoadData();
+            return View(Data);
+        }
 
-            return View();
+        public List<PreventiveViewModel> LoadData()
+        {
+            return new List<PreventiveViewModel>()
+            {
+                new PreventiveViewModel(),
+                new PreventiveViewModel(),
+                new PreventiveViewModel()
+            };
         }
     }
 }

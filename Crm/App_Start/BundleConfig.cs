@@ -22,7 +22,9 @@ namespace Crm
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/index.js"
+                      "~/Scripts/index.js",
+                      "~/Scripts/IconManagement.js",
+                      "~/Scripts/Menu.js"
                       ));
 
 
@@ -32,7 +34,10 @@ namespace Crm
                       "~/Content/Spinner.css",
                       "~/Content/NavigationBar.css",
                       "~/Content/FilterForDataVisualization.css",
-                      "~/Content/crm-graphic.css"
+                      "~/Content/crm-graphic.css",
+                      "~/Content/Colors.css",
+                      "~/Content/Icon.css",
+                      "~/Content/crm-menu.css"
                       ));
         }
     }

@@ -2,18 +2,18 @@
 
 
 
-.go_top_button {
+/*.go_top_button {
     display: none;
     width: 50px;
     height: 50px;
-    position: absolute;
+    position: fixed;
     bottom: 30px;
     right: 30px;
     cursor: pointer;
     transition: transform .2s;
     background-image: url(Images/btn_gotop2.jpg);
     background-size: cover;
-}
+}*/
 
 
 img.lazyload {
@@ -23,7 +23,8 @@ img.lazyload {
 .container_ {
     width: 100%;
     height: -webkit-fill-available;
-    overflow:hidden;
+    
+    overflow-y: scroll;
 }
 
 #LoginBackround {
@@ -36,9 +37,9 @@ img.lazyload {
     width: 100%;
 }
 
-.document-container .file-icon::before {
+/*.document-container .file-icon::before {
     border-color: #ecf0f1 #ecf0f1 rgba(236, 240, 241,.35) rgba(236, 240, 241,.35) !important;
-}
+}*/
 
 
 .center {
@@ -71,11 +72,9 @@ button.glyphicon {
 
 
 .document-container {
-    border: 1px solid #bdc3c7;
-    background-color: #ecf0f1;
     padding: 0;
-    margin-bottom: 20px;
-    min-height: 171px;
+    width: 100%;
+    height: -webkit-fill-available;
 }
 
 .document-elm, .document-elm-upload {
@@ -564,7 +563,7 @@ body {
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+.body-content-partialindex {
     padding-left: 15px;
     padding-right: 15px;
 }

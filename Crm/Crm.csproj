@@ -154,15 +154,18 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Colors.css" />
     <Content Include="Content\crm-graphic.css" />
+    <Content Include="Content\crm-menu.css" />
     <Content Include="Content\FilterForDataVisualization.css" />
-    <Content Include="Content\Images\btn-gotop.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Images\btn_gotop2.jpg" />
-    <Content Include="Content\Images\btn_gotop3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\Icon.css" />
+    <Content Include="Content\Images\Icon\icon_go-top.png" />
+    <Content Include="Content\Images\Icon\icon_remove-red.png" />
+    <Content Include="Content\Images\Icon\icon_details-orange.png" />
+    <Content Include="Content\Images\Icon\icon_details-gray.png" />
+    <Content Include="Content\Images\Icon\icon_remove-black.png" />
+    <Content Include="Content\Images\Menu\image_closemenu.png" />
+    <Content Include="Content\Images\Menu\image_scrollmenu-right-removebg.png" />
     <Content Include="Content\Images\Spinner\Spin_Gif.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -178,6 +181,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\IconManagement.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -186,6 +190,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Menu.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -205,6 +210,8 @@
     <Content Include="Views\Preventive\PartialIndex.cshtml" />
     <Content Include="Views\Order\PartialIndex.cshtml" />
     <Content Include="Views\Shared\PartialIndexFilter.cshtml" />
+    <Content Include="Views\Preventive\PartialInformationContainer.cshtml" />
+    <Content Include="Views\Shared\PartialMenuIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

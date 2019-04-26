@@ -4,10 +4,11 @@
 nav {
     background: #9f496e;
     height: 54px;
-    width: 100%;
+    width: 100% !important;
     margin-bottom: 10px;
     left: 0;
-    display:compact;
+    position:relative ;
+    display: compact;
 }
 
 
@@ -69,6 +70,7 @@ nav {
             border-bottom: solid 2px #9f496e;
             text-decoration: none;
             text-align:center;
+            
         }
 
         nav ul ul li:first-child a {

@@ -1,0 +1,52 @@
+﻿
+
+:root {
+    --menu-height: 50px;
+}
+
+
+.image-open-menu {
+    width: 50px;
+    height: var(--menu-height);
+    left: 0px;
+    bottom: 30px;
+    position: fixed;
+    cursor: pointer;
+    background-image: url(Images/Menu/image_scrollmenu-right-removebg.png);
+    background-size: cover;
+}
+
+
+.crm-menu 
+{
+    display: none;
+    bottom: 30px;
+    width: 50%;
+    height: var(--menu-height);
+    left: 0px;
+    position: fixed;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,1), 0 20px 20px 0 rgba(0,0,0,1);
+}
+
+
+
+.image-close-menu {
+    width: 50px;
+    height: var(--menu-height);
+    display:inline-block;
+    cursor: pointer;
+    background-image: url(Images/Menu/image_closemenu.png);
+    background-size: contain;
+
+}
+
+
+
+
+.crm-menu-button {
+    height: 40px;
+    width: 20%;
+    margin-left:20px;
+}
+    
+

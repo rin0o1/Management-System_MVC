@@ -39,10 +39,16 @@ namespace Crm_DataUtilities.ViewModel
     //Classe utile per gestire alcune informazioni della pagina
     public class PageParameters
     {
+        public PageParameters()
+        {
+            HasScrollButton = true;
+        }
         public string PageTitle { get; set; }
         public List<FilterForDataVisualization> FilterForData { get; set; }
 
         public string ControllerName { get; set; }
+
+        public bool HasScrollButton { get; set; }
     }
         
 

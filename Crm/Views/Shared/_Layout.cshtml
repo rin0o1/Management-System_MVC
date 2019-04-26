@@ -11,37 +11,39 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 
 </head>
 
 
-<body> 
+<body > 
 
 
-    <nav class="col-md-12">
-        <ul style="float:left">
-            <li>
-                <a href="/Home">HOME</a>
-            </li>
-            <li>
-                <a >AMMINISTRAZIONE</a>
-            <li >
-                <a >GESTIONE</a>
-                <ul>
-                    <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
-                    <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
+    <div class=" document-container  body-content ">
+            <nav class="col-md-12">
+                <ul style="float:left">
+                    <li>
+                        <a href="/Home">HOME</a>
+                    </li>
+                    <li>
+                        <a>AMMINISTRAZIONE</a>
+                    <li>
+                        <a>GESTIONE</a>
+                        <ul>
+                            <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
+                            <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
+
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-        </ul>
-    </nav>
+            </nav>
 
-
-
-    <div class=" container_ body-content ">
-        @RenderBody()
+        <div class="body-content-partialindex">
+            @RenderBody()
+        </div>
     </div>
 
-    @RenderSection("scripts", required: false)
+    
 
 </body>
 </html>

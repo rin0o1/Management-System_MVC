@@ -1,5 +1,25 @@
-﻿
+﻿@using Crm_DataUtilities.Repository;
+@using Crm_DataUtilities.ViewModel;
 
+@model List<PreventiveViewModel>
+
+<table id="index-table" class=" SendBack table-for-information col-md-12">
+
+    <thead>
+        <tr class="Grigietto" >
+            <th>@Html.DisplayNameFor(x => Model[0].NumeroPreventivo)</th>
+            <th>@Html.DisplayNameFor(x => Model[0].Riferimento)</th>
+            <th>@Html.DisplayNameFor(x => Model[0].Data)</th>
+            <th>@Html.DisplayNameFor(x => Model[0].Listino)</th>
+            <th  class="cell-selection-item"></th>
+        </tr>
+    </thead>
     
-    
-    
+    <tbody id="InformationContainer">
+        @{Html.RenderPartial("PartialInformationContainer", Model);}
+    </tbody>
+
+</table>
+
+
+
