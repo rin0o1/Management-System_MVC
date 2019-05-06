@@ -1,13 +1,35 @@
-﻿
+﻿@using Crm_Global;
+@using Crm_DataUtilities.ViewModel;
 
-<div  id="openimage" class="image-open-menu" onclick="showmenu()" title="Apri Menu"></div>
+@model PageParameters
+@{ 
+    List<ButtonMenuViewModel> buttons = Model.ButtonMenu;
+}
+
+
+<div id="openimage" class="image-open-menu" onclick="showmenu()" title="Apri Menu"></div>
 
 <div id="mymenu" class="crm-menu Panna">
 
-    <div class="image-close-menu  " title="Chiud il menu" onclick="closemenu()"></div>
+    <table style="table-layout:auto">
+        <tr>
 
-    
+            <td> <div class="image-close-menu  " title="Chiud il menu" onclick="closemenu()"></div></td>
 
+            @if (buttons != null)
+             {
+                foreach (ButtonMenuViewModel x in buttons)
+                {
+                    <td class="crm-menu-cell"><div class="crm-menu-button" value="@x.ButtonValue"> @x.ButtonName  </div></td>
+                }
+             }
 
+            @*Inserire una condizione per ogni bottone per renderlo dinamico*@
+            <td class="crm-menu-cell"><div class="  crm-menu-button"> AGGIUNGI </div></td>
+            <td class="crm-menu-cell"><div class="  crm-menu-button"> ESPORTA  </div></td>
+            <td class="crm-menu-cell"><div class="  crm-menu-button"> STAMPA </div></td>
+
+        </tr>
+    </table>
 
 </div>

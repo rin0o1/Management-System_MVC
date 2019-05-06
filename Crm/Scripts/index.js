@@ -4,12 +4,12 @@
 
 
 function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         $('#btn_scrolltop').fadeIn(200);
     } else {
         $('#btn_scrolltop').fadeOut(200);
     }
-    
+
 }
 
 function topFunction()

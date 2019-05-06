@@ -2,28 +2,30 @@
 
 :root {
     --menu-height: 50px;
+    --menu-bottom-distance:30px;
 }
 
 
 .image-open-menu {
     width: 50px;
     height: var(--menu-height);
-    left: 0px;
-    bottom: 30px;
+    bottom: var(--menu-bottom-distance);
     position: fixed;
     cursor: pointer;
+    left:0px;
     background-image: url(Images/Menu/image_scrollmenu-right-removebg.png);
     background-size: cover;
 }
 
 
-.crm-menu 
-{
+.crm-menu {
     display: none;
-    bottom: 30px;
-    width: 50%;
-    height: var(--menu-height);
+    bottom: var(--menu-bottom-distance);
+    width: 75%;
+    height: 55px;
     left: 0px;
+    border: 2px solid ;
+    border-radius: 5px 20px;
     position: fixed;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,1), 0 20px 20px 0 rgba(0,0,0,1);
 }
@@ -37,16 +39,42 @@
     cursor: pointer;
     background-image: url(Images/Menu/image_closemenu.png);
     background-size: contain;
-
+    margin-right:15px;
+    float:left;
 }
 
 
+
+.crm-menu-cell {
+    height: auto;
+    width: 7em;
+}
 
 
 .crm-menu-button {
-    height: 40px;
-    width: 20%;
-    margin-left:20px;
+    width: auto;
+    height: auto;
+    border: 2px  dashed;
+    margin-left: 15px;
+    padding: 6px;
+    text-align: center;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right:10px;
 }
+
+     .btnorange
+     {
+         border: #ff6a00;
+         text-decoration-color:#ff6a00
+     }
+
+    .crm-menu-button:hover {
+        background-color: #ccc098b3;
+    }
+    
     
 

@@ -51,8 +51,6 @@ namespace Crm.Controllers
             };
 
             #endregion
-
-
             ViewBag.filterForDataVisualization = FilterForDataVisualization;
 
             PageParameters _pageParameters = new PageParameters()

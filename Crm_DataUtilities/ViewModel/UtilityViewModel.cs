@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace Crm_DataUtilities.ViewModel
+
 {
     //Filtro per la ricerca 
     public class FilterForSearchBar
@@ -45,11 +48,18 @@ namespace Crm_DataUtilities.ViewModel
         }
         public string PageTitle { get; set; }
         public List<FilterForDataVisualization> FilterForData { get; set; }
-
+        public List<ButtonMenuViewModel> ButtonMenu { get; set; }
         public string ControllerName { get; set; }
 
         public bool HasScrollButton { get; set; }
+
     }
         
+    public class ButtonMenuViewModel
+    {
+        public string ButtonName { get; set; }
+        public string ButtonValue { get; set; }
+    }
+
 
 }

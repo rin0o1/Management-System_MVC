@@ -47,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -54,7 +60,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -212,6 +217,7 @@
     <Content Include="Views\Shared\PartialIndexFilter.cshtml" />
     <Content Include="Views\Preventive\PartialInformationContainer.cshtml" />
     <Content Include="Views\Shared\PartialMenuIndex.cshtml" />
+    <Content Include="Views\Preventive\PartialInformationDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -234,6 +240,10 @@
     <ProjectReference Include="..\Crm_DataUtilities\Crm_DataUtilities.csproj">
       <Project>{736c19f4-bf4e-4325-94f5-57cd14476e28}</Project>
       <Name>Crm_DataUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crm_Entities\Crm_Entities.csproj">
+      <Project>{40803388-9978-434f-ac2e-6566dae589bf}</Project>
+      <Name>Crm_Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Crm_Global\Crm_Global.csproj">
       <Project>{521bafb0-ae72-4a3b-ae4b-df2d249bd98e}</Project>

@@ -7,7 +7,7 @@ nav {
     width: 100% !important;
     margin-bottom: 10px;
     left: 0;
-    position:relative ;
+    position:fixed !important ;
     display: compact;
 }
 

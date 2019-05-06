@@ -5,15 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Crm_Entities;
+
 namespace Crm_DataUtilities.ViewModel
 {
     public class PreventiveViewModel
     {
-        //public PreventiveViewModel(tPreventive, companyid, dbentity)
-        //{
-                //collegare gli elementi dalla tabella al model
-        //}
+        public PreventiveViewModel(tPreventive preventive)
+        {
+            //Unire l'oggetto di EntityFramework  con il modello 
+            this.IdPreventivo = preventive.ID;
+        }
 
+
+        //Questo costruttore è solo di utilità per poter gestire la parte grafica ma dovra essere eliminato
+        //e sostituito
         public PreventiveViewModel()
         {
             IdPreventivo = 3;

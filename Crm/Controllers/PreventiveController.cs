@@ -14,16 +14,21 @@ using System.Web.SessionState;
 using Crm_DataUtilities.Repository;
 using Crm_DataUtilities.ViewModel;
 using Crm_Global;
+using Crm_Entities;
+
 namespace Crm.Controllers
 {
     public class PreventiveController : Controller
     {
         private PreventiveRepository _preventiveRepository;
+        private MyDataEntities dbEntity;
         private string Title = "Gestione preventivi";
 
         protected override void Initialize(RequestContext requestContext)
-        {
+        {   
             base.Initialize(requestContext);
+            dbEntity = new MyDataEntities();
+            dbEntity.Database.Connection.Open();
             _preventiveRepository = new PreventiveRepository();
         }
 
@@ -32,13 +37,37 @@ namespace Crm.Controllers
         {
 
 
+            #region FILTER FOR DATA VISUALIZATION
+            List<FilterForDataVisualization> FilterForDataVisualization = new List<FilterForDataVisualization>()
+            {
+                new FilterForDataVisualization(),
+                new FilterForDataVisualization()
+                {
+                    Value= 0,
+                    TextToShow= "Annullato",
 
+                },
+                new FilterForDataVisualization()
+                {
+                    Value= 1,
+                    TextToShow= "Aperto"
+                },
+                new FilterForDataVisualization()
+                {
+                    Value= 2,
+                    TextToShow= "CHiuso"
+                }
+            };
+
+            #endregion
+
+            //ViewBag.filterForDataVisualization = FilterForDataVisualization;
 
             PageParameters _pageParameters = new PageParameters()
             {
                 PageTitle = this.Title,
                 ControllerName = ControllerName.OrderController,
-                
+                FilterForData = FilterForDataVisualization
             };
 
 
@@ -51,6 +80,13 @@ namespace Crm.Controllers
 
         public List<PreventiveViewModel> LoadData()
         {
+            var AllPreventives= _preventiveRepository.GetAllPreventives();
+
+            foreach (tPreventive item in AllPreventives.ToList())
+            {
+                PreventiveViewModel p = new PreventiveViewModel();
+            }
+
             return new List<PreventiveViewModel>()
             {
                 new PreventiveViewModel(),

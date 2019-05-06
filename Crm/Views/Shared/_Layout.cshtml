@@ -20,27 +20,29 @@
 
 
     <div class=" document-container  body-content ">
-            <nav class="col-md-12">
-                <ul style="float:left">
-                    <li>
-                        <a href="/Home">HOME</a>
-                    </li>
-                    <li>
-                        <a>AMMINISTRAZIONE</a>
-                    <li>
-                        <a>GESTIONE</a>
-                        <ul>
-                            <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
-                            <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
+        <nav class="col-md-12">
+            <ul style="float:left">
+                <li>
+                    <a href="/Home">HOME</a>
+                </li>
+                <li>
+                    <a>AMMINISTRAZIONE</a>
+                <li>
+                    <a>GESTIONE</a>
+                    <ul>
+                        <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
+                        <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
 
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
 
-        <div class="body-content-partialindex">
+        @RenderBody()
+
+        @*<div class="body-content-partialindex">
             @RenderBody()
-        </div>
+        </div>*@
     </div>
 
     

@@ -1,49 +1,50 @@
-﻿@using Crm_DataUtilities.Repository;
+﻿
+@using Crm_DataUtilities.Repository;
 @using Crm_DataUtilities.ViewModel;
 
-@{
 
+
+@{
     PageParameters _pageParameters = ViewBag.pageParameters;
+
 
     if (ViewBag.pageTitle == null)
     {
         ViewBag.Title = _pageParameters.PageTitle;
     }
+    List<ButtonMenuViewModel> button = _pageParameters.ButtonMenu;
 }
     
-<div  class="index-header col-md-12 SendBack no-padding ">
-    <span class="index-title col-md-12 no-padding  SendBack">@_pageParameters.PageTitle</span>
+
+<div  class="index-header col-md-12 SendBack  no-padding ">
+    <span class="index-title col-md-12 no-padding  ">@_pageParameters.PageTitle</span>
 </div>
 
+
+@*Inserire qui la barra di ricerca gloabale *@
 
 <div class="index-underlinetitle-line"></div>
 
 @if (_pageParameters.FilterForData != null)
 {
-    <div class=" filterzone SendBack no-padding">
+    <div class=" filterzone  no-padding">
         @Html.Partial("PartialIndexFilter", (PageParameters)_pageParameters)
     </div>
- }
+} 
 
 
-<div class="partialindexzone SendBack ">
-
+<div class="partialindexzone">
     @Html.Partial("PartialIndex")
-
     <div id="MenuContainer">
-        @Html.Partial("PartialMenuIndex");
+        
+        @Html.Partial("PartialMenuIndex", _pageParameters)
+
         @if (_pageParameters.HasScrollButton)
         {<div onclick="topFunction()" id="btn_scrolltop" class="go_top_button"></div>}
     </div>
-
-
-    
-
-
 </div>
 
 <script>
         window.onscroll = function () { scrollFunction() };
-
 </script>
 
