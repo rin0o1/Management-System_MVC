@@ -24,6 +24,25 @@ namespace Crm_DataUtilities.Repository
             return this.dbEntity.tPreventive;
         }
 
+        //Cambiare questo switch in base al reale nome della tabella nel database
+        public void SavePreventive(tPreventive preventive, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
+        {
+            switch (typeOfDatabaseOperation)
+            {
+                case EnumUseful.typeOfDatabaseOperation.EDIT:
+                    
+                    break;
+                case EnumUseful.typeOfDatabaseOperation.CREATE:
+                    break;
+                case EnumUseful.typeOfDatabaseOperation.SAVE:
+                    break;
+                case EnumUseful.typeOfDatabaseOperation.DELETE:
+                    break;
+                default:
+                    break;
+            }
+        }
+
         public void Dispose()
         {
            

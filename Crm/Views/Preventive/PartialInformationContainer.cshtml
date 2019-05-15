@@ -1,5 +1,6 @@
 ﻿@using Crm_DataUtilities.Repository;
 @using Crm_DataUtilities.ViewModel;
+@using Crm_Global;
 
 @model List<PreventiveViewModel>
 
@@ -24,7 +25,12 @@
 
         <td class="cell-selection-item BiancoOpaco">
             <div style="display:inline-flex">
-                <div class="detailsicon" title="Dettaglio"></div>
+                @Html.ActionLink(" ", "Details",
+                        ControllerName.PreventiveController, 
+                        new { id = item.IdPreventivo }, 
+                        new { @class = "detailsicon", @title = "Dettaglio" })
+
+                @*<div class="detailsicon" title="Dettaglio"></div>*@
                 <div class="removeicon" title="Rimuovi"></div>
             </div>
         </td>

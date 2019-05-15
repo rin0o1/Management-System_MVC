@@ -2,30 +2,24 @@
 
 
 
-/*.go_top_button {
-    display: none;
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    cursor: pointer;
-    transition: transform .2s;
-    background-image: url(Images/btn_gotop2.jpg);
-    background-size: cover;
-}*/
 
+
+.render-body-zone
+{
+    padding:10px;
+    position:initial !important;
+
+}
 
 img.lazyload {
     display: none;
 }
 
-.container_ {
+/*.container_ {
     width: 100%;
     height: -webkit-fill-available;
-    
     overflow-y: scroll;
-}
+}*/
 
 #LoginBackround {
     background: rgba(0, 0, 0, 0) no-repeat scroll center center;
@@ -528,7 +522,7 @@ div#collabnet {
 
 .SendBack
 {
-    position:inherit;
+    position:initial;
 }
 
 /*sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss*/
@@ -598,55 +592,14 @@ input[type="checkbox"].input-validation-error {
 
 
 
-@media screen and (max-width: 600px) {
-    .visibleOver600 {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .visibleOver900 {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .visibleOver480 {
-        display: none;
-    }
-}
 
 
 
-.GiesseDetailsTable div {
-    padding: 0px !important;
-    margin: 0px !important;
-    text-align: center;
-    vertical-align: central;
-}
 
-.GiesseDetailsTable label {
-    padding: 0px !important;
-    margin: 0px !important;
-    text-align: center;
-    vertical-align: central;
-}
 
-.GiesseDetailsTable td {
-    text-align: center;
-    vertical-align: central;
-}
 
-/*Giesse*/
-@media screen and (min-width: 1000px) {
 
-    .tableUnder900 {
-        padding: 0px !important;
-        margin: 0px !important;
-    }
-}
 
-/*Giesse*/
 @media screen and (max-width: 1000px) {
     .body-content {
         padding: 0px;

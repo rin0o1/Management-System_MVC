@@ -14,37 +14,32 @@
     }
     List<ButtonMenuViewModel> button = _pageParameters.ButtonMenu;
 }
-    
-
-<div  class="index-header col-md-12 SendBack  no-padding ">
-    <span class="index-title col-md-12 no-padding  ">@_pageParameters.PageTitle</span>
-</div>
 
 
-@*Inserire qui la barra di ricerca gloabale *@
 
-<div class="index-underlinetitle-line"></div>
+<div>
 
-@if (_pageParameters.FilterForData != null)
-{
-    <div class=" filterzone  no-padding">
-        @Html.Partial("PartialIndexFilter", (PageParameters)_pageParameters)
+    <input type="hidden" id="_ControllerName" name="ControllerName" value="@_pageParameters.ControllerName">
+
+    <div class="index-header  ">
+        <span class="index-title no-padding  ">@_pageParameters.PageTitle</span>
     </div>
-} 
 
+
+    @if (_pageParameters.FilterForData != null)
+    {
+        <div class=" filterzone  no-padding">
+            @Html.Partial("PartialIndexFilter", (PageParameters)_pageParameters)
+        </div>
+    }
+
+</div>
 
 <div class="partialindexzone">
     @Html.Partial("PartialIndex")
-    <div id="MenuContainer">
-        
-        @Html.Partial("PartialMenuIndex", _pageParameters)
-
-        @if (_pageParameters.HasScrollButton)
-        {<div onclick="topFunction()" id="btn_scrolltop" class="go_top_button"></div>}
-    </div>
 </div>
 
 <script>
-        window.onscroll = function () { scrollFunction() };
+    window.onscroll = function () { scrollFunction() };
 </script>
 

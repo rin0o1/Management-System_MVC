@@ -1,0 +1,41 @@
+﻿
+
+.crm-detailspage {
+    margin-top: 5px;
+    padding-bottom:10px;
+    height: -webkit-fill-available;
+    padding-left: 10px;
+    padding-right: 10px;
+    position:initial !important;
+    z-index:-1;
+}
+
+
+/*.crm-deatilspage-form {
+    padding-left: _10px;
+    padding-right: ì10px;
+}*/
+
+.form{
+    position:initial;
+}
+
+.some-margin-top
+{
+    margin-top:2px;
+
+}
+
+.border-square {
+    border: 3px solid #555;
+}
+
+.TextArea{
+    resize:vertical;
+    height:130px;
+}
+
+.SelectionItem
+{
+    height:26px;
+}

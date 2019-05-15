@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Crm_Global;
+@using Crm_DataUtilities.ViewModel;
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,36 +20,45 @@
 </head>
 
 
-<body > 
+<body>
+
+    <div class="document-container body-content">
+            <nav >
+                <ul style="float:left">
+                    <li>
+                        <a href="/Home">HOME</a>
+                    </li>
+                    <li>
+                        <a>AMMINISTRAZIONE</a>
+                    <li>
+                        <a>GESTIONE</a>
+                        <ul>
+                            <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
+                            <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
 
 
-    <div class=" document-container  body-content ">
-        <nav class="col-md-12">
-            <ul style="float:left">
-                <li>
-                    <a href="/Home">HOME</a>
-                </li>
-                <li>
-                    <a>AMMINISTRAZIONE</a>
-                <li>
-                    <a>GESTIONE</a>
-                    <ul>
-                        <li> @Html.ActionLink("PREVENTIVI", "Index", "Preventive")</li>
-                        <li> @Html.ActionLink("ORDINI", "Index", "Order")</li>
+            <div id="HeaderInformation" >
 
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+                @{
+                    PageParameters _pageParameters = ViewBag.pageparameters; }
 
-        @RenderBody()
+                    @Html.Partial("PartialMenuIndex", (PageParameters)_pageParameters)
 
-        @*<div class="body-content-partialindex">
-            @RenderBody()
-        </div>*@
+                @if (_pageParameters.HasScrollButton)
+                {<div onclick="topFunction()" id="btn_scrolltop" class="go_top_button"></div>}
+            </div>
+
+            <div class="render-body-zone">
+                @RenderBody()
+            </div>
+
     </div>
 
-    
 
 </body>
 </html>

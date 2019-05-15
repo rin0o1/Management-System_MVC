@@ -37,7 +37,8 @@ namespace Crm
                       "~/Content/crm-graphic.css",
                       "~/Content/Colors.css",
                       "~/Content/Icon.css",
-                      "~/Content/crm-menu.css"
+                      "~/Content/crm-menu.css",
+                      "~/Content/crm-DetailsPage.css"
                       ));
         }
     }

@@ -1,5 +1,9 @@
 ﻿
 
+:root {
+    --navigation-bar-margin-top: 64px;
+}
+
 
 nav {
     background: #9f496e;
@@ -9,6 +13,7 @@ nav {
     left: 0;
     position:fixed !important ;
     display: compact;
+    z-index:10;
 }
 
 

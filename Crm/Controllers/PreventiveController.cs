@@ -28,10 +28,9 @@ namespace Crm.Controllers
         {   
             base.Initialize(requestContext);
             dbEntity = new MyDataEntities();
-            dbEntity.Database.Connection.Open();
-            _preventiveRepository = new PreventiveRepository();
+            //dbEntity.Database.Connection.Open();
+            //_preventiveRepository = new PreventiveRepository();
         }
-
 
         public ActionResult Index()
         {
@@ -66,10 +65,14 @@ namespace Crm.Controllers
             PageParameters _pageParameters = new PageParameters()
             {
                 PageTitle = this.Title,
-                ControllerName = ControllerName.OrderController,
-                FilterForData = FilterForDataVisualization
+                ControllerName = ControllerName.PreventiveController,
+                FilterForData = FilterForDataVisualization,
+                HasEditButton = false,
+                HasExportButton = false,
+                HasDeleteButton = false
+                
             };
-
+    
 
             ViewBag.pageParameters = _pageParameters;
             ViewBag.pageTitle = Title;
@@ -80,12 +83,12 @@ namespace Crm.Controllers
 
         public List<PreventiveViewModel> LoadData()
         {
-            var AllPreventives= _preventiveRepository.GetAllPreventives();
+            //var AllPreventives= _preventiveRepository.GetAllPreventives();
 
-            foreach (tPreventive item in AllPreventives.ToList())
-            {
-                PreventiveViewModel p = new PreventiveViewModel();
-            }
+            //foreach (tPreventive item in AllPreventives.ToList())
+            //{
+            //    PreventiveViewModel p = new PreventiveViewModel();
+            //}
 
             return new List<PreventiveViewModel>()
             {
@@ -94,5 +97,109 @@ namespace Crm.Controllers
                 new PreventiveViewModel()
             };
         }
+
+
+        public ActionResult Details( int ? Id)
+        {
+            if (Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            PageParameters _pageParameters = new PageParameters()
+            {
+                PageTitle = "Dettaglio Preventivo",
+                ControllerName = ControllerName.PreventiveController,
+                HasScrollButton=false,
+                HasEditButton=false,
+                ButtonMenu= new List<ButtonMenuViewModel>()
+                {
+                    new ButtonMenuViewModel()
+                    {
+                        ButtonName="Genera",
+                        ButtonValue= "genera"
+                    },
+                    new ButtonMenuViewModel()
+                    {
+                        ButtonName="Duplica",
+                        ButtonValue= "duplica"
+                    }
+                }
+            };
+
+            ViewBag.pageParameters = _pageParameters;
+
+            var model = new PreventiveDetailsViewModel();
+
+            return View(model);
+        }
+
+        //Create Get
+        public ActionResult Create()
+        {
+            PageParameters _pageParameters = new PageParameters()
+            {
+                PageTitle = "Nuovo Preventivo",
+                ControllerName = ControllerName.PreventiveController,
+                HasScrollButton = false,
+                HasAddElementButton = false,
+                HasEditButton = false,
+            };
+
+            ViewBag.pageParameters = _pageParameters;
+
+            return View();
+        }
+
+        //Create Post
+        [HttpPost]
+        public ActionResult Create(PreventiveDetailsViewModel model)
+        {
+
+            if (model != null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            tPreventive tPreventive = new tPreventive()
+            {
+                ID = model.IdPreventivo,
+                Data = model.Data,
+                Durata = model.Durata,
+                ImportoTotaleScontato = model.ImportoTotaleScontato,
+                ScontoGenerale = model.ScontoGenerale,
+                TotalearticoliListino = model.TotaleArticoliListino
+            };
+
+            _preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.CREATE);
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+
+        //Non credo sia necessario
+        public ActionResult SaveData()
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+
+        [HttpPost]
+        public ActionResult SaveDetailsData(PreventiveDetailsViewModel model)
+        {
+            if (model != null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            tPreventive tPreventive = new tPreventive()
+            {
+                ID = model.IdPreventivo,
+                Data = model.Data,
+                Durata = model.Durata,
+                ImportoTotaleScontato = model.ImportoTotaleScontato,
+                ScontoGenerale = model.ScontoGenerale,
+                TotalearticoliListino = model.TotaleArticoliListino
+            };
+
+            _preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.SAVE);
+
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+        
+
     }
 }

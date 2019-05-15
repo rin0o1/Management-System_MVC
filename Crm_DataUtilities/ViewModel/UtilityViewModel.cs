@@ -45,10 +45,23 @@ namespace Crm_DataUtilities.ViewModel
         public PageParameters()
         {
             HasScrollButton = true;
+            HasAddElementButton = true;
+            HasSaveButton = true;
+            HasEditButton = true;
+            HasExportButton = true;
+            HasDeleteButton = true;   
         }
         public string PageTitle { get; set; }
         public List<FilterForDataVisualization> FilterForData { get; set; }
         public List<ButtonMenuViewModel> ButtonMenu { get; set; }
+
+        public bool HasSaveButton { get; set; }
+        public bool HasAddElementButton { get; set; }
+        public bool HasEditButton { get; set; }
+
+        public bool HasDeleteButton { get; set; }
+
+        public bool HasExportButton { get; set; }
         public string ControllerName { get; set; }
 
         public bool HasScrollButton { get; set; }

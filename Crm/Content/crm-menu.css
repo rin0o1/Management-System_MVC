@@ -15,19 +15,22 @@
     left:0px;
     background-image: url(Images/Menu/image_scrollmenu-right-removebg.png);
     background-size: cover;
+    z-index:10;
 }
 
 
 .crm-menu {
-    display: none;
+    display: block;
     bottom: var(--menu-bottom-distance);
-    width: 75%;
+    /*width: 75%;*/
+    width:auto;
     height: 55px;
     left: 0px;
-    border: 2px solid ;
-    border-radius: 5px 20px;
+    border: 2px solid;
+    border-radius: 5px 8px;
     position: fixed;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,1), 0 20px 20px 0 rgba(0,0,0,1);
+    z-index: 10;
 }
 
 
@@ -35,12 +38,13 @@
 .image-close-menu {
     width: 50px;
     height: var(--menu-height);
-    display:inline-block;
+    display: inline-block;
     cursor: pointer;
     background-image: url(Images/Menu/image_closemenu.png);
     background-size: contain;
-    margin-right:15px;
-    float:left;
+    margin-right: 15px;
+    float: left;
+    z-index: 10;
 }
 
 
@@ -52,24 +56,42 @@
 
 
 .crm-menu-button {
-    width: auto;
+    /*width:140px;*/
+    width:auto;
     height: auto;
-    border: 2px  dashed;
-    margin-left: 15px;
-    padding: 6px;
+    border: 2px dashed;
+    /*margin-left: 15px;*/
+    padding:1px;
+    /*padding: 6px;*/
+    
     text-align: center;
-    font-size: 1.3em;
-    letter-spacing: 1px;
+    font-size: 1em;
     text-transform: uppercase;
     cursor: pointer;
     border-radius: 5px;
-    margin-right:10px;
+    margin-right: 3px;
 }
+.custom-menu-button-crm {
+    width: 140px;
+    height: auto;
+    border: 2px solid;
+    /*margin-left: 15px;*/
+    padding: 1px;
+    /*padding: 6px;*/
+    text-align: center;
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 3px;
+}
+        
 
      .btnorange
      {
          border: #ff6a00;
          text-decoration-color:#ff6a00
+
      }
 
     .crm-menu-button:hover {
@@ -77,4 +99,11 @@
     }
     
     
-
+.crm-menu-button-link{ 
+    color:#000000;
+    text-decoration:none;
+}
+    .crm-menu-button-link:hover {
+        color: #000000;
+        text-decoration: none;
+    }

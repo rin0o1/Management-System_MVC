@@ -13,21 +13,58 @@
 
     <table style="table-layout:auto">
         <tr>
-
-            <td> <div class="image-close-menu  " title="Chiud il menu" onclick="closemenu()"></div></td>
+            <td> <div class="image-close-menu  " title="Chiudi il menu" onclick="closemenu()"></div></td>
 
             @if (buttons != null)
-             {
+            {
                 foreach (ButtonMenuViewModel x in buttons)
                 {
                     <td class="crm-menu-cell"><div class="crm-menu-button" value="@x.ButtonValue"> @x.ButtonName  </div></td>
                 }
-             }
+            }
 
-            @*Inserire una condizione per ogni bottone per renderlo dinamico*@
-            <td class="crm-menu-cell"><div class="  crm-menu-button"> AGGIUNGI </div></td>
-            <td class="crm-menu-cell"><div class="  crm-menu-button"> ESPORTA  </div></td>
-            <td class="crm-menu-cell"><div class="  crm-menu-button"> STAMPA </div></td>
+            @if (Model.HasAddElementButton)
+            {
+                <td class="crm-menu-cell">
+                    <div class="crm-menu-button">
+                        @Html.ActionLink("AGGIUNGI", "Create",
+                         Model.ControllerName,
+                         new { @class = "crm-menu-button-link" })
+                    </div>
+                </td>
+            }
+
+            @if (Model.HasEditButton)
+            {
+                <td class="crm-menu-cell">
+                    <div value="edit" class="crm-menu-button"> MODIFICA </div>
+                </td>
+            }
+
+            @if (Model.HasExportButton)
+            {
+                <td class="crm-menu-cell">
+                    <div value="export" class="crm-menu-button"> ESPORTA </div>
+                </td>
+            }
+
+            @if (Model.HasSaveButton)
+            {
+                <td class="crm-menu-cell">
+                    <div id="save" value="save" class="crm-menu-button"> SALVA </div>
+                </td>
+            }
+
+            @if (Model.HasDeleteButton)
+            {
+                <td class="crm-menu-cell">
+                    <div value="save" class="crm-menu-button"> ELIMINA </div>
+                </td>
+            }
+
+            <td class="crm-menu-cell">
+                <div value="print" class="crm-menu-button" onclick="window.print();"> STAMPA </div>
+            </td>
 
         </tr>
     </table>
