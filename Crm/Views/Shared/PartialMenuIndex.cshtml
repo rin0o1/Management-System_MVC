@@ -15,13 +15,6 @@
         <tr>
             <td> <div class="image-close-menu  " title="Chiudi il menu" onclick="closemenu()"></div></td>
 
-            @if (buttons != null)
-            {
-                foreach (ButtonMenuViewModel x in buttons)
-                {
-                    <td class="crm-menu-cell"><div class="crm-menu-button" value="@x.ButtonValue"> @x.ButtonName  </div></td>
-                }
-            }
 
             @if (Model.HasAddElementButton)
             {
@@ -44,7 +37,7 @@
             @if (Model.HasExportButton)
             {
                 <td class="crm-menu-cell">
-                    <div value="export" class="crm-menu-button"> ESPORTA </div>
+                    <div id="export" value="export" class="crm-menu-button"> ESPORTA </div>
                 </td>
             }
 
@@ -57,14 +50,24 @@
 
             @if (Model.HasDeleteButton)
             {
+
                 <td class="crm-menu-cell">
-                    <div value="save" class="crm-menu-button"> ELIMINA </div>
+                    <div id="delete" value="delete" class="crm-menu-button"> ELIMINA </div>
                 </td>
-            }
+             }
 
             <td class="crm-menu-cell">
                 <div value="print" class="crm-menu-button" onclick="window.print();"> STAMPA </div>
             </td>
+
+            @if (buttons != null)
+            {
+                foreach (ButtonMenuViewModel x in buttons)
+                {
+                    <td class="crm-menu-cell"><div class="crm-menu-button" id="@x.ButtonValue" value="@x.ButtonValue" > @x.ButtonName  </div></td>
+                }
+            }
+
 
         </tr>
     </table>

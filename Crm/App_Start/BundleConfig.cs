@@ -24,7 +24,8 @@ namespace Crm
                       "~/Scripts/respond.js",
                       "~/Scripts/index.js",
                       "~/Scripts/IconManagement.js",
-                      "~/Scripts/Menu.js"
+                      "~/Scripts/Menu.js",
+                      "~/Scripts/crm-utilities.js"
                       ));
 
 

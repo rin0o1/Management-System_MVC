@@ -1,0 +1,6 @@
+﻿																==============
+																	 Crm
+																==============
+
+Questa soluzione sarebbe la parte principale del progett, 
+infatti contiene i controller e le viste necessarie per il funzionamento del progetto

@@ -8,12 +8,13 @@ namespace Crm_Global
 {
     public class EnumUseful
     {
+        //Enum per switchare i tipi di operazioni da fare nel database
         public enum typeOfDatabaseOperation   
         {
             EDIT=1,
             CREATE=2,
-            SAVE=3,
-            DELETE=4
+            SAVE=3
         }
+
     }
 }

@@ -1,0 +1,5 @@
+﻿====================
+     Crm_Entities
+====================
+
+Questa soluzione è usata da Entity Framework per gestire i suoi dati e creare le sue classi

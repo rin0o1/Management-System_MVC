@@ -15,6 +15,7 @@ namespace Crm_Entities
     
     public partial class MyDataEntities : DbContext
     {
+        
         public MyDataEntities()
             : base("name=MyDataEntities")
         {

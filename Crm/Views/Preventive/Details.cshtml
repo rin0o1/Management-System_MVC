@@ -2,198 +2,209 @@
 @using Crm_Global;
 
 @model PreventiveDetailsViewModel
-@{ 
+@{
     PageParameters _pageParameters = ViewBag.pageParameters;
     var controllerName = _pageParameters.ControllerName;
     var actionName = "SaveDetailsData";
 }
 
-    <div class="crm-detailspage ">
-        4
-        <input type="hidden" id="_ControllerName" name="ControllerName" value="@controllerName">
+<div class="crm-detailspage ">
 
-        <div class="index-header">
-            <span class="index-title no-padding  "> @_pageParameters.PageTitle </span>
+    <input type="hidden" id="_ControllerName" name="ControllerName" value="@controllerName">
+
+    <div class="index-header">
+        <span class="index-title no-padding  "> @_pageParameters.PageTitle </span>
+    </div>
+
+    <input type="hidden" id="IdOfThisElement" value="@Model.IdPreventivo">
+
+    @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row "> 
+            <div>
+                <div class="col-md-3">
+                    <label> Numero Preventivo </label>
+                </div>
+                <div class="col-md-3">
+                    <label>Data</label>
+                </div>
+                <div class="col-md-3">
+                    <label>Durata (gg)</label>
+                </div>
+                <div class="col-md-3">
+                    <label>Listino in vigore</label>
+                </div>
+            </div>
+
+            <div>
+                <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo" value="@Model.NumeroPreventivo">
+                <input class="col-md-3" type="text" name="Data" value="@Model.Data">
+                <input class="col-md-3" type="text" name="Durata" value="@Model.Durata">
+                <input class="col-md-3" type="text" name="firstname">
+            </div>
+
+        </div>
+        <br />
+
+        <div class="row  SomeSpaceTop">
+            <div class="col-md-2 LineBOt">
+                <label> Oggetto</label>
+            </div>
+            <input class="col-md-10" type="text" name="Oggetto" value="@Model.Oggetto">
         </div>
 
-        @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
-        {
-            @Html.AntiForgeryToken()
-            <div class="row">
-                <div>
-                    <div class="col-md-3">
-                        <label> Numero Preventivo </label>
-                    </div>
-                    <div class="col-md-3">
-                        <label>Data</label>
-                    </div>
-                    <div class="col-md-3">
-                        <label>Durata (gg)</label>
-                    </div>
-                    <div class="col-md-3">
-                        <label>Listino in vigore</label>
-                    </div>
-                </div>
-
-                <div>
-                    <input class="col-md-3" type="text" name="NumeroPreventivo" value="@Model.NumeroPreventivo">
-                    <input class="col-md-3" type="text" name="Data" value="@Model.Data">
-                    <input class="col-md-3" type="text" name="Durata" value="@Model.Durata">
-                    <input class="col-md-3" type="text" name="firstname">
-                </div>
-
+        <div class="row SomeSpaceTop">
+            <div class="col-md-2 LineBOt">
+                <label> Riferimento </label>
             </div>
-            <br />
-
-            <div class="row some-margin-top ">
-                <div class="col-md-2">
-                    <label> Oggetto</label>
-                </div>
-                <input class="col-md-10" type="text" name="Oggetto" value="@Model.Oggetto">
+            <input class="col-md-10" type="text" name="Referenza" value="@Model.Referenza">
+        </div>
+        <div class="row  SomeSpaceTop">
+            <div class="col-md-2 LineBOt">
+                <label> Allegati </label>
             </div>
-
-            <div class="row some-margin-top ">
-                <div class="col-md-2">
-                    <label> Riferimento </label>
-                </div>
-                <input class="col-md-10" type="text" name="Referenza" value="@Model.Referenza">
+            <input class="col-md-10" type="text" name="firstname">
+        </div>
+        <div class="row SomeSpaceTop ">
+            <div class="col-md-2 LineBOt">
+                <label> Progetto </label>
             </div>
-            <div class="row some-margin-top ">
-                <div class="col-md-2">
-                    <label> Allegati </label>
-                </div>
-                <input class="col-md-10" type="text" name="firstname">
-            </div>
-            <div class="row some-margin-top ">
-                <div class="col-md-2">
-                    <label> Progetto </label>
-                </div>
-                <input class="col-md-10" type="text" name="Progetto" value="@Model.Progetto">
-            </div>
+            <input class="col-md-10" type="text" name="Progetto" value="@Model.Progetto">
+        </div>
 
 
-            <br />
-            <div class="row">
-                <div class="col-md-6">
-                    <label> All'attenzione di </label>
-                </div>
-                <div class="col-md-6">
-                    <label> Operatore </label>
-                </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <label> All'attenzione di </label>
             </div>
-
-            <div class="row">
-                <input class="col-md-6" type="text" name="firstname">
-                <select class="col-md-6 SelectionItem" id="country" name="Operatore">
-                    <option> @Model.Operatore</option>
-                </select>
+            <div class="col-md-6">
+                <label> Operatore </label>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <label> Addebito Trasporto </label>
+        <div class="row ">
+            <input class="col-md-6 " type="text" name="Selection" >
+            <div class="col-md-6">
+                <div class="col-md-10 MySelection Label" IdOperatore="IdDell'operatore" >
+                    NOME E COGNOME OPERATORE
                 </div>
-                <div class="col-md-4">
-                    <label> Pagamento </label>
-                </div>
-                <div class="col-md-4">
-                    <label> Consegna </label>
-                </div>
+                <div class="col-md-2 pull-right MySelection Choose" onclick="DataForSelection(this);" >SCEGLI</div>
             </div>
+        </div>
 
-            <div class="row">
-                <input class="col-md-4" type="text" name="AddebitoTrasportato" value="@Model.AddebitoTrasportato">
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <label> Addebito Trasporto </label>
+            </div>
+            <div class="col-md-4">
+                <label> Pagamento </label>
+            </div>
+            <div class="col-md-4">
+                <label> Consegna </label>
+            </div>
+        </div>
+        <div class="row">
+            <input class="col-md-4" type="text" name="AddebitoTrasportato" value="@Model.AddebitoTrasportato">
+            <div class="CustomSelectionItem">
                 <select class="col-md-4 SelectionItem" id="country" name="Pagamento">
                     <option> @Model.Pagamento</option>
+                    <option> DA CONCORDARE </option>
+                    <option> EFFETTUATO </option>
+                    <option> NON EFFETTUATO </option>
                 </select>
+            </div>
+            <div>
                 <select class="col-md-4 SelectionItem" id="country" name="Consegna">
                     <option> @Model.Consegna</option>
+                    <option> DA CONCORDARE </option>
+                    <option> EFFETTUATA </option>
+                    <option> NON EFFETTUATA </option>
                 </select>
             </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <label> Nota d'apertura </label>
+            </div>
+            <div class="col-md-6">
+                <label> Nota di chiusura </label>
+            </div>
+        </div>
+        <div class="row">
+            <input class="col-md-6" type="text" name="NotaApertura" value="@Model.NotaApertura">
+            <input class="col-md-6" type="text" name="NotaChiusura" value="@Model.NotaChiusura">
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <label> Cartella  </label>
+            </div>
+            <div class="col-md-6">
+                <label> Numero commissione </label>
+            </div>
+        </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <label> Nota d'apertura </label>
-                </div>
-                <div class="col-md-6">
-                    <label> Nota di chiusura </label>
-                </div>
+        <div class="row">
+            <input class="col-md-6" type="text" name="Cartella" value="@Model.Cartella">
+            <input class="col-md-6" type="text" name="NumeroCommissione" value="@Model.NumeroCommissione">
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <label> Data inizio lavori </label>
+            </div>
+            <div class="col-md-6">
+                <label> Referenza </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <input class="col-md-6" type="text" name="DataInizioLavori" value="@Model.DataInizioLavori">
+            <input class="col-md-6" type="text" name="Referenza" value="@Model.Referenza">
+        </div>
+
+        <br />
+        <div class=" row">
+            <div class="col-md-6">
+                <label> Note Andamento </label>
             </div>
 
-            <div class="row">
-                <input class="col-md-6" type="text" name="NotaApertura" value="@Model.NotaApertura">
-                <input class="col-md-6" type="text" name="NotaChiusura" value="@Model.NotaChiusura">
+            <div class="col-md-2">
+                <label> Totale(€)</label>
+            </div>
+            <div class="col-md-2">
+                <label> Totale scontato(€)</label>
+            </div>
+            <div class="col-md-2">
+                <label> Sconto (%)</label>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <label> Cartella  </label>
-                </div>
-                <div class="col-md-6">
-                    <label> Numero commissione </label>
-                </div>
-            </div>
+        </div>
 
-            <div class="row">
-                <input class="col-md-6" type="text" name="Cartella" value="@Model.Cartella">
-                <input class="col-md-6" type="text" name="NumeroCommissione" value="@Model.NumeroCommissione">
-            </div>
+        <div class="row">
+            <textarea class="col-md-6 TextArea" type="text" name="NotaAndamento"></textarea>
+            <input class="col-md-2 ImportantData " type="text" name="TotaleArticoliListino" value="@Model.TotaleArticoliListino ">
+            <input class="col-md-2 ImportantData " type="text" name="ImportoTotaleScontato" value="@Model.ImportoTotaleScontato ">
+            <input class="col-md-2 ImportantData " type="text" name="ScontoGenerale" value="@Model.ScontoGenerale ">
 
-            <div class="row">
-                <div class="col-md-6">
-                    <label> Data inizio lavori </label>
-                </div>
-                <div class="col-md-6">
-                    <label> Referenza </label>
-                </div>
-            </div>
+        </div>
+        
+     }
+</div>
 
-            <div class="row">
-                <input class="col-md-6" type="text" name="DataInizioLavori" value="@Model.DataInizioLavori">
-                <input class="col-md-6" type="text" name="Referenza" value="@Model.Referenza">
-            </div>
-
-            <div class=" row">
-                <div class="col-md-6">
-                    <label> Note Andamento </label>
-                </div>
-
-                <div class="col-md-6">
-                    <label> Totali articoli listino </label>
-                </div>
-
-            </div>
-
-            <div class="row">
-                <textarea class="col-md-6 TextArea" type="text" name="NotaAndamento"></textarea>
-                <input class="col-md-6" type="text" name="TotaleArticoliListino" value="@Model.TotaleArticoliListino €">
-                <div class="col-md-6 pull-right">
-                    <div class="col-md-12 row">
-                        <label> Importo totale scontato </label>
-                    </div>
-                    <div class="col-md-12 row">
-                        <input class="col-md-12" type="text" name="ImportoTotaleScontato" value="@Model.ImportoTotaleScontato €">
-                    </div>
-                    <div class="col-md-12 row">
-                        <label> Sconto generale </label>
-                    </div>
-                    <div class="col-md-12 row ">
-                        <input class="col-md-12" type="text" name="ScontoGenerale" value="@Model.ScontoGenerale %">
-                    </div>
-
-                </div>
-
-            </div>
-        }
-    </div>
 
 
 <script>
 
-    
-    $("#save").click(function ()
-    {
-        var detailsPreventive= $('#Form_').serializeFormJSON();       
+    //Riciclare
+    $("#save").click(function () {
+
+        var detailsPreventive = $('#Form_').serializeFormJSON();
 
         $.ajax({
             type: "POST",
@@ -201,17 +212,93 @@
             data: detailsPreventive,
             async: false,
             success: function () {
+                alert("Modifiche salvate");
             }
             ,
-            error: function ()
-            {
+            error: function () {
             }
 
         }
-            )
-       
+        )
+
     });
 
+    //Riciclare
+    $("#delete").click(function () {
+
+        var id = GetIdFromAPartial();
+
+        var ControllerName = GetControllerName();
+        var Action = "/RemoveElementWithId";
+        var Url = ControllerName + Action;
+
+        $.ajax({
+
+            type: "POST",
+            url: Url,
+            data: { Id: id },
+            async: false,
+            success: function () {
+                alert("ok");
+            }
+            ,
+            error: function () {
+            }
+
+        });
+
+    });
+
+    $("#genera").click(function () {
+
+
+        var detailsPreventive = $('#Form_').serializeFormJSON();
+        GeneratePdfFromElementId();
+            
+    });
+
+
 </script>
+
+<style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+
+    .modal {
+        right:50%;
+    left:35%;
+    top:20%;
+    width: 400px;
+    height: 30%;
+    position: absolute;
+    z-index: 9;
+    background-color:beige;
+    overflow: auto;
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+</style>
+
 
 

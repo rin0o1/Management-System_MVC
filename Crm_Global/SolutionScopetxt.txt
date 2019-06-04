@@ -1,0 +1,8 @@
+﻿====================
+     Crm_Global
+====================
+
+
+Questa soluzione permette di creare delle classe di "Utilities" ovvero riutilizzabili per semplificare processi 
+per il progetto principale "Crm". 
+Egli include enumarzioni e altri classi usate in maniera genere e per l'appunto utiliti in tutto il progetto

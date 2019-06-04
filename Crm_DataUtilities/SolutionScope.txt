@@ -1,0 +1,7 @@
+﻿======================
+    Crm_DataUtilities	
+======================
+
+Questa soluzione è stata create per poter gestire i 
+-REPOSITORY:Permettono di interfacciarsi con il database per gestire le azioni di get, set, edit, update...
+-VIEWMODEL:Permettono di creare delle classi temporanee con delle proprieta simili ai campi di una tabella del DB

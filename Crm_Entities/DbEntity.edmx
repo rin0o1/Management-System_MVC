@@ -24,6 +24,7 @@
           <Property Name="TotalearticoliListino" Type="int" />
           <Property Name="Data" Type="datetime" />
           <Property Name="Durata" Type="int" />
+          <Property Name="NumeroPreventivo" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityContainer Name="MyDataModelStoreContainer">
           <EntitySet Name="tOrder" EntityType="Self.tOrder" Schema="dbo" store:Type="Tables" />
@@ -43,6 +44,7 @@
           <Property Name="TotalearticoliListino" Type="Int32" />
           <Property Name="Data" Type="DateTime" Precision="3" />
           <Property Name="Durata" Type="Int32" />
+          <Property Name="NumeroPreventivo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="MyDataEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tPreventive" EntityType="Self.tPreventive" />
@@ -66,6 +68,7 @@
           <EntitySetMapping Name="tPreventive">
             <EntityTypeMapping TypeName="MyDataModel.tPreventive">
               <MappingFragment StoreEntitySet="tPreventive">
+                <ScalarProperty Name="NumeroPreventivo" ColumnName="NumeroPreventivo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ScontoGenerale" ColumnName="ScontoGenerale" />
                 <ScalarProperty Name="ImportoTotaleScontato" ColumnName="ImportoTotaleScontato" />

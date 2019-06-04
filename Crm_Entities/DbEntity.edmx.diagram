@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d97b7dec00f243459fc3f521cb68796c" Name="Diagram1">
         <EntityTypeShape EntityType="MyDataModel.tPreventive" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDataModel.tOrder" Width="1.5" PointX="2.625" PointY="0.875" />
+        <EntityTypeShape EntityType="MyDataModel.tOrder" Width="1.5" PointX="3" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

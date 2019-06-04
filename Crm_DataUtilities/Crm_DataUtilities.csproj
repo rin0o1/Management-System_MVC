@@ -54,6 +54,7 @@
     <Compile Include="Repository\PreventiveRepository.cs" />
     <Compile Include="ViewModel\PreventiveViewModel.cs" />
     <Compile Include="ViewModel\PreventiveViewModelDetails.cs" />
+    <Compile Include="ViewModel\TestToRemoveViewModel.cs" />
     <Compile Include="ViewModel\UtilityViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +70,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SolutionScope.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,11 +4,10 @@
 
 
 
-.render-body-zone
-{
+.render-body-zone {
+    
     padding:10px;
-    position:initial !important;
-
+    position: initial !important;
 }
 
 img.lazyload {

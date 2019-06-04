@@ -15,9 +15,12 @@
             <span class="index-title no-padding  "> @_pageParameters.PageTitle </span>
         </div>
 
+
+
         @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
          {
-            <div class="row">
+
+            <div class="row ">
                 <div>
                     <div class="col-md-3">
                         <label> Numero Preventivo </label>
@@ -26,7 +29,7 @@
                         <label>Data</label>
                     </div>
                     <div class="col-md-3">
-                        <label>Durata</label>
+                        <label>Durata (gg)</label>
                     </div>
                     <div class="col-md-3">
                         <label>Listino in vigore</label>
@@ -34,155 +37,173 @@
                 </div>
 
                 <div>
-                    <input style="color:brown" class="col-md-3" type="text" name="firstname" text=ciao>
-                    <input class="col-md-3" type="text" name="firstname" text=ciao>
-                    <input class="col-md-3" type="text" name="firstname" text=ciao>
-                    <input class="col-md-3" type="text" name="firstname" text=ciao>
+                    <input class="col-md-3" type="text" name="NumeroPreventivo" >
+                    <input class="col-md-3" type="text" name="Data" >
+                    <input class="col-md-3" type="text" name="Durata" >
+                    <input class="col-md-3" type="text" name="firstname">
                 </div>
 
             </div>
-                <br />
+            <br />
 
-                <div class="row some-margin-top ">
-                    <div class="col-md-2">
-                        <label> Oggetto</label>
-                    </div>
-                    <input class="col-md-10" type="text" name="firstname" text=ciao>
+            <div class="row  SomeSpaceTop">
+                <div class="col-md-2 LineBOt">
+                    <label> Oggetto</label>
+                </div>
+                <input class="col-md-10" type="text" name="Oggetto" >
+            </div>
+
+            <div class="row SomeSpaceTop">
+                <div class="col-md-2 LineBOt">
+                    <label> Riferimento </label>
+                </div>
+                <input class="col-md-10" type="text" name="Referenza" >
+            </div>
+            <div class="row  SomeSpaceTop">
+                <div class="col-md-2 LineBOt">
+                    <label> Allegati </label>
+                </div>
+                <input class="col-md-10" type="text" name="firstname">
+            </div>
+            <div class="row SomeSpaceTop ">
+                <div class="col-md-2 LineBOt">
+                    <label> Progetto </label>
+                </div>
+                <input class="col-md-10" type="text" name="Progetto" >
+            </div>
+
+
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <label> All'attenzione di </label>
+                </div>
+                <div class="col-md-6">
+                    <label> Operatore </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <input class="col-md-6" type="text" name="firstname">
+                <div>
+                    <select class="col-md-6  SelectionItem " id="selection_" name="Operatore" onclick="DataForSelection(this);">
+
+                    </select>
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <label> Addebito Trasporto </label>
+                </div>
+                <div class="col-md-4">
+                    <label> Pagamento </label>
+                </div>
+                <div class="col-md-4">
+                    <label> Consegna </label>
+                </div>
+            </div>
+            <div class="row">
+                <input class="col-md-4" type="text" name="AddebitoTrasportato" >
+                <div class="CustomSelectionItem">
+                    <select class="col-md-4 SelectionItem" id="country" name="Pagamento">
+                        <option> DA CONCORDARE </option>
+                        <option> EFFETTUATO </option>
+                        <option> NON EFFETTUATO </option>
+                    </select>
+                </div>
+                <div>
+                    <select class="col-md-4 SelectionItem" id="country" name="Consegna">
+                        <option> DA CONCORDARE </option>
+                        <option> EFFETTUATA </option>
+                        <option> NON EFFETTUATA </option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <label> Nota d'apertura </label>
+                </div>
+                <div class="col-md-6">
+                    <label> Nota di chiusura </label>
+                </div>
+            </div>
+            <div class="row">
+                <input class="col-md-6" type="text" name="NotaApertura" >
+                <input class="col-md-6" type="text" name="NotaChiusura" >
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <label> Cartella  </label>
+                </div>
+                <div class="col-md-6">
+                    <label> Numero commissione </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <input class="col-md-6" type="text" name="Cartella" >
+                <input class="col-md-6" type="text" name="NumeroCommissione" >
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <label> Data inizio lavori </label>
+                </div>
+                <div class="col-md-6">
+                    <label> Referenza </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <input class="col-md-6" type="text" name="DataInizioLavori">
+                <input class="col-md-6" type="text" name="Referenza" >
+            </div>
+
+            <br />
+            <div class=" row">
+                <div class="col-md-6">
+                    <label> Note Andamento </label>
                 </div>
 
-                <div class="row some-margin-top ">
-                    <div class="col-md-2">
-                        <label> Riferimento </label>
-                    </div>
-                    <input class="col-md-10" type="text" name="firstname" text=ciao>
+                <div class="col-md-2">
+                    <label> Totale(€)</label>
                 </div>
-                <div class="row some-margin-top ">
-                    <div class="col-md-2">
-                        <label> Allegati </label>
-                    </div>
-                    <input class="col-md-10" type="text" name="firstname" text=ciao>
+                <div class="col-md-2">
+                    <label> Totale scontato(€)</label>
                 </div>
-                <div class="row some-margin-top ">
-                    <div class="col-md-2">
-                        <label> Progetto </label>
-                    </div>
-                    <input class="col-md-10" type="text" name="firstname" text=ciao>
+                <div class="col-md-2">
+                    <label> Sconto (%)</label>
                 </div>
 
+            </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <label> All'attenzione di </label>
-                    </div>
-                    <div class="col-md-6">
-                        <label> Operatore </label>
-                    </div>
+            <div class="row">
+                <textarea class="col-md-6 TextArea" type="text" name="NotaAndamento"></textarea>
+                <input class="col-md-2" type="text" name="TotaleArticoliListino">
+
+                <div class="col-md-2 row">
+                    <input class="col-md-12" type="text" name="ImportoTotaleScontato" />
+                </div>
+                <div class="col-md-2 row ">
+                    <input class="col-md-12" type="text" name="ScontoGenerale"  >
                 </div>
 
-                <div class="row">
-                    <input class="col-md-6" type="text" name="firstname" text=ciao>
-                    <select class="col-md-6 SelectionItem" id="country" name="country"></select>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <label> Addebito Trasporto </label>
-                    </div>
-                    <div class="col-md-4">
-                        <label> Pagamento </label>
-                    </div>
-                    <div class="col-md-4">
-                        <label> Consegna </label>
-                    </div>
-                </div>
+            </div>
 
-                <div class="row">
-                    <input class="col-md-4" type="text" name="firstname" text=ciao>
-                    <select class="col-md-4 SelectionItem" id="country" name="country"></select>
-                    <select class="col-md-4 SelectionItem" id="country" name="country"></select>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <label> Nota d'apertura </label>
-                    </div>
-                    <div class="col-md-6">
-                        <label> Nota di chiusura </label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <input class="col-md-6" type="text" name="firstname" text=ciao>
-                    <input class="col-md-6" type="text" name="firstname" text=ciao>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <label> Cartella  </label>
-                    </div>
-                    <div class="col-md-6">
-                        <label> Numero commissione </label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <input class="col-md-6" type="text" name="firstname" text=ciao>
-                    <input class="col-md-6" type="text" name="firstname" text=ciao>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <label> Data inizio lavori </label>
-                    </div>
-                    <div class="col-md-6">
-                        <label> Referenza </label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <input class="col-md-6" type="text" name="firstname" text=ciao>
-                    <input class="col-md-6" type="text" name="firstname" text=ciao>
-                </div>
-
-                <div class=" row">
-                    <div class="col-md-6">
-                        <label> Note Andamento </label>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label> Totali articoli listino </label>
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <textarea class="col-md-6 TextArea" type="text" name="firstname" text=ciao></textarea>
-                    <input class="col-md-6" type="text" name="firstname" text=ciao>
-                    <div class="col-md-6 pull-right">
-                        <div class="col-md-12 row">
-                            <label> Importo totale scontato </label>
-                        </div>
-                        <div class="col-md-12 row">
-                            <input class="col-md-12" type="text" name="firstname" text=ciao>
-                        </div>
-                        <div class="col-md-12 row">
-                            <label> Sconto generale </label>
-                        </div>
-                        <div class="col-md-12 row ">
-                            <input class="col-md-12" type="text" name="firstname" text=ciao>
-                        </div>
-
-                    </div>
-
-                </div>
-
-         }
+        }
 
     </div>
 
 
 <script>
 
+    //Incorporare in una singola funzione
     $("#save").click(function ()
     {
         var newDetailsPreventive= $('#Form_').serializeFormJSON();       
@@ -192,14 +213,17 @@
             type: "POST",
             url: "@Url.Action(actionName,_pageParameters.ControllerName)",
             data: newDetailsPreventive,
+            dataType:"json",
             async: false,
-            success: function () {
+            success: function (redirectToUrl) {
+
+                alert("Elemento Creato");
+                window.location.href = redirectToUrl.redirect;
             }
             ,
             error: function ()
             {
             }
-
         }
             )
        

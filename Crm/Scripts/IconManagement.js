@@ -2,18 +2,54 @@
 
 
 
-$(document).on("click", ".removeicon", function () {
+$(document).on("click", ".removeicon",  function () {
+
     var ElementToRemove = $(this).closest("tr");
-    ElementToRemove.animate({
-        height: 'toggle'
-    });
+
+    //ElementToRemove.animate({
+    //    height: 'toggle'
+    //});
+
+    $(this).closest('tr')
+        .children('td')
+        .animate({ padding: 2 })
+        .wrapInner('<div />')
+        .children()
+        .slideUp(function () { ElementToRemove.remove(); });
 
     var Id = ElementToRemove.attr("id");
+    RemoveElement(Id);
 });
 
-//Metodo asincrono per rimuovere i dati effettivamente dal database
+//Possibile riutilizzo di questa funzione in tutte le pagin
+function RemoveElement(id) {
+
+    
+    if (id === undefined) 
+        return;
+    
+
+    var ControllerName = GetControllerName();
+    var Action = "/RemoveElementWithId";
+    var Url = ControllerName + Action;
+    
+    $.ajax({
+
+        type: "POST",
+        url: Url,
+        data: { Id: id },
+        async: false,
+        success: function () {
+            
+        }
+        ,
+        error: function () {
+        }
+
+    });
 
 
+}
 
 //Entrare nel dettaglio di un elemento
 

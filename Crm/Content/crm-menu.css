@@ -23,6 +23,7 @@
     display: block;
     bottom: var(--menu-bottom-distance);
     /*width: 75%;*/
+    
     width:auto;
     height: 55px;
     left: 0px;
@@ -43,25 +44,23 @@
     background-image: url(Images/Menu/image_closemenu.png);
     background-size: contain;
     margin-right: 15px;
-    float: left;
     z-index: 10;
 }
 
-
-
+    
 .crm-menu-cell {
     height: auto;
-    width: 7em;
+    width: auto;
 }
 
 
 .crm-menu-button {
-    /*width:140px;*/
+    min-width:80px;
     width:auto;
     height: auto;
     border: 2px dashed;
     /*margin-left: 15px;*/
-    padding:1px;
+    padding:3px;
     /*padding: 6px;*/
     
     text-align: center;
@@ -96,6 +95,7 @@
 
     .crm-menu-button:hover {
         background-color: #ccc098b3;
+        margin-top:5px;
     }
     
     

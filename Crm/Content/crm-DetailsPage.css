@@ -1,12 +1,9 @@
 ﻿
 
 .crm-detailspage {
-    margin-top: 5px;
-    padding-bottom:10px;
     height: -webkit-fill-available;
     padding-left: 10px;
     padding-right: 10px;
-    position:initial !important;
     z-index:-1;
 }
 
@@ -16,26 +13,68 @@
     padding-right: ì10px;
 }*/
 
-.form{
+
+.form_ {
     position:initial;
+    
 }
 
-.some-margin-top
-{
-    margin-top:2px;
+.LineBOt {
+    border-bottom: 1px chocolate solid;
+}
 
+.row .cust {
+    border-left: 1px chocolate solid;
 }
 
 .border-square {
     border: 3px solid #555;
 }
 
-.TextArea{
-    resize:vertical;
-    height:130px;
+.ImportantData {
+    border: 2px solid #ffaa00;
 }
 
-.SelectionItem
-{
-    height:26px;
+
+.TextArea {
+    resize: vertical;
+    height: 26px;
 }
+
+.SomeSpaceTop{
+    margin-top:2px;
+    
+}
+.SelectionItem {
+    height: 26px;
+    z-index:8;
+}
+
+    .SelectionItem option {
+        z-index: 8;
+
+    }
+
+.MySelection {
+    height: 24px;
+    border: 1px solid ;
+    
+}
+
+.MySelection.Label {
+    /*border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;*/
+    border-right: none !important;
+    padding-left:15px;
+}
+.MySelection.Choose {
+    /*border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;*/
+    cursor: pointer;
+    background: #fff7e8;
+    text-align: center;
+}
+
+    .MySelection.Choose:hover {
+        background-color: #cec1a9;
+    }

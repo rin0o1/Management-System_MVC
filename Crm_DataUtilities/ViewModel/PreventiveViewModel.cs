@@ -43,5 +43,7 @@ namespace Crm_DataUtilities.ViewModel
 
         [Display(Name = "LISTINO")]
         public double Listino { get; set; }
+
+
     }
 }
