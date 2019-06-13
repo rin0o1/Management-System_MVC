@@ -20,17 +20,18 @@ using Crm_Entities;
 namespace Crm.Controllers
 {
     
-    public class PreventiveController : Controller
+    public class PreventiveController : DefaultController
     {
         private PreventiveRepository _preventiveRepository;
         private MyDataEntities dbEntity;
-        private string Title = "Gestione preventivi";
+        
 
         protected override void Initialize(RequestContext requestContext)
-        {   
+        {
+            Title = "Gestione preventivi";
             base.Initialize(requestContext);
             dbEntity = new MyDataEntities();
-            dbEntity.Database.Connection.Open();
+            //dbEntity.Database.Connection.Open();
             _preventiveRepository = new PreventiveRepository();
         }
 
@@ -39,7 +40,7 @@ namespace Crm.Controllers
 
 
             #region FILTER FOR DATA VISUALIZATION
-            List<FilterForDataVisualization> FilterForDataVisualization = new List<FilterForDataVisualization>()
+             FilterForDataVisualization = new List<FilterForDataVisualization>()
             {
                 new FilterForDataVisualization(),
                 new FilterForDataVisualization()
@@ -58,7 +59,7 @@ namespace Crm.Controllers
 
             //ViewBag.filterForDataVisualization = FilterForDataVisualization;
 
-            PageParameters _pageParameters = new PageParameters()
+             _pageParameters = new PageParameters()
             {
                 PageTitle = this.Title,
                 ControllerName = ControllerName.PreventiveController,
@@ -70,11 +71,9 @@ namespace Crm.Controllers
                 
                 
             };
-    
 
-            ViewBag.pageParameters = _pageParameters;
-            ViewBag.pageTitle = Title;
-
+            SetParameters();
+            
             var Data = this.LoadData();
             return View(Data);
         }
@@ -257,7 +256,7 @@ namespace Crm.Controllers
                     string DataToShow = item.Nome + " " + item.Cognome;
                     int Id = item.Id;
 
-                    ((List<object>)JsonResult.Data).Add(new { @datatoshow =DataToShow , @valueId = Id });
+                    ((List<object>)JsonResult.Data).Add(new { @datatoshow =DataToShow , @valueId = Id , @optional=-1});
                 }
             }
             return JsonResult;

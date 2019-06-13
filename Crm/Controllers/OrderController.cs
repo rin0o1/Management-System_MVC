@@ -12,9 +12,9 @@ using Crm_Global;
 
 namespace Crm.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : DefaultController
     {
-        private string Title = " Gestione Ordini ";
+        
 
         protected override void Initialize(RequestContext requestContext)
         {
@@ -27,9 +27,10 @@ namespace Crm.Controllers
         // GET: Order
         public ActionResult Index()
         {
+            Title = " Gestione Ordini ";
             //Utility per poter aggiunere dinamicamente i filtri per ogni pagina
             #region FILTER FOR DATA VISUALIZATION
-            List<FilterForDataVisualization> FilterForDataVisualization = new List<FilterForDataVisualization>()
+             FilterForDataVisualization = new List<FilterForDataVisualization>()
             {
                 new FilterForDataVisualization(),
                 new FilterForDataVisualization()
@@ -51,17 +52,16 @@ namespace Crm.Controllers
             };
 
             #endregion
-            ViewBag.filterForDataVisualization = FilterForDataVisualization;
+            
 
-            PageParameters _pageParameters = new PageParameters()
+             _pageParameters = new PageParameters()
             {
                 PageTitle = this.Title,
                 FilterForData = FilterForDataVisualization,
                 ControllerName = ControllerName.OrderController
             };
-            
-            ViewBag.pageParameters = _pageParameters;
-            ViewBag.pageTitle = Title;
+
+            SetParameters();
 
             return View();
         }

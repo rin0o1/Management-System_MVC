@@ -45,6 +45,7 @@
     function ChangeStyle(Selector) {
         var FilterValue = Selector.getAttribute('Value');
         Selector.style = "border-bottom: 2px solid #fff;";
+        
 
         if (PreviewIndexFilter != undefined && FilterValue!=PreviewIndexFilter ) {
             var Sibling = document.getElementById('Filter_' + PreviewIndexFilter);

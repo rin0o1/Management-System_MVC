@@ -11,6 +11,8 @@ namespace Crm_Global
         public const string HomeController = "Home";
         public const string OrderController = "Order";
         public const string PreventiveController = "Preventive";
+        public const string CustomerController = "Customer";
+        public const string CustomerAndListino = "CustomerAndListino";
     }
 
  

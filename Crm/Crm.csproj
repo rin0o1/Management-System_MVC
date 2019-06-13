@@ -155,6 +155,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerAndListinoController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PreventiveController.cs" />
@@ -172,6 +175,7 @@
     <Content Include="Content\crm-menu.css" />
     <Content Include="Content\FilterForDataVisualization.css" />
     <Content Include="Content\Icon.css" />
+    <Content Include="Content\Images\Icon\icon-email.png" />
     <Content Include="Content\Images\Icon\icon_go-top.png" />
     <Content Include="Content\Images\Icon\icon_remove-red.png" />
     <Content Include="Content\Images\Icon\icon_details-orange.png" />
@@ -179,9 +183,12 @@
     <Content Include="Content\Images\Icon\icon_remove-black.png" />
     <Content Include="Content\Images\Menu\image_closemenu.png" />
     <Content Include="Content\Images\Menu\image_scrollmenu-right-removebg.png" />
+    <Content Include="Content\Images\Spinner\Spin_Gif_3.gif" />
+    <Content Include="Content\Images\Spinner\Spin_Gif_2.gif" />
     <Content Include="Content\Images\Spinner\Spin_Gif.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\Spinner\Spin_gif_1.gif" />
     <Content Include="Content\NavigationBar.css" />
     <Content Include="Content\Spinner.css" />
     <Content Include="favicon.ico" />
@@ -195,6 +202,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\crm-utilities.js" />
+    <Content Include="Scripts\CustomAsyncModal.js" />
     <Content Include="Scripts\IconManagement.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -230,6 +238,10 @@
     <Content Include="Views\Preventive\PartialInformationDetails.cshtml" />
     <Content Include="Views\Preventive\Details.cshtml" />
     <Content Include="Views\Preventive\Create.cshtml" />
+    <Content Include="Views\Customer\PartialIndex.cshtml" />
+    <Content Include="Views\Customer\PartialInformationContainer.cshtml" />
+    <Content Include="Views\CustomerAndListino\PartialIndex.cshtml" />
+    <Content Include="Views\CustomerAndListino\PartialInformationContainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

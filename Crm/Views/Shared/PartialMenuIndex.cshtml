@@ -6,7 +6,8 @@
     List<ButtonMenuViewModel> buttons = Model.ButtonMenu;
 }
 
-
+@if (Model.HasMenu)
+{
 <div id="openimage" class="image-open-menu" onclick="showmenu()" title="Apri Menu"></div>
 
 <div id="mymenu" class="crm-menu Panna">
@@ -21,8 +22,8 @@
                 <td class="crm-menu-cell">
                     <div class="crm-menu-button">
                         @Html.ActionLink("AGGIUNGI", "Create",
-                         Model.ControllerName,
-                         new { @class = "crm-menu-button-link" })
+              Model.ControllerName,
+              new { @class = "crm-menu-button-link" })
                     </div>
                 </td>
             }
@@ -54,7 +55,7 @@
                 <td class="crm-menu-cell">
                     <div id="delete" value="delete" class="crm-menu-button"> ELIMINA </div>
                 </td>
-             }
+            }
 
             <td class="crm-menu-cell">
                 <div value="print" class="crm-menu-button" onclick="window.print();"> STAMPA </div>
@@ -73,3 +74,4 @@
     </table>
 
 </div>
+}

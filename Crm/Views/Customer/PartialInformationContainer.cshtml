@@ -1,0 +1,43 @@
+﻿@using Crm_DataUtilities.Repository;
+@using Crm_DataUtilities.ViewModel;
+@using Crm_Global;
+
+@model List<CustomerViewModel>
+
+
+@foreach (var item in Model)
+{
+    <tr id="@item.IdCliente">
+        <td>
+            <div>@item.Nome</div>
+        </td>
+        <td>
+            <div>@Html.DisplayFor(model => item.Email)</div>
+        </td>
+        <td>
+            <div>@Html.DisplayFor(model => item.ContattoDiRiferimento)</div>
+        </td>
+        <td>
+            <div>@Html.DisplayFor(model => item.Classe) </div>
+        </td>
+        <td>
+            <div>@Html.DisplayFor(model => item.Ditta) </div>
+        </td>
+        <td>
+            <div>@Html.DisplayFor(model => item.CittaDitta) </div>
+        </td>
+
+        <td class="cell-selection-item BiancoOpaco">
+            <div style="display:inline-flex">
+                @*@Html.ActionLink(" ", "Details",
+                        ControllerName.PreventiveController,
+                        new { id = item.IdPreventivo },
+                        new { @class = "detailsicon", @title = "Dettaglio" })*@
+
+                @*<div class="detailsicon" title="Dettaglio"></div>*@
+                <div class="removeicon" title="Rimuovi"></div>
+            </div>
+        </td>
+
+    </tr>
+}

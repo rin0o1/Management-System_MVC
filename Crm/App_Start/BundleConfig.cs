@@ -25,7 +25,8 @@ namespace Crm
                       "~/Scripts/index.js",
                       "~/Scripts/IconManagement.js",
                       "~/Scripts/Menu.js",
-                      "~/Scripts/crm-utilities.js"
+                      "~/Scripts/crm-utilities.js",
+                      "~/Scripts/CustomAsyncModal.js"
                       ));
 
 

@@ -4,7 +4,7 @@
     height: -webkit-fill-available;
     padding-left: 10px;
     padding-right: 10px;
-    z-index:-1;
+    z-index:1;
 }
 
 
@@ -57,7 +57,7 @@
 
 .MySelection {
     height: 24px;
-    border: 1px solid ;
+    border: 1px solid;
     
 }
 
@@ -66,6 +66,7 @@
     border-top-left-radius: 30px;*/
     border-right: none !important;
     padding-left:15px;
+    
 }
 .MySelection.Choose {
     /*border-bottom-right-radius: 30px;
@@ -78,3 +79,85 @@
     .MySelection.Choose:hover {
         background-color: #cec1a9;
     }
+
+:root {
+    --modal-duration: 1s;
+    --modal-color: #428bca;
+}
+
+
+.modal_ {
+    position: fixed;
+    z-index: 11;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    width: 35%;
+    right: 50%;
+    left: 34%;
+    top: 17%;
+    height: 45%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    background-color: #f3f3f3;
+}
+
+.modal-header {
+    margin-bottom: 10px;
+    border-bottom: 4px double;
+    text-align: left;
+    font-size: 1em;
+    height: 47px;
+    background-color: #6fc0f7cc;
+}
+
+.modal-body {
+    height: 72%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.modal-element {
+    padding: 3px;
+    padding-left: 15px;
+    /*border-radius: 5px;*/
+    border-bottom: 2px solid;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+    .modal-element:hover {
+        background-color: #d2ebff;
+        cursor: pointer;
+    }
+
+.modal-button-closed {
+    text-align: center;
+    background-color: #6fc0f7cc;
+    height: 30px;
+    top: 57%;
+    cursor: pointer;
+    border: 1px solid;
+    position: sticky;
+}
+
+    .modal-button-closed:hover,
+    .modal-button-closed:focus {
+        color: black;
+        background-color: #2b8ddc;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+       
+
+

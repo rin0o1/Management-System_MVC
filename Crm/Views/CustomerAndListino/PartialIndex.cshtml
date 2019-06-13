@@ -1,0 +1,251 @@
+﻿@using Crm_Global;
+
+@{ 
+    string ControllerName_ = ControllerName.CustomerController;
+}
+
+
+<div style="margin-top: 10px">
+
+    <div class="  loading-spinner big "></div>
+
+</div>
+
+<div class="AddElementButton"   title="AGGIUNGI ELEMENTO" >
+    AGGIUNGI ELEMENTO
+</div>
+
+
+<div class="row SingleElement">
+    <div class="row">
+        <div class="col-md-5 no-margin-right">
+            <div class="col-md-12">
+                <div id="DatiCliente" class="col-md-8 MySelection Label no-margin-right" OptionalData="" >
+                    CLIENTE
+                </div>
+                <div class="col-md-4 MySelection Choose" onclick="DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');" ">  SCEGLI </div>
+                <span style="margin-left: 37px;" class="col-md-4 SpinnerNoPosition hide"> </span>
+            </div>
+
+            </div>
+
+        <div class="col-md-5 no-margin-right">
+            <div class="col-md-12">
+                <input id="DatiProdotto" class="col-md-9 MySelection Label" IdDelProdotto="IdDell'operatore" placeholder="PRODOTTO"/>
+                    
+                <div class="col-md-3 pull-right MySelection Choose" onclick="  DataForSelection(this, 'SELEZIONA IL PRODOTTO', 'ii');">SCEGLI</div>
+            </div>
+
+        </div>
+
+        <input class="col-md-2 importo" type="number" placeholder="IMPORTO "/>
+        
+
+    </div>
+
+    <div class="row SecondLine">
+        <textarea class="col-md-7 TextArea " type="text" placeholder="Testo" name="Note"></textarea>
+        <div class="col-md-2 no-margin">
+            <div id="Togli" class="col-md-12 Button" onclick="RemoveElement(this)" title="PULISCI I CAMPI">
+                ELIMINA
+            </div>
+        </div>
+        <div id="Send" class="col-md-2  Button" onclick="Send_(this);" title="INVIA PER EMAIL">
+            INVIA
+        </div>
+        <span style="margin-left:100px;" class="col-md-2 SpinnerNoPosition hide"> </span>
+        
+    </div>
+
+</div>
+
+
+
+<style>
+
+    .IconEmail{
+        width: 26px;
+        height: 26px;
+        background-image: url(Images/Spinner/icon-email.png);
+        background-size: cover;
+    }
+
+    .AddElementButton{
+        background-color: #bbb146ba;
+        position: fixed;
+        bottom: 40px;
+        border: 3px double black;
+        left: 20px;
+        padding: 10px;
+        z-index: 10;
+        text-align: center;
+        width: auto;
+        height: 40px;
+    }
+        .AddElementButton:hover
+        {
+            cursor:pointer;
+            background-color:#847c29ba;
+            
+        }
+
+    .importo{
+        width:11em;
+    }
+    .SingleElement{
+
+        width:100%;
+        padding-top:10px;
+        padding-bottom:15px;
+        /*border-top:1px solid;
+        border-bottom:1px solid;*/
+        border:5px dashed darkgray;
+        margin-left: unset;
+        margin-bottom:20px;
+    }
+    .SecondLine
+    {
+        margin-top:15px;
+        margin-left:15px;
+    }
+    .Button{
+        text-align:center;
+        height:26px;
+        width:150px;
+        margin-left: 30px;
+        border:2px solid;
+    }
+                .Button:hover
+                {
+                    cursor:pointer;
+                    background-color:#efedf7;
+                        border: 4px solid;/*box-shadow: 0 1px 8px 0 rgba(0,0,0,1), 0 5px 18px 0 rgba(0,0,0,1);*/
+
+                }
+</style>
+
+
+<script>
+
+    function RemoveElement(btn) {
+    
+        Remove_(btn, 500);
+    };
+
+    function Remove_(em, time) {
+        var SingleElement = $(em).closest('.SingleElement');
+        SingleElement.fadeOut(time, function () {
+            $(SingleElement).remove();
+        });
+    }
+
+    //Inserire cambiatmento anche qui
+    $('.AddElementButton').click(function () {
+
+
+        var LastOneElement = $('.SingleElement').siblings(":last");
+        var Template = ['<div class="row SingleElement">' +
+            '    <div class="row">' +
+            '        <div class="col-md-5 no-margin-right">' +
+            '            <div class="col-md-12">' +
+            '                <div   id="DatiCliente"  class="col-md-8 MySelection Label" OptionalData=" " >' +
+            '                    CLIENTE ' +
+            '                </div>' +
+            '                <div class="col-md-4 MySelection Choose" onclick="DataForSelection(this, \'SELEZIONA IL CLIENTE\' , \'@ControllerName_\' );">SCEGLI</div>' +
+            '                 <span style="margin-left: 37px;" class="col-md-4 SpinnerNoPosition hide"> </span>      '+
+            '            </div>' +
+            '        </div>' +
+            '' +
+            '        <div class="col-md-5 no-margin-right">' +
+            '            <div class="col-md-12">' +
+            '                <div class="col-md-9 MySelection Label" IdOperatore="IdDell\'operatore">' +
+            '                    PRODOTTO' +
+            '                </div>' +
+            '                <div class="col-md-3 pull-right MySelection Choose" onclick="DataForSelection(this, \'SELEZIONA IL PRODOTTO\', \'ii\');">SCEGLI</div>' +
+            '            </div>' +
+            '' +
+            '        </div>' +
+            '' +
+            '        <input class="col-md-2 importo" type="number" placeholder="IMPORTO "/>' +
+            '        ' +
+            '' +
+            '    </div>' +
+            '<div class="row SecondLine">' +
+            '        <textarea class="col-md-7 TextArea " type="text" placeholder="Testo" name="Note"> </textarea>' +
+            '<div id="Togli" class="col-md-2 Button" onclick="RemoveElement(this)" title="PULISCI I CAMPI">' +
+            '            ELIMINA  ' +
+            '        </div>' +
+            '        <div id="Send" class="col-md-2 Button" onclick="Send_(this)" title="INVIA PER EMAIL">' +
+            '           INVIA      ' +
+            '   </div>' +
+            '   </div>' +
+            '   </div>'];
+
+        if (LastOneElement.length > 0)
+            LastOneElement.after(Template);
+        else
+            $('.partialindexzone').append(Template)
+
+    });
+
+
+   
+    
+    function Send_(btn) {
+
+        var Button = $(btn);
+
+        setTimeout(function () {
+            $(btn).toggleClass("hide", true);
+            $(btn).siblings('span').toggleClass("hide", false);
+
+        },0);
+        
+
+        
+
+        var SingleElement = $(btn).closest('.SingleElement');
+
+
+        var ControllerName = GetControllerName();
+        var Url = "/" + ControllerName + "/GetDataForEmail";
+
+
+    
+        var Label = $(SingleElement).find('.Label')[0];
+        
+        var Data =
+        {
+            IdCustomer: $(Label).attr("id"),
+            NomeCliente: $(Label)[0].outerText,
+            EmailCustomer: $(Label).attr("optionaldata"),
+            Prodotto: $(SingleElement).find('#DatiProdotto')[0].value,
+            Listino: $(SingleElement).find('.importo')[0].valueAsNumber,
+            TestoAggiuntivo:$(SingleElement).find('textarea')[0].value
+        };
+
+         $.ajax({
+
+            type: "POST",
+            url: Url,
+            async: false,
+            data: Data,
+             success: function () {
+                 
+                 Remove_(SingleElement, 1000);
+                 console.log("ciao");
+             },
+             error: function () {
+                 $(btn).toggleClass("hide", false);
+                 $(btn).siblings('span').toggleClass("hide", true);
+                 alert("Errore nell'invio dell' email");
+                 
+             }
+
+         });
+
+    };
+
+   
+
+</script>

@@ -3,10 +3,17 @@
 
 @model List<PreventiveViewModel>
 
+
+<div style="margin-top: 10px">
+
+    <div class="  loading-spinner medium "></div>
+
+</div>
+
 <table id="index-table" class=" table-for-information col-md-12">
 
     <thead>
-        <tr class="table-for-information-partial-index" >
+        <tr class="table-for-information-partial-index">
             <th>@Html.DisplayNameFor(x => Model[0].NumeroPreventivo)</th>
             <th>@Html.DisplayNameFor(x => Model[0].Riferimento)</th>
             <th>@Html.DisplayNameFor(x => Model[0].Data)</th>
@@ -14,7 +21,7 @@
             <th class="cell-selection-item"></th>
         </tr>
     </thead>
-    
+
     <tbody id="InformationContainer">
         @{Html.RenderPartial("PartialInformationContainer", Model);}
     </tbody>
@@ -22,7 +29,7 @@
 </table>
 
 <script>
-    
+
 
 </script>
 

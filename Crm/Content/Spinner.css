@@ -21,6 +21,9 @@
         background-size: cover;
     }
 
+
+
+
     .loading-spinner.medium {
         width: 60px;
         height: 60px;
@@ -33,5 +36,16 @@
         background-image: url(Images/Spinner/Spin_Gif.gif);
         background-size: cover;
     }
+
+.SpinnerNoPosition {
+    width: 29px;
+    height: 29px;
+    background-image: url(Images/Spinner/Spin_Gif.gif);
+    background-size: cover;
+    background-position: center;
+    border: 0 !important;
+    position: absolute;
+    margin: auto;
+}
 
 

@@ -49,12 +49,14 @@ namespace Crm_DataUtilities.ViewModel
             HasSaveButton = true;
             HasEditButton = true;
             HasExportButton = true;
-            HasDeleteButton = true;   
+            HasDeleteButton = true;
+            HasMenu = true;
         }
         public string PageTitle { get; set; }
         public List<FilterForDataVisualization> FilterForData { get; set; }
         public List<ButtonMenuViewModel> ButtonMenu { get; set; }
 
+        public bool HasMenu { get; set; }
         public bool HasSaveButton { get; set; }
         public bool HasAddElementButton { get; set; }
         public bool HasEditButton { get; set; }

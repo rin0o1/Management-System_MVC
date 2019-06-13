@@ -52,8 +52,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\PreventiveRepository.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\PreventiveViewModel.cs" />
     <Compile Include="ViewModel\PreventiveViewModelDetails.cs" />
+    <Compile Include="ViewModel\SendDataListinoViewModel.cs" />
     <Compile Include="ViewModel\TestToRemoveViewModel.cs" />
     <Compile Include="ViewModel\UtilityViewModel.cs" />
   </ItemGroup>
