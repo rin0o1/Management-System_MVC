@@ -7,6 +7,18 @@ $(window).load(function () {
     $(".loading-spinner").fadeOut("slow");
 });
 
+
+function IsNotStringAcceptable(string) {
+
+    if (string === "") {
+        return true;
+    }
+    else {
+        return false;
+    }
+
+}
+
 function GetControllerName()
 {
     var controlllerName = $('#_ControllerName').val();
@@ -45,6 +57,7 @@ function scrollFunction() {
         return o;
     };
 })(jQuery);
+
 function topFunction()
 {
     $('html, body').animate({ scrollTop: 0 }, 'slow');

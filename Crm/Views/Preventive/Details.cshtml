@@ -33,15 +33,15 @@
                         <label>Durata (gg)</label>
                     </div>
                     <div class="col-md-3">
-                        <label>Listino in vigore</label>
+                        <label>Listino in vigore (€)</label>
                     </div>
                 </div>
 
                 <div>
                     <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo" value="@Model.NumeroPreventivo">
-                    <input class="col-md-3" type="text" name="Data" value="@Model.Data">
-                    <input class="col-md-3" type="text" name="Durata" value="@Model.Durata">
-                    <input class="col-md-3" type="text" name="firstname">
+                    <input class="col-md-3" type="date" name="Data" value="@Model.Data">
+                    <input class="col-md-3" type="number" min="0" name="Durata" value="@Model.Durata">
+                    <input class="col-md-3" type="number" min="0" name="listinoinvigore">
                 </div>
 
             </div>
@@ -84,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="row ">
+            <div class="row WithSpinner">
                 <input class="col-md-6 " type="text" name="Selection">
                 <div class="col-md-6">
                     <div class="col-md-9 MySelection Label">
@@ -165,7 +165,7 @@
             </div>
 
             <div class="row">
-                <input class="col-md-6" type="text" name="DataInizioLavori" value="@Model.DataInizioLavori">
+                <input class="col-md-6" type="date"  name="DataInizioLavori" value="@Model.DataInizioLavori">
                 <input class="col-md-6" type="text" name="Referenza" value="@Model.Referenza">
             </div>
 
@@ -176,7 +176,8 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label> Totale(€)</label>
+                    <label class="col-md-9 no-margin-right" > Totale(€)</label>
+                    
                 </div>
                 <div class="col-md-2">
                     <label> Totale scontato(€)</label>
@@ -189,28 +190,13 @@
 
             <div class="row">
                 <textarea class="col-md-6 TextArea" type="text" name="NotaAndamento"></textarea>
-                <input class="col-md-2 ImportantData " type="text" name="TotaleArticoliListino" value="@Model.TotaleArticoliListino ">
-                <input class="col-md-2 ImportantData " type="text" name="ImportoTotaleScontato" value="@Model.ImportoTotaleScontato ">
-                <input class="col-md-2 ImportantData " type="text" name="ScontoGenerale" value="@Model.ScontoGenerale ">
-
+                <input class="col-md-2 ImportantData Inp" type="number" min="0"   name="TotaleArticoliListino" value="@Model.TotaleArticoliListino">
+                <input class="col-md-2 ImportantData Dest" type="submit" min="0"   name="ImportoTotaleScontato" value="@Model.ImportoTotaleScontato">
+                <input id="StartPoint" class="col-md-2 ImportantData " type="number" min="0" max="100"  name="ScontoGenerale" value="@Model.ScontoGenerale">
             </div>
 
          }
 
-
-        @*<div id="my-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                     Titolo 
-                </div>
-                <div class="modal-body">
-                   
-                </div>
-                <div class="modal-button-closed">
-                    CHIUDI  
-                </div>
-            </div>
-        </div>*@
     </div>
 
 
@@ -218,8 +204,14 @@
 
 <script>
 
-
-
+    
+        $("#StartPoint").on("input", function (e) {
+    CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
+    });
+    $(".Inp").on("input", function (e) {
+        var Closest = $(this).siblings('#StartPoint')[0];
+        CalculateDataUsingCustomInput($(Closest), CalculationType.PERCENTAGE);
+    });
     //Riciclare
     $("#save").click(function () {
 

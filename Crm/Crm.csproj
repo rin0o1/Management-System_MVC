@@ -176,11 +176,18 @@
     <Content Include="Content\FilterForDataVisualization.css" />
     <Content Include="Content\Icon.css" />
     <Content Include="Content\Images\Icon\icon-email.png" />
+    <Content Include="Content\Images\Icon\icon_add.png" />
+    <Content Include="Content\Images\Icon\icon_eliminaelemento_Rosso.png" />
+    <Content Include="Content\Images\Icon\icon_eliminaelemento_Nero.png" />
     <Content Include="Content\Images\Icon\icon_go-top.png" />
     <Content Include="Content\Images\Icon\icon_remove-red.png" />
     <Content Include="Content\Images\Icon\icon_details-orange.png" />
     <Content Include="Content\Images\Icon\icon_details-gray.png" />
     <Content Include="Content\Images\Icon\icon_remove-black.png" />
+    <Content Include="Content\Images\Icon\icon_sendemail_black.png" />
+    <Content Include="Content\Images\Icon\icon_sendemail_red.png" />
+    <Content Include="Content\Images\Icon\icon_add2.png" />
+    <Content Include="Content\Images\Menu\arrow.png" />
     <Content Include="Content\Images\Menu\image_closemenu.png" />
     <Content Include="Content\Images\Menu\image_scrollmenu-right-removebg.png" />
     <Content Include="Content\Images\Spinner\Spin_Gif_3.gif" />
@@ -191,6 +198,8 @@
     <Content Include="Content\Images\Spinner\Spin_gif_1.gif" />
     <Content Include="Content\NavigationBar.css" />
     <Content Include="Content\Spinner.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -200,6 +209,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\crm-utilities.js" />
     <Content Include="Scripts\CustomAsyncModal.js" />
@@ -216,6 +227,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="SolutionScope.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

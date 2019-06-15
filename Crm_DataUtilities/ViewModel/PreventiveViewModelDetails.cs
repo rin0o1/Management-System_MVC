@@ -13,11 +13,11 @@ namespace Crm_DataUtilities.ViewModel
 {
     public class PreventiveDetailsViewModel
     {
-        public PreventiveDetailsViewModel() { }
-        public PreventiveDetailsViewModel(tPreventive tPreventive){}
+        //public PreventiveDetailsViewModel(tPreventive tPreventive){}
+        
 
         //Rimuovere questo costruttore di prova
-        public PreventiveDetailsViewModel(int a)
+        public PreventiveDetailsViewModel()
         {
             this.IdPreventivo = 1;
             this.NumeroPreventivo = "3";

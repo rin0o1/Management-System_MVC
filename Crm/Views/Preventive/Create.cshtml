@@ -18,8 +18,8 @@
 
 
         @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
-         {
-
+        {
+            @Html.AntiForgeryToken()
             <div class="row ">
                 <div>
                     <div class="col-md-3">
@@ -32,15 +32,15 @@
                         <label>Durata (gg)</label>
                     </div>
                     <div class="col-md-3">
-                        <label>Listino in vigore</label>
+                        <label>Listino in vigore (€)</label>
                     </div>
                 </div>
 
                 <div>
-                    <input class="col-md-3" type="text" name="NumeroPreventivo" >
-                    <input class="col-md-3" type="text" name="Data" >
-                    <input class="col-md-3" type="text" name="Durata" >
-                    <input class="col-md-3" type="text" name="firstname">
+                    <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo" >
+                    <input class="col-md-3" type="date" name="Data" >
+                    <input class="col-md-3" type="number" min="0" value="0" name="Durata" >
+                    <input class="col-md-3" type="number" min="0" value="0" name="listinoinvigore">
                 </div>
 
             </div>
@@ -83,12 +83,14 @@
                 </div>
             </div>
 
-            <div class="row">
-                <input class="col-md-6" type="text" name="firstname">
-                <div>
-                    <select class="col-md-6  SelectionItem " id="selection_" name="Operatore" onclick="DataForSelection(this);">
-
-                    </select>
+            <div class="row WithSpinner">
+                <input class="col-md-6 " type="text" name="Selection">
+                <div class="col-md-6">
+                    <div class="col-md-9 MySelection Label">
+                        NOME E COGNOME OPERATORE
+                    </div>
+                    <div class="col-md-3 MySelection Choose" onclick="DataForSelection(this, 'SELEZIONA IL L\'OPERTAORE', '@controllerName');" >  SCEGLI </div>
+                    <span style="    margin-left: 55px;" class="col-md-3 SpinnerNoPosition hide"> </span>
                 </div>
             </div>
 
@@ -160,7 +162,7 @@
             </div>
 
             <div class="row">
-                <input class="col-md-6" type="text" name="DataInizioLavori">
+                <input class="col-md-6" type="date"  name="DataInizioLavori" >
                 <input class="col-md-6" type="text" name="Referenza" >
             </div>
 
@@ -171,7 +173,8 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label> Totale(€)</label>
+                    <label class="col-md-9 no-margin-right" > Totale(€)</label>
+                    
                 </div>
                 <div class="col-md-2">
                     <label> Totale scontato(€)</label>
@@ -184,24 +187,26 @@
 
             <div class="row">
                 <textarea class="col-md-6 TextArea" type="text" name="NotaAndamento"></textarea>
-                <input class="col-md-2" type="text" name="TotaleArticoliListino">
-
-                <div class="col-md-2 row">
-                    <input class="col-md-12" type="text" name="ImportoTotaleScontato" />
-                </div>
-                <div class="col-md-2 row ">
-                    <input class="col-md-12" type="text" name="ScontoGenerale"  >
-                </div>
-
-
+                <input class="col-md-2 ImportantData Inp" type="number" min="0"  value="0" name="TotaleArticoliListino" >
+                <input class="col-md-2 ImportantData Dest" type="submit" min="0" value="0"  name="ImportoTotaleScontato" >
+                <input id="StartPoint" class="col-md-2 ImportantData " type="number" value="0" min="0" max="100"  name="ScontoGenerale" >
             </div>
 
-        }
+         }
 
     </div>
 
 
 <script>
+
+    
+        $("#StartPoint").on("input", function (e) {
+        CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
+        });
+        $(".Inp").on("input", function (e) {
+            var Closest = $(this).siblings('#StartPoint')[0];
+            CalculateDataUsingCustomInput($(Closest), CalculationType.PERCENTAGE);
+        });
 
     //Incorporare in una singola funzione
     $("#save").click(function ()

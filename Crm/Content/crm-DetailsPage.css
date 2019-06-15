@@ -33,6 +33,7 @@
 
 .ImportantData {
     border: 2px solid #ffaa00;
+    background-color: white;
 }
 
 
@@ -64,7 +65,7 @@
 .MySelection.Label {
     /*border-bottom-left-radius: 30px;
     border-top-left-radius: 30px;*/
-    border-right: none !important;
+    /*border-right: none !important;*/
     padding-left:15px;
     
 }

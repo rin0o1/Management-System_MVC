@@ -11,50 +11,45 @@
 
 </div>
 
-<div class="AddElementButton"   title="AGGIUNGI ELEMENTO" >
-    AGGIUNGI ELEMENTO
+<div class="AddElement FirstColo"   title="AGGIUNGI ELEMENTO" >
+    
 </div>
 
 
 <div class="row SingleElement">
-    <div class="row">
+    <div class="row WithSpinner">
         <div class="col-md-5 no-margin-right">
             <div class="col-md-12">
                 <div id="DatiCliente" class="col-md-8 MySelection Label no-margin-right" OptionalData="" >
                     CLIENTE
                 </div>
                 <div class="col-md-4 MySelection Choose" onclick="DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');" ">  SCEGLI </div>
-                <span style="margin-left: 37px;" class="col-md-4 SpinnerNoPosition hide"> </span>
+                <span style=" margin-left: 20px;" class="col-md-4 pull-left SpinnerNoPosition hide"> </span>
             </div>
 
             </div>
 
         <div class="col-md-5 no-margin-right">
             <div class="col-md-12">
-                <input id="DatiProdotto" class="col-md-9 MySelection Label" IdDelProdotto="IdDell'operatore" placeholder="PRODOTTO"/>
-                    
-                <div class="col-md-3 pull-right MySelection Choose" onclick="  DataForSelection(this, 'SELEZIONA IL PRODOTTO', 'ii');">SCEGLI</div>
+                <input id="DatiProdotto" class="col-md-12 MySelection Label" IdDelProdotto="IdDell'operatore" placeholder="PRODOTTO"/>
             </div>
 
         </div>
 
-        <input class="col-md-2 importo" type="number" placeholder="IMPORTO "/>
+        <input class="col-md-2 importo" type="number" min="0" placeholder="IMPORTO "/>
         
 
     </div>
 
     <div class="row SecondLine">
-        <textarea class="col-md-7 TextArea " type="text" placeholder="Testo" name="Note"></textarea>
-        <div class="col-md-2 no-margin">
-            <div id="Togli" class="col-md-12 Button" onclick="RemoveElement(this)" title="PULISCI I CAMPI">
-                ELIMINA
+        <textarea class="col-md-9 TextArea " type="text" placeholder="Testo" name="Note"></textarea>
+        <div class="col-md-3 no-margin">
+            <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="PULISCI I CAMPI">
             </div>
+            <div id="Send" class="col-md-2  SendEmail Black " onclick="Send_(this);" title="INVIA PER EMAIL">
+            </div>
+            <span  class="col-md-2 SpinnerNoPosition hide"> </span>
         </div>
-        <div id="Send" class="col-md-2  Button" onclick="Send_(this);" title="INVIA PER EMAIL">
-            INVIA
-        </div>
-        <span style="margin-left:100px;" class="col-md-2 SpinnerNoPosition hide"> </span>
-        
     </div>
 
 </div>
@@ -86,7 +81,6 @@
         {
             cursor:pointer;
             background-color:#847c29ba;
-            
         }
 
     .importo{
@@ -115,6 +109,7 @@
         margin-left: 30px;
         border:2px solid;
     }
+    
                 .Button:hover
                 {
                     cursor:pointer;
@@ -122,6 +117,7 @@
                         border: 4px solid;/*box-shadow: 0 1px 8px 0 rgba(0,0,0,1), 0 5px 18px 0 rgba(0,0,0,1);*/
 
                 }
+
 </style>
 
 
@@ -140,28 +136,31 @@
     }
 
     //Inserire cambiatmento anche qui
-    $('.AddElementButton').click(function () {
+    $('.AddElement').click(function () {
+
+        AddSingleElement();
 
 
+    });
+
+    function AddSingleElement() {
+        
         var LastOneElement = $('.SingleElement').siblings(":last");
         var Template = ['<div class="row SingleElement">' +
-            '    <div class="row">' +
+            '    <div class="row WithSpinner" >' +
             '        <div class="col-md-5 no-margin-right">' +
             '            <div class="col-md-12">' +
             '                <div   id="DatiCliente"  class="col-md-8 MySelection Label" OptionalData=" " >' +
             '                    CLIENTE ' +
             '                </div>' +
             '                <div class="col-md-4 MySelection Choose" onclick="DataForSelection(this, \'SELEZIONA IL CLIENTE\' , \'@ControllerName_\' );">SCEGLI</div>' +
-            '                 <span style="margin-left: 37px;" class="col-md-4 SpinnerNoPosition hide"> </span>      '+
+            '                 <span style=" margin-left: 20px;" class="col-md-4 pull-left SpinnerNoPosition hide"> </span>      '+
             '            </div>' +
             '        </div>' +
             '' +
             '        <div class="col-md-5 no-margin-right">' +
             '            <div class="col-md-12">' +
-            '                <div class="col-md-9 MySelection Label" IdOperatore="IdDell\'operatore">' +
-            '                    PRODOTTO' +
-            '                </div>' +
-            '                <div class="col-md-3 pull-right MySelection Choose" onclick="DataForSelection(this, \'SELEZIONA IL PRODOTTO\', \'ii\');">SCEGLI</div>' +
+            '                <input id="DatiProdotto" class="col-md-12 MySelection Label" IdDelProdotto="IdDell\'operatore" placeholder="PRODOTTO"/> ' +
             '            </div>' +
             '' +
             '        </div>' +
@@ -171,13 +170,16 @@
             '' +
             '    </div>' +
             '<div class="row SecondLine">' +
-            '        <textarea class="col-md-7 TextArea " type="text" placeholder="Testo" name="Note"> </textarea>' +
-            '<div id="Togli" class="col-md-2 Button" onclick="RemoveElement(this)" title="PULISCI I CAMPI">' +
-            '            ELIMINA  ' +
+            '        <textarea class="col-md-9 TextArea " type="text" placeholder="Testo" name="Note"> </textarea>' +
+            '<div class="col-md-3 no-margin">            '+
+            '           <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="ELIMINA">' +
+            
             '        </div>' +
-            '        <div id="Send" class="col-md-2 Button" onclick="Send_(this)" title="INVIA PER EMAIL">' +
-            '           INVIA      ' +
+                '        <div id="Send" class="col-md-2 SendEmail Black" onclick="Send_(this)" title="INVIA PER EMAIL">' +
+                
             '   </div>' +
+            ' <span  class="col-md-2 SpinnerNoPosition hide"> </span> '+
+            '        </div>' +
             '   </div>' +
             '   </div>'];
 
@@ -185,10 +187,7 @@
             LastOneElement.after(Template);
         else
             $('.partialindexzone').append(Template)
-
-    });
-
-
+    }
    
     
     function Send_(btn) {
@@ -199,17 +198,13 @@
             $(btn).toggleClass("hide", true);
             $(btn).siblings('span').toggleClass("hide", false);
 
-        },0);
+        },100);
         
-
-        
-
         var SingleElement = $(btn).closest('.SingleElement');
 
 
         var ControllerName = GetControllerName();
         var Url = "/" + ControllerName + "/GetDataForEmail";
-
 
     
         var Label = $(SingleElement).find('.Label')[0];
@@ -224,22 +219,45 @@
             TestoAggiuntivo:$(SingleElement).find('textarea')[0].value
         };
 
+        if (isNaN(Data.Listino) || IsNotStringAcceptable(Data.NomeCliente) || IsNotStringAcceptable(Data.Prodotto) || IsNotStringAcceptable(Data.EmailCustomer) ) {
+            toastr.warning("Controllare i campi inseriti", "ERRORE");
+            setTimeout(function () {
+                        $(btn).toggleClass("hide", false);
+                        $(btn).siblings('span').toggleClass("hide", true);
+                },500);
+            return;
+        } 
+
          $.ajax({
 
-            type: "POST",
-            url: Url,
-            async: false,
-            data: Data,
+             type: "POST",
+             url: Url,
+             async: false,
+             data: Data,
              success: function () {
+                 toastr.success("L'email è stata inviata correttamente", "INVIO EFFETTUATO");        
+                 setTimeout(function () {
+                        $(btn).toggleClass("hide", false);
+                        $(btn).siblings('span').toggleClass("hide", true);
+                 }, 200);
                  
-                 Remove_(SingleElement, 1000);
-                 console.log("ciao");
+                 setTimeout(function () {
+                     AddSingleElement();
+                 }, 1000);
+
+                 Remove_(SingleElement, 1500);
+                
+                 return;
              },
              error: function () {
-                 $(btn).toggleClass("hide", false);
-                 $(btn).siblings('span').toggleClass("hide", true);
-                 alert("Errore nell'invio dell' email");
-                 
+                 toastr.error("Impossibile inviare l'email", "ERRORE");
+
+                 setTimeout(function () {
+                        $(btn).toggleClass("hide", false);
+                        $(btn).siblings('span').toggleClass("hide", true);
+                 }, 1000);
+
+                 return;
              }
 
          });
@@ -249,3 +267,4 @@
    
 
 </script>
+

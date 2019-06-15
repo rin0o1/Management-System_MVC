@@ -12,10 +12,11 @@
     bottom: var(--menu-bottom-distance);
     position: fixed;
     cursor: pointer;
-    left:0px;
-    background-image: url(Images/Menu/image_scrollmenu-right-removebg.png);
+    left: 0px;
+    /*background-image: url(Images/Menu/image_scrollmenu-right-removebg.png);*/
+    background-image: url(Images/Menu/arrow.png);
     background-size: cover;
-    z-index:10;
+    z-index: 10;
 }
 
 

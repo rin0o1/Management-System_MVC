@@ -12,6 +12,7 @@ namespace Crm_Global
     public  class MailManager
     {
         private string Sender = "frarino1002@gmail.com";
+        
 
         private MailMessage Message;
 

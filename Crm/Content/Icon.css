@@ -56,3 +56,72 @@
         background-image: url(Images/Icon/icon_remove-red.png);
         background-size: cover;
     }
+
+.ricalculateicon {
+    cursor: pointer;
+    background-position: center;
+    border: 0 !important;
+    background: transparent no-repeat center;
+    background-image: url(Images/Icon/icons8-aggiorna-50.png);
+    background-size: cover;
+    position: absolute;
+    z-index: 10;
+}
+
+
+.RemoveElementIcon {
+    margin-right: 5px;
+    width: var(--icon-dimensions);
+    height: var(--icon-dimensions);
+    cursor: pointer;
+    background-size: cover;
+    float: right;
+}
+    .RemoveElementIcon.Red, .RemoveElementIcon.Black:hover {
+        background-image: url(Images/Icon/icon_eliminaelemento_Rosso.png);   
+    }
+    .RemoveElementIcon.Black {
+        background-image: url(Images/Icon/icon_eliminaelemento_Nero.png);
+    }
+
+
+
+
+.SendEmail {
+    margin-right: 5px;
+    width: var(--icon-dimensions);
+    height: var(--icon-dimensions);
+    cursor: pointer;
+    background-size: cover;
+    float: right;
+    margin-right: 30px;
+}
+
+    .SendEmail.Red, .SendEmail.Black:hover {
+        background-image: url(Images/Icon/icon_sendemail_red.png);
+    }
+
+    .SendEmail.Black {
+        background-image: url(Images/Icon/icon_sendemail_black.png);
+    }
+
+.AddElement {
+    margin-right: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-size: cover;
+    margin-right: 30px;
+    position: fixed;
+    bottom: 40px;
+    left: 20px;
+    z-index: 10;
+    background-image: url(Images/Icon/icon_add2.png);
+}
+    .AddElement:hover {
+        width: 45px;
+        height:45px;
+    }
+
+
+        

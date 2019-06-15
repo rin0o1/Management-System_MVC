@@ -21,15 +21,21 @@ namespace Crm
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js",
-                      "~/Scripts/index.js",
+                      "~/Scripts/respond.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/toastr").Include(
+                                          "~/Scripts/toastr.js",
+                                          "~/Scripts/toastr.min.js"
+
+                    ));
+            bundles.Add(new ScriptBundle("~/bundles/myscripts").Include(
+                     "~/Scripts/index.js",
                       "~/Scripts/IconManagement.js",
                       "~/Scripts/Menu.js",
                       "~/Scripts/crm-utilities.js",
                       "~/Scripts/CustomAsyncModal.js"
-                      ));
-
-
+                ));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
@@ -40,7 +46,8 @@ namespace Crm
                       "~/Content/Colors.css",
                       "~/Content/Icon.css",
                       "~/Content/crm-menu.css",
-                      "~/Content/crm-DetailsPage.css"
+                      "~/Content/crm-DetailsPage.css",
+                      "~/Content/toastr.css"
                       ));
         }
     }

@@ -1,7 +1,10 @@
 ﻿
 
 
-
+.WithSpinner
+{
+    height:28px;
+}
 
 
 .render-body-zone {
