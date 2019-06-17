@@ -1,4 +1,9 @@
-﻿function DataForSelection(btn, Title, ControllerName_) {
+﻿/*
+ *-Id dell'elemento selezionato sempre come primo figlio 
+ * -Classe Label obbligatoria
+ * 
+ */
+function DataForSelection(btn, Title, ControllerName_) {
 
 
     setTimeout(function () {
@@ -80,10 +85,8 @@
         var ValueId = this.getAttribute('Id');
         var Optional = this.getAttribute('Optional');
 
-        var Element = btn.previousElementSibling;
-        Element.textContent = Text;
-        Element.id = ValueId;
-
+        $(btn).siblings('.Label')[0].textContent = Text;
+        btn.parentElement.firstElementChild.value = ValueId;
        
             try {
                 Element.attributes[2].value = Optional;

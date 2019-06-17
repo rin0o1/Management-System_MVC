@@ -45,7 +45,7 @@
             @if (Model.HasSaveButton)
             {
                 <td class="crm-menu-cell">
-                    <div id="save" value="save" class="crm-menu-button"> SALVA </div>
+                    <div id="save" value="save" class="crm-menu-button" onclick="submit();"> SALVA </div>
                 </td>
             }
 
@@ -75,3 +75,13 @@
 
 </div>
 }
+
+
+<script>
+
+      function submit() {
+         $('#Form_').submit();
+        }
+
+
+</script>

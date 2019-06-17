@@ -37,7 +37,7 @@ nav {
             display: block;
             position: relative;
             float: left;
-            width: 12em;
+            width: 13em;
             text-align: center;
             text-decoration: none;
         }
@@ -61,7 +61,7 @@ nav {
                 padding: 15px;
                 /*padding: 15px 25px;*/
                 /*font-size: 1.2em;*/
-                font-size: 1em;
+                font-size: 1.2em;
                 font-family: Arial;
                 box-sizing: border-box;
                 border-right: solid 2px #9f496e;
@@ -71,7 +71,7 @@ nav {
 
         nav ul ul li a {
             /*font-size: 1rem;*/
-            font-size: 1em;
+            font-size: 1.2em;
             border-bottom: solid 2px #9f496e;
             text-decoration: none;
             text-align:center;

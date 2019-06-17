@@ -186,24 +186,14 @@ namespace Crm.Controllers
 
 
             //Redirect alla Index 
-            return Json(new
-            {
-                redirect = "Index"
-            });
+            return RedirectToAction("Index");
         }
 
 
-        //Non credo sia necessario
-        public ActionResult SaveData()
+        //Salva il dettaglio preventivo
+        public ActionResult SaveDataDatailPreventive(PreventiveDetailsViewModel model, EnumUseful.typeOfDatabaseOperation OperationType)
         {
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-
-        [HttpPost]
-        public ActionResult SaveDetailsData(PreventiveDetailsViewModel model)
-        {
-            if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
+            //Join con l'operatore
             tPreventive tPreventive = new tPreventive()
             {
                 ID = model.IdPreventivo,
@@ -214,11 +204,23 @@ namespace Crm.Controllers
                 TotalearticoliListino = model.TotaleArticoliListino
             };
 
-            _preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.SAVE);
+             _preventiveRepository.SavePreventive(tPreventive, OperationType);
 
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-        
+
+
+        //Post della pagine dei dettagli
+        [HttpPost]
+        public ActionResult SaveDetailsData(PreventiveDetailsViewModel model)
+        {
+            if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            SaveDataDatailPreventive(model, EnumUseful.typeOfDatabaseOperation.EDIT);
+            return RedirectToAction("Index");
+
+        }
+
         [HttpPost]
         public ActionResult RemoveElementWithId(int ? Id)
         {

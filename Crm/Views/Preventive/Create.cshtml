@@ -22,25 +22,25 @@
             @Html.AntiForgeryToken()
             <div class="row ">
                 <div>
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         <label> Numero Preventivo </label>
-                    </div>
-                    <div class="col-md-3">
+                    </div>*@
+                    <div class="col-md-4 center">
                         <label>Data</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 center">
                         <label>Durata (gg)</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>Listino in vigore (€)</label>
                     </div>
                 </div>
 
                 <div>
-                    <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo" >
-                    <input class="col-md-3" type="date" name="Data" >
-                    <input class="col-md-3" type="number" min="0" value="0" name="Durata" >
-                    <input class="col-md-3" type="number" min="0" value="0" name="listinoinvigore">
+                    @*<input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo">*@
+                    <input class="col-md-4" type="date" name="Data">
+                    <input class="col-md-4" type="number" min="0" value="0" name="Durata">
+                    <input class="col-md-4" type="number" min="0" value="0" name="listinoinvigore">
                 </div>
 
             </div>
@@ -50,30 +50,32 @@
                 <div class="col-md-2 LineBOt">
                     <label> Oggetto</label>
                 </div>
-                <input class="col-md-10" type="text" name="Oggetto" >
+                <input class="col-md-10" type="text" name="Oggetto">
             </div>
-
+            <br />
             <div class="row SomeSpaceTop">
                 <div class="col-md-2 LineBOt">
                     <label> Riferimento </label>
                 </div>
-                <input class="col-md-10" type="text" name="Referenza" >
+                <input class="col-md-10" type="text" name="Referenza">
             </div>
+            <br />
             <div class="row  SomeSpaceTop">
                 <div class="col-md-2 LineBOt">
                     <label> Allegati </label>
                 </div>
                 <input class="col-md-10" type="text" name="firstname">
             </div>
+            <br />
             <div class="row SomeSpaceTop ">
                 <div class="col-md-2 LineBOt">
                     <label> Progetto </label>
                 </div>
-                <input class="col-md-10" type="text" name="Progetto" >
+                <input class="col-md-10" type="text" name="Progetto">
             </div>
 
-
             <br />
+
             <div class="row">
                 <div class="col-md-6">
                     <label> All'attenzione di </label>
@@ -86,10 +88,11 @@
             <div class="row WithSpinner">
                 <input class="col-md-6 " type="text" name="Selection">
                 <div class="col-md-6">
-                    <div class="col-md-9 MySelection Label">
+                    <input type="hidden" id="#Id_" name="IdOperatore" value="-1">
+                    <div class="col-md-9 MySelection Label" >
                         NOME E COGNOME OPERATORE
                     </div>
-                    <div class="col-md-3 MySelection Choose" onclick="DataForSelection(this, 'SELEZIONA IL L\'OPERTAORE', '@controllerName');" >  SCEGLI </div>
+                    <div class="col-md-3 MySelection Choose" onclick="DataForSelection(this, 'SELEZIONA L\'OPERTAORE', '@controllerName');">  SCEGLI </div>
                     <span style="    margin-left: 55px;" class="col-md-3 SpinnerNoPosition hide"> </span>
                 </div>
             </div>
@@ -99,15 +102,15 @@
                 <div class="col-md-4">
                     <label> Addebito Trasporto </label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 center">
                     <label> Pagamento </label>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 center">
                     <label> Consegna </label>
                 </div>
             </div>
             <div class="row">
-                <input class="col-md-4" type="text" name="AddebitoTrasportato" >
+                <input class="col-md-4" type="text" name="AddebitoTrasportato">
                 <div class="CustomSelectionItem">
                     <select class="col-md-4 SelectionItem" id="country" name="Pagamento">
                         <option> DA CONCORDARE </option>
@@ -133,8 +136,8 @@
                 </div>
             </div>
             <div class="row">
-                <input class="col-md-6" type="text" name="NotaApertura" >
-                <input class="col-md-6" type="text" name="NotaChiusura" >
+                <input class="col-md-6" type="text" name="NotaApertura">
+                <input class="col-md-6" type="text" name="NotaChiusura">
             </div>
             <br />
             <div class="row">
@@ -147,8 +150,8 @@
             </div>
 
             <div class="row">
-                <input class="col-md-6" type="text" name="Cartella" >
-                <input class="col-md-6" type="text" name="NumeroCommissione" >
+                <input class="col-md-6" type="text" name="Cartella">
+                <input class="col-md-6" type="text" name="NumeroCommissione">
             </div>
 
             <br />
@@ -162,24 +165,24 @@
             </div>
 
             <div class="row">
-                <input class="col-md-6" type="date"  name="DataInizioLavori" >
-                <input class="col-md-6" type="text" name="Referenza" >
+                <input class="col-md-6" type="date" name="DataInizioLavori">
+                <input class="col-md-6" type="text" name="Referenza">
             </div>
 
             <br />
             <div class=" row">
-                <div class="col-md-6">
+                <div class="col-md-6 center">
                     <label> Note Andamento </label>
                 </div>
 
-                <div class="col-md-2">
-                    <label class="col-md-9 no-margin-right" > Totale(€)</label>
-                    
+                <div class="col-md-2 center">
+                    <label class="col-md-9 no-margin-right"> Totale(€)</label>
+
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 center"> 
                     <label> Totale scontato(€)</label>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 center">
                     <label> Sconto (%)</label>
                 </div>
 
@@ -187,12 +190,12 @@
 
             <div class="row">
                 <textarea class="col-md-6 TextArea" type="text" name="NotaAndamento"></textarea>
-                <input class="col-md-2 ImportantData Inp" type="number" min="0"  value="0" name="TotaleArticoliListino" >
-                <input class="col-md-2 ImportantData Dest" type="submit" min="0" value="0"  name="ImportoTotaleScontato" >
-                <input id="StartPoint" class="col-md-2 ImportantData " type="number" value="0" min="0" max="100"  name="ScontoGenerale" >
+                <input class="col-md-2 ImportantData Inp" type="number" min="0" value="0" name="TotaleArticoliListino">
+                <input class="col-md-2 ImportantData Dest" type="submit" min="0" value="0" name="ImportoTotaleScontato">
+                <input id="StartPoint" class="col-md-2 ImportantData " type="number" value="0" min="0" max="100" name="ScontoGenerale">
             </div>
 
-         }
+        }
 
     </div>
 
@@ -212,8 +215,7 @@
     $("#save").click(function ()
     {
         var newDetailsPreventive= $('#Form_').serializeFormJSON();       
-
-
+        
         $.ajax({
             type: "POST",
             url: "@Url.Action(actionName,_pageParameters.ControllerName)",
@@ -223,7 +225,6 @@
             success: function (redirectToUrl) {
 
                 alert("Elemento Creato");
-                window.location.href = redirectToUrl.redirect;
             }
             ,
             error: function ()

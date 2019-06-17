@@ -16,6 +16,7 @@ Risultato =  Totale-Sconto_
 \ */
 
 
+/*Passare il numero preventivo per salvare */
 function GeneratePdfFromElementId() {
 
     html2canvas($('#Form_'), {
@@ -23,7 +24,7 @@ function GeneratePdfFromElementId() {
             var img = canvas.toDataURL("image/png");
             
             var doc = new jsPDF('landscape');
-            doc.addImage(img, 'JPEG', 0, 0);
+            doc.addImage(img, 'JPEG', 500, 500);
             doc.save("Image.pdf");
         }
     }); 
