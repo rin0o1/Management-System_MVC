@@ -17,17 +17,44 @@ Risultato =  Totale-Sconto_
 
 
 /*Passare il numero preventivo per salvare */
-function GeneratePdfFromElementId() {
+function GeneratePdfFromElementId(form) {
+
+    var ElementsToConvert = form.find('.chg');
+    var OriginalType = [];
+
+    var Length = ElementsToConvert.length;
+
+
+    //=================================================================================================
+    //WORK AROUND DA RISOLVERE 
+    //=================================================================================================
+    //Prendo tutti gli elementi con la classe chg e cambio il tipo da data/number a text per poterlo trasformare in un'immagine
+    //Costruito il file riporto lo stato come in origine
+    //
+    for (var i = 0; i< Length; i++) {
+        var Element = ElementsToConvert[i];
+        OriginalType.push(Element.type);
+        Element.type = 'text';
+    }
+
 
     html2canvas($('#Form_'), {
         onrendered: function (canvas) {
-            var img = canvas.toDataURL("image/png");
-            
-            var doc = new jsPDF('landscape');
-            doc.addImage(img, 'JPEG', 500, 500);
+            var img = canvas.toDataURL("image/png", 1.0);
+            var doc = new jsPDF("landscape", "mm", "a4");
+
+            doc.addImage(img, 'PNG', 10, 10, 260, 170);
+            for (var x = 0; x < Length; x++) {
+                ElementsToConvert[x].type = OriginalType[x];
+            }
+            RemoveSpinn();   
             doc.save("Image.pdf");
         }
+        
     }); 
+
+    
+    
 }
 
 

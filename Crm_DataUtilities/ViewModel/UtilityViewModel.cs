@@ -49,6 +49,7 @@ namespace Crm_DataUtilities.ViewModel
             HasSaveButton = true;
             HasEditButton = true;
             HasExportButton = true;
+            //Se null significa che non ha un id associato
             HasDeleteButton = true;
             HasMenu = true;
         }
@@ -74,6 +75,9 @@ namespace Crm_DataUtilities.ViewModel
     {
         public string ButtonName { get; set; }
         public string ButtonValue { get; set; }
+        
+        public int Id { get; set; }
+
     }
 
 

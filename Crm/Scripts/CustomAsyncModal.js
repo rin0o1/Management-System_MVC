@@ -31,8 +31,7 @@ function DataForSelection(btn, Title, ControllerName_) {
         '            </div>' +
         '        </div>';
 
-    $('.render-body-zone').append(Template).fadeIn(1000);
-    Dialog = $('#Dialog_');
+    
 
     $.ajax({
 
@@ -41,12 +40,13 @@ function DataForSelection(btn, Title, ControllerName_) {
         dataType: "Json",
         async: false,
         success: function (data) {
-            
+            $('.render-body-zone').append(Template).fadeIn(1000);
+            Dialog = $('#Dialog_');        
             CreateDialog(data);
             
         },
         error: function () {
-            alert("Qualcosa è andato storto");
+            return;
         }
 
     });
@@ -85,11 +85,12 @@ function DataForSelection(btn, Title, ControllerName_) {
         var ValueId = this.getAttribute('Id');
         var Optional = this.getAttribute('Optional');
 
+        //trovare errore 
         $(btn).siblings('.Label')[0].textContent = Text;
         btn.parentElement.firstElementChild.value = ValueId;
        
             try {
-                Element.attributes[2].value = Optional;
+                btn.parentElement.firstElementChild.attributes[2].value= Optional;
             } catch (e) {
                 //Console.log("nessun campo opzionale");
             }

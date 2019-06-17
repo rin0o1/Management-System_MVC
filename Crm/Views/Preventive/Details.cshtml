@@ -38,10 +38,10 @@
                 </div>
 
                 <div>
-                    <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo" value="@Model.NumeroPreventivo">
-                    <input class="col-md-3" type="date" name="Data" value="@Model.Data">
-                    <input class="col-md-3" type="number" min="0" name="Durata" value="@Model.Durata">
-                    <input class="col-md-3" type="number" min="0" name="listinoinvigore">
+                    <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo" value="@Model.NumeroPreventivo" readonly>
+                    <input class="col-md-3 chg " id="ttt" type="date" name="Data" value="@Model.Data">
+                    <input class="col-md-3 chg " type="number" min="0" name="Durata" value="@Model.Durata">
+                    <input class="col-md-3 chg " type="number" min="0" name="listinoinvigore">
                 </div>
 
             </div>
@@ -168,7 +168,7 @@
             </div>
 
             <div class="row">
-                <input class="col-md-6" type="date" name="DataInizioLavori" value="@Model.DataInizioLavori">
+                <input class="col-md-6 chg" type="date" name="DataInizioLavori" value="@Model.DataInizioLavori">
                 <input class="col-md-6" type="text" name="Referenza" value="@Model.Referenza">
             </div>
 
@@ -192,9 +192,9 @@
 
             <div class="row">
                 <textarea class="col-md-6 TextArea" type="text" name="NotaAndamento"></textarea>
-                <input class="col-md-2 ImportantData Inp" type="number" min="0" name="TotaleArticoliListino" value="@Model.TotaleArticoliListino">
-                <input class="col-md-2 ImportantData Dest" type="submit" min="0" name="ImportoTotaleScontato" value="@Model.ImportoTotaleScontato">
-                <input id="StartPoint" class="col-md-2 ImportantData " type="number" min="0" max="100" name="ScontoGenerale" value="@Model.ScontoGenerale">
+                <input class="col-md-2 ImportantData Inp chg" type="number" min="0" name="TotaleArticoliListino" value="@Model.TotaleArticoliListino">
+                <input style="text-align:center;" class="col-md-2 ImportantData Dest " type="text" readonly min="0" name="ImportoTotaleScontato" value="@Model.ImportoTotaleScontato" onclick="ciao();">
+                <input id="StartPoint" class="col-md-2 ImportantData chg" type="number" min="0" max="100" name="ScontoGenerale" value="@Model.ScontoGenerale">
             </div>
 
         }
@@ -210,7 +210,7 @@
 
     
         $("#StartPoint").on("input", function (e) {
-    CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
+        CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
     });
     $(".Inp").on("input", function (e) {
         var Closest = $(this).siblings('#StartPoint')[0];
@@ -222,36 +222,14 @@
     $(document).on('submit', '#Form_', function (e) {
         
     });
-    $("#delete").click(function () {
-
-        var id = GetIdFromAPartial();
-
-        var ControllerName = GetControllerName();
-        var Action = "/RemoveElementWithId";
-        var Url = ControllerName + Action;
-
-        $.ajax({
-
-            type: "POST",
-            url: Url,
-            data: { Id: id },
-            async: false,
-            success: function () {
-                alert("ok");
-            }
-            ,
-            error: function () {
-            }
-
-        });
-
-    });
+    
 
     $("#genera").click(function () {
 
 
+
         var detailsPreventive = $('#Form_').serializeFormJSON();
-        GeneratePdfFromElementId();
+        GeneratePdfFromElementId($('#Form_'));
 
     });
 

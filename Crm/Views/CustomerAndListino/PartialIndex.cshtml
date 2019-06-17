@@ -23,7 +23,7 @@
                 <div id="DatiCliente" class="col-md-8 MySelection Label no-margin-right" OptionalData="" >
                     CLIENTE
                 </div>
-                <div class="col-md-4 MySelection Choose" onclick="DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');" ">  SCEGLI </div>
+                <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');" ">  SCEGLI </div>
                 <span style=" margin-left: 20px;" class="col-md-4 pull-left SpinnerNoPosition hide"> </span>
             </div>
 
@@ -46,7 +46,7 @@
         <div class="col-md-3 no-margin">
             <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="PULISCI I CAMPI">
             </div>
-            <div id="Send" class="col-md-2  SendEmail Black " onclick="Send_(this);" title="INVIA PER EMAIL">
+            <div id="Send" class="col-md-2  SendEmail Black MyB" onclick="Send_(this);" title="INVIA PER EMAIL">
             </div>
             <span  class="col-md-2 SpinnerNoPosition hide"> </span>
         </div>
@@ -175,7 +175,7 @@
             '           <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="ELIMINA">' +
             
             '        </div>' +
-                '        <div id="Send" class="col-md-2 SendEmail Black" onclick="Send_(this)" title="INVIA PER EMAIL">' +
+                '        <div id="Send" class="col-md-2 SendEmail Black MyB" onclick="Send_(this)" title="INVIA PER EMAIL">' +
                 
             '   </div>' +
             ' <span  class="col-md-2 SpinnerNoPosition hide"> </span> '+
@@ -188,17 +188,19 @@
         else
             $('.partialindexzone').append(Template)
     }
-   
+
+    $(document).on('click', '.MyB', function () {
+
+        ShowSpin();
+
+    });
+
+
     
     function Send_(btn) {
 
         var Button = $(btn);
 
-        setTimeout(function () {
-            $(btn).toggleClass("hide", true);
-            $(btn).siblings('span').toggleClass("hide", false);
-
-        },100);
         
         var SingleElement = $(btn).closest('.SingleElement');
 
@@ -219,12 +221,15 @@
             TestoAggiuntivo:$(SingleElement).find('textarea')[0].value
         };
 
+        var Condition1 = isNaN(Data.Listino);
+        var Condition2 = IsNotStringAcceptable(Data.NomeCliente);
+        var Condition3 = IsNotStringAcceptable(Data.Prodotto);
+        var Condition4 = IsNotStringAcceptable(Data.EmailCustomer);
+
+
         if (isNaN(Data.Listino) || IsNotStringAcceptable(Data.NomeCliente) || IsNotStringAcceptable(Data.Prodotto) || IsNotStringAcceptable(Data.EmailCustomer) ) {
             toastr.warning("Controllare i campi inseriti", "ERRORE");
-            setTimeout(function () {
-                        $(btn).toggleClass("hide", false);
-                        $(btn).siblings('span').toggleClass("hide", true);
-                },500);
+                
             return;
         } 
 
@@ -237,25 +242,18 @@
              success: function () {
                  toastr.success("L'email è stata inviata correttamente", "INVIO EFFETTUATO");        
                  setTimeout(function () {
-                        $(btn).toggleClass("hide", false);
-                        $(btn).siblings('span').toggleClass("hide", true);
-                 }, 200);
-                 
-                 setTimeout(function () {
                      AddSingleElement();
+                     RemoveSpinn();
                  }, 1000);
 
-                 Remove_(SingleElement, 1500);
+                 Remove_(SingleElement, 700);
                 
                  return;
              },
              error: function () {
                  toastr.error("Impossibile inviare l'email", "ERRORE");
 
-                 setTimeout(function () {
-                        $(btn).toggleClass("hide", false);
-                        $(btn).siblings('span').toggleClass("hide", true);
-                 }, 1000);
+                 
 
                  return;
              }

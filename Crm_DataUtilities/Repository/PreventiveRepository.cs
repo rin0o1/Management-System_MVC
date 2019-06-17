@@ -57,16 +57,16 @@ namespace Crm_DataUtilities.Repository
 
         public  void RemovePreventiveWithId(int id)
         {
-            tPreventive PreventiveToDelete = 
+            tPreventive PreventiveToDelete =
                 dbEntity.
                 tPreventive.
-                FirstOrDefault( 
-                    ptd=> ptd.ID == id
+                FirstOrDefault(
+                    ptd => ptd.ID == id
                     );
-            if (PreventiveToDelete!=null)
+            if (PreventiveToDelete != null)
             {
                 dbEntity.tPreventive.Remove(PreventiveToDelete);
-                 dbEntity.SaveChangesAsync();
+                dbEntity.SaveChangesAsync();
 
             }
         }

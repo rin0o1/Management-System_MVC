@@ -66,9 +66,7 @@ namespace Crm.Controllers
                 FilterForData = FilterForDataVisualization,
                 HasEditButton = false,
                 HasExportButton = false,
-                HasDeleteButton = false,
                 HasSaveButton=false,
-                
                 
             };
 
@@ -112,19 +110,18 @@ namespace Crm.Controllers
                 ControllerName = ControllerName.PreventiveController,
                 HasScrollButton=false,
                 HasEditButton=false,
-                HasDeleteButton=false,
                 ButtonMenu= new List<ButtonMenuViewModel>()
                 {
                     new ButtonMenuViewModel()
                     {
                         ButtonName="Genera",
                         ButtonValue= "genera"
-                    },
-                    new ButtonMenuViewModel()
-                    {
-                        ButtonName="Duplica",
-                        ButtonValue= "duplica"
-                    },
+                    }
+                    //new ButtonMenuViewModel()
+                    //{
+                    //    ButtonName="Duplica",
+                    //    ButtonValue= "duplica"
+                    //},
                    
                 }
             };
@@ -146,15 +143,15 @@ namespace Crm.Controllers
                 HasScrollButton = false,
                 HasAddElementButton = false,
                 HasEditButton = false,
-                HasDeleteButton=false,
-                ButtonMenu= new List<ButtonMenuViewModel>()
-                {
-                    new ButtonMenuViewModel()
-                    {
-                        ButtonName="Salva e genera",
-                        ButtonValue="SaveAndGenerate"
-                    }
-                }
+                HasDeleteButton=false
+                //ButtonMenu= new List<ButtonMenuViewModel>()
+                //{
+                //    new ButtonMenuViewModel()
+                //    {
+                //        ButtonName="Salva e vai al detta",
+                //        ButtonValue="SaveAndGenerate"
+                //    }
+                //}
 
 
             };
@@ -216,7 +213,7 @@ namespace Crm.Controllers
         {
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            SaveDataDatailPreventive(model, EnumUseful.typeOfDatabaseOperation.EDIT);
+            //SaveDataDatailPreventive(model, EnumUseful.typeOfDatabaseOperation.EDIT);
             return RedirectToAction("Index");
 
         }
@@ -226,9 +223,9 @@ namespace Crm.Controllers
         {
             if(Id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-             //_preventiveRepository.RemovePreventiveWithId(Id ?? 0);
+            //_preventiveRepository.RemovePreventiveWithId(Id ?? 0);
 
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            return Json(new { redirectTo = Url.Action("Index", ControllerName.PreventiveController) });
         }
 
         

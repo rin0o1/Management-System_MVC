@@ -4,6 +4,7 @@
 @model PageParameters
 @{ 
     List<ButtonMenuViewModel> buttons = Model.ButtonMenu;
+    string ControllerName = Model.ControllerName;
 }
 
 @if (Model.HasMenu)
@@ -28,38 +29,39 @@
                 </td>
             }
 
-            @if (Model.HasEditButton)
+            @*@if (Model.HasEditButton)
             {
                 <td class="crm-menu-cell">
                     <div value="edit" class="crm-menu-button"> MODIFICA </div>
                 </td>
-            }
+            }*@
 
-            @if (Model.HasExportButton)
+            @*@if (Model.HasExportButton)
             {
                 <td class="crm-menu-cell">
                     <div id="export" value="export" class="crm-menu-button"> ESPORTA </div>
                 </td>
-            }
+            }*@
 
             @if (Model.HasSaveButton)
             {
                 <td class="crm-menu-cell">
                     <div id="save" value="save" class="crm-menu-button" onclick="submit();"> SALVA </div>
                 </td>
+                
             }
 
             @if (Model.HasDeleteButton)
             {
 
                 <td class="crm-menu-cell">
-                    <div id="delete" value="delete" class="crm-menu-button"> ELIMINA </div>
+                    <div id="delete" value="delete" class="crm-menu-button" onclick="DeleteElement();" > ELIMINA </div>
                 </td>
             }
 
-            <td class="crm-menu-cell">
+            @*<td class="crm-menu-cell">
                 <div value="print" class="crm-menu-button" onclick="window.print();"> STAMPA </div>
-            </td>
+            </td>*@
 
             @if (buttons != null)
             {
@@ -74,14 +76,46 @@
     </table>
 
 </div>
+
+
 }
 
 
 <script>
 
-      function submit() {
+    function submit() {
+        
          $('#Form_').submit();
         }
 
+    function DeleteElement(IdElement) {
+        ShowSpin();
+        var id = GetIdFromAPartial();
+
+        var ControllerName = GetControllerName();
+        var Action = "/RemoveElementWithId";
+        var Url = "/" + ControllerName + Action;
+
+        $.ajax({
+            type: "POST",
+            url: Url,
+            data: { Id: id },
+            async: false,
+            success: function (redirectToUrl) {
+                window.location.replace(redirectToUrl.redirectTo);
+
+                 toastr.success("CANCELLAZIONE AVVENUTA CORRETTAMENTE");
+            }
+            ,
+            error: function () {
+                toastr.error("ERRORE", "Errore nella cancellazione dell'elemento");
+                RemoveSpinn();
+            }
+            
+
+        });
+        
+
+    }
 
 </script>
