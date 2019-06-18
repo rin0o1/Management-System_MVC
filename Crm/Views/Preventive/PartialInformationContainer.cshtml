@@ -5,11 +5,10 @@
 @model List<PreventiveViewModel>
 
 
-@for (int x = 0; x < 10; x++)
+
+@foreach (var item in Model)
 {
-    foreach (var item in Model)
-    {
-    <tr id="@x">
+    <tr id="@item.IdPreventivo">
         <td>
             <div>@item.NumeroPreventivo</div>
         </td>
@@ -36,5 +35,4 @@
         </td>
 
     </tr>
-    }
 }

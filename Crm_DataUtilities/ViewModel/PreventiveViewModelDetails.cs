@@ -26,7 +26,6 @@ namespace Crm_DataUtilities.ViewModel
             this.Oggetto = "nessuno";
             this.Riferimento = "nessuno";
             this.Progetto = "nessuno";
-            this.Destinatario = "nessuno";
             this.IdOperatore = 3;
             this.AddebitoTrasportato = "nessuno";
             this.Pagamento = "nessuno";
@@ -53,7 +52,6 @@ namespace Crm_DataUtilities.ViewModel
         public string       Oggetto                  { get; set; }
         public string       Riferimento               { get; set; }
         public string       Progetto              { get; set; }
-        public string       Destinatario              { get; set; }
         public string       AddebitoTrasportato { get; set; }
         public string       Pagamento         { get; set; }
         public string       Consegna              { get; set; }
@@ -64,9 +62,9 @@ namespace Crm_DataUtilities.ViewModel
         public DateTime     DataInizioLavori          { get; set; }
         public string       Referenza                 { get; set; }
         public string       NoteAndamento             { get; set;}
-        public int       TotaleArticoliListino               { get; set; }
-        public int       ImportoTotaleScontato             { get; set; }
-        public int       ScontoGenerale             { get; set; }
+        public double       TotaleArticoliListino               { get; set; }
+        public double       ImportoTotaleScontato             { get; set; }
+        public double       ScontoGenerale             { get; set; }
         public int          _IdCliente                { get; set; }
         public int          _IdOrdine                  { get; set; }
         public int IdOperatore { get; set; }

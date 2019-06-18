@@ -91,8 +91,6 @@
         width:100%;
         padding-top:10px;
         padding-bottom:15px;
-        /*border-top:1px solid;
-        border-bottom:1px solid;*/
         border:5px dashed darkgray;
         margin-left: unset;
         margin-bottom:20px;
@@ -114,8 +112,7 @@
                 {
                     cursor:pointer;
                     background-color:#efedf7;
-                        border: 4px solid;/*box-shadow: 0 1px 8px 0 rgba(0,0,0,1), 0 5px 18px 0 rgba(0,0,0,1);*/
-
+                    border: 4px solid;
                 }
 
 </style>
@@ -203,7 +200,7 @@
 
         
         var SingleElement = $(btn).closest('.SingleElement');
-
+        
 
         var ControllerName = GetControllerName();
         var Url = "/" + ControllerName + "/GetDataForEmail";
@@ -221,15 +218,12 @@
             TestoAggiuntivo:$(SingleElement).find('textarea')[0].value
         };
 
-        var Condition1 = isNaN(Data.Listino);
-        var Condition2 = IsNotStringAcceptable(Data.NomeCliente);
-        var Condition3 = IsNotStringAcceptable(Data.Prodotto);
-        var Condition4 = IsNotStringAcceptable(Data.EmailCustomer);
-
 
         if (isNaN(Data.Listino) || IsNotStringAcceptable(Data.NomeCliente) || IsNotStringAcceptable(Data.Prodotto) || IsNotStringAcceptable(Data.EmailCustomer) ) {
             toastr.warning("Controllare i campi inseriti", "ERRORE");
-                
+            setTimeout(function () {
+                RemoveSpinn();
+                 }, 300);
             return;
         } 
 
@@ -252,9 +246,9 @@
              },
              error: function () {
                  toastr.error("Impossibile inviare l'email", "ERRORE");
-
-                 
-
+                 setTimeout(function () {
+                    RemoveSpinn();
+                 }, 300);
                  return;
              }
 

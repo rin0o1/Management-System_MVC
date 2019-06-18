@@ -46,13 +46,19 @@ namespace Crm_DataUtilities.Repository
                         PreventiveToEdit.TotalearticoliListino = preventive.TotalearticoliListino;
                         
                     }
+                    
                     break;
                 case EnumUseful.typeOfDatabaseOperation.CREATE:
+                    if (preventive!= null)
+                    {
+                        dbEntity.tPreventive.Add(preventive);
+                    }
                     break;
 
             }
 
             dbEntity.SaveChanges();
+
         }
 
         public  void RemovePreventiveWithId(int id)

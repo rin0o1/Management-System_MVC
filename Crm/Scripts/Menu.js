@@ -15,31 +15,40 @@ function closemenu() {
 /* FINIRE */
 var ControllerName;
 
-//$(document).on("click", ".crm-menu-button", function () {
-
-//    var ButtonPressed = $(this).attr("value");
-//    ControllerName = $("#_ControllerName").attr("value");
-
-//    switch (ButtonPressed) {
-
-//        case "add":
-//            AddElement();
-//            break;
-//        case "print":
-//            window.print();
-//            break;
-//    }
-
-//});
 
 
-//Richiamare il metodo aggiungi del controller
-function AddElement()
-{
-    ControllerName = $("#_ControllerName").attr("value");
-    $.post( ControllerName+"/Create");
+function DeleteElement(Id) {
+    ShowSpin();
+
+    var id = (Id === -1) ? GetIdFromAPartial() : Id;
+
+    var ControllerName = GetControllerName();
+    var Action = "/RemoveElementWithId";
+    var Url = "/" + ControllerName + Action;
+
+    $.ajax({
+        type: "POST",
+        url: Url,
+        data: { Id: id },
+        async: false,
+        success: function (redirectToUrl) {
+            toastr.success("CANCELLAZIONE AVVENUTA CORRETTAMENTE");
+            window.location.replace(redirectToUrl.redirectTo);
+            return true;
+        }
+        ,
+        error: function () {
+            toastr.error("ERRORE", "Errore nella cancellazione dell'elemento");
+            RemoveSpinn();
+            return false;
+        }
+
+
+    });
+
 
 }
+
 
 
 

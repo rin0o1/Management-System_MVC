@@ -55,7 +55,7 @@
             {
 
                 <td class="crm-menu-cell">
-                    <div id="delete" value="delete" class="crm-menu-button" onclick="DeleteElement();" > ELIMINA </div>
+                    <div id="delete" value="delete" class="crm-menu-button" onclick="DeleteElement(-1);" > ELIMINA </div>
                 </td>
             }
 
@@ -88,34 +88,6 @@
          $('#Form_').submit();
         }
 
-    function DeleteElement(IdElement) {
-        ShowSpin();
-        var id = GetIdFromAPartial();
-
-        var ControllerName = GetControllerName();
-        var Action = "/RemoveElementWithId";
-        var Url = "/" + ControllerName + Action;
-
-        $.ajax({
-            type: "POST",
-            url: Url,
-            data: { Id: id },
-            async: false,
-            success: function (redirectToUrl) {
-                window.location.replace(redirectToUrl.redirectTo);
-
-                 toastr.success("CANCELLAZIONE AVVENUTA CORRETTAMENTE");
-            }
-            ,
-            error: function () {
-                toastr.error("ERRORE", "Errore nella cancellazione dell'elemento");
-                RemoveSpinn();
-            }
-            
-
-        });
-        
-
-    }
+   
 
 </script>

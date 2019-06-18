@@ -133,6 +133,27 @@ namespace Crm.Controllers
             return View(model);
         }
 
+        //Post Details --> Save edit //Creare una tabella con il savataggio
+        [HttpPost]
+        public ActionResult Details(PreventiveDetailsViewModel model)
+        {
+            if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            tPreventive tPreventive = new tPreventive()
+            {
+                ID = model.IdPreventivo,
+                Data = model.Data,
+                Durata = model.Durata,
+                ImportoTotaleScontato = model.ImportoTotaleScontato,
+                ScontoGenerale = model.ScontoGenerale,
+                TotalearticoliListino = model.TotaleArticoliListino
+            };
+
+            _preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.EDIT);
+
+            return RedirectToAction("Index");
+
+        }
+
         //Create Get
         public ActionResult Create()
         {
@@ -168,7 +189,8 @@ namespace Crm.Controllers
         {
 
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
+            
+            //Redirect alla Index 
             tPreventive tPreventive = new tPreventive()
             {
                 ID = model.IdPreventivo,
@@ -180,42 +202,8 @@ namespace Crm.Controllers
             };
 
             //_preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.CREATE);
-
-
-            //Redirect alla Index 
+            //int id = tPreventive.ID; ID del preventivo creato
             return RedirectToAction("Index");
-        }
-
-
-        //Salva il dettaglio preventivo
-        public ActionResult SaveDataDatailPreventive(PreventiveDetailsViewModel model, EnumUseful.typeOfDatabaseOperation OperationType)
-        {
-            //Join con l'operatore
-            tPreventive tPreventive = new tPreventive()
-            {
-                ID = model.IdPreventivo,
-                Data = model.Data,
-                Durata = model.Durata,
-                ImportoTotaleScontato = model.ImportoTotaleScontato,
-                ScontoGenerale = model.ScontoGenerale,
-                TotalearticoliListino = model.TotaleArticoliListino
-            };
-
-             _preventiveRepository.SavePreventive(tPreventive, OperationType);
-
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        }
-
-
-        //Post della pagine dei dettagli
-        [HttpPost]
-        public ActionResult SaveDetailsData(PreventiveDetailsViewModel model)
-        {
-            if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            //SaveDataDatailPreventive(model, EnumUseful.typeOfDatabaseOperation.EDIT);
-            return RedirectToAction("Index");
-
         }
 
         [HttpPost]

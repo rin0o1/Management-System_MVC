@@ -24,13 +24,14 @@ function GeneratePdfFromElementId(form) {
 
     var Length = ElementsToConvert.length;
 
-
     //=================================================================================================
-    //WORK AROUND DA RISOLVERE 
+    //WORK AROUND 
     //=================================================================================================
     //Prendo tutti gli elementi con la classe chg e cambio il tipo da data/number a text per poterlo trasformare in un'immagine
     //Costruito il file riporto lo stato come in origine
     //
+
+
     for (var i = 0; i< Length; i++) {
         var Element = ElementsToConvert[i];
         OriginalType.push(Element.type);
@@ -97,7 +98,7 @@ function CalculateDataUsingCustomInput(StartElement, calculationtype) {
         /*PERCENTAGE*/
         case 2:
             var Totale = Values[0];/*In questo caso avrò solo un input che rappresenta il totale*/
-            var Risultato =(Sconto>0 && Sconto<100)? Totale - ((Totale * Sconto) / 100) : 0;
+            var Risultato =(Sconto>0 && Sconto<100) ? Totale - ((Totale * Sconto) / 100) : 0;
             $(DestinationElement).val(Risultato);
             break;
         

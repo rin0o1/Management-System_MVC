@@ -15,9 +15,9 @@ namespace Crm_Entities
     public partial class tPreventive
     {
         public int ID { get; set; }
-        public Nullable<int> ScontoGenerale { get; set; }
-        public Nullable<int> ImportoTotaleScontato { get; set; }
-        public Nullable<int> TotalearticoliListino { get; set; }
+        public Nullable<double> ScontoGenerale { get; set; }
+        public Nullable<double> ImportoTotaleScontato { get; set; }
+        public Nullable<double> TotalearticoliListino { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
         public Nullable<int> Durata { get; set; }
     }
