@@ -51,6 +51,25 @@ function DeleteElement(Id) {
 
 
 
+$(document).on("click", ".removeicon", function () {
+
+    ShowSpin();
+
+    var ElementToRemove = $(this).closest("tr");
+    
+    var Id = ElementToRemove.attr("id");
+    DeleteElement(Id);
+
+
+    //Senza rimuovere la riga, faccio il refresh 
+    //$(this).closest('tr')
+    //   .children('td')
+    //   .animate({ padding: 2 })
+    //   .wrapInner('<div />')
+    //   .children()
+    //       .slideUp(function () { ElementToRemove.remove(); });
+
+});
 
 
     

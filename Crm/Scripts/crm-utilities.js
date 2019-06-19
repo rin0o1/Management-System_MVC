@@ -105,3 +105,26 @@ function CalculateDataUsingCustomInput(StartElement, calculationtype) {
         default: break;
     }
 }
+
+
+
+function OnLongClick(btn, function_) {
+    
+    var pressTimer;
+
+
+
+    $(btn).mouseup(function () {
+        clearTimeout(pressTimer);
+        return false;
+    })
+        .mousedown(function () {
+
+            pressTimer = window.setTimeout(function () {
+
+                function_();
+
+            }, 500);
+            return false;
+    });
+}

@@ -67,6 +67,7 @@ namespace Crm.Controllers
                 HasEditButton = false,
                 HasExportButton = false,
                 HasSaveButton=false,
+                HasAddElementButton=false
                 
             };
 

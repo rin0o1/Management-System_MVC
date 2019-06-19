@@ -17,6 +17,7 @@ function DataForSelection(btn, Title, ControllerName_) {
     var Url = "/" + ControllerName + "/GetDataToAsyncForDialog";
     var Dialog = $('#Dialog_');
 
+    //Cercare di sostituire con una partial shared
     var Template = '<div id="Dialog_" class="modal_">' +
         '            <div class="modal-content">' +
         '                <div class="modal-header">' + Title

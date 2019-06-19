@@ -90,9 +90,9 @@
         padding-left:10px !important;
     }
 
-    .table-for-information tr:hover
-    {
-        background-color:beige;
+    .table-for-information tr:hover {
+        background-color: beige;
+        cursor: pointer;
     }
 
 .table-for-information-partial-index
