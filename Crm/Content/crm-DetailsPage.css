@@ -159,6 +159,23 @@
         cursor: pointer;
     }
 
-       
 
+.GroupDataSpan {
+    font-size: 1.5em;
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
 
+.GropDataDiv {
+    border: 1px solid;
+    /* padding: 3px; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.MarginFromDataDiv{
+    margin-top:20px;
+}

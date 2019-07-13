@@ -19,39 +19,65 @@ namespace Crm_DataUtilities.Repository
             this.dbEntity = dbEntity ?? new MyDataEntities();
         }
 
-        public IQueryable<tPreventive> GetAllPreventives()
+        public IQueryable<tPreventiveDetails> GetAllPreventives()
         {
-            return this.dbEntity.tPreventive;
+            return this.dbEntity.tPreventiveDetails;
+        }
+
+        public tPreventiveDetails GetPreventiveFromId(int Id)
+        {
+            return this.dbEntity.tPreventiveDetails.FirstOrDefault(x => x.IdPreventivo == Id);
         }
 
         //Cambiare questo switch in base al reale nome della tabella nel database
-        public void SavePreventive(tPreventive preventive, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
+        public void SavePreventive(tPreventiveDetails preventive, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
         {
             
             switch (typeOfDatabaseOperation)
             {
                 
                 case EnumUseful.typeOfDatabaseOperation.EDIT:
-                   tPreventive PreventiveToEdit = dbEntity.tPreventive.FirstOrDefault(
-                        x => x.ID == preventive.ID
+                    tPreventiveDetails PreventiveToEdit = dbEntity.tPreventiveDetails.FirstOrDefault(
+                        x => x.IdPreventivo == preventive.IdPreventivo
                         );
 
                     if(PreventiveToEdit!=null)
                     {
-                        //Per tutti i campi
+                        PreventiveToEdit.IdCliente = preventive.IdCliente;
+                        PreventiveToEdit.NumeroPreventivo = preventive.NumeroPreventivo;
+                        PreventiveToEdit.Riferimento = preventive.Riferimento;
+                        PreventiveToEdit.Allegati = preventive.Allegati;
+                        PreventiveToEdit.Oggetto = preventive.Oggetto;
+                        PreventiveToEdit.Attenzione = preventive.Attenzione;
                         PreventiveToEdit.Durata = preventive.Durata;
-                        PreventiveToEdit.Data = preventive.Data;
-                        PreventiveToEdit.ScontoGenerale = preventive.ScontoGenerale;
-                        PreventiveToEdit.ImportoTotaleScontato = preventive.ImportoTotaleScontato;
-                        PreventiveToEdit.TotalearticoliListino = preventive.TotalearticoliListino;
-                        
+                        PreventiveToEdit.Data_ = preventive.Data_;
+                        PreventiveToEdit.Confermato = preventive.Confermato;
+                        PreventiveToEdit.Operatore = preventive.Operatore;
+                        PreventiveToEdit.AddebitoTransporto = preventive.AddebitoTransporto;
+                        PreventiveToEdit.Sconto = preventive.Sconto;
+                        PreventiveToEdit.Progetto = preventive.Progetto;
+                        PreventiveToEdit.Variazione = preventive.Variazione;
+                        PreventiveToEdit.Totale= preventive.Totale;
+                        PreventiveToEdit.Pagamento = preventive.Pagamento;
+                        PreventiveToEdit.Consegna = preventive.Consegna;
+                        PreventiveToEdit.Cartella = preventive.Cartella;
+                        PreventiveToEdit.NotaApertura = preventive.NotaApertura;
+                        PreventiveToEdit.NotaChiusura = preventive.NotaChiusura;
+                        PreventiveToEdit.NoteAndamaneto = preventive.NoteAndamaneto;
+                        PreventiveToEdit.DataInizioLavoro = preventive.DataInizioLavoro;
+                        PreventiveToEdit.NoteAndamaneto = preventive.NoteAndamaneto;
+                        PreventiveToEdit.NumeroCommisione = preventive.NumeroCommisione;
+                        PreventiveToEdit.Referenza = preventive.Referenza;
+                        PreventiveToEdit.Listino = preventive.Listino;
+                        PreventiveToEdit.s_GUID = preventive.s_GUID;
+                            
                     }
                     
                     break;
                 case EnumUseful.typeOfDatabaseOperation.CREATE:
                     if (preventive!= null)
                     {
-                        dbEntity.tPreventive.Add(preventive);
+                        dbEntity.tPreventiveDetails.Add(preventive);
                     }
                     break;
 
@@ -63,15 +89,15 @@ namespace Crm_DataUtilities.Repository
 
         public  void RemovePreventiveWithId(int id)
         {
-            tPreventive PreventiveToDelete =
+            tPreventiveDetails PreventiveToDelete =
                 dbEntity.
-                tPreventive.
+                tPreventiveDetails.
                 FirstOrDefault(
-                    ptd => ptd.ID == id
+                    ptd => ptd.IdPreventivo == id
                     );
             if (PreventiveToDelete != null)
             {
-                dbEntity.tPreventive.Remove(PreventiveToDelete);
+                dbEntity.tPreventiveDetails.Remove(PreventiveToDelete);
                 dbEntity.SaveChangesAsync();
 
             }

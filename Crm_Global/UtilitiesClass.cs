@@ -9,6 +9,14 @@ using System.Net.Mail;
 
 namespace Crm_Global
 {
+
+    public class JsonModel
+    {
+        public string HTMLString { get; set; }
+        public bool NoMoredata { get; set; }
+    }
+
+
     public  class MailManager
     {
         private string Sender = "frarino1002@gmail.com";

@@ -20,7 +20,7 @@ using Crm_Entities;
 namespace Crm.Controllers
 {
     
-    public class PreventiveController : DefaultController
+    public class PreventiveController : DefaultController 
     {
         private PreventiveRepository _preventiveRepository;
         private MyDataEntities dbEntity;
@@ -31,8 +31,8 @@ namespace Crm.Controllers
             Title = "Gestione preventivi";
             base.Initialize(requestContext);
             dbEntity = new MyDataEntities();
-            //dbEntity.Database.Connection.Open();
-            _preventiveRepository = new PreventiveRepository();
+            dbEntity.Database.Connection.Open();
+            _preventiveRepository = new PreventiveRepository(dbEntity);
         }
 
         public ActionResult Index()
@@ -41,7 +41,7 @@ namespace Crm.Controllers
 
             #region FILTER FOR DATA VISUALIZATION
              FilterForDataVisualization = new List<FilterForDataVisualization>()
-            {
+             {
                 new FilterForDataVisualization(),
                 new FilterForDataVisualization()
                 {
@@ -53,46 +53,60 @@ namespace Crm.Controllers
                     Value= 2,
                     TextToShow= "Chiuso"
                 }
-            };
+             };
 
             #endregion
 
             //ViewBag.filterForDataVisualization = FilterForDataVisualization;
 
              _pageParameters = new PageParameters()
-            {
+             {
                 PageTitle = this.Title,
                 ControllerName = ControllerName.PreventiveController,
-                FilterForData = FilterForDataVisualization,
-                HasEditButton = false,
+                 FilterForData = FilterForDataVisualization,
+                 //FilterForData= null,
+                 HasEditButton = false,
                 HasExportButton = false,
                 HasSaveButton=false,
-                HasAddElementButton=false
-                
-            };
+                HasDeleteButton= false
+             };
 
             SetParameters();
             
-            var Data = this.LoadData();
+            var Data = this.LoadData(null);
             return View(Data);
         }
 
-        public List<PreventiveViewModel> LoadData()
+
+        public List<PreventiveViewModel> LoadData(string Filter)
         {
-            //var AllPreventives = _preventiveRepository.GetAllPreventives();
 
-            //foreach (tPreventive item in AllPreventives.ToList())
-            //{
-            //    PreventiveViewModel p = new PreventiveViewModel();
-            //}
+            var AllPreventives = _preventiveRepository.GetAllPreventives();
 
-
-            return new List<PreventiveViewModel>()
+            
+            //Filtro i preventivi per "NumeroPreventivo" se inizia o contiene 
+            // le lettere inserite prendo quel preventivo
+            if (!String.IsNullOrEmpty(Filter))
             {
-                new PreventiveViewModel(),
-                new PreventiveViewModel(),
-                new PreventiveViewModel()
-            };
+                
+
+                AllPreventives = AllPreventives.Where(
+                x => x.NumeroPreventivo.ToUpper().StartsWith(Filter.ToUpper())
+                //aggiungre  il filtro per tutti gli elementi della partialindex
+                ); ;
+                
+               
+            }
+
+            List<PreventiveViewModel> list = new List<PreventiveViewModel>();
+
+            foreach (tPreventiveDetails item in AllPreventives.ToList())
+            {
+                PreventiveViewModel p = new PreventiveViewModel(item);
+                list.Add(p);
+            }
+
+            return list;
         }
 
 
@@ -111,6 +125,7 @@ namespace Crm.Controllers
                 ControllerName = ControllerName.PreventiveController,
                 HasScrollButton=false,
                 HasEditButton=false,
+                HasGeneralFilter= false,
                 ButtonMenu= new List<ButtonMenuViewModel>()
                 {
                     new ButtonMenuViewModel()
@@ -125,28 +140,51 @@ namespace Crm.Controllers
                     //},
                    
                 }
-            };
+            }; 
 
             ViewBag.pageParameters = _pageParameters;
 
-            var model = new PreventiveDetailsViewModel();
+            var Preventivo = _preventiveRepository.GetPreventiveFromId(Id.Value);
+
+            var model = new PreventiveDetailsViewModel(Preventivo);
 
             return View(model);
         }
 
-        //Post Details --> Save edit //Creare una tabella con il savataggio
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Details(PreventiveDetailsViewModel model)
         {
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            tPreventive tPreventive = new tPreventive()
+            tPreventiveDetails tPreventive = new tPreventiveDetails()
             {
-                ID = model.IdPreventivo,
-                Data = model.Data,
+                IdPreventivo= model.IdPreventivo,
+                IdCliente = model._IdCliente,
+                NumeroPreventivo = model.NumeroPreventivo,
+                Riferimento = model.Riferimento,
+                Allegati = model.Allegati,
+                Oggetto = model.Oggetto,
+                Attenzione = model.Attenzione,
                 Durata = model.Durata,
-                ImportoTotaleScontato = model.ImportoTotaleScontato,
-                ScontoGenerale = model.ScontoGenerale,
-                TotalearticoliListino = model.TotaleArticoliListino
+                Data_ = model.Data,
+                Cartella= model.Cartella,
+                Operatore = model.Operatore,
+                AddebitoTransporto = model.AddebitoTrasportato,
+                Sconto = model.ScontoGenerale,
+                Variazione = model.ImportoTotaleScontato,
+                Totale = model.TotaleArticoliListino,
+                Pagamento = model.Pagamento,
+                Consegna = model.Consegna,
+                NotaApertura = model.NotaApertura,
+                NotaChiusura = model.NotaChiusura,
+                NoteAndamaneto = model.NoteAndamento,
+                DataInizioLavoro = model.DataInizioLavori,
+                Referenza = model.Referenza,
+                Listino = model.ListinoInVigore,
+                Progetto = model.Progetto,
+                Importo = model.ImportoTotaleScontato, //Non so la differenza tra total, importo e totale con sconto
+                NumeroCommisione = model.NumeroCommissione,
             };
 
             _preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.EDIT);
@@ -165,7 +203,8 @@ namespace Crm.Controllers
                 HasScrollButton = false,
                 HasAddElementButton = false,
                 HasEditButton = false,
-                HasDeleteButton=false
+                HasDeleteButton=false,
+                HasGeneralFilter= false
                 //ButtonMenu= new List<ButtonMenuViewModel>()
                 //{
                 //    new ButtonMenuViewModel()
@@ -186,24 +225,44 @@ namespace Crm.Controllers
 
         //Create Post
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(PreventiveDetailsViewModel model)
         {
 
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            
+
             //Redirect alla Index 
-            tPreventive tPreventive = new tPreventive()
+            tPreventiveDetails tPreventive = new tPreventiveDetails()
             {
-                ID = model.IdPreventivo,
-                Data = model.Data,
+                NumeroPreventivo = model.NumeroPreventivo,
+                Riferimento = model.Riferimento,
+                Allegati = model.Allegati,
+                Oggetto = model.Oggetto,
+                Attenzione = model.Attenzione,
                 Durata = model.Durata,
-                ImportoTotaleScontato = model.ImportoTotaleScontato,
-                ScontoGenerale = model.ScontoGenerale,
-                TotalearticoliListino = model.TotaleArticoliListino
+                Data_ = model.Data,
+                Cartella = model.Cartella,
+                Operatore = model.Operatore,
+                AddebitoTransporto = model.AddebitoTrasportato,
+                Sconto = model.ScontoGenerale,
+                Variazione = model.ImportoTotaleScontato,
+                Totale = model.TotaleArticoliListino,
+                Pagamento = model.Pagamento,
+                Consegna = model.Consegna,
+                NotaApertura = model.NotaApertura,
+                NotaChiusura = model.NotaChiusura,
+                NoteAndamaneto = model.NoteAndamento,
+                DataInizioLavoro = model.DataInizioLavori,
+                Referenza = model.Referenza,
+                Listino = model.ListinoInVigore,
+                Progetto= model.Progetto,
+                Importo= model.ImportoTotaleScontato, //Non so la differenza tra total, importo e totale con sconto
+                NumeroCommisione= model.NumeroCommissione,
+                IdCliente= model._IdCliente
             };
 
-            //_preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.CREATE);
-            //int id = tPreventive.ID; ID del preventivo creato
+            _preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.CREATE);
+            int id = tPreventive.IdPreventivo;
             return RedirectToAction("Index");
         }
 
@@ -212,28 +271,37 @@ namespace Crm.Controllers
         {
             if(Id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            //_preventiveRepository.RemovePreventiveWithId(Id ?? 0);
+            _preventiveRepository.RemovePreventiveWithId(Id ?? 0);
 
             return Json(new { redirectTo = Url.Action("Index", ControllerName.PreventiveController) });
         }
 
-        
-        public JsonResult GetDataToAsyncForDialog()
+
+
+        [HttpPost]
+        public ActionResult GetDataAsync(string filter)
         {
+
+            List<PreventiveViewModel> data = LoadData(filter);
+
+            JsonModel Model = new JsonModel();
+            Model.HTMLString = renderPartialViewtostring("PartialInformationContainer", data);
+
+            return Json(Model);
+        }
+
+        public JsonResult GetDataToAsyncForDialog(string Filter)
+        {
+
             JsonResult JsonResult = new JsonResult()
             {
                 Data= new {object_ = new object[0]},
                 JsonRequestBehavior= JsonRequestBehavior.AllowGet
             };
 
-            //Prendo i dati richiesti
-            List<TestToRemoveViewModel> data = new List<TestToRemoveViewModel>
-            {
-                new TestToRemoveViewModel(),
-                new TestToRemoveViewModel(),
-                new TestToRemoveViewModel(),
-                new TestToRemoveViewModel()
-            };
+           
+            //Prendo i dati dei preventivi filtrati
+            List<PreventiveViewModel> data = LoadData(Filter);
 
             JsonResult.Data = new List<object>();
 
@@ -241,8 +309,8 @@ namespace Crm.Controllers
             {
                 foreach (var item in data)
                 {
-                    string DataToShow = item.Nome + " " + item.Cognome;
-                    int Id = item.Id;
+                    string DataToShow = item.NumeroPreventivo + " " ;
+                    int Id = item.IdPreventivo;
 
                     ((List<object>)JsonResult.Data).Add(new { @datatoshow =DataToShow , @valueId = Id , @optional=-1});
                 }

@@ -84,9 +84,9 @@
 <script>
 
     function submit() {
-        
-         $('#Form_').submit();
-        }
+        var a = $('#Form_').serializeArray();
+        $('#Form_').submit();
+    }
 
    
 

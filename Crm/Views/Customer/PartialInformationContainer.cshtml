@@ -4,10 +4,16 @@
 
 @model List<CustomerViewModel>
 
+@*@{
+    var item = Model[0];
+}*@
+
+
 
 @foreach (var item in Model)
-{
-    <tr id="@item.IdCliente">
+    {
+    <tr id="@item.IdCliente" onclick="OpenDialogWithDetails(@item)">
+
         <td>
             <div>@item.Nome</div>
         </td>
@@ -20,19 +26,17 @@
         <td>
             <div>@Html.DisplayFor(model => item.Classe) </div>
         </td>
-        <td>
-            <div>@Html.DisplayFor(model => item.Ditta) </div>
-        </td>
+        
         <td>
             <div>@Html.DisplayFor(model => item.CittaDitta) </div>
         </td>
 
         <td class="cell-selection-item BiancoOpaco">
             <div style="display:inline-flex">
-                @*@Html.ActionLink(" ", "Details",
-                        ControllerName.PreventiveController,
-                        new { id = item.IdPreventivo },
-                        new { @class = "detailsicon", @title = "Dettaglio" })*@
+                @Html.ActionLink(" ", "Details",
+                        ControllerName.CustomerController,
+                        new { id = item.IdCliente },
+                        new { @class = "detailsicon", @title = "Dettaglio" })
 
                 @*<div class="detailsicon" title="Dettaglio"></div>*@
                 <div class="removeicon" title="Rimuovi"></div>
@@ -41,3 +45,21 @@
 
     </tr>
 }
+
+
+<script>
+
+    function MoveDiv()
+    {
+        $('#a_').animate({
+            'marginLeft': "-=70px" //moves left
+        });
+
+        $('#a_').animate({
+            'marginLeft': "+=70px" //moves left
+        });
+    }
+
+</script>
+
+ 

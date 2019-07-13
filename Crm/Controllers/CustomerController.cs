@@ -1,8 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web.SessionState;
+
 
 
 using Crm_DataUtilities.Repository;
@@ -14,11 +23,23 @@ namespace Crm.Controllers
 {
     public class CustomerController : DefaultController
     {
+
+        private CustomerRepository _CustomerRepository;
+        private MyDataEntities dbEntity;
+
+        //protected override void Initialize(RequestContext requestContext)
+        //{
+        //    //base.Initialize(requestContext);
+        //    //dbEntity = new MyDataEntities();
+        //    //dbEntity.Database.Connection.Open();
+        //    //_CustomerRepository = new CustomerRepository(dbEntity);
+        //}
+
         // GET: Customer
         public ActionResult Index()
         {
             Title = "Clienti";
-             _pageParameters = new PageParameters()
+            _pageParameters = new PageParameters()
             {
                 PageTitle = this.Title,
                 ControllerName = ControllerName.CustomerController,
@@ -27,28 +48,105 @@ namespace Crm.Controllers
                 HasExportButton = false,
                 HasDeleteButton = false,
                 HasSaveButton = false,
-
-
             };
 
             SetParameters();
 
-            var Data = this.LoadData();
+            var Data = this.LoadData(null);
 
             return View(Data);
         }
 
-        public List<CustomerViewModel>  LoadData()
+        public List<CustomerViewModel>  LoadData(string filter)
         {
-            return new List<CustomerViewModel>() 
-            {
-                new CustomerViewModel(),
-                new CustomerViewModel(),
-                new CustomerViewModel()
-            };
+            var AllCustomer= _CustomerRepository.GetAllCustomers();
+
+            List<CustomerViewModel> list = new List<CustomerViewModel>();
+	
+		
+	if (!String.IsNullOrEmpty(filter)  
+	{
+		
+		AllCustomer= AllCustomer.Where(x=> x.Nome.ToUpper().StartWith(Filter.ToUpper()));
+	}
+
+		foreach(tCustomer x in AllCustomer.ToList())
+		{	
+			CustomerViewModel c= new CustomerViewModel(x);
+			list.Add(c);
+		}		
+
+
+            return list;
         }
 
-        public JsonResult GetDataToAsyncForDialog()
+
+        public ActionResult Details(int? Id)
+        {
+
+            if (Id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            PageParameters _pageParameters = new PageParameters()
+            {
+                PageTitle = "Dettaglio Cliente",
+                ControllerName = ControllerName.CustomerController,
+                               HasEditButton = false,
+            };
+
+            ViewBag.pageParameters = _pageParameters;
+
+            //var Customer= _CustomerRepository.GetCustomerFromId(Id.Value) ;
+
+            var model = new CustomerDetailsViewModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Details(CustomerDetailsViewModel model)
+        {
+            if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+
+            return RedirectToAction("Index");
+
+        }
+
+        public ActionResult Create()
+        {
+            PageParameters _pageParameters = new PageParameters()
+            {
+                PageTitle = "Nuovo Cliente",
+                ControllerName = ControllerName.CustomerController,
+                HasScrollButton = false,
+                HasAddElementButton = false,
+                HasEditButton = false,
+                HasDeleteButton = false
+            };
+
+
+            ViewBag.pageParameters = _pageParameters;
+
+            return View();
+        }
+
+        //Create Post
+        [HttpPost]
+        public ActionResult Create(PreventiveDetailsViewModel model)
+        {
+
+            if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            //Redirect alla Index 
+          
+
+            return RedirectToAction("Index");
+        }
+
+        public JsonResult GetDataToAsyncForDialog(string filter)
         {
             JsonResult JsonResult = new JsonResult()
             {
@@ -57,7 +155,7 @@ namespace Crm.Controllers
             };
 
             //Prendo i dati richiesti
-            List<CustomerViewModel> data = LoadData();
+            List<CustomerViewModel> data = LoadData(filter);
             
 
             JsonResult.Data = new List<object>();

@@ -52,9 +52,11 @@ namespace Crm_DataUtilities.ViewModel
             //Se null significa che non ha un id associato
             HasDeleteButton = true;
             HasMenu = true;
+            HasGeneralFilter = true;
         }
         public string PageTitle { get; set; }
         public List<FilterForDataVisualization> FilterForData { get; set; }
+        public bool HasGeneralFilter { get; set; }
         public List<ButtonMenuViewModel> ButtonMenu { get; set; }
 
         public bool HasMenu { get; set; }

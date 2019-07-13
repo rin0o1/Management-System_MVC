@@ -21,6 +21,8 @@
         @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
         {
             @Html.AntiForgeryToken()
+            <input type="hidden" name="IdPreventivo"  value="@Model.IdPreventivo">
+
             <div class="row ">
                 <div>
                     <div class="col-md-3">
@@ -38,10 +40,10 @@
                 </div>
 
                 <div>
-                    <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo" value="@Model.NumeroPreventivo" readonly>
-                    <input class="col-md-3 chg " id="ttt" type="date" name="Data" value="@Model.Data">
+                    <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo" value="@Model.NumeroPreventivo" >
+                    <input class="col-md-3  "  type="text" name="Data" value="@Model.Data">
                     <input class="col-md-3 chg " type="number" min="0" name="Durata" value="@Model.Durata">
-                    <input class="col-md-3 chg " type="number" min="0" name="listinoinvigore">
+                    <input class="col-md-3 chg " type="number" min="0" name="ListinoInVigore" value="@Model.ListinoInVigore">
                 </div>
 
             </div>
@@ -58,14 +60,14 @@
                 <div class="col-md-2 LineBOt">
                     <label> Riferimento </label>
                 </div>
-                <input class="col-md-10" type="text" name="Referenza" value="@Model.Referenza">
+                <input class="col-md-10" type="text" name="Riferimento" value="@Model.Riferimento">
             </div>
             <br />
             <div class="row  SomeSpaceTop">
                 <div class="col-md-2 LineBOt">
                     <label> Allegati </label>
                 </div>
-                <input class="col-md-10" type="text" name="firstname">
+                <input class="col-md-10" type="text" name="Allegati" value="@Model.Allegati">
             </div>
             <br />
             <div class="row SomeSpaceTop ">
@@ -86,7 +88,12 @@
                 </div>
             </div>
 
-            <div class="row WithSpinner">
+            <div class="row">
+                <input class="col-md-6 " type="text" name="Attenzione" value="@Model.Attenzione">
+                <input class="col-md-6 " type="text" name="Operatore" value="@Model.Operatore">
+            </div>
+
+            @*<div class="row WithSpinner">
                 <input class="col-md-6 " type="text" name="Selection">
                 <div class="col-md-6">
                     <input type="hidden" id="#Id_" name="IdOperatore" value="@Model.IdOperatore">
@@ -96,7 +103,7 @@
                     <div class="col-md-3 MySelection Choose" onclick="DataForSelection(this, 'SELEZIONA L\'OPERTAORE', '@controllerName');">  SCEGLI </div>
                     <span style="    margin-left: 55px;" class="col-md-3 SpinnerNoPosition hide"> </span>
                 </div>
-            </div>
+            </div>*@
 
             <br />
             <div class="row">
@@ -154,7 +161,7 @@
 
             <div class="row">
                 <input class="col-md-6" type="text" name="Cartella" value="@Model.Cartella">
-                <input class="col-md-6" type="text" name="NumeroCommissione" value="@Model.NumeroCommissione">
+                <input class="col-md-6" type="number" name="NumeroCommissione" value="@Model.NumeroCommissione">
             </div>
 
             <br />
@@ -168,8 +175,9 @@
             </div>
 
             <div class="row">
-                <input class="col-md-6 chg" type="date" name="DataInizioLavori" value="@Model.DataInizioLavori">
-                <input class="col-md-6" type="text" name="Referenza" value="@Model.Referenza">
+                <input class="col-md-6 chg" type="text" name="DataInizioLavori" value="@Model.DataInizioLavori">
+               
+                <input class="col-md-6" type="text" name="Riferimento" value="@Model.Referenza">
             </div>
 
             <br />
@@ -191,31 +199,32 @@
             </div>
 
             <div class="row">
-                <textarea class="col-md-6 TextArea" type="text" name="NotaAndamento"></textarea>
+                <textarea class="col-md-6 TextArea" type="text" name="NoteAndamento"></textarea>
                 <input class="col-md-2 ImportantData Inp chg" type="number" min="0" name="TotaleArticoliListino" value="@Model.TotaleArticoliListino">
-                <input style="text-align:center;" class="col-md-2 ImportantData Dest " type="text" readonly min="0" name="ImportoTotaleScontato" value="@Model.ImportoTotaleScontato" onclick="ciao();">
-                <input id="StartPoint" class="col-md-2 ImportantData chg" type="number" min="0" max="100" name="ScontoGenerale" value="@Model.ScontoGenerale">
+                <input style="text-align:center;" class="col-md-2 ImportantData Dest " type="text" readonly min="0" name="ImportoTotaleScontato" value="@Model.ImportoTotaleScontato">
+                <input id="StartPoint" class="col-md-2 ImportantData chg" type="number" min="0" max="100" name="ScontoGenerale" value="@Model.ImportoTotaleScontato">
             </div>
 
         }
 
     </div>
 
-    <style>
+<style>
            
+        
 
-    </style>
+</style>
 
 <script>
 
     
         $("#StartPoint").on("input", function (e) {
         CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
-    });
-    $(".Inp").on("input", function (e) {
-        var Closest = $(this).siblings('#StartPoint')[0];
-        CalculateDataUsingCustomInput($(Closest), CalculationType.PERCENTAGE);
-    });
+        });
+        $(".Inp").on("input", function (e) {
+            var Closest = $(this).siblings('#StartPoint')[0];
+            CalculateDataUsingCustomInput($(Closest), CalculationType.PERCENTAGE);
+        });
  
 
 

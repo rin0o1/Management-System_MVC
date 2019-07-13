@@ -1,0 +1,241 @@
+﻿@using Crm_DataUtilities.ViewModel;
+@using Crm_Global;
+
+@model CustomerDetailsViewModel
+@{
+    PageParameters _pageParameters = ViewBag.pageParameters;
+    var controllerName = _pageParameters.ControllerName;
+    var actionName = "Details";
+}
+
+    <div class="crm-detailspage ">
+
+        <input type="hidden" id="_ControllerName" name="ControllerName" value="@controllerName">
+
+        <div class="index-header">
+            <span class="index-title no-padding  "> @_pageParameters.PageTitle </span>
+        </div>
+
+        <input type="hidden" id="IdOfThisElement" value="@Model.Id">
+
+        @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="IdCustomer" value="@Model.Id">
+
+            <div class="col-md-12 GropDataDiv">
+
+                <span class=" col-md-12  GroupDataSpan "> DATI GENERALI  </span>
+
+
+                <div  class="row" style="margin-top:20px;">
+
+                    <label class="col-md-3">RAGIONE SOCIALE  </label>
+                    <label class="col-md-3"> CODICE UNICLIMA  </label>
+                    <label class="col-md-3"> CATEGORIA  </label>
+                    <label class="col-md-3"> CLASSE  </label>
+
+                </div>
+
+                <div class="row">
+
+                    <input class="col-md-3" type="text" name="RagioneSociale" value="@Model.RagioneSociale" />
+                    <input class="col-md-3" type="text" name="CodiceUniclima" value="@Model.CodiceUniclima" />
+                    <input class="col-md-3" type="text" name="Categoria" value="@Model.Categoria" />
+                    <input class="col-md-3" type="number" name="Classe" value="@Model.Classe" />
+                </div>
+
+                <br />
+
+                <div class="row">
+
+                    <label class="col-md-3"> INDIRIZZO  </label>
+                    <label class="col-md-3"> CITTA  </label>
+                    <label class="col-md-3"> PROVINCIA  </label>
+                    <label class="col-md-3"> CAP  </label>
+
+                </div>
+
+                <div class="row">
+
+                    <input class="col-md-3" type="text" name="Idirizzo" value="@Model.Idirizzo" />
+                    <input class="col-md-3" type="text" name="Citta" value="@Model.Citta" />
+                    <input class="col-md-3" type="text" name="Provincia" value="@Model.Provincia" />
+                    <input class="col-md-3" type="number" name="CAP" value="@Model.CAP" />
+                </div>
+
+                <br />
+                <div class="row">
+
+                    <label class="col-md-4"> TELEFONO UFFICIO  </label>
+                    <label class="col-md-4"> CONTATTO  </label>
+                    <label class="col-md-4"> CELLULARE  </label>
+
+
+                </div>
+
+                <div class="row">
+
+                    <input class="col-md-4" type="text" name="TelefonoUfficio" value="@Model.TelefonoUfficio" />
+                    <input class="col-md-4" type="text" name="Contatto1" value="@Model.Contatto1" />
+                    <input class="col-md-4" type="text" name="Cellulare1" value="@Model.Cellulare1" />
+
+                </div>
+
+
+                <br />
+
+                <div class="row">
+
+                    <label class="col-md-6"> REFERENTE 1  </label>
+                    <label class="col-md-6"> REFERENTE 2  </label>
+
+
+                </div>
+
+                <div class="row">
+
+                    <input class="col-md-6" type="text" name="Referente1" value="@Model.Referente1" />
+                    <input class="col-md-6" type="text" name="Referente2" value="@Model.Referente2" />
+
+                </div>
+
+                <br />
+
+                <div class="row">
+
+                    <label class="col-md-4"> TELEFAX </label>
+                    <label class="col-md-4"> EMAIL  </label>
+                    <label class="col-md-4"> INDIRIZZO WEB  </label>
+
+
+                </div>
+
+                <div class="row">
+
+                    <input class="col-md-4" type="text" name="Telefax" value="@Model.Telefax" />
+                    <input class="col-md-4" type="text" name="Email" value="@Model.Email" />
+                    <input class="col-md-4" type="text" name="IndirizzoInternet" value="@Model.IndirizzoInternet" />
+
+                </div>
+
+                <br />
+                <div class="row">
+
+                    <label class="col-md-6"> CONSESO DATI </label>
+                    <label class="col-md-6"> FATTURATO GLOBALE  </label>
+
+
+                </div>
+
+                <div class="row">
+
+                    <input class="col-md-6" type="text" name="ConsesoDati" value="@Model.ConsensoDati" />
+                    <input class="col-md-6" type="text" name="FatturatoGlobale" value="@Model.FatturatoGloable" />
+
+                </div>
+
+
+             </div>
+
+
+                <br />
+                <br />
+
+                <div class="col-md-12 GropDataDiv">
+                    <span class=" col-lg-12  GroupDataSpan "> DATI FISCALI  </span>
+
+
+                    <div class="row" style="margin-top:20px;">
+
+                        <label class="col-md-4"> BANCA  </label>
+                        <label class="col-md-4"> PARTITA IVA  </label>
+                        <label class="col-md-4"> CONTO CORRENTE  </label>
+
+
+                    </div>
+
+                    <div class="row">
+
+                        <input class="col-md-4" type="text" name="Banca" value="@Model.Banca" />
+                        <input class="col-md-4" type="text" name="P_Iva" value="@Model.P_Iva" />
+                        <input class="col-md-4" type="text" name="ContoCorrente" value="@Model.ContoCorrente" />
+
+                    </div>
+
+                    <br />
+
+                    <div class="row">
+
+                        <label class="col-md-3">IBAN  </label>
+                        <label class="col-md-3"> CIN  </label>
+                        <label class="col-md-3"> ABI  </label>
+                        <label class="col-md-3"> CAB  </label>
+
+                    </div>
+
+                    <div class="row">
+
+                        <input class="col-md-3" type="number" name="RagioneSociale" value="@Model.IBAN" />
+                        <input class="col-md-3" type="number" name="CodiceUniclima" value="@Model.CIN" />
+                        <input class="col-md-3" type="number" name="Categoria" value="@Model.ABI" />
+                        <input class="col-md-3" type="number" name="Classe" value="@Model.CAB" />
+                    </div>
+
+
+                </div>
+                <br />
+                <br />
+
+                <div class="col-md-12 GropDataDiv">
+                    <span class=" col-md-12  GroupDataSpan "> ORGRANIZZAZIONE  </span>
+
+
+                    <div class="row" style="margin-top:20px; margin-bottom:10px;">
+
+                        <label class="col-md-6"> FORNITORI   </label>
+                        <label class="col-md-6">  TITOLARI  </label>
+
+                    </div>
+
+                    <div class="row">
+
+                        <input class="col-md-6" type="text" name="Fornitori" value="@Model.Fornitori" />
+                        <input class="col-md-6" type="text" name="Titolari" value="@Model.Titolari" />
+
+                    </div>
+                    <br />
+                    <div class="row">
+
+                        <label class="col-md-6"> SOCI  </label>
+                        <label class="col-md-6">  SEGRTARI  </label>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <input class="col-md-6" type="text" name="Soci" value="@Model.Soci" />
+                        <input class="col-md-6" type="text" name="Segretari" value="@Model.Segretari" />
+
+                    </div>
+                    <br />
+
+                    <div class="row">
+
+                        <label class="col-md-6">AMMINISTRATIVI  </label>
+                        <label class="col-md-6"> UFFICIO TECNICO  </label>
+
+
+                    </div>
+
+                    <div class="row">
+
+                        <input class="col-md-6" type="text" name="Amministrativi" value="@Model.Amministrativi" />
+                        <input class="col-md-6" type="text" name="UfficioTecnico" value="@Model.UfficioTecnico" />
+
+                    </div>
+                </div>
+                }
+
+            </div>

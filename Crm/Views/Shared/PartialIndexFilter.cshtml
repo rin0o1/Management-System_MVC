@@ -11,56 +11,70 @@
     string controllerName = Model.ControllerName;
 
 
-    if (fltrForDataVlize != null && fltrForDataVlize.Count > 0)
-    {
 
-        foreach (var item in fltrForDataVlize)
+}
+@if (fltrForDataVlize != null && fltrForDataVlize.Count > 0)
+{
+    <div class=" filterzone  no-padding">
+
+
+        @foreach (var item in fltrForDataVlize)
         {
-            //-1= Primo filtro da visualizzare
-            if (item.Value==-1)
-            {
-                <div id="Filter_@item.Value" style="text-decoration:none;border-bottom: 2px solid #fff " class="filter" Value="@item.Value"> @item.TextToShow</div>
-            }
-            else
-            {
-                <div id="Filter_@item.Value" style="text-decoration:none;" class="filter" Value="@item.Value"> @item.TextToShow</div>
-            }
+        //-1= Primo filtro da visualizzare
+        if (item.Value == -1)
+        {
+        <div id="Filter_@item.Value" style="text-decoration:none;border-bottom: 2px solid #fff " class="filter" Value="@item.Value"> @item.TextToShow</div>
         }
-    }
+        else
+        {
+        <div id="Filter_@item.Value" style="text-decoration:none;" class="filter" Value="@item.Value"> @item.TextToShow</div>
+        }
+        }
+        
+    </div>
 }
 
-
-@*Inserire script per poter inviare il filtro scelto al metodo del controller*@
-<script type="text/javascript">
-
-    var FilterValue;
-    var PreviewIndexFilter = -1;
-
-    $('.filter').on('click', function () {
-        ChangeStyle(this);
-
-    });
-
-    //Imposta il margine sotto bianco in modo da far capire che è stato cliccato in maniera grafica
-    function ChangeStyle(Selector) {
-        var FilterValue = Selector.getAttribute('Value');
-        Selector.style = "border-bottom: 2px solid #fff;";
-        
-
-        if (PreviewIndexFilter != undefined && FilterValue!=PreviewIndexFilter ) {
-            var Sibling = document.getElementById('Filter_' + PreviewIndexFilter);
-            Sibling.style = " border-bottom:  2px solid rgb(159,73,110);";
-            PreviewIndexFilter = FilterValue;
-        }
+    @if (Model.HasGeneralFilter)
+    {
+     <div class="globalfilterinput">
+       
+        <input class=" col-md-12" id="FilterText" placeholder="Ricerca..." type="text" oninput="ReloadData(this);"/>
+     </div>
 
     }
 
-    //Chimata Ajax al controller per poter mostrare le informazioni filtrate
-    function LoadData() {
+
+    @*Inserire script per poter inviare il filtro scelto al metodo del controller*@
+    <script type="text/javascript">
+
+        var FilterValue;
+        var PreviewIndexFilter = -1;
+
+        $('.filter').on('click', function () {
+            ChangeStyle(this);
+
+        });
+
+        //Imposta il margine sotto bianco in modo da far capire che è stato cliccato in maniera grafica
+        function ChangeStyle(Selector) {
+            var FilterValue = Selector.getAttribute('Value');
+            Selector.style = "border-bottom: 2px solid #fff;";
+
+
+            if (PreviewIndexFilter != undefined && FilterValue != PreviewIndexFilter) {
+                var Sibling = document.getElementById('Filter_' + PreviewIndexFilter);
+                Sibling.style = " border-bottom:  2px solid rgb(159,73,110);";
+                PreviewIndexFilter = FilterValue;
+            }
+
+        }
+
+        //Chimata Ajax al controller per poter mostrare le informazioni filtrate
+        function LoadData() {
 
 
 
-    };
+        };
 
 
-</script>
+    </script>

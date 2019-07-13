@@ -256,6 +256,8 @@
     <Content Include="Views\CustomerAndListino\PartialIndex.cshtml" />
     <Content Include="Views\CustomerAndListino\PartialInformationContainer.cshtml" />
     <Content Include="Views\Shared\DynamicModalAsyncData.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

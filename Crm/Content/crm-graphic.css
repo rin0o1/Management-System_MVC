@@ -1,4 +1,8 @@
 ﻿
+#Form_ {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
 .WidthUsed
 {
@@ -48,13 +52,11 @@
 
 }
 
-
-
 .partialindexzone {
     text-align: left;
     width: 100%;
     /*height: -webkit-fill-available;*/
-    margin-top: 40px;
+    margin-top: 20px;
     /*overflow-x: hidden;*/ 
 }
 
@@ -64,7 +66,7 @@
     
     border-collapse: collapse;
     border-spacing: 0;
-    table-layout: fixed;
+    /*table-layout: fixed;*/
     padding-left: 10px;
     position:static;
 }

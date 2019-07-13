@@ -23,6 +23,7 @@ function DataForSelection(btn, Title, ControllerName_) {
         '                <div class="modal-header">' + Title
         +
         '                </div>' +
+        '                <input id="InputFilter" style="width:100%" placeholder="Ricerca..." type="text"  />' +
         '                <div  id="DataContainer" class="modal-body">' +
         '                   ' +
         '                </div>' +
@@ -34,27 +35,45 @@ function DataForSelection(btn, Title, ControllerName_) {
 
     
 
-    $.ajax({
 
-        type: "GET",
-        url: Url,
-        dataType: "Json",
-        async: false,
-        success: function (data) {
-            $('.render-body-zone').append(Template).fadeIn(1000);
-            Dialog = $('#Dialog_');        
-            CreateDialog(data);
-            
-        },
-        error: function () {
-            return;
-        }
+    function LoadData(filter) {
 
+        $.ajax({
+
+            type: "GET",
+            url: Url,
+            dataType: "Json",
+            async: false,
+            data: {filter:filter},
+            success: function (data) {
+                if (filter===null)
+                    $('.render-body-zone').append(Template).fadeIn(1000);
+
+                Dialog = $('#Dialog_');
+                CreateDialog(data);
+
+            },
+            error: function () {
+                return;
+            }
+
+        });
+    }
+
+
+    LoadData(null);
+
+    //Quando cambia il valore del filtro ricarico i dati
+    $("#InputFilter").on("input", function (e) {
+        LoadData(this.value);
     });
+
+
 
     function CreateDialog(ObjectsLoaded) {
         
-
+        //Pulisco per evitare di duplicare
+        $(Dialog).find('#DataContainer').empty();
         for (var i = 0; i < ObjectsLoaded.length; i++) {
             var Element = ObjectsLoaded[i];
             var DataToShow = Element.datatoshow;
@@ -86,10 +105,11 @@ function DataForSelection(btn, Title, ControllerName_) {
         var ValueId = this.getAttribute('Id');
         var Optional = this.getAttribute('Optional');
 
-        //trovare errore 
+      
         $(btn).siblings('.Label')[0].textContent = Text;
         btn.parentElement.firstElementChild.value = ValueId;
-       
+
+        //se da errore vuol dire che il campo attributes è vuoto
             try {
                 btn.parentElement.firstElementChild.attributes[2].value= Optional;
             } catch (e) {
@@ -106,5 +126,35 @@ function DataForSelection(btn, Title, ControllerName_) {
         Dialog.fadeOut(500);
         Dialog.remove();
     }
+
+}
+
+
+
+function ReloadData(Input) {
+    
+    ShowSpin();
+
+    var Url = "/" + GetControllerName() + "/GetDataAsync";
+    $('#InformationContainer').empty();
+
+    $.ajax({
+
+        type: "POST",
+        url: Url,
+        dataType: "Json",
+        data: {filter: Input.value},
+        async: false,
+        success: function (data) {
+            
+            $("#InformationContainer").append(data.HTMLString);
+            RemoveSpinn();
+        },
+        error: function () {
+            return;
+        }
+
+    });
+    
 
 }

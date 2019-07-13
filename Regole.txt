@@ -1,0 +1,52 @@
+
+============
+CONTROLLER:
+=============
+
+-NOMI METODI FISSI:
+	LoadData(string filter)
+	Details() [post/get]
+	Create() [post/get]
+	RemoveElementWithId()
+	GetDataToAsyncForDialog(string filter)
+Ovviamente metodi da richiamare solo se verranno poi utilizzati
+
+-INDEX
+	-Settati i parametri richimare il metodo SetParameters() per poter 
+		inviare i paramentri alla view corrispondente
+
+-METODO  GetDataToAsyncForDialog 
+	-Si ritorna un Json di 3 campi:
+		1-I dati da mostrare 
+		2-L'id del singolo elemento
+		3- Campo opzionale, potrebbe essere utile inserire un campo utile 
+			da reperire facilmente, se non si necessita di esso settarlo a -1
+
+
+
+
+
+============
+CUSTOMASYNCMODAL (Script): Usato per mostrare un modal con le informazioni async
+							Richiama il metodo del controller GetDataToAsyncForDialog
+=============
+
+-PARAMETRI :
+	-btn: Bottone schiacciato per chimare la function
+	-Title: titolo da inserire al modal
+	-ControllerName_: Nome del controller, settarlo a "ii" se devo prendere 
+					  il controller del momento altrimenti prenderà il controller
+					inserito.
+
+-FUNZIONAMENTO:
+	L'id dell'elemento selezionato dal modal sempre come primo figlio del parent del btn
+		 btn.parentElement.firstElementChild.value = ValueId;
+	Usare la classe Label per poter settare i dati da mostrare
+
+
+
+
+============
+FILTERFORDATA:
+=============
+Se un valore è settato a -1 quello sarà il primo filtro da mostrare

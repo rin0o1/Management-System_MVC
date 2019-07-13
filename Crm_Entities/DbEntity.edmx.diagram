@@ -4,9 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d97b7dec00f243459fc3f521cb68796c" Name="Diagram1">
-        <EntityTypeShape EntityType="MyDataModel.tPreventive" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MyDataModel.tOrder" Width="1.5" PointX="3" PointY="0.75" />
+      <Diagram DiagramId="d97b7dec00f243459fc3f521cb68796c" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="MyDataModel.tCliente" Width="1.5" PointX="2" PointY="0.5" />
+        <EntityTypeShape EntityType="MyDataModel.tPreventiveDetails" Width="5.5" PointX="5.5" PointY="1.375" />
+        <AssociationConnector Association="MyDataModel.FK__tPreventi__IdCli__1273C1CD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

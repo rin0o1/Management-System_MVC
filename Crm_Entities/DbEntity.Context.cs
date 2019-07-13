@@ -15,7 +15,6 @@ namespace Crm_Entities
     
     public partial class MyDataEntities : DbContext
     {
-        
         public MyDataEntities()
             : base("name=MyDataEntities")
         {
@@ -26,6 +25,7 @@ namespace Crm_Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<tPreventive> tPreventive { get; set; }
+        public virtual DbSet<tCliente> tCliente { get; set; }
+        public virtual DbSet<tPreventiveDetails> tPreventiveDetails { get; set; }
     }
 }

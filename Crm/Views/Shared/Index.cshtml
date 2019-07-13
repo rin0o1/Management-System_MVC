@@ -26,13 +26,11 @@
     </div>
 
 
-    @if (_pageParameters.FilterForData != null)
-    {
-        <div class=" filterzone  no-padding">
+        
             
-            @Html.Partial("PartialIndexFilter", (PageParameters)_pageParameters)
-        </div>
-    }
+        @Html.Partial("PartialIndexFilter", (PageParameters)_pageParameters)
+        
+    
 
 </div>
 

@@ -21,7 +21,7 @@ using Crm_Entities;
 
 namespace Crm.Controllers
 {
-    public class DefaultController : Controller
+    public  class DefaultController : Controller
     {
         public string Title;
         public PageParameters _pageParameters;
@@ -38,6 +38,22 @@ namespace Crm.Controllers
             ViewBag.pageParameters = _pageParameters;
             ViewBag.pageTitle = Title;
             ViewBag.filterForDataVisualization = FilterForDataVisualization;
+        }
+
+        protected string renderPartialViewtostring(string Viewname, object model)
+        {
+            if (string.IsNullOrEmpty(Viewname))
+
+                Viewname = ControllerContext.RouteData.GetRequiredString("action");
+            ViewData.Model = model;
+            using (StringWriter sw = new StringWriter())
+            {
+                ViewEngineResult viewresult = ViewEngines.Engines.FindPartialView(ControllerContext, Viewname);
+                ViewContext viewcontext = new ViewContext(ControllerContext, viewresult.View, ViewData, TempData, sw);
+                viewresult.View.Render(viewcontext, sw);
+                return sw.GetStringBuilder().ToString();
+            }
+
         }
 
     }

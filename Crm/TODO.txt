@@ -3,16 +3,13 @@
 ==============================================================================================================================================================================================================================																		
 TODO E MODIFICHE
 
-
-
--Creazioni dei metodi per il salvataggio, la modifica e l'aggiunta di un nuovo elemento nel DB---> CLASSE INTERESSATA "Repository"
-			( Cercare di rendere Entity Framework dinamico)
-
 -Gestione dei filtri, aggiunta del filtro globale
 
--CREDO SIA MEGLIO NON Rimuovere DIRETTAMENTE IL PREVENTIVO APPENA PREMUTO LA X, MA AL SALVATAGGIO 
+-CREDO SIA MEGLIO NON Rimuovere DIRETTAMENTE UN ELEMENTO APPENA PREMUTO LA X, MA AL SALVATAGGIO 
 	AGGIUNGENDO UN CAMPO TODELETE NELL'HTML DA GESTIRE POI NEL CONTROLLER
 
+-Se i PageParameters sono sempre gli stessi per (Index, Create, Details) aggiungere un costruttore con parametro in modo
+	da non settare ogni volta i paramentri a mano
 
 -TROVARE UN MODO PER GESTIRE LA MULTISELEZIONE   
 
@@ -25,11 +22,11 @@ TODO E MODIFICHE (ordinate per importanza)
 - Gestire invio dati per email con un altro smtp 
 
 ==============================================================================================================================================================================================================================																
-																		CLIENTI  (Potrebbe essere una pagina utile ma non รจ stata richiesta
+																		CLIENTI 
 ==============================================================================================================================================================================================================================											
 TODO E MODIFICHE (ordinate per importanza)
 
--Inserire anche il dettaglio se potrebbe servire
+-Manca il create
 
 
 ==============================================================================================================================================================================================================================																
@@ -38,12 +35,21 @@ TODO E MODIFICHE (ordinate per importanza)
 TODO E MODIFICHE (ordinate per importanza)
 
 -Gestione della duplicazione di un PREVENTIVE e della generazione di un preventivo
-		
+
+-Sarebbe utile mostrare il dettaglio in un dialog quando ci si ferma con il mouse 		
 							
 ==============================================================================================================================================================================================================================													
 																				COMMIT
 ==============================================================================================================================================================================================================================
 Commit
+-Filter for partial and for modal
+
+
+==============================================================================================================================================================================================================================													
+																				ISSUE
+==============================================================================================================================================================================================================================
+-Date in a form is showing in a text form, it will be show it using the input type "date"
+
 
 ==============================================================================================================================================================================================================================													
 																							APPUNTI	

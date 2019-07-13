@@ -1,0 +1,28 @@
+﻿
+@using Crm_DataUtilities.ViewModel;
+@using Crm_Global;
+
+@model PreventiveDetailsViewModel
+@{
+    PageParameters _pageParameters = ViewBag.pageParameters;
+    var controllerName = _pageParameters.ControllerName;
+    var actionName = "Create";
+}
+
+
+<div class="crm-detailspage ">
+    <input type="hidden" id="_ControllerName" name="ControllerName" value="@controllerName">
+
+    <div class="index-header">
+        <span class="index-title no-padding  "> @_pageParameters.PageTitle </span>
+    </div>
+
+     @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
+     {
+        @Html.AntiForgeryToken()
+
+       
+     }
+
+</div>
+
