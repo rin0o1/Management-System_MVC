@@ -27,13 +27,13 @@ namespace Crm.Controllers
         private CustomerRepository _CustomerRepository;
         private MyDataEntities dbEntity;
 
-        //protected override void Initialize(RequestContext requestContext)
-        //{
-        //    //base.Initialize(requestContext);
-        //    //dbEntity = new MyDataEntities();
-        //    //dbEntity.Database.Connection.Open();
-        //    //_CustomerRepository = new CustomerRepository(dbEntity);
-        //}
+        protected override void Initialize(RequestContext requestContext)
+        {
+            base.Initialize(requestContext);
+            dbEntity = new MyDataEntities();
+            dbEntity.Database.Connection.Open();
+            _CustomerRepository = new CustomerRepository(dbEntity);
+        }
 
         // GET: Customer
         public ActionResult Index()
@@ -64,17 +64,17 @@ namespace Crm.Controllers
             List<CustomerViewModel> list = new List<CustomerViewModel>();
 	
 		
-	if (!String.IsNullOrEmpty(filter)  
-	{
+	        if (!String.IsNullOrEmpty(filter) ) 
+	        {
 		
-		AllCustomer= AllCustomer.Where(x=> x.Nome.ToUpper().StartWith(Filter.ToUpper()));
-	}
+		        AllCustomer= AllCustomer.Where(x=> x.RagioneSociale.ToUpper().StartsWith(filter.ToUpper()));
+	        }
 
-		foreach(tCustomer x in AllCustomer.ToList())
-		{	
-			CustomerViewModel c= new CustomerViewModel(x);
-			list.Add(c);
-		}		
+		    foreach(var x in AllCustomer.ToList())
+		    {	
+			    CustomerViewModel c= new CustomerViewModel(x);
+			    list.Add(c);
+		    }		
 
 
             return list;
@@ -109,7 +109,6 @@ namespace Crm.Controllers
         public ActionResult Details(CustomerDetailsViewModel model)
         {
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
 
             return RedirectToAction("Index");
 

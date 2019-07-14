@@ -74,19 +74,19 @@
           <Property Name="Importo" Type="float" />
           <Property Name="Pagamento" Type="varchar" MaxLength="30" />
           <Property Name="Consegna" Type="varchar" MaxLength="30" />
-          <Property Name="NotaApertura" Type="text" />
-          <Property Name="NotaChiusura" Type="text" />
+          <Property Name="NotaApertura" Type="varchar" MaxLength="30" />
+          <Property Name="NotaChiusura" Type="varchar" MaxLength="30" />
           <Property Name="Sconto" Type="float" />
           <Property Name="Progetto" Type="varchar" MaxLength="30" />
           <Property Name="DataInizioLavoro" Type="date" />
           <Property Name="NoteAndamaneto" Type="varchar" MaxLength="100" />
-          <Property Name="NumeroCommisione" Type="int" />
           <Property Name="Cartella" Type="varchar" MaxLength="30" />
+          <Property Name="NumeroCommisione" Type="int" />
           <Property Name="Referenza" Type="varchar" MaxLength="30" />
           <Property Name="Listino" Type="float" />
           <Property Name="s_GUID" Type="varchar" MaxLength="10" />
         </EntityType>
-        <Association Name="FK__tPreventi__IdCli__1273C1CD">
+        <Association Name="FK__tPreventi__IdCli__29572725">
           <End Role="tCliente" Type="Self.tCliente" Multiplicity="0..1" />
           <End Role="tPreventiveDetails" Type="Self.tPreventiveDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -101,7 +101,7 @@
         <EntityContainer Name="MyDataModelStoreContainer">
           <EntitySet Name="tCliente" EntityType="Self.tCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tPreventiveDetails" EntityType="Self.tPreventiveDetails" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tPreventi__IdCli__1273C1CD" Association="Self.FK__tPreventi__IdCli__1273C1CD">
+          <AssociationSet Name="FK__tPreventi__IdCli__29572725" Association="Self.FK__tPreventi__IdCli__29572725">
             <End Role="tCliente" EntitySet="tCliente" />
             <End Role="tPreventiveDetails" EntitySet="tPreventiveDetails" />
           </AssociationSet>
@@ -112,10 +112,10 @@
       <Schema Namespace="MyDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MyDataEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tCliente" EntityType="MyDataModel.tCliente" />
-          <EntitySet Name="tPreventiveDetailsSet" EntityType="MyDataModel.tPreventiveDetails" />
-          <AssociationSet Name="FK__tPreventi__IdCli__1273C1CD" Association="MyDataModel.FK__tPreventi__IdCli__1273C1CD">
+          <EntitySet Name="tPreventiveDetails" EntityType="MyDataModel.tPreventiveDetails" />
+          <AssociationSet Name="FK__tPreventi__IdCli__29572725" Association="MyDataModel.FK__tPreventi__IdCli__29572725">
             <End Role="tCliente" EntitySet="tCliente" />
-            <End Role="tPreventiveDetails1" EntitySet="tPreventiveDetailsSet" />
+            <End Role="tPreventiveDetails" EntitySet="tPreventiveDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tCliente">
@@ -164,7 +164,7 @@
           <Property Name="Data_" Type="DateTime" Precision="0" />
           <Property Name="FatturatoGlobale" Type="Double" />
           <Property Name="s_GUID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tPreventiveDetails1" Relationship="MyDataModel.FK__tPreventi__IdCli__1273C1CD" FromRole="tCliente" ToRole="tPreventiveDetails1" />
+          <NavigationProperty Name="tPreventiveDetails" Relationship="MyDataModel.FK__tPreventi__IdCli__29572725" FromRole="tCliente" ToRole="tPreventiveDetails" />
         </EntityType>
         <EntityType Name="tPreventiveDetails">
           <Key>
@@ -188,27 +188,27 @@
           <Property Name="Importo" Type="Double" />
           <Property Name="Pagamento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Consegna" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="NotaApertura" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NotaChiusura" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NotaApertura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NotaChiusura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Sconto" Type="Double" />
           <Property Name="Progetto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DataInizioLavoro" Type="DateTime" Precision="0" />
           <Property Name="NoteAndamaneto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="NumeroCommisione" Type="Int32" />
           <Property Name="Cartella" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCommisione" Type="Int32" />
           <Property Name="Referenza" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Listino" Type="Double" />
           <Property Name="s_GUID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tCliente" Relationship="MyDataModel.FK__tPreventi__IdCli__1273C1CD" FromRole="tPreventiveDetails1" ToRole="tCliente" />
+          <NavigationProperty Name="tCliente" Relationship="MyDataModel.FK__tPreventi__IdCli__29572725" FromRole="tPreventiveDetails" ToRole="tCliente" />
         </EntityType>
-        <Association Name="FK__tPreventi__IdCli__1273C1CD">
+        <Association Name="FK__tPreventi__IdCli__29572725">
           <End Type="MyDataModel.tCliente" Role="tCliente" Multiplicity="0..1" />
-          <End Type="MyDataModel.tPreventiveDetails" Role="tPreventiveDetails1" Multiplicity="*" />
+          <End Type="MyDataModel.tPreventiveDetails" Role="tPreventiveDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tCliente">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="tPreventiveDetails1">
+            <Dependent Role="tPreventiveDetails">
               <PropertyRef Name="IdCliente" />
             </Dependent>
           </ReferentialConstraint>
@@ -267,14 +267,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tPreventiveDetailsSet">
+          <EntitySetMapping Name="tPreventiveDetails">
             <EntityTypeMapping TypeName="MyDataModel.tPreventiveDetails">
               <MappingFragment StoreEntitySet="tPreventiveDetails">
                 <ScalarProperty Name="s_GUID" ColumnName="s_GUID" />
                 <ScalarProperty Name="Listino" ColumnName="Listino" />
                 <ScalarProperty Name="Referenza" ColumnName="Referenza" />
-                <ScalarProperty Name="Cartella" ColumnName="Cartella" />
                 <ScalarProperty Name="NumeroCommisione" ColumnName="NumeroCommisione" />
+                <ScalarProperty Name="Cartella" ColumnName="Cartella" />
                 <ScalarProperty Name="NoteAndamaneto" ColumnName="NoteAndamaneto" />
                 <ScalarProperty Name="DataInizioLavoro" ColumnName="DataInizioLavoro" />
                 <ScalarProperty Name="Progetto" ColumnName="Progetto" />
