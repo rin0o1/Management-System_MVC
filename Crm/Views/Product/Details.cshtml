@@ -1,0 +1,108 @@
+﻿ 
+
+@using Crm_DataUtilities.ViewModel;
+@using Crm_Global;
+
+@model ProductDetailsViewModel
+@{
+    PageParameters _pageParameters = ViewBag.pageParameters;
+    var controllerName = _pageParameters.ControllerName;
+    var actionName = "Details";
+}
+
+    <div class="crm-detailspage ">
+
+        <input type="hidden" id="_ControllerName" name="ControllerName" value="@controllerName">
+
+        <div class="index-header">
+            <span class="index-title no-padding  "> @_pageParameters.PageTitle </span>
+        </div>
+
+        <input type="hidden" id="IdOfThisElement" value="@Model.IdProdotto">
+
+        @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="IdProdotto" value="@Model.IdProdotto">
+
+            
+     
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <label> NOME PRODOTTO </label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label> CATEGORIA  </label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div>
+
+                        <input type="text" class="col-md-6" name="NomeProdotto" value="@Model.NomeProdotto" />
+                        <input type="text" class="col-md-6" name="Categoria" value="@Model.Categoria" />
+                    </div>
+                </div>
+            
+            
+
+            <br />
+            
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <label> Descrizione</label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div>
+                        <input type="text" class="col-md-12" name="Descrizione" value="@Model.Descrizione" />
+                    </div>
+
+                </div>
+            
+
+            <br />
+            
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <label> Prezzo Per Unita </label>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label> Unita di misura </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input class="col-md-8" type="number" name="PrezzoPerUnita" value="@Model.PrezzoPerUnita" min="0.0"/>
+                    <input class="col-md-4" type="text" name="UM" value="@Model.UM"/>
+                </div>
+            
+            <br />
+            
+
+                <div class="row">
+
+                    <div>
+                        <label class="col-md-12"> Nome Fornitore </label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <input type="text" class="col-md-12" name="NomeFornitore" value="@Model.NomeFornitore"/>
+                </div>
+
+            
+
+        }
+
+    </div>

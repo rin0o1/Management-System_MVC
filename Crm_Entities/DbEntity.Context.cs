@@ -27,5 +27,7 @@ namespace Crm_Entities
     
         public virtual DbSet<tCliente> tCliente { get; set; }
         public virtual DbSet<tPreventiveDetails> tPreventiveDetails { get; set; }
+        public virtual DbSet<tDitte> tDitte { get; set; }
+        public virtual DbSet<tProdoct> tProdoct { get; set; }
     }
 }

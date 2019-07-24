@@ -17,6 +17,9 @@ namespace Crm.Controllers
             PageParameters _pageParameters = new PageParameters();
             _pageParameters.PageTitle = this.Title;
             _pageParameters.HasMenu = false;
+            _pageParameters.HasGeneralFilter = false;
+            _pageParameters.HasDeleteButton = false;
+            _pageParameters.HasExportButton = false;
 
             ViewBag.pageParameters = _pageParameters;
             ViewBag.pageTitle = Title;

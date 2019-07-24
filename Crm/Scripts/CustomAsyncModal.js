@@ -5,12 +5,14 @@
  */
 function DataForSelection(btn, Title, ControllerName_) {
 
+    //ShowSpin();
 
     setTimeout(function () {
-        $(btn).toggleClass("hide", true);
-        $(btn).siblings('span').toggleClass("hide", false);
-    }, 0);
-    
+        //$(btn).toggleClass("hide", true);
+        //$(btn).siblings('span').toggleClass("hide", false);
+        ShowSpin();
+    }, 10);
+
 
     //ii significa che devo prendere il controller del momento, altrimenti quello settato
     var ControllerName = (ControllerName_==="ii") ? GetControllerName() : ControllerName_;
@@ -32,7 +34,6 @@ function DataForSelection(btn, Title, ControllerName_) {
         '                </div>' +
         '            </div>' +
         '        </div>';
-
     
 
 
@@ -51,7 +52,6 @@ function DataForSelection(btn, Title, ControllerName_) {
 
                 Dialog = $('#Dialog_');
                 CreateDialog(data);
-
             },
             error: function () {
                 return;
@@ -75,23 +75,41 @@ function DataForSelection(btn, Title, ControllerName_) {
         //Pulisco per evitare di duplicare
         $(Dialog).find('#DataContainer').empty();
         for (var i = 0; i < ObjectsLoaded.length; i++) {
+
             var Element = ObjectsLoaded[i];
-            var DataToShow = Element.datatoshow;
+            //var DataToShowArray = [];
+            //  DataToShowArray  = Element.datatoshow;
             var ValuedId = Element.valueId;
             var Optional = Element.optional;
+            var DataToShow = Element.datatoshow;
+            var DivToAdd = null;
 
-            var DivToAdd=null;
-            if (Option!==-1)
-                 DivToAdd = '  <div class="col-sm-12 modal-element" Optional="'+ Optional + '" Id="' + ValuedId + '" >' +
+            //if (DataToShowArray.length > 1) {
+            //    for (var x = 0; x < DataToShowArray.length; x++) {
+            //        DataToShow += DataToShowArray[x] + '\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0';
+            //    }
+            //}
+
+            //else {
+            //    DataToShow = DataToShowArray[0];
+            //}
+            
+
+            if (Option !== -1)
+                DivToAdd = '  <div class="col-sm-12 modal-element" Optional="' + Optional + '" Id="' + ValuedId + '" >' +
                     DataToShow +
                     '  </div>';
-            else DivToAdd = '  <div class="col-sm-12 modal-element" Id="' + ValuedId + '" >' +
-                DataToShow +
-                '  </div>';
 
+            else {
+
+           
+                DivToAdd = '  <div class="col-sm-12 modal-element" Id="' + ValuedId + '" >' +
+                DataToShow +
+                    '  </div>';
+
+            }
 
             Dialog.find('#DataContainer').append(DivToAdd);
-            console.log("aggiunto elemento");
         }
     }
 
@@ -101,12 +119,14 @@ function DataForSelection(btn, Title, ControllerName_) {
     });
 
     $(".modal-element").click(function () {
+
         var Text = this.outerText;
         var ValueId = this.getAttribute('Id');
         var Optional = this.getAttribute('Optional');
 
-      
+        
         $(btn).siblings('.Label')[0].textContent = Text;
+
         btn.parentElement.firstElementChild.value = ValueId;
 
         //se da errore vuol dire che il campo attributes è vuoto
@@ -116,20 +136,21 @@ function DataForSelection(btn, Title, ControllerName_) {
                 //Console.log("nessun campo opzionale");
             }
             
-
         RemoveDialog();
     });
 
     function RemoveDialog() {
-        $(btn).toggleClass("hide", false);
-        $(btn).siblings('span').toggleClass("hide", true);
-        Dialog.fadeOut(500);
+        //$(btn).toggleClass("hide", false);
+        //$(btn).siblings('span').toggleClass("hide", true);
+
+        //Dialog.fadeOut(500);
         Dialog.remove();
+
+        RemoveSpinn();
+        
     }
 
 }
-
-
 
 function ReloadData(Input) {
     

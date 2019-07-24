@@ -21,6 +21,7 @@ namespace Crm_DataUtilities.ViewModel
             ContattoDiRiferimento = c.Conttato1;
             Classe = c.Classe;
             CittaDitta = c.Citta;
+            CodiceUniclima = c.CodiceUniclima;
         }
             
         public CustomerViewModel(int n)
@@ -50,6 +51,9 @@ namespace Crm_DataUtilities.ViewModel
         [Display(Name ="Classe")]
         public int? Classe { get; set; }
 
+        [Display(Name ="Codice Uniclima")]
+        public string CodiceUniclima { get; set; }
+
         public int IdDitta { get; set; }
 
         [Display (Name ="Ditta")]
@@ -70,7 +74,7 @@ namespace Crm_DataUtilities.ViewModel
             this.CodiceUniclima = "nessuno";
             this.Categoria = "nessuno";
             this.Classe = 6;
-            this.Idirizzo = "nessuno";
+            this.Indirizzo = "nessuno";
             this.CAP = 5;
             this.Citta = "nessuno";
             this.Provincia = "nessuno";
@@ -103,11 +107,12 @@ namespace Crm_DataUtilities.ViewModel
         public CustomerDetailsViewModel(tCliente c)
         {
             this.Id = c.Id;
+            this.Data = c.Data_;
             this.RagioneSociale = c.RagioneSociale;
             this.CodiceUniclima = c.CodiceUniclima;
             this.Categoria = c.Categoria;
             this.Classe = c.Classe;
-            this.Idirizzo = c.Indirizzo;
+            this.Indirizzo = c.Indirizzo;
             this.CAP = c.CAP ?? 0 ;
             this.Citta = c.Citta;
             this.Provincia = c.Provincia;
@@ -135,6 +140,7 @@ namespace Crm_DataUtilities.ViewModel
             this.IndirizzoInternet = c.SitoInternet;
             this.ConsensoDati = c.ConsensoDati;
             this.FatturatoGloable = c.FatturatoGlobale ?? 0;
+            this.Note1 = c.Note1;
         }
 
         public int Id { get; set; }
@@ -142,7 +148,7 @@ namespace Crm_DataUtilities.ViewModel
         public string CodiceUniclima { get; set; }
         public string Categoria { get; set; }
         public int? Classe { get; set; }
-        public string Idirizzo { get; set; }
+        public string Indirizzo { get; set; }
         public int CAP { get; set; }
         public string Citta { get; set; }
         public string Provincia { get; set; }
@@ -170,8 +176,10 @@ namespace Crm_DataUtilities.ViewModel
         public string IndirizzoInternet { get; set; }
         public string ConsensoDati { get; set; }
         public double FatturatoGloable { get; set; }
+        public DateTime? Data { get; set; }
         //Create la tabella ordini, attraverso la join
         public string NomeDitta { get; set; }
+        public string Note1 { get; set; }
 
     }
 }

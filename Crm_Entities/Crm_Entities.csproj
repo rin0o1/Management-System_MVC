@@ -70,7 +70,13 @@
     <Compile Include="tCliente.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="tDitte.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="tPreventiveDetails.cs">
+      <DependentUpon>DbEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tProdoct.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
   </ItemGroup>

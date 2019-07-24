@@ -4,7 +4,7 @@
 @model List<CustomerViewModel>
 
 
-<table id="index-table" class=" table-for-information SmallText">
+<table id="index-table" class=" table-for-information  col-md-12">
 
     <thead>
         <tr class="table-for-information-partial-index">
@@ -12,9 +12,8 @@
             <th>@Html.DisplayNameFor(x => Model[0].Email)</th>
             <th>@Html.DisplayNameFor(x => Model[0].ContattoDiRiferimento)</th>
             <th>@Html.DisplayNameFor(x => Model[0].Classe)</th>
-            @*<TH>@HTML.DISPLAYNAMEFOR(X => MODEL[0].DITTA)</TH>
-            <TH>@HTML.DISPLAYNAMEFOR(X => MODEL[0].CITTADITTA)</TH>*@
-            <th></th>
+            <th>@Html.DisplayNameFor(x => Model[0].CittaDitta)</th>
+
             <th class="cell-selection-item"></th>
         </tr>
     </thead>

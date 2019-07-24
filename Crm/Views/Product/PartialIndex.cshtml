@@ -1,0 +1,23 @@
+﻿
+@using Crm_DataUtilities.Repository;
+@using Crm_DataUtilities.ViewModel;
+
+@model List<ProductViewModel>
+
+
+<table id="index-table" class=" table-for-information  col-md-12">
+
+    <thead>
+        <tr class="table-for-information-partial-index">
+            <th> @Html.DisplayNameFor(x => Model[0].NomeProdotto) </th>
+            <th> @Html.DisplayNameFor(x => Model[0].Categoria) </th>
+            <th> @Html.DisplayNameFor(x => Model[0].PrezzoPerUnita)  </th>
+            <th class="cell-selection-item"></th>
+        </tr>
+    </thead>
+
+    <tbody id="InformationContainer">
+        @{Html.RenderPartial("PartialInformationContainer", Model);}
+    </tbody>
+
+</table>

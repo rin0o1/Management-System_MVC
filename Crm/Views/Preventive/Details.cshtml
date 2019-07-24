@@ -24,7 +24,7 @@
             <input type="hidden" name="IdPreventivo"  value="@Model.IdPreventivo">
 
             <div class="row ">
-                <div>
+                <div >
                     <div class="col-md-3">
                         <label> Numero Preventivo </label>
                     </div>
@@ -218,13 +218,13 @@
 <script>
 
     
-        $("#StartPoint").on("input", function (e) {
-        CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
-        });
-        $(".Inp").on("input", function (e) {
-            var Closest = $(this).siblings('#StartPoint')[0];
-            CalculateDataUsingCustomInput($(Closest), CalculationType.PERCENTAGE);
-        });
+    $("#StartPoint").on("input", function (e) {
+    CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
+    });
+    $(".Inp").on("input", function (e) {
+        var Closest = $(this).siblings('#StartPoint')[0];
+        CalculateDataUsingCustomInput($(Closest), CalculationType.PERCENTAGE);
+    });
  
 
 

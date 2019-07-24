@@ -13,7 +13,6 @@ using System.Web.Routing;
 using System.Web.SessionState;
 
 
-
 using Crm_DataUtilities.Repository;
 using Crm_DataUtilities.ViewModel;
 using Crm_Global;
@@ -64,10 +63,9 @@ namespace Crm.Controllers
             List<CustomerViewModel> list = new List<CustomerViewModel>();
 	
 		
-	        if (!String.IsNullOrEmpty(filter) ) 
+	        if (!String.IsNullOrEmpty(filter)) 
 	        {
-		
-		        AllCustomer= AllCustomer.Where(x=> x.RagioneSociale.ToUpper().StartsWith(filter.ToUpper()));
+		        AllCustomer= AllCustomer.Where(x=> x.CodiceUniclima.ToUpper().StartsWith(filter.ToUpper()));
 	        }
 
 		    foreach(var x in AllCustomer.ToList())
@@ -80,10 +78,9 @@ namespace Crm.Controllers
             return list;
         }
 
-
+        //Details Get
         public ActionResult Details(int? Id)
         {
-
             if (Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -98,24 +95,67 @@ namespace Crm.Controllers
 
             ViewBag.pageParameters = _pageParameters;
 
-            //var Customer= _CustomerRepository.GetCustomerFromId(Id.Value) ;
+            var Customer= _CustomerRepository.GetCustomerFromId(Id.Value);
 
-            var model = new CustomerDetailsViewModel();
+            var model = new CustomerDetailsViewModel(Customer);
 
             return View(model);
         }
 
+        //Details Post
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Details(CustomerDetailsViewModel model)
         {
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+            tCliente client = new tCliente()
+            {
+                Id= model.Id,
+                RagioneSociale = model.RagioneSociale,
+                CodiceUniclima = model.CodiceUniclima,
+                Categoria = model.Categoria,
+                Classe = model.Classe,
+                Indirizzo = model.Indirizzo,
+                CAP = model.CAP,
+                Citta = model.Citta,
+                Provincia = model.Provincia,
+                P_Iva = model.P_Iva,
+                Banca = model.Banca,
+                CIN = model.CIN,
+                ABI = model.ABI,
+                CAB = model.CAB,
+                ContoCorrente = model.ContoCorrente,
+                IBAN = model.IBAN,
+                TelefonoUfficio = model.TelefonoUfficio,
+                Telefax = model.Telefax,
+                Conttato1 = model.Contatto1,
+                Cellulare1= model.Cellulare1,
+                Referente1 = model.Referente1,
+                Referente2 = model.Referente2,
+                Note1 = model.Note1,
+                Fornitori = model.Fornitori,
+                Titolari = model.Titolari,
+                Soci = model.Soci,
+                Segretari = model.Segretari,
+                Amministrativi = model.Amministrativi,
+                UfficioTecnico = model.UfficioTecnico,
+                IndirizzoEmail = model.Email,
+                SitoInternet = model.IndirizzoInternet,
+                ConsensoDati = model.ConsensoDati,
+                Data_ = model.Data,
+                FatturatoGlobale = model.FatturatoGloable,
+            };
+
+            _CustomerRepository.SaveCustomer(client, EnumUseful.typeOfDatabaseOperation.EDIT);
+
             return RedirectToAction("Index");
 
         }
-
+        
         public ActionResult Create()
         {
+
             PageParameters _pageParameters = new PageParameters()
             {
                 PageTitle = "Nuovo Cliente",
@@ -123,7 +163,8 @@ namespace Crm.Controllers
                 HasScrollButton = false,
                 HasAddElementButton = false,
                 HasEditButton = false,
-                HasDeleteButton = false
+                HasDeleteButton = false,
+                HasGeneralFilter=false
             };
 
 
@@ -132,19 +173,77 @@ namespace Crm.Controllers
             return View();
         }
 
-        //Create Post
         [HttpPost]
-        public ActionResult Create(PreventiveDetailsViewModel model)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(CustomerDetailsViewModel model)
         {
 
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            //Redirect alla Index 
-          
+            tCliente client = new tCliente()
+            {
+                 RagioneSociale = model.RagioneSociale, 
+                 CodiceUniclima = model.CodiceUniclima,
+                 Categoria = model.Categoria,
+                 Classe = model.Classe,
+                 Indirizzo = model.Indirizzo,
+                 CAP = model.CAP,
+                 Citta = model.Citta,
+                 Provincia = model.Provincia,
+                 P_Iva = model.P_Iva,
+                 Banca = model.Banca,
+                 CIN = model.CIN,
+                 ABI = model.ABI,
+                 CAB = model.CAB,
+                 ContoCorrente = model.ContoCorrente,
+                 IBAN = model.IBAN,
+                 TelefonoUfficio = model.TelefonoUfficio,
+                 Telefax = model.Telefax,
+                 Conttato1 = model.Contatto1,                
+                 Referente1 = model.Referente1,
+                 Referente2 = model.Referente2,
+                 Note1 = model.Note1,                 
+                 Fornitori = model.Fornitori,
+                 Titolari = model.Titolari,
+                 Soci = model.Soci,
+                 Segretari = model.Segretari,
+                 Amministrativi = model.Amministrativi,
+                 UfficioTecnico = model.UfficioTecnico,
+                 IndirizzoEmail = model.Email,
+                 SitoInternet = model.IndirizzoInternet,
+                 ConsensoDati = model.ConsensoDati,
+                 Data_ = model.Data,
+                 FatturatoGlobale = model.FatturatoGloable,
+            };
+
+            _CustomerRepository.SaveCustomer(client, EnumUseful.typeOfDatabaseOperation.CREATE);
 
             return RedirectToAction("Index");
         }
 
+
+
+        [HttpPost]
+        public ActionResult RemoveElementWithId(int? Id)
+        {
+            if (Id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            _CustomerRepository.RemoveCustomerWithId(Id ?? 0);
+
+            return Json(new { redirectTo = Url.Action("Index", ControllerName.CustomerController) });
+        }
+
+        [HttpPost]
+        public ActionResult GetDataAsync(string filter)
+        {
+
+            List<CustomerViewModel> data = LoadData(filter);
+
+            JsonModel Model = new JsonModel();
+            Model.HTMLString = renderPartialViewtostring("PartialInformationContainer", data);
+            
+            return Json(Model);
+        }
         public JsonResult GetDataToAsyncForDialog(string filter)
         {
             JsonResult JsonResult = new JsonResult()
@@ -167,7 +266,7 @@ namespace Crm.Controllers
                         string Optional = item.Email;
                         int Id = item.IdCliente;
 
-                        ((List<object>)JsonResult.Data).Add(new { @datatoshow = DataToShow, @valueId = Id, @optional = Optional });
+                        ((List<object>)JsonResult.Data).Add(new { @datatoshow = DataToShow , @valueId = Id, @optional = Optional });
                     
                 }
             }

@@ -4,7 +4,9 @@
     height: -webkit-fill-available;
     padding-left: 10px;
     padding-right: 10px;
-    z-index:1;
+    z-index: 1;
+    /*overflow-x: hidden;
+    width:100%;*/
 }
 
 
@@ -120,7 +122,7 @@
 }
 
 .modal-body {
-    height: 72%;
+    height: 65%;
     overflow-x: hidden;
     overflow-y: auto;
     width: 100%;

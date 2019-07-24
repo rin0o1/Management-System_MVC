@@ -6,39 +6,54 @@
 
 
 
-<div class="AddElement FirstColo"   title="AGGIUNGI ELEMENTO" >
+@*<div class="AddElement FirstColo"   title="AGGIUNGI ELEMENTO" >
     
-</div>
+</div>*@
 
 
 <div class="row SingleElement">
     <div class="row WithSpinner">
-        <div class="col-md-5 no-margin-right">
+        <div class="col-md-6 no-margin-right">
             <div class="col-md-12">
-                <div id="DatiCliente" class="col-md-8 MySelection Label no-margin-right" OptionalData="" >
+                <div id="DatiCliente" class="col-md-8 MySelection Label no-margin-right" OptionalData="">
                     CLIENTE
                 </div>
-                <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');" ">  SCEGLI </div>
+                <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');">  SCEGLI </div>
                 <span style=" margin-left: 20px;" class="col-md-4 pull-left SpinnerNoPosition hide"> </span>
             </div>
 
-            </div>
-
-        <div class="col-md-5 no-margin-right">
+        </div>
+        <div class="col-md-6">
             <div class="col-md-12">
-                <input id="DatiProdotto" class="col-md-12 MySelection Label" IdDelProdotto="IdDell'operatore" placeholder="PRODOTTO"/>
-            </div>
-
+                <div id="DatiProdotto" class="col-md-8 MySelection Label no-margin-right" OptionalData="">
+                    PRODOTTO
+                </div>
+                <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL PRODOTTO', '@ControllerName.Product');">  SCEGLI </div>
+             </div>   
         </div>
 
-        <input class="col-md-2 importo" type="number" min="0" placeholder="IMPORTO "/>
-        
+        @*<div class="col-md-7">
+            <div class="col-md-12 Parent">
+                <div class="col-md-9">
+
+
+                    @*<input id="DatiProdotto" class="col-md-12 MySelection Label" IdDelProdotto="IdDell'operatore" placeholder="PRODOTTO" />*@
+                @*</div>*@
+                @*<div class="col-md-3">
+                    <input class="Label importo" type="number" min="0" placeholder="IMPORTO " />
+                </div>*@
+            @*</div>*@
+
+        @*</div>**@
+
+        @*<input class="col-md-2 importo" type="number" min="0" placeholder="IMPORTO "/>*@
+
 
     </div>
 
     <div class="row SecondLine">
-        <textarea class="col-md-9 TextArea " type="text" placeholder="Testo" name="Note"></textarea>
-        <div class="col-md-3 no-margin">
+        <textarea class="col-md-10 TextArea " type="text" placeholder="Testo" name="Note"></textarea>
+        <div class="col-md-2 no-margin">
             <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="PULISCI I CAMPI">
             </div>
             <div id="Send" class="col-md-2  SendEmail Black MyB" onclick="Send_(this);" title="INVIA PER EMAIL">
@@ -209,12 +224,12 @@
             NomeCliente: $(Label)[0].outerText,
             EmailCustomer: $(Label).attr("optionaldata"),
             Prodotto: $(SingleElement).find('#DatiProdotto')[0].value,
-            Listino: $(SingleElement).find('.importo')[0].valueAsNumber,
+            //Listino: $(SingleElement).find('.importo')[0].valueAsNumber,
             TestoAggiuntivo:$(SingleElement).find('textarea')[0].value
         };
 
 
-        if (isNaN(Data.Listino) || IsNotStringAcceptable(Data.NomeCliente) || IsNotStringAcceptable(Data.Prodotto) || IsNotStringAcceptable(Data.EmailCustomer) ) {
+        if (/*isNaN(Data.Listino) ||*/  IsNotStringAcceptable(Data.NomeCliente) || IsNotStringAcceptable(Data.Prodotto) || IsNotStringAcceptable(Data.EmailCustomer) ) {
             toastr.warning("Controllare i campi inseriti", "ERRORE");
             setTimeout(function () {
                 RemoveSpinn();

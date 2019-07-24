@@ -1,0 +1,33 @@
+﻿@using Crm_DataUtilities.Repository;
+@using Crm_DataUtilities.ViewModel;
+@using Crm_Global;
+
+@model List<ProductViewModel>
+
+
+@foreach (var item in Model)
+{
+    <tr id="@item.IdProdotto">
+        <td>
+            <div>@item.NomeProdotto</div>
+        </td>
+        <td>
+            <div>@item.Categoria</div>
+        </td>
+        <td>
+            <div>@Html.DisplayFor(model => item.PrezzoPerUnita) @item.UM</div>
+        </td>
+
+        <td class="cell-selection-item BiancoOpaco ">
+            <div style="display:inline-flex">
+                @Html.ActionLink(" ", "Details",
+                        ControllerName.Product,
+                        new { id = item.IdProdotto },
+                        new { @class = "detailsicon", @title = "Dettaglio" })
+
+                @*<div class="detailsicon" title="Dettaglio"></div>*@
+                <div class="removeicon" title="Rimuovi"></div>
+            </div>
+        </td>
+    </tr>
+}

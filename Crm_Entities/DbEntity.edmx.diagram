@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="MyDataModel.tCliente" Width="1.5" PointX="4.375" PointY="0.5" />
         <EntityTypeShape EntityType="MyDataModel.tPreventiveDetails" Width="3.5" PointX="6.625" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="MyDataModel.FK__tPreventi__IdCli__29572725" />
+        <EntityTypeShape EntityType="MyDataModel.tDitte" Width="1.5" PointX="6.375" PointY="10" />
+        <EntityTypeShape EntityType="MyDataModel.tProdoct" Width="1.5" PointX="8.625" PointY="10.75" />
+        <AssociationConnector Association="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

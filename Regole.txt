@@ -9,6 +9,7 @@ CONTROLLER:
 	Create() [post/get]
 	RemoveElementWithId()
 	GetDataToAsyncForDialog(string filter)
+	GetDataAsync(string filter)
 Ovviamente metodi da richiamare solo se verranno poi utilizzati
 
 -INDEX
