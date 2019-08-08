@@ -12,6 +12,8 @@ namespace Crm_DataUtilities.ViewModel
 
     public class ProductViewModel
     {
+
+        public ProductViewModel() { }
         public ProductViewModel(tProdoct p)
         {
             this.IdProdotto = p.IdProdotto;
@@ -40,12 +42,14 @@ namespace Crm_DataUtilities.ViewModel
 
     public class ProductDetailsViewModel
     {
+        public ProductDetailsViewModel() { }
         public ProductDetailsViewModel (tProdoct p)
         {
             this.IdProdotto = p.IdProdotto;
             this.Categoria = p.Categoria;
-            //this.NomeFornitore = p.tDitte.NomeDitta;
-            this.NomeFornitore = "Fornitore";
+       
+            this.NomeFornitore = (p.tDitte != null) ? p.tDitte.NomeDitta : "-";
+            //this.NomeFornitore = "Fornitore";
             this.NomeProdotto = p.NomeProdotto;
             this.Descrizione = p.Descrizione;
             this.UM = p.UM;
@@ -61,6 +65,7 @@ namespace Crm_DataUtilities.ViewModel
         public double  PrezzoPerUnita { get; set; }
         public string NomeFornitore { get; set; }
 
+       
 
 
 

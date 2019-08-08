@@ -1,0 +1,97 @@
+﻿@using Crm_DataUtilities.ViewModel;
+@using Crm_Global;
+
+@model ProductDetailsViewModel
+@{
+    PageParameters _pageParameters = ViewBag.pageParameters;
+    var controllerName = _pageParameters.ControllerName;
+    var actionName = "Create";
+}
+
+    <div class="crm-detailspage ">
+        <input type="hidden" id="_ControllerName" name="ControllerName" value="@controllerName">
+
+        <div class="index-header">
+            <span class="index-title no-padding  "> @_pageParameters.PageTitle </span>
+        </div>
+
+        @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="IdProdotto" >
+
+
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label> NOME PRODOTTO </label>
+                </div>
+
+                <div class="col-md-6">
+                    <label> CATEGORIA  </label>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div>
+
+                    <input type="text" class="col-md-6" name="NomeProdotto"  />
+                    <input type="text" class="col-md-6" name="Categoria"  />
+                </div>
+            </div>
+
+
+
+            <br />
+
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <label> Descrizione</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div>
+                    <input type="text" class="col-md-12" name="Descrizione"  />
+                </div>
+
+            </div>
+
+
+            <br />
+
+            <div class="row">
+
+                <div class="col-md-8">
+                    <label> Prezzo Per Unita </label>
+                </div>
+
+                <div class="col-md-4">
+                    <label> Unita di misura </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <input class="col-md-8" type="number" name="PrezzoPerUnita"  min="0.0" />
+                <input class="col-md-4" type="text" name="UM"  />
+            </div>
+
+            <br />
+
+            <div class="row">
+                <input type="hidden" class="ElementId" id="IdDitta" value="">
+                <input id="DatiDitta" name="NomeFornitore" class="col-md-8 MySelection Label" OptionalData="" value="" />
+                <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA LA DITTA', '@ControllerName.Company');">  SCEGLI </div>
+
+            </div>
+
+
+
+        }
+
+    </div>

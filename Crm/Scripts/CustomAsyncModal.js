@@ -7,11 +7,11 @@ function DataForSelection(btn, Title, ControllerName_) {
 
     //ShowSpin();
 
-    setTimeout(function () {
-        //$(btn).toggleClass("hide", true);
-        //$(btn).siblings('span').toggleClass("hide", false);
-        ShowSpin();
-    }, 10);
+    //setTimeout(function () {
+    //    //$(btn).toggleClass("hide", true);
+    //    //$(btn).siblings('span').toggleClass("hide", false);
+    //    ShowSpin();
+    //}, 10);
 
 
     //ii significa che devo prendere il controller del momento, altrimenti quello settato
@@ -45,7 +45,8 @@ function DataForSelection(btn, Title, ControllerName_) {
             url: Url,
             dataType: "Json",
             async: false,
-            data: {filter:filter},
+            data: { filter: filter },
+            
             success: function (data) {
                 if (filter===null)
                     $('.render-body-zone').append(Template).fadeIn(1000);
@@ -125,13 +126,13 @@ function DataForSelection(btn, Title, ControllerName_) {
         var Optional = this.getAttribute('Optional');
 
         
-        $(btn).siblings('.Label')[0].textContent = Text;
-
-        btn.parentElement.firstElementChild.value = ValueId;
+        $(btn).siblings('.Label')[0].value = Text;
+        $(btn).siblings('.ElementId')[0].value = ValueId;
+        //$(btn).parentElement.firstElementChild.value = ValueId;
 
         //se da errore vuol dire che il campo attributes è vuoto
             try {
-                btn.parentElement.firstElementChild.attributes[2].value= Optional;
+                btn.parentElement.children[1].attributes[3].value = Optional;
             } catch (e) {
                 //Console.log("nessun campo opzionale");
             }
@@ -154,7 +155,7 @@ function DataForSelection(btn, Title, ControllerName_) {
 
 function ReloadData(Input) {
     
-    ShowSpin();
+    //ShowSpin();
 
     var Url = "/" + GetControllerName() + "/GetDataAsync";
     $('#InformationContainer').empty();
@@ -169,7 +170,7 @@ function ReloadData(Input) {
         success: function (data) {
             
             $("#InformationContainer").append(data.HTMLString);
-            RemoveSpinn();
+            //RemoveSpinn();
         },
         error: function () {
             return;

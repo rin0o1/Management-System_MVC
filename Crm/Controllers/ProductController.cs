@@ -26,12 +26,13 @@ namespace Crm.Controllers
 
         private MyDataEntities dbEntity;
         private ProductRepository _productRepository;
-
+        private CompanyRepository _companyRepository;
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);
             dbEntity = new MyDataEntities();
             _productRepository = new ProductRepository(dbEntity);
+            _companyRepository = new CompanyRepository(dbEntity);
             dbEntity.Database.Connection.Open();
             
         }
@@ -121,6 +122,140 @@ namespace Crm.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(ProductDetailsViewModel model)
+        {
+            if (model == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+            var AllCompany = _companyRepository.GetAllCompany().ToList();
+
+            int? IdDitta;
+            
+            try
+            {
+                 IdDitta= AllCompany.FirstOrDefault(
+                x => x.NomeDitta == model.NomeFornitore
+                ).IdDitta;
+            }
+            catch
+            {
+                IdDitta = null;
+            }
+           
+
+
+            if (IdDitta != null)
+            {
+                tProdoct tProduct = new tProdoct()
+                {
+                    IdProdotto = model.IdProdotto,
+                    Categoria = model.Categoria,
+                    NomeProdotto = model.NomeProdotto,
+                    Descrizione = model.Descrizione,
+                    UM = model.UM,
+                    PrezzoPerUnita = model.PrezzoPerUnita,
+                    IdDitta = IdDitta
+                };
+
+                _productRepository.SaveProduct(tProduct, EnumUseful.typeOfDatabaseOperation.EDIT);
+
+                return RedirectToAction("Index");
+            }
+
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+        }
+
+
+        //Create Get
+        public ActionResult Create()
+        {
+            PageParameters _pageParameters = new PageParameters()
+            {
+
+                PageTitle = "Nuovo Prodotto",
+                ControllerName = ControllerName.Product,
+                HasScrollButton = false,
+                HasAddElementButton = false,
+                HasEditButton = false,
+                HasDeleteButton = false,
+                HasGeneralFilter = false
+            };
+            ViewBag.pageParameters = _pageParameters;
+            return View();
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ProductDetailsViewModel model)
+        {
+            if(model== null)
+            { return new HttpStatusCodeResult(HttpStatusCode.BadRequest); }
+
+            var AllCompany = _companyRepository.GetAllCompany().ToList();
+
+            int? IdDitta;
+
+            try
+            {
+                IdDitta = AllCompany.FirstOrDefault(
+               x => x.NomeDitta == model.NomeFornitore
+               ).IdDitta;
+            }
+            catch
+            {
+                IdDitta = null;
+            }
+
+
+
+            if (IdDitta != null)
+            {
+                tProdoct tProduct = new tProdoct()
+                {
+                    
+                    Categoria = model.Categoria,
+                    NomeProdotto = model.NomeProdotto,
+                    Descrizione = model.Descrizione,
+                    UM = model.UM,
+                    PrezzoPerUnita = model.PrezzoPerUnita,
+                    IdDitta = IdDitta
+                };
+
+                _productRepository.SaveProduct(tProduct, EnumUseful.typeOfDatabaseOperation.EDIT);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+        }
+
+
+        [HttpPost]
+        public ActionResult RemoveElementWithId(int ? Id)
+        {
+            if (Id==null)
+                {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            _productRepository.RemovePreventiveWithId(Id.Value);
+            return RedirectToAction("Index");
+        }
+
         public JsonResult GetDataToAsyncForDialog(string Filter)
         {
 
@@ -129,6 +264,7 @@ namespace Crm.Controllers
                 Data = new { object_ = new object[0] },
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
+
 
 
             //Prendo i dati dei preventivi filtrati
@@ -149,6 +285,22 @@ namespace Crm.Controllers
                 }
             }
             return JsonResult;
+        }
+
+
+
+        [HttpPost]
+        public ActionResult GetDataAsync(string filter)
+        {
+
+
+            List<ProductViewModel> data = LoadData(filter);
+
+
+            JsonModel Model = new JsonModel();
+            Model.HTMLString = renderPartialViewtostring("PartialInformationContainer", data);
+
+            return Json(Model);
         }
 
 

@@ -98,7 +98,10 @@
                 </div>
 
                 <div class="row">
-                    <input type="text" class="col-md-12" name="NomeFornitore" value="@Model.NomeFornitore"/>
+                    <input type="hidden" class="ElementId" id="IdDitta" value="">
+                    <input id="DatiDitta" name="NomeFornitore" class="col-md-8 MySelection Label" OptionalData="" value="@Model.NomeFornitore" />
+                    <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA LA DITTA', '@ControllerName.Company');">  SCEGLI </div>
+                    
                 </div>
 
             

@@ -6,30 +6,27 @@
 
 
 
-@*<div class="AddElement FirstColo"   title="AGGIUNGI ELEMENTO" >
+<div class="AddElement FirstColo"   title="AGGIUNGI ELEMENTO" >
     
-</div>*@
+</div>
 
 
 <div class="row SingleElement">
     <div class="row WithSpinner">
         <div class="col-md-6 no-margin-right">
             <div class="col-md-12">
-                <div id="DatiCliente" class="col-md-8 MySelection Label no-margin-right" OptionalData="">
-                    CLIENTE
-                </div>
+                <input type="hidden" class="ElementId" id="IdCliente" value="">
+                <input id="DatiCliente" name="NomeCliente" class="col-md-8 MySelection Label" OptionalData="" value="" />
                 <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');">  SCEGLI </div>
-                <span style=" margin-left: 20px;" class="col-md-4 pull-left SpinnerNoPosition hide"> </span>
             </div>
 
         </div>
         <div class="col-md-6">
             <div class="col-md-12">
-                <div id="DatiProdotto" class="col-md-8 MySelection Label no-margin-right" OptionalData="">
-                    PRODOTTO
-                </div>
+                <input type="hidden" class="ElementId" id="IdProdotto" value="">
+                <input id="DatiProdotto" name="NomeProdotto" class="col-md-8 MySelection Label" OptionalData="" value="" >
                 <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL PRODOTTO', '@ControllerName.Product');">  SCEGLI </div>
-             </div>   
+            </div>   
         </div>
 
         @*<div class="col-md-7">
@@ -54,7 +51,7 @@
     <div class="row SecondLine">
         <textarea class="col-md-10 TextArea " type="text" placeholder="Testo" name="Note"></textarea>
         <div class="col-md-2 no-margin">
-            <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="PULISCI I CAMPI">
+            <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="ELIMINA">
             </div>
             <div id="Send" class="col-md-2  SendEmail Black MyB" onclick="Send_(this);" title="INVIA PER EMAIL">
             </div>
@@ -155,30 +152,30 @@
         var LastOneElement = $('.SingleElement').siblings(":last");
         var Template = ['<div class="row SingleElement">' +
             '    <div class="row WithSpinner" >' +
-            '        <div class="col-md-5 no-margin-right">' +
+            '        <div class="col-md-6 no-margin-right">' +
             '            <div class="col-md-12">' +
-            '                <div   id="DatiCliente"  class="col-md-8 MySelection Label" OptionalData=" " >' +
-            '                    CLIENTE ' +
-            '                </div>' +
+            '                <input type="hidden" class="ElementId" id="IdCliente" value="" >' +
+            '                <input id="DatiCliente" name="NomeCliente" class="col-md-8 MySelection Label " OptionalData="" value="" >' +
             '                <div class="col-md-4 MySelection Choose" onclick="DataForSelection(this, \'SELEZIONA IL CLIENTE\' , \'@ControllerName_\' );">SCEGLI</div>' +
-            '                 <span style=" margin-left: 20px;" class="col-md-4 pull-left SpinnerNoPosition hide"> </span>      '+
+           
             '            </div>' +
             '        </div>' +
             '' +
-            '        <div class="col-md-5 no-margin-right">' +
+            '        <div class="col-md-6">' +
             '            <div class="col-md-12">' +
-            '                <input id="DatiProdotto" class="col-md-12 MySelection Label" IdDelProdotto="IdDell\'operatore" placeholder="PRODOTTO"/> ' +
+            '                <input type="hidden" class="ElementId" id="IdProdotto" value=""> ' +
+            '                <input id="DatiProdotto" name="NomeProdotto" class="col-md-8 MySelection Label" OptionalData="" value="" > ' +
+            '                <div class="col-md-4 MySelection Choose " onclick="DataForSelection(this, \'SELEZIONA IL PRODOTTO\', \'@ControllerName.Product\' );"> SCEGLI </div> ' +
             '            </div>' +
             '' +
             '        </div>' +
             '' +
-            '        <input class="col-md-2 importo" type="number" placeholder="IMPORTO "/>' +
             '        ' +
             '' +
             '    </div>' +
             '<div class="row SecondLine">' +
-            '        <textarea class="col-md-9 TextArea " type="text" placeholder="Testo" name="Note"> </textarea>' +
-            '<div class="col-md-3 no-margin">            '+
+            '        <textarea class="col-md-10 TextArea " type="text" placeholder="Testo" name="Note"> </textarea>' +
+            '<div class="col-md-2 no-margin">            '+
             '           <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="ELIMINA">' +
             
             '        </div>' +
@@ -221,7 +218,7 @@
         var Data =
         {
             IdCustomer: $(Label).attr("id"),
-            NomeCliente: $(Label)[0].outerText,
+            NomeCliente: $(Label)[0].value,
             EmailCustomer: $(Label).attr("optionaldata"),
             Prodotto: $(SingleElement).find('#DatiProdotto')[0].value,
             //Listino: $(SingleElement).find('.importo')[0].valueAsNumber,

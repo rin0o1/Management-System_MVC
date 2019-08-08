@@ -26,10 +26,12 @@ function RemoveSpinn() {
 }
 
 
-$(document).ajaxSend(function () { ShowSpin();});
+$(document).ajaxSend(function () {
+    ShowSpin();
+});
 
 $(document).ajaxComplete(function () {
-    RemoveSpinn();
+   RemoveSpinn();
 });
 
 $(document).ajaxStop(function () {

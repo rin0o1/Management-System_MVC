@@ -36,7 +36,7 @@ namespace Crm.Controllers
                 PageTitle = this.Title,
                 ControllerName = ControllerName.CustomerAndListino,  
                 FilterForData = null,
-                HasMenu=false
+                HasMenu=false, HasGeneralFilter=false
             };
 
 
@@ -54,7 +54,7 @@ namespace Crm.Controllers
 
             string To = data.EmailCustomer;
             
-            string Message = "Invio il prezzo del listino. \n Prezzo totale: " + data.Prodotto.ToString() +
+            string Message = " \n Prezzo totale: " + data.Prodotto.ToString() +
                               /* "€ .  Prodotto: " + data.Prodotto +*/ ". \n " + data.TestoAggiuntivo;
             string Subject = "INVIO LISTINO DEL PRODOTTO: "+ data.Prodotto;
 

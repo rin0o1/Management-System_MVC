@@ -271,7 +271,7 @@ namespace Crm.Controllers
         {
             if(Id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            _preventiveRepository.RemovePreventiveWithId(Id ?? 0);
+            _preventiveRepository.RemovePreventiveWithId(Id.Value);
 
             return Json(new { redirectTo = Url.Action("Index", ControllerName.PreventiveController) });
         }
@@ -312,7 +312,14 @@ namespace Crm.Controllers
                     string DataToShow = item.NumeroPreventivo + " " ;
                     int Id = item.IdPreventivo;
 
-                    ((List<object>)JsonResult.Data).Add(new { @datatoshow =DataToShow , @valueId = Id , @optional=-1});
+                    ((List<object>)JsonResult.Data).
+                        Add(new
+                        {
+                            @datatoshow =DataToShow ,
+                            @valueId = Id ,
+                            @optional =-1
+                        }
+                        );
                 }
             }
             return JsonResult;

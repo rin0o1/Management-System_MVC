@@ -14,6 +14,7 @@ namespace Crm_Global
         public const string CustomerController = "Customer";
         public const string CustomerAndListino = "CustomerAndListino";
         public const string Product = "Product";
+        public const string Company = "Company";
     }
 
  
