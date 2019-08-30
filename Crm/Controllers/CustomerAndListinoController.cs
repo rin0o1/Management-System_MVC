@@ -53,8 +53,8 @@ namespace Crm.Controllers
 
 
             string To = data.EmailCustomer;
-            
-            string Message = " \n Prezzo totale: " + data.Prodotto.ToString() +
+
+            string Message = " \n Prezzo totale: " + data.Prodotto.ToString() + "/€" +
                               /* "€ .  Prodotto: " + data.Prodotto +*/ ". \n " + data.TestoAggiuntivo;
             string Subject = "INVIO LISTINO DEL PRODOTTO: "+ data.Prodotto;
 
