@@ -26,7 +26,7 @@ namespace Crm.Controllers
 {
     public class CustomerAndListinoController : DefaultController
     {
-        // GET: CustomerAndListino
+        // GET: CustomerAndListino 
         public ActionResult Index()
         {
             Title = "Listino";
