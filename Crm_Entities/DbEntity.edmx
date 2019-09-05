@@ -58,7 +58,7 @@
           </Key>
           <Property Name="IdDitta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NomeDitta" Type="varchar" MaxLength="30" />
-          <Property Name="RagioneSocialeDitta" Type="varchar" MaxLength="30" />
+          <Property Name="RagioneSociale" Type="varchar" MaxLength="30" />
           <Property Name="IndirizzoDitta" Type="varchar" MaxLength="30" />
           <Property Name="CapDitta" Type="varchar" MaxLength="30" />
           <Property Name="CittaDitta" Type="varchar" MaxLength="30" />
@@ -94,13 +94,13 @@
           <Property Name="Importo" Type="float" />
           <Property Name="Pagamento" Type="varchar" MaxLength="30" />
           <Property Name="Consegna" Type="varchar" MaxLength="30" />
-          <Property Name="NotaApertura" Type="varchar" MaxLength="30" />
-          <Property Name="NotaChiusura" Type="varchar" MaxLength="30" />
+          <Property Name="NotaApertura" Type="varchar" MaxLength="100" />
+          <Property Name="NotaChiusura" Type="varchar" MaxLength="100" />
+          <Property Name="Cartella" Type="varchar" MaxLength="30" />
           <Property Name="Sconto" Type="float" />
           <Property Name="Progetto" Type="varchar" MaxLength="30" />
           <Property Name="DataInizioLavoro" Type="date" />
           <Property Name="NoteAndamaneto" Type="varchar" MaxLength="100" />
-          <Property Name="Cartella" Type="varchar" MaxLength="30" />
           <Property Name="NumeroCommisione" Type="int" />
           <Property Name="Referenza" Type="varchar" MaxLength="30" />
           <Property Name="Listino" Type="float" />
@@ -113,12 +113,12 @@
           <Property Name="IdProdotto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Categoria" Type="varchar" MaxLength="30" />
           <Property Name="NomeProdotto" Type="varchar" MaxLength="30" />
-          <Property Name="Descrizione" Type="varchar(max)" />
-          <Property Name="UM" Type="varchar" MaxLength="10" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="30" />
+          <Property Name="UM" Type="varchar" MaxLength="30" />
           <Property Name="PrezzoPerUnita" Type="float" />
           <Property Name="IdDitta" Type="int" />
         </EntityType>
-        <Association Name="FK__tPreventi__IdCli__29572725">
+        <Association Name="FK__tPreventi__IdCli__1EA48E88">
           <End Role="tCliente" Type="Self.tCliente" Multiplicity="0..1" />
           <End Role="tPreventiveDetails" Type="Self.tPreventiveDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,7 +130,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tProdoct__IdDitt__4BAC3F29">
+        <Association Name="FK__tProdoct__IdDitt__2B0A656D">
           <End Role="tDitte" Type="Self.tDitte" Multiplicity="0..1" />
           <End Role="tProdoct" Type="Self.tProdoct" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,11 +147,11 @@
           <EntitySet Name="tDitte" EntityType="Self.tDitte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tPreventiveDetails" EntityType="Self.tPreventiveDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tProdoct" EntityType="Self.tProdoct" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tPreventi__IdCli__29572725" Association="Self.FK__tPreventi__IdCli__29572725">
+          <AssociationSet Name="FK__tPreventi__IdCli__1EA48E88" Association="Self.FK__tPreventi__IdCli__1EA48E88">
             <End Role="tCliente" EntitySet="tCliente" />
             <End Role="tPreventiveDetails" EntitySet="tPreventiveDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__tProdoct__IdDitt__4BAC3F29" Association="Self.FK__tProdoct__IdDitt__4BAC3F29">
+          <AssociationSet Name="FK__tProdoct__IdDitt__2B0A656D" Association="Self.FK__tProdoct__IdDitt__2B0A656D">
             <End Role="tDitte" EntitySet="tDitte" />
             <End Role="tProdoct" EntitySet="tProdoct" />
           </AssociationSet>
@@ -167,11 +167,11 @@
             <End Role="tCliente" EntitySet="tCliente" />
             <End Role="tPreventiveDetails" EntitySet="tPreventiveDetails" />
           </AssociationSet>
-          <EntitySet Name="tDitte" EntityType="MyDataModel.tDitte" />
-          <EntitySet Name="tProdoct" EntityType="MyDataModel.tProdoct" />
-          <AssociationSet Name="FK__tProdoct__IdDitt__4BAC3F29" Association="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29">
-            <End Role="tDitte" EntitySet="tDitte" />
-            <End Role="tProdoct" EntitySet="tProdoct" />
+          <EntitySet Name="tDitteSet" EntityType="MyDataModel.tDitte" />
+          <EntitySet Name="tProdoctSet" EntityType="MyDataModel.tProdoct" />
+          <AssociationSet Name="FK__tProdoct__IdDitt__2B0A656D" Association="MyDataModel.FK__tProdoct__IdDitt__2B0A656D">
+            <End Role="tDitte1" EntitySet="tDitteSet" />
+            <End Role="tProdoct1" EntitySet="tProdoctSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tCliente">
@@ -244,8 +244,8 @@
           <Property Name="Importo" Type="Double" />
           <Property Name="Pagamento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Consegna" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="NotaApertura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="NotaChiusura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NotaApertura" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NotaChiusura" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Sconto" Type="Double" />
           <Property Name="Progetto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DataInizioLavoro" Type="DateTime" Precision="0" />
@@ -288,7 +288,7 @@
           <Property Name="CodiceAgente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Listino" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Logo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tProdoct" Relationship="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" FromRole="tDitte" ToRole="tProdoct" />
+          <NavigationProperty Name="tProdoct" Relationship="MyDataModel.FK__tProdoct__IdDitt__2B0A656D" FromRole="tDitte1" ToRole="tProdoct1" />
         </EntityType>
         <EntityType Name="tProdoct">
           <Key>
@@ -297,20 +297,20 @@
           <Property Name="IdProdotto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="NomeProdotto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Descrizione" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="PrezzoPerUnita" Type="Double" />
           <Property Name="IdDitta" Type="Int32" />
-          <NavigationProperty Name="tDitte" Relationship="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" FromRole="tProdoct" ToRole="tDitte" />
+          <NavigationProperty Name="tDitte" Relationship="MyDataModel.FK__tProdoct__IdDitt__2B0A656D" FromRole="tProdoct1" ToRole="tDitte1" />
         </EntityType>
-        <Association Name="FK__tProdoct__IdDitt__4BAC3F29">
-          <End Type="MyDataModel.tDitte" Role="tDitte" Multiplicity="0..1" />
-          <End Type="MyDataModel.tProdoct" Role="tProdoct" Multiplicity="*" />
+        <Association Name="FK__tProdoct__IdDitt__2B0A656D">
+          <End Type="MyDataModel.tDitte" Role="tDitte1" Multiplicity="0..1" />
+          <End Type="MyDataModel.tProdoct" Role="tProdoct1" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tDitte">
+            <Principal Role="tDitte1">
               <PropertyRef Name="IdDitta" />
             </Principal>
-            <Dependent Role="tProdoct">
+            <Dependent Role="tProdoct1">
               <PropertyRef Name="IdDitta" />
             </Dependent>
           </ReferentialConstraint>
@@ -404,7 +404,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tDitte">
+          <EntitySetMapping Name="tDitteSet">
             <EntityTypeMapping TypeName="MyDataModel.tDitte">
               <MappingFragment StoreEntitySet="tDitte">
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
@@ -419,13 +419,13 @@
                 <ScalarProperty Name="CittaDitta" ColumnName="CittaDitta" />
                 <ScalarProperty Name="CapDitta" ColumnName="CapDitta" />
                 <ScalarProperty Name="IndirizzoDitta" ColumnName="IndirizzoDitta" />
-                <ScalarProperty Name="RagioneSocialeDitta" ColumnName="RagioneSocialeDitta" />
+                <ScalarProperty Name="RagioneSocialeDitta" ColumnName="RagioneSociale" />
                 <ScalarProperty Name="NomeDitta" ColumnName="NomeDitta" />
                 <ScalarProperty Name="IdDitta" ColumnName="IdDitta" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tProdoct">
+          <EntitySetMapping Name="tProdoctSet">
             <EntityTypeMapping TypeName="MyDataModel.tProdoct">
               <MappingFragment StoreEntitySet="tProdoct">
                 <ScalarProperty Name="IdDitta" ColumnName="IdDitta" />
@@ -438,7 +438,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

@@ -165,14 +165,30 @@
 .GroupDataSpan {
     font-size: 1.5em;
     margin-top: 10px !important;
-    margin-bottom: 5px !important;
-    border-bottom: 1px solid;
+    margin-bottom: 10px !important;
+    border-bottom: 1px solid ;
     border-left: 1px solid;
     border-right: 1px solid;
 }
+    .b_Yellow_ {
+        border-bottom: 1px solid #bee23f;
+        border-left: 1px solid #bee23f;
+        border-right: 1px solid #bee23f;
+    }
+    .b_Green_ {
+        border-bottom: 1px solid #12a10b;
+        border-left: 1px solid #12a10b;
+        border-right: 1px solid #12a10b;
+    }
+    .b_Blue_ {
+        border-bottom: 1px solid #44a5d0;
+        border-left: 1px solid #44a5d0;
+        border-right: 1px solid #44a5d0;
+    }
+
 
 .GropDataDiv {
-    border: 1px solid;
+    border: 3px solid;
     /* padding: 3px; */
     padding-top: 5px;
     padding-bottom: 5px;
@@ -181,3 +197,15 @@
 .MarginFromDataDiv{
     margin-top:20px;
 }
+
+
+.b_Green{
+    border:3px solid #12a10b;
+}
+.b_Yellow {
+    border: 3px solid #bee23f;
+}
+.b_Blue {
+    border: 3px solid #44a5d0;
+}
+

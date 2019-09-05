@@ -26,12 +26,12 @@ namespace Crm_DataUtilities.Repository
 
         public IQueryable<tProdoct> GetAllProducts()
         {
-            return this.dbEntity.tProdoct;
+            return this.dbEntity.tProdoctSet;
         }
 
         public tProdoct GetProductFromId (int Id)
         {
-            return this.dbEntity.tProdoct.FirstOrDefault(x=> x.IdProdotto==Id);
+            return this.dbEntity.tProdoctSet.FirstOrDefault(x=> x.IdProdotto==Id);
         }
 
         public void SaveProduct (tProdoct prodoct,EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
@@ -39,7 +39,7 @@ namespace Crm_DataUtilities.Repository
             switch (typeOfDatabaseOperation)
             {
                 case EnumUseful.typeOfDatabaseOperation.EDIT:
-                    tProdoct prodoct_ = dbEntity.tProdoct.FirstOrDefault(x=> x.IdProdotto== prodoct.IdProdotto);
+                    tProdoct prodoct_ = dbEntity.tProdoctSet.FirstOrDefault(x=> x.IdProdotto== prodoct.IdProdotto);
                     if (prodoct_!= null)
                     {
                         prodoct_.IdProdotto = prodoct.IdProdotto;
@@ -56,7 +56,7 @@ namespace Crm_DataUtilities.Repository
                 case EnumUseful.typeOfDatabaseOperation.CREATE:
                     if (prodoct!=null)
                     {
-                        dbEntity.tProdoct.Add(prodoct);
+                        dbEntity.tProdoctSet.Add(prodoct);
                     }
                     break;
                 case EnumUseful.typeOfDatabaseOperation.SAVE:
@@ -72,12 +72,12 @@ namespace Crm_DataUtilities.Repository
         {
             tProdoct prodoct =
                 dbEntity.
-                tProdoct.
+                tProdoctSet.
                 FirstOrDefault(x=> x.IdProdotto==id);
 
             if (prodoct!= null)
             {
-                dbEntity.tProdoct.Remove(prodoct);
+                dbEntity.tProdoctSet.Remove(prodoct);
                 dbEntity.SaveChangesAsync();
             }
         }

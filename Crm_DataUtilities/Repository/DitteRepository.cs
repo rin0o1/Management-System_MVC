@@ -24,12 +24,12 @@ namespace Crm_DataUtilities.Repository
         
         public IQueryable<tDitte> GetAllCompany()
         {
-            return this.dbEntity.tDitte;
+            return this.dbEntity.tDitteSet;
         }
 
         public tDitte GetCompanyFromId(int Id)
         {
-            return this.dbEntity.tDitte.FirstOrDefault(x=> x.IdDitta== Id);
+            return this.dbEntity.tDitteSet.FirstOrDefault(x=> x.IdDitta== Id);
         }
 
         public void SaveCompany(tDitte Company, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
@@ -37,7 +37,7 @@ namespace Crm_DataUtilities.Repository
             switch (typeOfDatabaseOperation)
             {
                 case EnumUseful.typeOfDatabaseOperation.EDIT:
-                    tDitte CompanyToEdit = dbEntity.tDitte.FirstOrDefault(
+                    tDitte CompanyToEdit = dbEntity.tDitteSet.FirstOrDefault(
                         x=> x.IdDitta== Company.IdDitta
                         );
 
@@ -66,7 +66,7 @@ namespace Crm_DataUtilities.Repository
                 case EnumUseful.typeOfDatabaseOperation.CREATE:
                     if (Company!=null)
                     {
-                        dbEntity.tDitte.Add(Company);
+                        dbEntity.tDitteSet.Add(Company);
                     }
 
                     break;

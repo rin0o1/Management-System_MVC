@@ -11,54 +11,57 @@
 </div>
 
 
-<div class="row SingleElement">
-    <div class="row WithSpinner">
+<div class="form-group SingleElement">
+
+
+
+
+    <div class="row">
+        <div class="input-group col-sm-6">
+            <div class="col-sm-12 ">
+                <input type="hidden" class="ElementId" id="IdCliente" value="">
+                <input id="DatiCliente" name="NomeCliente" class="col-sm-8 MySelection Label " OptionalData="" value="" />
+                <div class="col-sm-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');">  SCEGLI </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="col-sm-12 form-inline">
+                <input type="hidden" class="ElementId" id="IdProdotto" value="">
+                <input id="DatiProdotto" name="NomeProdotto" class="col-sm-8 MySelection Label" OptionalData="" value="">
+                <div class="col-sm-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL PRODOTTO', '@ControllerName.Product');">  SCEGLI </div>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="row ">
         <div class="col-md-6 no-margin-right">
             <div class="col-md-12">
                 <input type="hidden" class="ElementId" id="IdCliente" value="">
-                <input id="DatiCliente" name="NomeCliente" class="col-md-8 MySelection Label" OptionalData="" value="" />
-                <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');">  SCEGLI </div>
+                <input id="DatiCliente" name="NomeCliente" class=" MySelection Label" OptionalData="" value="" />
+                <div class=" MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL CLIENTE', '@ControllerName_');">  SCEGLI </div>
             </div>
 
         </div>
         <div class="col-md-6">
-            <div class="col-md-12">
-                <input type="hidden" class="ElementId" id="IdProdotto" value="">
-                <input id="DatiProdotto" name="NomeProdotto" class="col-md-8 MySelection Label" OptionalData="" value="" >
-                <div class="col-md-4 MySelection Choose" onclick=" DataForSelection(this, 'SELEZIONA IL PRODOTTO', '@ControllerName.Product');">  SCEGLI </div>
-            </div>   
+
+
+        </div>*@
+
+
+
+
+        <div class="row SecondLine">
+            <textarea class="col-md-10 TextArea " type="text" placeholder="Testo" name="Note"></textarea>
+            <div class="col-md-2 no-margin">
+                <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="ELIMINA">
+                </div>
+                <div id="Send" class="col-md-2  SendEmail Black MyB" onclick="Send_(this);" title="INVIA PER EMAIL">
+                </div>
+                <span class="col-md-2 SpinnerNoPosition hide"> </span>
+            </div>
         </div>
 
-        @*<div class="col-md-7">
-            <div class="col-md-12 Parent">
-                <div class="col-md-9">
-
-
-                    @*<input id="DatiProdotto" class="col-md-12 MySelection Label" IdDelProdotto="IdDell'operatore" placeholder="PRODOTTO" />*@
-                @*</div>*@
-                @*<div class="col-md-3">
-                    <input class="Label importo" type="number" min="0" placeholder="IMPORTO " />
-                </div>*@
-            @*</div>*@
-
-        @*</div>**@
-
-        @*<input class="col-md-2 importo" type="number" min="0" placeholder="IMPORTO "/>*@
-
-
     </div>
-
-    <div class="row SecondLine">
-        <textarea class="col-md-10 TextArea " type="text" placeholder="Testo" name="Note"></textarea>
-        <div class="col-md-2 no-margin">
-            <div id="Togli" class="col-md-12 RemoveElementIcon Black" onclick="RemoveElement(this)" title="ELIMINA">
-            </div>
-            <div id="Send" class="col-md-2  SendEmail Black MyB" onclick="Send_(this);" title="INVIA PER EMAIL">
-            </div>
-            <span  class="col-md-2 SpinnerNoPosition hide"> </span>
-        </div>
-    </div>
-
 </div>
 
 

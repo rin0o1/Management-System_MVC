@@ -72,20 +72,10 @@ function GeneratePdfFromElementId(form) {
 
 
 
-function CalculateDataUsingCustomInput(StartElement, calculationtype) {
-
-    var Inputs = $(StartElement).siblings('.Inp');
-    var DestinationElement = $(StartElement).siblings('.Dest');
-    var Sconto = $(StartElement).val();
-    /*Tutti i valori degli input*/
-    var Values = [];
-
-    for (var i = 0; i < Inputs.length; i++) {
-       var  SingleValue = Inputs[i].value;
-        Values.push(SingleValue);
-    }
+function CalculateDataUsingCustomInput(Values, calculationtype) {
 
 
+    var Risultato;
     var CalculationType = calculationtype;
 
     switch (CalculationType) {
@@ -97,13 +87,19 @@ function CalculateDataUsingCustomInput(StartElement, calculationtype) {
             break;
         /*PERCENTAGE*/
         case 2:
-            var Totale = Values[0];/*In questo caso avrò solo un input che rappresenta il totale*/
-            var Risultato =(Sconto>0 && Sconto<100) ? Totale - ((Totale * Sconto) / 100) : 0;
-            $(DestinationElement).val(Risultato);
+           
+                var Sconto = Values[0];
+                var Totale = Values[1];/*In questo caso avrò solo un input che rappresenta il totale*/
+                Risultato = (Sconto!==0) ? Totale - ((Totale * Sconto) / 100) : Totale;
+            //$(DestinationElement).val(Risultato);
+            
+            
             break;
         
         default: break;
     }
+
+    return Risultato;
 }
 
 

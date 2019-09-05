@@ -51,8 +51,6 @@ namespace Crm_DataUtilities.ViewModel
             this.CodiceAgente = Company.CodiceAgente;
             this.Listino = Company.Listino;
             this.Logo = Company.Logo;
-            
-
         }
 
         public int IdDitta { get; set; }

@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d97b7dec00f243459fc3f521cb68796c" Name="Diagram1" ZoomLevel="73">
+      <Diagram DiagramId="d97b7dec00f243459fc3f521cb68796c" Name="Diagram1" ZoomLevel="59">
         <EntityTypeShape EntityType="MyDataModel.tCliente" Width="1.5" PointX="4.375" PointY="0.5" />
         <EntityTypeShape EntityType="MyDataModel.tPreventiveDetails" Width="3.5" PointX="6.625" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="MyDataModel.FK__tPreventi__IdCli__29572725" />
-        <EntityTypeShape EntityType="MyDataModel.tDitte" Width="1.5" PointX="6.375" PointY="10" />
-        <EntityTypeShape EntityType="MyDataModel.tProdoct" Width="1.5" PointX="8.625" PointY="10.75" />
-        <AssociationConnector Association="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" />
+        <EntityTypeShape EntityType="MyDataModel.tDitte" Width="1.5" PointX="6.375" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyDataModel.tProdoct" Width="1.5" PointX="10.5" PointY="11.25" />
+        <AssociationConnector Association="MyDataModel.FK__tProdoct__IdDitt__2B0A656D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

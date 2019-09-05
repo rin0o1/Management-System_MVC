@@ -24,14 +24,14 @@
     font-family: Cambria;
     letter-spacing: 10px;
     border-bottom: 8px solid ;
-    border-left: 200px solid ;
-    border-right: 200px solid ;
+    /*border-left: 200px solid ;
+    border-right: 200px solid ;*/
     border-color:#ebb317;
     margin-top:50px;
     display: inline-block;
     position:inherit !important;
     margin-bottom: 10px;
-    text-align: center;
+    /*text-align: center;*/
     /*padding-top: 20px;*/
 }
 

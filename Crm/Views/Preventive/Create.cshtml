@@ -16,188 +16,276 @@
         </div>
 
         @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
-        {
+       {
             @Html.AntiForgeryToken()
-            <div class="row ">
-                <div>
+         <div class="form-group">
+
+
+            <div class="form-group">
+                <div class="row">
                     <div class="col-md-3">
-                        <label> Numero Preventivo </label>
-                    </div>
-                    <div class="col-md-3 center">
-                        <label>Data</label>
-                    </div>
-                    <div class="col-md-3 center">
-                        Durata
+                        <div>
+                            <label class="col-sm-12">
+                                Numero Preventivo
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12 ImportantData" type="text" name="NumeroPreventivo" >
+                        </div>
                     </div>
                     <div class="col-md-3">
-                        <label>Listino in vigore (€)</label>
+                        <div>
+                            <label class="col-sm-12">Data</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Data" >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">Durata</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Durata">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">Listino in vigore</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12 chg " type="number" min="0" name="ListinoInVigore" >
+                        </div>
                     </div>
                 </div>
-
-                <div>
-                    <input class="col-md-3 ImportantData" type="text" name="NumeroPreventivo">
-                    <input class="col-md-3" type="date" name="Data">
-                    <input class="col-md-3" type="number" min="0"  name="Durata">
-                    <input class="col-md-3" type="number" min="0"  name="ListinoInVigore">
-                </div>
-
-            </div>
-            <br />
-
-            <div class="row  SomeSpaceTop">
-                <div class="col-md-2 LineBOt">
-                    <label> Oggetto</label>
-                </div>
-                <input class="col-md-10" type="text" name="Oggetto">
-            </div>
-            <br />
-            <div class="row SomeSpaceTop">
-                <div class="col-md-2 LineBOt">
-                    <label> Riferimento </label>
-                </div>
-                <input class="col-md-10" type="text" name="Riferimento">
-            </div>
-            <br />
-            <div class="row  SomeSpaceTop">
-                <div class="col-md-2 LineBOt">
-                    <label> Allegati </label>
-                </div>
-                <input class="col-md-10" type="text" name="Allegati">
-            </div>
-            <br />
-            <div class="row SomeSpaceTop ">
-                <div class="col-md-2 LineBOt">
-                    <label> Progetto </label>
-                </div>
-                <input class="col-md-10" type="text" name="Progetto">
             </div>
 
             <br />
 
-            <div class="row">
-                <div class="col-md-6">
-                    <label> All'attenzione di </label>
-                </div>
-                <div class="col-md-6">
-                    <label> Operatore </label>
-                </div>
-            </div>
-
-            <div class="row">
-                <input class="col-md-6 " type="text" name="Attenzione">
-                <input class="col-md-6 " type="text" name="Operatore" >
-            </div>
-
-            @*<div class="row WithSpinner">
-                <input class="col-md-6 " type="text" name="Selection">
-                <div class="col-md-6">
-                    <input type="hidden" id="#Id_" name="IdOperatore" value="-1">
-                    <div class="col-md-9 MySelection Label" >
-                        NOME E COGNOME OPERATORE
+            <div class="form-group">
+                <div class="row  SomeSpaceTop">
+                    <div class="col-md-2 LineBOt">
+                        <label> Oggetto</label>
                     </div>
-                    <div class="col-md-3 MySelection Choose" onclick="DataForSelection(this, 'SELEZIONA L\'OPERTAORE', '@controllerName');">  SCEGLI </div>
-                    <span style="    margin-left: 55px;" class="col-md-3 SpinnerNoPosition hide"> </span>
+                    <input class="col-md-10" type="text" name="Oggetto" >
                 </div>
-            </div>*@
-
-            <br />
-            <div class="row">
-                <div class="col-md-4">
-                    <label> Addebito Trasporto </label>
+                <br />
+                <div class="row SomeSpaceTop">
+                    <div class="col-md-2 LineBOt">
+                        <label> Riferimento </label>
+                    </div>
+                    <input class="col-md-10" type="text" name="Riferimento" >
                 </div>
-                <div class="col-md-4 center">
-                    <label> Pagamento </label>
+                <br />
+                <div class="row  SomeSpaceTop">
+                    <div class="col-md-2 LineBOt">
+                        <label> Allegati </label>
+                    </div>
+                    <input class="col-md-10" type="text" name="Allegati" >
                 </div>
-                <div class="col-md-4 center">
-                    <label> Consegna </label>
+                <br />
+                <div class="row SomeSpaceTop ">
+                    <div class="col-md-2 LineBOt">
+                        <label> Progetto </label>
+                    </div>
+                    <input class="col-md-10" type="text" name="Progetto" >
                 </div>
-            </div>
-            <div class="row">
-                <input class="col-md-4" type="text" name="AddebitoTrasportato">
-                <div class="CustomSelectionItem">
-                    <select class="col-md-4 SelectionItem" id="country" name="Pagamento">
-                        <option> DA CONCORDARE </option>
-                        <option> EFFETTUATO </option>
-                        <option> NON EFFETTUATO </option>
-                    </select>
-                </div>
-                <div>
-                    <select class="col-md-4 SelectionItem" id="country" name="Consegna">
-                        <option> DA CONCORDARE </option>
-                        <option> EFFETTUATA </option>
-                        <option> NON EFFETTUATA </option>
-                    </select>
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-6">
-                    <label> Nota d'apertura </label>
-                </div>
-                <div class="col-md-6">
-                    <label> Nota di chiusura </label>
-                </div>
-            </div>
-            <div class="row">
-                <input class="col-md-6" type="text" name="NotaApertura">
-                <input class="col-md-6" type="text" name="NotaChiusura">
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-6">
-                    <label> Cartella  </label>
-                </div>
-                <div class="col-md-6">
-                    <label> Numero commissione </label>
-                </div>
-            </div>
-
-            <div class="row">
-                <input class="col-md-6" type="text" name="Cartella">
-                <input class="col-md-6" type="number" name="NumeroCommissione">
             </div>
 
             <br />
-            <div class="row">
-                <div class="col-md-6">
-                    <label> Data inizio lavori </label>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Attenzione di
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Attenzione" >
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Operatore
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Operatore" >
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label> Referenza </label>
-                </div>
-            </div>
-
-            <div class="row">
-                <input class="col-md-6" type="date" name="DataInizioLavori">
-                
-                <input class="col-md-6" type="text" name="Referenza">
             </div>
 
             <br />
-            <div class=" row">
-                <div class="col-md-6 center">
-                    <label> Note Andamento </label>
-                </div>
 
-                <div class="col-md-2 center">
-                    <label class="col-md-9 no-margin-right"> Totale(€)</label>
-
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                Addebito trasporto
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12 " type="text" name="AddebitoTrasportato" >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                Pagemento
+                            </label>
+                        </div>
+                        <div class="CustomSelectionItem ">
+                            <select class="col-sm-12 SelectionItem" id="country" name="Pagamento">
+                                <option> DA CONCORDARE </option>
+                                <option> EFFETTUATO </option>
+                                <option> NON EFFETTUATO </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                Consegna
+                            </label>
+                        </div>
+                        <div class="CustomSelectionItem">
+                            <select class="col-sm-12 SelectionItem" id="country" name="Consegna">
+                                <option> DA CONCORDARE </option>
+                                <option> EFFETTUATO </option>
+                                <option> NON EFFETTUATO </option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-2 center">
-                    <label> Totale scontato(€)</label>
-                </div>
-                <div class="col-md-2 center">
-                    <label> Sconto (%)</label>
-                </div>
-
             </div>
 
-            <div class="row">
-                <textarea class="col-md-6 TextArea" type="text" name="NoteAndamento"></textarea>
-                <input class="col-md-2 ImportantData Inp" type="number" min="0"  name="TotaleArticoliListino">
-                <input style="text-align:center;" class="col-md-2 ImportantData Dest" type="text" min="0" value="0" name="ImportoTotaleScontato" readonly>
-                <input id="StartPoint" class="col-md-2 ImportantData " type="number" min="0" max="100" name="ScontoGenerale">
+
+            <br />
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Nota d'apertura
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="NomeApertura" >
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Nota di chiusura
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="NotaChiusura" >
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <br />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Cartella
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Cartella" >
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Numero commissione
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="number" name="NumeroCommissione" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Data inizio lavori
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="DataInzioLavori" >
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Referenza
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Riferimento" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <label class="col-sm-12">
+                                Note Andamento
+                            </label>
+                        </div>
+                        <div>
+                            <textarea class="col-sm-12 TextArea" type="text" name="NoteAndamento"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div>
+                            <label class="col-sm-12">Totale(€)</label>
+                        </div>
+                        <div>
+                            <input id="Totale" class="col-sm-12 ImportantData Inp chg" type="number" min="0" name="TotaleArticoliListino" >
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div>
+                            <label class="col-sm-12">Totale scontato(€)</label>
+                        </div>
+                        <div>
+                            <input id="Destination" style="text-align:center;" class="col-sm-12 ImportantData Dest " type="text" readonly min="0" name="ImportoTotaleScontato" >
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div>
+                            <label class="col-sm-12">Sconto (%)</label>
+                        </div>
+                        <div>
+                            <input id="Sconto" class="col-sm-12 ImportantData chg" type="number" min="0" max="100" name="ScontoGenerale" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
 
         }
 

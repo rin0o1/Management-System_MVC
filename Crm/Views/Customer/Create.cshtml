@@ -18,120 +18,217 @@
         </div>
 
         @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
-         {
+        {
 
             @Html.AntiForgeryToken()
 
-            <div class="col-md-12 GropDataDiv">
 
-                <span class=" col-md-12  GroupDataSpan "> DATI GENERALI  </span>
+            <div class="col-md-12 GropDataDiv form-group b_Yellow">
 
-
-                <div class="row" style="margin-top:20px;">
-
-                    <label class="col-md-3">RAGIONE SOCIALE  </label>
-                    <label class="col-md-3"> CODICE UNICLIMA  </label>
-                    <label class="col-md-3"> CATEGORIA  </label>
-                    <label class="col-md-3"> CLASSE  </label>
-
-                </div>
-
-                <div class="row">
-
-                    <input class="col-md-3" type="text" name="RagioneSociale"  />
-                    <input class="col-md-3" type="text" name="CodiceUniclima"  />
-                    <input class="col-md-3" type="text" name="Categoria" />
-                    <input class="col-md-3" type="number" name="Classe"  />
-                </div>
+                <span class=" col-md-12  GroupDataSpan b_Yellow_"> DATI GENERALI  </span>
 
                 <br />
-
-                <div class="row">
-
-                    <label class="col-md-3"> INDIRIZZO  </label>
-                    <label class="col-md-3"> CITTA  </label>
-                    <label class="col-md-3"> PROVINCIA  </label>
-                    <label class="col-md-3"> CAP  </label>
-
-                </div>
-
-                <div class="row">
-
-                    <input class="col-md-3" type="text" name="Idirizzo"  />
-                    <input class="col-md-3" type="text" name="Citta" />
-                    <input class="col-md-3" type="text" name="Provincia"  />
-                    <input class="col-md-3" type="number" name="CAP"  />
-                </div>
-
                 <br />
                 <div class="row">
-
-                    <label class="col-md-4"> TELEFONO UFFICIO  </label>
-                    <label class="col-md-4"> CONTATTO  </label>
-                    <label class="col-md-4"> CELLULARE  </label>
-
-
-                </div>
-
-                <div class="row">
-
-                    <input class="col-md-4" type="text" name="TelefonoUfficio"  />
-                    <input class="col-md-4" type="text" name="Contatto1"  />
-                    <input class="col-md-4" type="text" name="Cellulare1" />
-
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">
+                                RAGIONE SOCIALE
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="RagioneSociale" >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">CODICE UNICLIIMA</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="CodiceUniclima">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">CATEGORIA</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Categoria" >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">CLASSE </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12 chg " type="number" min="0" name="Classe" >
+                        </div>
+                    </div>
                 </div>
 
 
                 <br />
 
                 <div class="row">
-
-                    <label class="col-md-6"> REFERENTE 1  </label>
-                    <label class="col-md-6"> REFERENTE 2  </label>
-
-
-                </div>
-
-                <div class="row">
-
-                    <input class="col-md-6" type="text" name="Referente1"  />
-                    <input class="col-md-6" type="text" name="Referente2"  />
-
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">
+                                INDIRIZZO
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Indirizzo" >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">CITTA</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Citta" >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">PROVINCIA</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Provincia" >
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">CAP </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12 chg " type="number" min="0" name="CAP" >
+                        </div>
+                    </div>
                 </div>
 
                 <br />
 
-                <div class="row">
-
-                    <label class="col-md-4"> TELEFAX </label>
-                    <label class="col-md-4"> EMAIL  </label>
-                    <label class="col-md-4"> INDIRIZZO WEB  </label>
-
-
-                </div>
 
                 <div class="row">
-
-                    <input class="col-md-4" type="text" name="Telefax"  />
-                    <input class="col-md-4" type="text" name="Email"  />
-                    <input class="col-md-4" type="text" name="IndirizzoInternet" />
-
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                TELEFENO UFFICIO
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12 " type="text" name="TelefonoUfficio" >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                CONTATTO
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Contatto1" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                CELLULARE
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Cellulare1" />
+                        </div>
+                    </div>
                 </div>
 
                 <br />
+
+
                 <div class="row">
-
-                    <label class="col-md-6"> CONSESO DATI </label>
-                    <label class="col-md-6"> FATTURATO GLOBALE  </label>
-
-
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                REFERENTE 1
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Referente1" >
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                REFERENTE 2
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Referente2" >
+                        </div>
+                    </div>
                 </div>
 
+
+                <br />
+
                 <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                TELEFAX
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12 " type="text" name="Telefax">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                EMAIL
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Email" />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                INDIRIZZO WEB
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="IndirizzoInternet"  />
+                        </div>
+                    </div>
+                </div>
 
-                    <input class="col-md-6" type="text" name="ConsesoDati"  />
-                    <input class="col-md-6" type="text" name="FatturatoGlobale" />
 
+                <br />
+
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                CONSENSO DATI
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Referente1">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                FATTURATO GLOBALE
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Referente2">
+                        </div>
+                    </div>
                 </div>
 
 
@@ -139,101 +236,174 @@
 
 
             <br />
-            <br />
+            
 
-            <div class="col-md-12 GropDataDiv">
-                <span class=" col-lg-12  GroupDataSpan "> DATI FISCALI  </span>
-
-
-                <div class="row" style="margin-top:20px;">
-
-                    <label class="col-md-4"> BANCA  </label>
-                    <label class="col-md-4"> PARTITA IVA  </label>
-                    <label class="col-md-4"> CONTO CORRENTE  </label>
-
-
-                </div>
+            <div class="col-md-12 GropDataDiv form-group b_Green">
+                <span class=" col-lg-12  GroupDataSpan b_Green_"> DATI FISCALI  </span>
+                <br />
+                <br />
 
                 <div class="row">
-
-                    <input class="col-md-4" type="text" name="Banca" />
-                    <input class="col-md-4" type="text" name="P_Iva"  />
-                    <input class="col-md-4" type="text" name="ContoCorrente"  />
-
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                BANCA
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12 " type="text" name="Banca">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                PARTITA IVA
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="P_Iva"  />
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <label class="col-sm-12">
+                                CONTO CORRENTE
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="ContoCorrente"  />
+                        </div>
+                    </div>
                 </div>
+
 
                 <br />
 
                 <div class="row">
-
-                    <label class="col-md-3">IBAN  </label>
-                    <label class="col-md-3"> CIN  </label>
-                    <label class="col-md-3"> ABI  </label>
-                    <label class="col-md-3"> CAB  </label>
-
-                </div>
-
-                <div class="row">
-
-                    <input class="col-md-3" type="number" name="IBAN"  />
-                    <input class="col-md-3" type="number" name="CIN"/>
-                    <input class="col-md-3" type="number" name="ABI"  />
-                    <input class="col-md-3" type="number" name="CAB"  />
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">
+                                IBAN
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="IBAN" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">CIN</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="number" name="CIN" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">ABI</label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="number" name="ABI"  />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <label class="col-sm-12">CAB </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="number" name="CAB" />
+                        </div>
+                    </div>
                 </div>
 
 
             </div>
             <br />
-            <br />
 
-            <div class="col-md-12 GropDataDiv">
-                <span class=" col-md-12  GroupDataSpan "> ORGRANIZZAZIONE  </span>
-
-
-                <div class="row" style="margin-top:20px; margin-bottom:10px;">
-
-                    <label class="col-md-6"> FORNITORI   </label>
-                    <label class="col-md-6">  TITOLARI  </label>
-
-                </div>
-
-                <div class="row">
-
-                    <input class="col-md-6" type="text" name="Fornitori"  />
-                    <input class="col-md-6" type="text" name="Titolari" />
-
-                </div>
+            <div class="col-md-12 GropDataDiv form-group b_Blue">
+                <span class=" col-md-12  GroupDataSpan b_Blue_ "> ORGRANIZZAZIONE  </span>
                 <br />
-                <div class="row">
-
-                    <label class="col-md-6"> SOCI  </label>
-                    <label class="col-md-6">  SEGRTARI  </label>
-
-                </div>
-
-
-                <div class="row">
-
-                    <input class="col-md-6" type="text" name="Soci"  />
-                    <input class="col-md-6" type="text" name="Segretari"  />
-
-                </div>
                 <br />
 
                 <div class="row">
-
-                    <label class="col-md-6">AMMINISTRATIVI  </label>
-                    <label class="col-md-6"> UFFICIO TECNICO  </label>
-
-
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                FORNITORI
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Fornitori">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                TITOLARI
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Titolari">
+                        </div>
+                    </div>
                 </div>
+
+
+                <br />
+
 
                 <div class="row">
-
-                    <input class="col-md-6" type="text" name="Amministrativi"  />
-                    <input class="col-md-6" type="text" name="UfficioTecnico"  />
-
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                SOCI
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Soci">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                SEGRETARI
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Segretari">
+                        </div>
+                    </div>
                 </div>
+
+
+
+                <br />
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                AMMINISTRATIVI
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="Amministrativi">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div>
+                            <label class="col-sm-12">
+                                UFFICIO TECNICO
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="UfficioTecnico">
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
         }
 
