@@ -19,35 +19,32 @@ namespace Crm_DataUtilities.Repository
         public ProductRepository (MyDataEntities dbEntity=null)
         {
             this.dbEntity = dbEntity ?? new MyDataEntities();
-
         }
 
 
 
-        public IQueryable<tProdoct> GetAllProducts()
+        public IQueryable<tListini> GetAllProducts()
         {
-            return this.dbEntity.tProdoctSet;
+            return this.dbEntity.tListini;
         }
 
-        public tProdoct GetProductFromId (int Id)
+        public tListini GetProductFromId (int Id)
         {
-            return this.dbEntity.tProdoctSet.FirstOrDefault(x=> x.IdProdotto==Id);
+            return this.dbEntity.tListini.FirstOrDefault(x=> x.IdListino==Id);
         }
 
-        public void SaveProduct (tProdoct prodoct,EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
+        public void SaveProduct (tListini prodoct,EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
         {
             switch (typeOfDatabaseOperation)
             {
                 case EnumUseful.typeOfDatabaseOperation.EDIT:
-                    tProdoct prodoct_ = dbEntity.tProdoctSet.FirstOrDefault(x=> x.IdProdotto== prodoct.IdProdotto);
+                    tListini prodoct_ = dbEntity.tListini.FirstOrDefault(x=> x.IdListino== prodoct.IdListino);
                     if (prodoct_!= null)
                     {
-                        prodoct_.IdProdotto = prodoct.IdProdotto;
-                        prodoct_.NomeProdotto = prodoct.NomeProdotto;
-                        prodoct_.Categoria = prodoct.Categoria;
+                        prodoct_.IdListino = prodoct.IdListino;
+                        prodoct_.Codice = prodoct.Codice;
                         prodoct_.Descrizione = prodoct.Descrizione;
-                        prodoct_.UM = prodoct.UM;
-                        prodoct_.PrezzoPerUnita = prodoct.PrezzoPerUnita;
+                        prodoct_.Prezzo = prodoct.Prezzo;
                         prodoct_.IdDitta = prodoct.IdDitta;
 
                     }
@@ -56,7 +53,7 @@ namespace Crm_DataUtilities.Repository
                 case EnumUseful.typeOfDatabaseOperation.CREATE:
                     if (prodoct!=null)
                     {
-                        dbEntity.tProdoctSet.Add(prodoct);
+                        dbEntity.tListini.Add(prodoct);
                     }
                     break;
                 case EnumUseful.typeOfDatabaseOperation.SAVE:
@@ -70,14 +67,14 @@ namespace Crm_DataUtilities.Repository
 
         public void RemovePreventiveWithId(int id)
         {
-            tProdoct prodoct =
+            tListini prodoct =
                 dbEntity.
-                tProdoctSet.
-                FirstOrDefault(x=> x.IdProdotto==id);
+                tListini.
+                FirstOrDefault(x=> x.IdListino==id);
 
             if (prodoct!= null)
             {
-                dbEntity.tProdoctSet.Remove(prodoct);
+                dbEntity.tListini.Remove(prodoct);
                 dbEntity.SaveChangesAsync();
             }
         }

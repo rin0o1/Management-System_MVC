@@ -9,13 +9,13 @@ namespace Crm_DataUtilities.ViewModel
     public class PreventiveViewModel
     {
         public PreventiveViewModel() { }
-        public PreventiveViewModel(tPreventiveDetails preventive)
+        public PreventiveViewModel(tPreventivi preventive)
         {
             this.IdPreventivo = preventive.IdPreventivo;
             this.NumeroPreventivo = preventive.NumeroPreventivo;
-            if (preventive.Data_.HasValue)
+            if (preventive.Data.HasValue)
             {
-                this.Data = preventive.Data_.Value.Date;
+                this.Data = preventive.Data.Value.ToShortDateString();
             }
             else
             {
@@ -34,13 +34,13 @@ namespace Crm_DataUtilities.ViewModel
         public string NumeroPreventivo { get; set; }
 
         [Display(Name = "DATA")]
-        public DateTime? Data { get; set; }
+        public string Data { get; set; }
 
         [Display(Name = "RIFERIMENTO")]
         public string Riferimento { get; set; }
 
         [Display(Name = "LISTINO")]
-        public double? Listino { get; set; }
+        public string Listino { get; set; }
 
 
     }
@@ -48,14 +48,14 @@ namespace Crm_DataUtilities.ViewModel
     public class PreventiveDetailsViewModel
     {
         public PreventiveDetailsViewModel() { }
-        public PreventiveDetailsViewModel(tPreventiveDetails p)
+        public PreventiveDetailsViewModel(tPreventivi p)
         {
             this.IdPreventivo = p.IdPreventivo;
             this.NumeroPreventivo = p.NumeroPreventivo;
             
-            if (p.Data_.HasValue)
+            if (p.Data.HasValue)
             {                
-                this.Data = p.Data_.Value.Date;
+                this.Data = p.Data.Value.Date;
             }
             else
             {
@@ -65,32 +65,31 @@ namespace Crm_DataUtilities.ViewModel
             this.Durata = p.Durata;
             this.Oggetto = p.Oggetto;
             this.Allegati = p.Allegati;
-            this.Cartella = p.Cartella;
             this.Riferimento = p.Riferimento;
             this.Progetto = p.Progetto;
             //this.IdOperatore = 1;
             this.Operatore = p.Operatore;
-            this.AddebitoTrasportato = p.AddebitoTransporto;
+            this.AddebitoTrasportato = p.AddebitoTrasporto;
             this.Pagamento = p.Pagamento;
             this.Consegna = p.Consegna;
             this.NotaApertura = p.NotaApertura;
             this.NotaChiusura = p.NotaChiusura;
-            this.NumeroCommissione = p.NumeroCommisione;
+            this.NumeroCommissione = p.NumeroCommissione;
 
-            if (p.DataInizioLavoro.HasValue)
+            if (!String.IsNullOrEmpty(p.DataInizioLavori))
             {
-                this.DataInizioLavori = p.DataInizioLavoro.Value.Date;
+                this.DataInizioLavori =p.DataInizioLavori;
             }
             else
             {
                 this.DataInizioLavori = null;
             }
             this.Referenza = p.Referenza;
-            this.NoteAndamento = p.NoteAndamaneto;
-            this.TotaleArticoliListino = p.Totale;
-            this.ImportoTotaleScontato = p.Variazione;
+            this.NoteAndamento = p.NoteAndamento;
+            this.TotaleArticoliListino = Convert.ToDouble(p.Totale);
+            this.ImportoTotaleScontato = Convert.ToDouble( p.Variazione);
             this.ScontoGenerale = p.Sconto  ;
-            this._IdCliente = p.IdCliente;
+            this._IdCliente = Convert.ToInt32(p.IdCliente);
             this.Attenzione = p.Attenzione;
             this.ListinoInVigore = p.Listino ;
             //this._IdOrdine = 5;
@@ -99,7 +98,7 @@ namespace Crm_DataUtilities.ViewModel
         public int          IdPreventivo          { get; set; }
         public string       NumeroPreventivo       { get; set; }
         public  DateTime?     Data                      { get; set; }
-        public int    ?      Durata                    { get; set; }
+        public string      Durata                    { get; set; }
         public string       Oggetto                  { get; set; }
         public string       Riferimento               { get; set; }
         public string       Progetto              { get; set; }
@@ -109,8 +108,8 @@ namespace Crm_DataUtilities.ViewModel
         public string       NotaApertura                  { get; set; }
         public string       NotaChiusura                  { get; set; }
         public string       Cartella              { get; set; }
-        public int  ?     NumeroCommissione                 { get; set; }
-        public DateTime ?    DataInizioLavori          { get; set; }
+        public string     NumeroCommissione                 { get; set; }
+        public string  DataInizioLavori          { get; set; }
         public string       Referenza                 { get; set; }
         public string       NoteAndamento             { get; set;}
         public double  ?     TotaleArticoliListino               { get; set; }
@@ -118,7 +117,7 @@ namespace Crm_DataUtilities.ViewModel
         public double    ?   ScontoGenerale             { get; set; }
         public int  ?      _IdCliente                { get; set; }
         public int          _IdOrdine                  { get; set; }
-        public double ? ListinoInVigore { get; set; }
+        public string ListinoInVigore { get; set; }
         public string Attenzione { get; set; }
         public string Allegati { get; set; }
         public int IdOperatore { get; set; }
