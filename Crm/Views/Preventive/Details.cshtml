@@ -54,14 +54,14 @@
                                     <input class="col-sm-12" type="text" name="Durata" value="@Model.Durata">
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            @*<div class="col-md-3">
                                 <div>
                                     <label class="col-sm-12">Listino in vigore</label>
                                 </div>
                                 <div>
                                     <input class="col-sm-12 chg " type="number" min="0" name="ListinoInVigore" value="@Model.ListinoInVigore">
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
 
@@ -117,7 +117,7 @@
                                     </label>
                                 </div>
                                 <div>
-                                    <input class="col-sm-12" type="text" name="Operatore" value="@Model.Attenzione">
+                                    <input class="col-sm-12" type="text" name="Operatore" value="@Model.Operatore">
                                 </div>
                             </div>
                         </div>
@@ -144,12 +144,13 @@
                                     </label>
                                 </div>
                                 <div class="CustomSelectionItem ">
-                                    <select class="col-sm-12 SelectionItem" id="country" name="Pagamento">
-                                        <option> @Model.Pagamento</option>
-                                        <option> DA CONCORDARE </option>
-                                        <option> EFFETTUATO </option>
-                                        <option> NON EFFETTUATO </option>
-                                    </select>
+                                    @*<select class="col-sm-12 SelectionItem" id="country" name="Pagamento">
+            <option> @Model.Pagamento</option>
+            <option> DA CONCORDARE </option>
+            <option> EFFETTUATO </option>
+            <option> NON EFFETTUATO </option>
+        </select>*@
+                                    <input class="col-sm-12 " type="text" name="Pagamento" value="@Model.Pagamento">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -158,13 +159,14 @@
                                         Consegna
                                     </label>
                                 </div>
-                                <div class="CustomSelectionItem">
-                                    <select class="col-sm-12 SelectionItem" id="country" name="Consegna">
+                                <div @*class="CustomSelectionItem"*@>
+                                    @*<select class="col-sm-12 SelectionItem" id="country" name="Consegna">
                                         <option> @Model.Consegna</option>
                                         <option> DA CONCORDARE </option>
                                         <option> EFFETTUATO </option>
                                         <option> NON EFFETTUATO </option>
-                                    </select>
+                                    </select>*@
+                                    <input class="col-sm-12 " type="text" name="Consegna" value="@Model.Consegna">
                                 </div>
                             </div>
                         </div>
@@ -198,37 +200,11 @@
                         </div>
                     </div>
 
-                    <br />
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div>
-                                    <label class="col-sm-12">
-                                        Cartella
-                                    </label>
-                                </div>
-                                <div>
-                                    <input class="col-sm-12" type="text" name="Cartella" value="@Model.Cartella">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div>
-                                    <label class="col-sm-12">
-                                        Numero commissione
-                                    </label>
-                                </div>
-                                <div>
-                                    <input class="col-sm-12" type="number" name="NumeroCommissione" value="@Model.NumeroCommissione">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
 
                     <br />
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div>
                                     <label class="col-sm-12">
                                         Data inizio lavori
@@ -238,7 +214,17 @@
                                     <input class="col-sm-12" type="text" name="DataInzioLavori" value="@Model.DataInizioLavori">
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
+                                <div>
+                                    <label class="col-sm-12">
+                                        Numero Commissione
+                                    </label>
+                                </div>
+                                <div>
+                                    <input class="col-sm-12" type="text" name="NumeroCommissione" value="@Model.NumeroCommissione">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
                                 <div>
                                     <label class="col-sm-12">
                                         Referenza
@@ -312,6 +298,7 @@
     //    var b = $(this);
     //    CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
     //});
+    
     $( "#Sconto").on("input", function (e) {
         SetData();
     });
@@ -330,7 +317,6 @@
         var Result = CalculateDataUsingCustomInput(Data, CalculationType.PERCENTAGE);
         $(Destination).val(Result);
     }
-
 
     $(document).on('submit', '#Form_', function (e) {
         

@@ -24,12 +24,12 @@ namespace Crm_DataUtilities.Repository
         
         public IQueryable<tDitte> GetAllCompany()
         {
-            return this.dbEntity.tDitteSet;
+            return this.dbEntity.tDitte;
         }
 
         public tDitte GetCompanyFromId(int Id)
         {
-            return this.dbEntity.tDitteSet.FirstOrDefault(x=> x.IdDitta== Id);
+            return this.dbEntity.tDitte.FirstOrDefault(x=> x.idDitta== Id);
         }
 
         public void SaveCompany(tDitte Company, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
@@ -37,13 +37,13 @@ namespace Crm_DataUtilities.Repository
             switch (typeOfDatabaseOperation)
             {
                 case EnumUseful.typeOfDatabaseOperation.EDIT:
-                    tDitte CompanyToEdit = dbEntity.tDitteSet.FirstOrDefault(
-                        x=> x.IdDitta== Company.IdDitta
+                    tDitte CompanyToEdit = dbEntity.tDitte.FirstOrDefault(
+                        x=> x.idDitta== Company.idDitta
                         );
 
                     if (CompanyToEdit!= null)
                     {
-                        CompanyToEdit.IdDitta = Company.IdDitta;
+                        CompanyToEdit.idDitta = Company.idDitta;
                         CompanyToEdit.NomeDitta = Company.NomeDitta;
                         CompanyToEdit.RagioneSocialeDitta = Company.RagioneSocialeDitta;
                         CompanyToEdit.IndirizzoDitta = Company.IndirizzoDitta;
@@ -52,9 +52,9 @@ namespace Crm_DataUtilities.Repository
                         CompanyToEdit.ProvinciaDitta = Company.ProvinciaDitta;
                         CompanyToEdit.TelefonoDitta = Company.TelefonoDitta;
                         CompanyToEdit.FaxDitta = Company.FaxDitta;
-                        CompanyToEdit.UrlDitta = Company.UrlDitta;
-                        CompanyToEdit.EmailDitta = Company.EmailDitta;
-                        CompanyToEdit.P_IvaDitta = Company.P_IvaDitta;
+                        CompanyToEdit.URLDitta = Company.URLDitta;
+                        CompanyToEdit.e_mailDitta = Company.e_mailDitta;
+                        CompanyToEdit.PIvaDitta = Company.PIvaDitta;
                         CompanyToEdit.CodiceAgente = Company.CodiceAgente;
                         CompanyToEdit.Listino = Company.Listino;
                         CompanyToEdit.Logo = Company.Logo;
@@ -66,7 +66,7 @@ namespace Crm_DataUtilities.Repository
                 case EnumUseful.typeOfDatabaseOperation.CREATE:
                     if (Company!=null)
                     {
-                        dbEntity.tDitteSet.Add(Company);
+                        dbEntity.tDitte.Add(Company);
                     }
 
                     break;

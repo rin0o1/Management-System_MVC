@@ -76,7 +76,7 @@ namespace Crm.Controllers
             {
                 AllProducts = AllProducts.Where(
 
-                    x => x.NomeProdotto.ToUpper().StartsWith(Filter.ToUpper()));
+                    x => x.Codice.ToUpper().StartsWith(Filter.ToUpper()));
             }
 
 
@@ -140,7 +140,7 @@ namespace Crm.Controllers
             {
                  IdDitta= AllCompany.FirstOrDefault(
                 x => x.NomeDitta == model.NomeFornitore
-                ).IdDitta;
+                ).idDitta;
             }
             catch
             {
@@ -151,14 +151,12 @@ namespace Crm.Controllers
 
             if (IdDitta != null)
             {
-                tProdoct tProduct = new tProdoct()
+                tListini tProduct = new tListini()
                 {
-                    IdProdotto = model.IdProdotto,
-                    Categoria = model.Categoria,
-                    NomeProdotto = model.NomeProdotto,
+                    IdListino = model.IdProdotto,
+                    Codice = model.NomeProdotto,
                     Descrizione = model.Descrizione,
-                    UM = model.UM,
-                    PrezzoPerUnita = model.PrezzoPerUnita,
+                    //Prezzo = model.PrezzoPerUnita,
                     IdDitta = IdDitta
                 };
 
@@ -209,7 +207,7 @@ namespace Crm.Controllers
             {
                 IdDitta = AllCompany.FirstOrDefault(
                x => x.NomeDitta == model.NomeFornitore
-               ).IdDitta;
+               ).idDitta;
             }
             catch
             {
@@ -220,14 +218,12 @@ namespace Crm.Controllers
 
             if (IdDitta != null)
             {
-                tProdoct tProduct = new tProdoct()
+                tListini tProduct = new tListini()
                 {
                     
-                    Categoria = model.Categoria,
-                    NomeProdotto = model.NomeProdotto,
+                    Codice= model.NomeProdotto,
                     Descrizione = model.Descrizione,
-                    UM = model.UM,
-                    PrezzoPerUnita = model.PrezzoPerUnita,
+                    Prezzo= model.PrezzoPerUnita.ToString(),
                     IdDitta = IdDitta
                 };
 

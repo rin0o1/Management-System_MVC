@@ -100,7 +100,7 @@ namespace Crm.Controllers
 
             List<PreventiveViewModel> list = new List<PreventiveViewModel>();
 
-            foreach (tPreventiveDetails item in AllPreventives.ToList())
+            foreach (tPreventivi item in AllPreventives.ToList())
             {
                 PreventiveViewModel p = new PreventiveViewModel(item);
                 list.Add(p);
@@ -157,7 +157,7 @@ namespace Crm.Controllers
         public ActionResult Details(PreventiveDetailsViewModel model)
         {
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            tPreventiveDetails tPreventive = new tPreventiveDetails()
+            tPreventivi tPreventive = new tPreventivi()
             {
                 IdPreventivo= model.IdPreventivo,
                 IdCliente = model._IdCliente,
@@ -167,24 +167,23 @@ namespace Crm.Controllers
                 Oggetto = model.Oggetto,
                 Attenzione = model.Attenzione,
                 Durata = model.Durata,
-                Data_ = model.Data,
-                Cartella= model.Cartella,
+                Data = model.Data,
                 Operatore = model.Operatore,
-                AddebitoTransporto = model.AddebitoTrasportato,
+                AddebitoTrasporto = model.AddebitoTrasportato,
                 Sconto = model.ScontoGenerale,
-                Variazione = model.ImportoTotaleScontato,
-                Totale = model.TotaleArticoliListino,
+                Variazione = model.ImportoTotaleScontato.ToString(),
+                Totale = Convert.ToDecimal(model.TotaleArticoliListino),
                 Pagamento = model.Pagamento,
                 Consegna = model.Consegna,
                 NotaApertura = model.NotaApertura,
                 NotaChiusura = model.NotaChiusura,
-                NoteAndamaneto = model.NoteAndamento,
-                DataInizioLavoro = model.DataInizioLavori,
+                NoteAndamento= model.NoteAndamento,
+                DataInizioLavori = model.DataInizioLavori,
                 Referenza = model.Referenza,
                 Listino = model.ListinoInVigore,
                 Progetto = model.Progetto,
-                Importo = model.ImportoTotaleScontato, //Non so la differenza tra total, importo e totale con sconto
-                NumeroCommisione = model.NumeroCommissione,
+                Importo =Convert.ToDecimal(model.ImportoTotaleScontato), //Non so la differenza tra total, importo e totale con sconto
+                NumeroCommissione= model.NumeroCommissione,
             };
 
             _preventiveRepository.SavePreventive(tPreventive, EnumUseful.typeOfDatabaseOperation.EDIT);
@@ -194,6 +193,7 @@ namespace Crm.Controllers
         }
 
         //Create Get
+        [HttpGet]
         public ActionResult Create()
         {
             PageParameters _pageParameters = new PageParameters()
@@ -232,7 +232,7 @@ namespace Crm.Controllers
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             //Redirect alla Index 
-            tPreventiveDetails tPreventive = new tPreventiveDetails()
+            tPreventivi tPreventive = new tPreventivi()
             {
                 NumeroPreventivo = model.NumeroPreventivo,
                 Riferimento = model.Riferimento,
@@ -240,24 +240,23 @@ namespace Crm.Controllers
                 Oggetto = model.Oggetto,
                 Attenzione = model.Attenzione,
                 Durata = model.Durata,
-                Data_ = model.Data,
-                Cartella = model.Cartella,
+                Data = model.Data,
                 Operatore = model.Operatore,
-                AddebitoTransporto = model.AddebitoTrasportato,
+                AddebitoTrasporto = model.AddebitoTrasportato,
                 Sconto = model.ScontoGenerale,
-                Variazione = model.ImportoTotaleScontato,
-                Totale = model.TotaleArticoliListino,
+                Variazione = model.ImportoTotaleScontato.ToString(),
+                Totale = Convert.ToDecimal(model.TotaleArticoliListino),
                 Pagamento = model.Pagamento,
                 Consegna = model.Consegna,
                 NotaApertura = model.NotaApertura,
                 NotaChiusura = model.NotaChiusura,
-                NoteAndamaneto = model.NoteAndamento,
-                DataInizioLavoro = model.DataInizioLavori,
+                NoteAndamento = model.NoteAndamento,
+                DataInizioLavori= model.DataInizioLavori,
                 Referenza = model.Referenza,
                 Listino = model.ListinoInVigore,
                 Progetto= model.Progetto,
-                Importo= model.ImportoTotaleScontato, //Non so la differenza tra total, importo e totale con sconto
-                NumeroCommisione= model.NumeroCommissione,
+                Importo= Convert.ToDecimal(model.ImportoTotaleScontato), //Non so la differenza tra total, importo e totale con sconto
+                NumeroCommissione= model.NumeroCommissione,
                 IdCliente= model._IdCliente
             };
 

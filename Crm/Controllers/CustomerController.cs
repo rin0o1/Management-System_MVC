@@ -65,7 +65,7 @@ namespace Crm.Controllers
 		
 	        if (!String.IsNullOrEmpty(filter)) 
 	        {
-		        AllCustomer= AllCustomer.Where(x=> x.CodiceUniclima.ToUpper().StartsWith(filter.ToUpper()));
+		        AllCustomer= AllCustomer.Where(x=> x.CodiceUniklima.ToUpper().StartsWith(filter.ToUpper()));
 	        }
 
 		    foreach(var x in AllCustomer.ToList())
@@ -109,42 +109,16 @@ namespace Crm.Controllers
         {
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            tCliente client = new tCliente()
+            tClienti client = new tClienti()
             {
-                Id= model.Id,
+                IdCliente= model.Id,
                 RagioneSociale = model.RagioneSociale,
-                CodiceUniclima = model.CodiceUniclima,
-                Categoria = model.Categoria,
-                Classe = model.Classe,
+                CodiceUniklima= model.CodiceUniclima,
                 Indirizzo = model.Indirizzo,
                 CAP = model.CAP,
                 Citta = model.Citta,
-                Provincia = model.Provincia,
-                P_Iva = model.P_Iva,
-                Banca = model.Banca,
-                CIN = model.CIN,
-                ABI = model.ABI,
-                CAB = model.CAB,
-                ContoCorrente = model.ContoCorrente,
-                IBAN = model.IBAN,
-                TelefonoUfficio = model.TelefonoUfficio,
-                Telefax = model.Telefax,
-                Conttato1 = model.Contatto1,
-                Cellulare1= model.Cellulare1,
-                Referente1 = model.Referente1,
-                Referente2 = model.Referente2,
-                Note1 = model.Note1,
-                Fornitori = model.Fornitori,
-                Titolari = model.Titolari,
-                Soci = model.Soci,
-                Segretari = model.Segretari,
-                Amministrativi = model.Amministrativi,
-                UfficioTecnico = model.UfficioTecnico,
-                IndirizzoEmail = model.Email,
-                SitoInternet = model.IndirizzoInternet,
-                ConsensoDati = model.ConsensoDati,
-                Data_ = model.Data,
-                FatturatoGlobale = model.FatturatoGloable,
+                Provincia = model.Provincia
+                
             };
 
             _CustomerRepository.SaveCustomer(client, EnumUseful.typeOfDatabaseOperation.EDIT);
@@ -180,40 +154,14 @@ namespace Crm.Controllers
 
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            tCliente client = new tCliente()
+            tClienti client = new tClienti()
             {
                  RagioneSociale = model.RagioneSociale, 
-                 CodiceUniclima = model.CodiceUniclima,
-                 Categoria = model.Categoria,
-                 Classe = model.Classe,
+                 CodiceUniklima= model.CodiceUniclima,
                  Indirizzo = model.Indirizzo,
                  CAP = model.CAP,
                  Citta = model.Citta,
-                 Provincia = model.Provincia,
-                 P_Iva = model.P_Iva,
-                 Banca = model.Banca,
-                 CIN = model.CIN,
-                 ABI = model.ABI,
-                 CAB = model.CAB,
-                 ContoCorrente = model.ContoCorrente,
-                 IBAN = model.IBAN,
-                 TelefonoUfficio = model.TelefonoUfficio,
-                 Telefax = model.Telefax,
-                 Conttato1 = model.Contatto1,                
-                 Referente1 = model.Referente1,
-                 Referente2 = model.Referente2,
-                 Note1 = model.Note1,                 
-                 Fornitori = model.Fornitori,
-                 Titolari = model.Titolari,
-                 Soci = model.Soci,
-                 Segretari = model.Segretari,
-                 Amministrativi = model.Amministrativi,
-                 UfficioTecnico = model.UfficioTecnico,
-                 IndirizzoEmail = model.Email,
-                 SitoInternet = model.IndirizzoInternet,
-                 ConsensoDati = model.ConsensoDati,
-                 Data_ = model.Data,
-                 FatturatoGlobale = model.FatturatoGloable,
+                 Provincia = model.Provincia
             };
 
             _CustomerRepository.SaveCustomer(client, EnumUseful.typeOfDatabaseOperation.CREATE);
@@ -263,7 +211,8 @@ namespace Crm.Controllers
                 foreach (var item in data)
                 {
                     string DataToShow = item.Nome;
-                        string Optional = item.Email;
+                    //string Optional = item.Email;
+                    string Optional = "";
                         int Id = item.IdCliente;
 
                         ((List<object>)JsonResult.Data).Add(new { @datatoshow = DataToShow , @valueId = Id, @optional = Optional });

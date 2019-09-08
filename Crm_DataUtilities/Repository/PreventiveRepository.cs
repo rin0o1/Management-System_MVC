@@ -19,25 +19,25 @@ namespace Crm_DataUtilities.Repository
             this.dbEntity = dbEntity ?? new MyDataEntities();
         }
 
-        public IQueryable<tPreventiveDetails> GetAllPreventives()
+        public IQueryable<tPreventivi> GetAllPreventives()
         {
-            return this.dbEntity.tPreventiveDetails;
+            return this.dbEntity.tPreventivi.Take(10);
         }
 
-        public tPreventiveDetails GetPreventiveFromId(int Id)
+        public tPreventivi GetPreventiveFromId(int Id)
         {
-            return this.dbEntity.tPreventiveDetails.FirstOrDefault(x => x.IdPreventivo == Id);
+            return this.dbEntity.tPreventivi.FirstOrDefault(x => x.IdPreventivo == Id);
         }
 
         //Cambiare questo switch in base al reale nome della tabella nel database
-        public void SavePreventive(tPreventiveDetails preventive, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
+        public void SavePreventive(tPreventivi preventive, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
         {
             
             switch (typeOfDatabaseOperation)
             {
                 
                 case EnumUseful.typeOfDatabaseOperation.EDIT:
-                    tPreventiveDetails PreventiveToEdit = dbEntity.tPreventiveDetails.FirstOrDefault(
+                    tPreventivi PreventiveToEdit = dbEntity.tPreventivi.FirstOrDefault(
                         x => x.IdPreventivo == preventive.IdPreventivo
                         );
 
@@ -50,26 +50,23 @@ namespace Crm_DataUtilities.Repository
                         PreventiveToEdit.Oggetto = preventive.Oggetto;
                         PreventiveToEdit.Attenzione = preventive.Attenzione;
                         PreventiveToEdit.Durata = preventive.Durata;
-                        PreventiveToEdit.Data_ = preventive.Data_;
+                        PreventiveToEdit.Data = preventive.Data;
                         PreventiveToEdit.Confermato = preventive.Confermato;
                         PreventiveToEdit.Operatore = preventive.Operatore;
-                        PreventiveToEdit.AddebitoTransporto = preventive.AddebitoTransporto;
+                        PreventiveToEdit.AddebitoTrasporto = preventive.AddebitoTrasporto;
                         PreventiveToEdit.Sconto = preventive.Sconto;
                         PreventiveToEdit.Progetto = preventive.Progetto;
                         PreventiveToEdit.Variazione = preventive.Variazione;
                         PreventiveToEdit.Totale= preventive.Totale;
                         PreventiveToEdit.Pagamento = preventive.Pagamento;
                         PreventiveToEdit.Consegna = preventive.Consegna;
-                        PreventiveToEdit.Cartella = preventive.Cartella;
                         PreventiveToEdit.NotaApertura = preventive.NotaApertura;
                         PreventiveToEdit.NotaChiusura = preventive.NotaChiusura;
-                        PreventiveToEdit.NoteAndamaneto = preventive.NoteAndamaneto;
-                        PreventiveToEdit.DataInizioLavoro = preventive.DataInizioLavoro;
-                        PreventiveToEdit.NoteAndamaneto = preventive.NoteAndamaneto;
-                        PreventiveToEdit.NumeroCommisione = preventive.NumeroCommisione;
+                        PreventiveToEdit.NoteAndamento = preventive.NoteAndamento;
+                        PreventiveToEdit.DataInizioLavori = preventive.DataInizioLavori;
+                        PreventiveToEdit.NumeroCommissione = preventive.NumeroCommissione;
                         PreventiveToEdit.Referenza = preventive.Referenza;
                         PreventiveToEdit.Listino = preventive.Listino;
-                        PreventiveToEdit.s_GUID = preventive.s_GUID;
                             
                     }
                     
@@ -77,7 +74,7 @@ namespace Crm_DataUtilities.Repository
                 case EnumUseful.typeOfDatabaseOperation.CREATE:
                     if (preventive!= null)
                     {
-                        dbEntity.tPreventiveDetails.Add(preventive);
+                        dbEntity.tPreventivi.Add(preventive);
                     }
                     break;
 
@@ -89,15 +86,15 @@ namespace Crm_DataUtilities.Repository
 
         public  void RemovePreventiveWithId(int id)
         {
-            tPreventiveDetails PreventiveToDelete =
+            tPreventivi PreventiveToDelete =
                 dbEntity.
-                tPreventiveDetails.
+                tPreventivi.
                 FirstOrDefault(
                     ptd => ptd.IdPreventivo == id
                     );
             if (PreventiveToDelete != null)
             {
-                dbEntity.tPreventiveDetails.Remove(PreventiveToDelete);
+                dbEntity.tPreventivi.Remove(PreventiveToDelete);
                 dbEntity.SaveChangesAsync();
 
             }

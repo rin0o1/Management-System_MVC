@@ -67,16 +67,16 @@
       <DependentUpon>DbEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tCliente.cs">
+    <Compile Include="tClienti.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="tDitte.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="tPreventiveDetails.cs">
+    <Compile Include="tListini.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="tProdoct.cs">
+    <Compile Include="tPreventivi.cs">
       <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
   </ItemGroup>

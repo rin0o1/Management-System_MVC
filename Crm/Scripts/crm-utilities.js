@@ -89,8 +89,14 @@ function CalculateDataUsingCustomInput(Values, calculationtype) {
         case 2:
            
                 var Sconto = Values[0];
-                var Totale = Values[1];/*In questo caso avrò solo un input che rappresenta il totale*/
-                Risultato = (Sconto!==0) ? Totale - ((Totale * Sconto) / 100) : Totale;
+            var Totale = Values[1];/*In questo caso avrò solo un input che rappresenta il totale*/
+            if (Sconto <= 100 && Sconto >= 0) {
+                Risultato = (Sconto !== 0) ? Totale - ((Totale * Sconto) / 100) : Totale;
+            }
+            else {
+                Risultato = 0;
+            }
+                
             //$(DestinationElement).val(Risultato);
             
             

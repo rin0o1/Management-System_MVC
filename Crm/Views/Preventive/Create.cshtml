@@ -16,10 +16,9 @@
         </div>
 
         @using (Html.BeginForm(actionName, controllerName, FormMethod.Post, new { id = "Form_" }))
-       {
+        {
             @Html.AntiForgeryToken()
-         <div class="form-group">
-
+            <div class="form-group">
 
             <div class="form-group">
                 <div class="row">
@@ -30,7 +29,7 @@
                             </label>
                         </div>
                         <div>
-                            <input class="col-sm-12 ImportantData" type="text" name="NumeroPreventivo" >
+                            <input class="col-sm-12 ImportantData" type="text" name="NumeroPreventivo" value="">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -38,7 +37,7 @@
                             <label class="col-sm-12">Data</label>
                         </div>
                         <div>
-                            <input class="col-sm-12" type="text" name="Data" >
+                            <input class="col-sm-12" type="date" name="Data" value="">
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -46,17 +45,17 @@
                             <label class="col-sm-12">Durata</label>
                         </div>
                         <div>
-                            <input class="col-sm-12" type="text" name="Durata">
+                            <input class="col-sm-12" type="text" name="Durata" value="">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         <div>
                             <label class="col-sm-12">Listino in vigore</label>
                         </div>
                         <div>
-                            <input class="col-sm-12 chg " type="number" min="0" name="ListinoInVigore" >
+                            <input class="col-sm-12 chg " type="number" min="0" name="ListinoInVigore" value="@Model.ListinoInVigore">
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
 
@@ -67,28 +66,28 @@
                     <div class="col-md-2 LineBOt">
                         <label> Oggetto</label>
                     </div>
-                    <input class="col-md-10" type="text" name="Oggetto" >
+                    <input class="col-md-10" type="text" name="Oggetto" value="" >
                 </div>
                 <br />
                 <div class="row SomeSpaceTop">
                     <div class="col-md-2 LineBOt">
                         <label> Riferimento </label>
                     </div>
-                    <input class="col-md-10" type="text" name="Riferimento" >
+                    <input class="col-md-10" type="text" name="Riferimento" value="">
                 </div>
                 <br />
                 <div class="row  SomeSpaceTop">
                     <div class="col-md-2 LineBOt">
                         <label> Allegati </label>
                     </div>
-                    <input class="col-md-10" type="text" name="Allegati" >
+                    <input class="col-md-10" type="text" name="Allegati" value="">
                 </div>
                 <br />
                 <div class="row SomeSpaceTop ">
                     <div class="col-md-2 LineBOt">
                         <label> Progetto </label>
                     </div>
-                    <input class="col-md-10" type="text" name="Progetto" >
+                    <input class="col-md-10" type="text" name="Progetto" value="" >
                 </div>
             </div>
 
@@ -102,7 +101,7 @@
                             </label>
                         </div>
                         <div>
-                            <input class="col-sm-12" type="text" name="Attenzione" >
+                            <input class="col-sm-12" type="text" name="Attenzione" value="">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -112,7 +111,7 @@
                             </label>
                         </div>
                         <div>
-                            <input class="col-sm-12" type="text" name="Operatore" >
+                            <input class="col-sm-12" type="text" name="Operatore" value="">
                         </div>
                     </div>
                 </div>
@@ -129,7 +128,7 @@
                             </label>
                         </div>
                         <div>
-                            <input class="col-sm-12 " type="text" name="AddebitoTrasportato" >
+                            <input class="col-sm-12 " type="text" name="AddebitoTrasportato"value="" >
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -139,11 +138,13 @@
                             </label>
                         </div>
                         <div class="CustomSelectionItem ">
-                            <select class="col-sm-12 SelectionItem" id="country" name="Pagamento">
+                            @*<select class="col-sm-12 SelectionItem" id="country" name="Pagamento">
+                                <option> @Model.Pagamento</option>
                                 <option> DA CONCORDARE </option>
                                 <option> EFFETTUATO </option>
                                 <option> NON EFFETTUATO </option>
-                            </select>
+                            </select>*@
+                            <input class="col-sm-12 " type="text" name="Pagamento" value="" >
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -152,12 +153,14 @@
                                 Consegna
                             </label>
                         </div>
-                        <div class="CustomSelectionItem">
-                            <select class="col-sm-12 SelectionItem" id="country" name="Consegna">
+                        <div @*class="CustomSelectionItem"*@>
+                            @*<select class="col-sm-12 SelectionItem" id="country" name="Consegna">
+                                <option> @Model.Consegna</option>
                                 <option> DA CONCORDARE </option>
                                 <option> EFFETTUATO </option>
                                 <option> NON EFFETTUATO </option>
-                            </select>
+                            </select>*@
+                            <input class="col-sm-12 " type="text" name="Consegna"value="" >
                         </div>
                     </div>
                 </div>
@@ -175,7 +178,7 @@
                             </label>
                         </div>
                         <div>
-                            <input class="col-sm-12" type="text" name="NomeApertura" >
+                            <input class="col-sm-12" type="text" name="NomeApertura"value="" >
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -185,33 +188,7 @@
                             </label>
                         </div>
                         <div>
-                            <input class="col-sm-12" type="text" name="NotaChiusura" >
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <br />
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div>
-                            <label class="col-sm-12">
-                                Cartella
-                            </label>
-                        </div>
-                        <div>
-                            <input class="col-sm-12" type="text" name="Cartella" >
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div>
-                            <label class="col-sm-12">
-                                Numero commissione
-                            </label>
-                        </div>
-                        <div>
-                            <input class="col-sm-12" type="number" name="NumeroCommissione" >
+                            <input class="col-sm-12" type="text" name="NotaChiusura" value="">
                         </div>
                     </div>
                 </div>
@@ -221,24 +198,34 @@
             <br />
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div>
                             <label class="col-sm-12">
                                 Data inizio lavori
                             </label>
                         </div>
                         <div>
-                            <input class="col-sm-12" type="text" name="DataInzioLavori" >
+                            <input class="col-sm-12" type="date" name="DataInzioLavori" value="">
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <div>
+                            <label class="col-sm-12">
+                                Numero Commissione
+                            </label>
+                        </div>
+                        <div>
+                            <input class="col-sm-12" type="text" name="NumeroCommissione"value="" >
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
                         <div>
                             <label class="col-sm-12">
                                 Referenza
                             </label>
                         </div>
                         <div>
-                            <input class="col-sm-12" type="text" name="Riferimento" >
+                            <input class="col-sm-12" type="text" name="Riferimento"  value="">
                         </div>
                     </div>
                 </div>
@@ -264,7 +251,7 @@
                             <label class="col-sm-12">Totale(€)</label>
                         </div>
                         <div>
-                            <input id="Totale" class="col-sm-12 ImportantData Inp chg" type="number" min="0" name="TotaleArticoliListino" >
+                            <input id="Totale" class="col-sm-12 ImportantData Inp chg" type="number" min="0" name="TotaleArticoliListino" value="0">
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -272,7 +259,7 @@
                             <label class="col-sm-12">Totale scontato(€)</label>
                         </div>
                         <div>
-                            <input id="Destination" style="text-align:center;" class="col-sm-12 ImportantData Dest " type="text" readonly min="0" name="ImportoTotaleScontato" >
+                            <input id="Destination" style="text-align:center;" class="col-sm-12 ImportantData Dest " type="text" readonly min="0" name="ImportoTotaleScontato" value="0">
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -280,12 +267,12 @@
                             <label class="col-sm-12">Sconto (%)</label>
                         </div>
                         <div>
-                            <input id="Sconto" class="col-sm-12 ImportantData chg" type="number" min="0" max="100" name="ScontoGenerale" >
+                            <input id="Sconto" class="col-sm-12 ImportantData chg" type="number" min="0" max="100" name="ScontoGenerale" value="0">
                         </div>
                     </div>
                 </div>
             </div>
-          </div>
+    </div>
 
         }
 
@@ -295,13 +282,24 @@
 <script>
 
     
-        $("#StartPoint").on("input", function (e) {
-        CalculateDataUsingCustomInput($(this), CalculationType.PERCENTAGE);
-        });
-        $(".Inp").on("input", function (e) {
-            var Closest = $(this).siblings('#StartPoint')[0];
-            CalculateDataUsingCustomInput($(Closest), CalculationType.PERCENTAGE);
-        });
+         $( "#Sconto").on("input", function (e) {
+        SetData();
+    });
+
+    $( "#Totale").on("input", function (e) {
+        SetData();
+    });
+
+    function SetData() {
+        var Data = [];
+        var Sconto = $('#Sconto')[0].value;
+        var Totale = $('#Totale')[0].value;
+        Data.push(Sconto);
+        Data.push(Totale);
+        Destination = $('#Destination')[0];
+        var Result = CalculateDataUsingCustomInput(Data, CalculationType.PERCENTAGE);
+        $(Destination).val(Result);
+    }
 
     @*//Incorporare in una singola funzione
     $("#save").click(function ()
