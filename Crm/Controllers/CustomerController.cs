@@ -65,7 +65,7 @@ namespace Crm.Controllers
 		
 	        if (!String.IsNullOrEmpty(filter)) 
 	        {
-		        AllCustomer= AllCustomer.Where(x=> x.CodiceUniklima.ToUpper().StartsWith(filter.ToUpper()));
+		        AllCustomer= AllCustomer.Where(x=> x.CodiceUniclima.ToUpper().StartsWith(filter.ToUpper()));
 	        }
 
 		    foreach(var x in AllCustomer.ToList())
@@ -109,11 +109,11 @@ namespace Crm.Controllers
         {
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            tClienti client = new tClienti()
+            tCliente client = new tCliente()
             {
-                IdCliente= model.Id,
+                Id= model.Id,
                 RagioneSociale = model.RagioneSociale,
-                CodiceUniklima= model.CodiceUniclima,
+                CodiceUniclima= model.CodiceUniclima,
                 Indirizzo = model.Indirizzo,
                 CAP = model.CAP,
                 Citta = model.Citta,
@@ -154,10 +154,10 @@ namespace Crm.Controllers
 
             if (model == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            tClienti client = new tClienti()
+            tCliente client = new tCliente()
             {
                  RagioneSociale = model.RagioneSociale, 
-                 CodiceUniklima= model.CodiceUniclima,
+                 CodiceUniclima= model.CodiceUniclima,
                  Indirizzo = model.Indirizzo,
                  CAP = model.CAP,
                  Citta = model.Citta,

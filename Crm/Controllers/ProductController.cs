@@ -53,10 +53,7 @@ namespace Crm.Controllers
 
             };
 
-
-
             SetParameters();
-
 
             var data = LoadData(null);
 
@@ -76,7 +73,7 @@ namespace Crm.Controllers
             {
                 AllProducts = AllProducts.Where(
 
-                    x => x.Codice.ToUpper().StartsWith(Filter.ToUpper()));
+                    x => x.NomeProdotto.ToUpper().StartsWith(Filter.ToUpper()));
             }
 
 
@@ -140,36 +137,29 @@ namespace Crm.Controllers
             {
                  IdDitta= AllCompany.FirstOrDefault(
                 x => x.NomeDitta == model.NomeFornitore
-                ).idDitta;
+                ).IdDitta;
             }
             catch
             {
                 IdDitta = null;
-            }
-           
-
-
+            }           
             if (IdDitta != null)
             {
-                tListini tProduct = new tListini()
+                tProdoct tProduct = new tProdoct()
                 {
-                    IdListino = model.IdProdotto,
-                    Codice = model.NomeProdotto,
+                    IdProdotto = model.IdProdotto,
+                    NomeProdotto = model.NomeProdotto,
                     Descrizione = model.Descrizione,
-                    //Prezzo = model.PrezzoPerUnita,
+                    PrezzoPerUnita = model.PrezzoPerUnita,
                     IdDitta = IdDitta
                 };
-
                 _productRepository.SaveProduct(tProduct, EnumUseful.typeOfDatabaseOperation.EDIT);
-
                 return RedirectToAction("Index");
             }
-
             else
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
         }
 
 
@@ -207,7 +197,7 @@ namespace Crm.Controllers
             {
                 IdDitta = AllCompany.FirstOrDefault(
                x => x.NomeDitta == model.NomeFornitore
-               ).idDitta;
+               ).IdDitta;
             }
             catch
             {
@@ -218,12 +208,12 @@ namespace Crm.Controllers
 
             if (IdDitta != null)
             {
-                tListini tProduct = new tListini()
+                tProdoct tProduct = new tProdoct()
                 {
                     
-                    Codice= model.NomeProdotto,
+                    NomeProdotto= model.NomeProdotto,
                     Descrizione = model.Descrizione,
-                    Prezzo= model.PrezzoPerUnita.ToString(),
+                    PrezzoPerUnita= model.PrezzoPerUnita,
                     IdDitta = IdDitta
                 };
 

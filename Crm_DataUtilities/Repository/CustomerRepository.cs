@@ -20,26 +20,26 @@ namespace Crm_DataUtilities.Repository
             this.dbEntity = dbEntity ?? new MyDataEntities();
         }
 
-        public IQueryable<tClienti> GetAllCustomers()
+        public IQueryable<tCliente> GetAllCustomers()
         {
-            return this.dbEntity.tClienti;
+            return this.dbEntity.tCliente;
         }
 
-        public tClienti GetCustomerFromId(int Id)
+        public tCliente GetCustomerFromId(int Id)
         {
-            return this.dbEntity.tClienti.FirstOrDefault(x => x.IdCliente == Id);
+            return this.dbEntity.tCliente.FirstOrDefault(x => x.Id == Id);
         }
 
-        public void SaveCustomer(tClienti cliente, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
+        public void SaveCustomer(tCliente cliente, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
         {
             switch(typeOfDatabaseOperation)
             {
                 case EnumUseful.typeOfDatabaseOperation.EDIT:
-                    tClienti CustomerToEdit = dbEntity.tClienti.FirstOrDefault(x => x.IdCliente == cliente.IdCliente);
+                    tCliente CustomerToEdit = dbEntity.tCliente.FirstOrDefault(x => x.Id == cliente.Id);
                     if (CustomerToEdit!= null)
                     {
                         CustomerToEdit.RagioneSociale = cliente.RagioneSociale;
-                        CustomerToEdit.CodiceUniklima = cliente.CodiceUniklima;
+                        CustomerToEdit.CodiceUniclima = cliente.CodiceUniclima;
                         CustomerToEdit.Indirizzo = cliente.Indirizzo;
                         CustomerToEdit.CAP = cliente.CAP;
                         CustomerToEdit.Citta = cliente.Citta;
@@ -51,7 +51,7 @@ namespace Crm_DataUtilities.Repository
 
                     if (cliente!= null)
                     {
-                        dbEntity.tClienti.Add(cliente);
+                        dbEntity.tCliente.Add(cliente);
                     }
 
                     break;                
@@ -74,11 +74,11 @@ namespace Crm_DataUtilities.Repository
 
         public void RemoveCustomerWithId(int Id)
         {
-            tClienti Element = this.dbEntity.tClienti.FirstOrDefault(x => x.IdCliente == Id);
+            tCliente Element = this.dbEntity.tCliente.FirstOrDefault(x => x.Id == Id);
 
             if (Element != null)
             {
-                dbEntity.tClienti.Remove(Element);
+                dbEntity.tCliente.Remove(Element);
                 dbEntity.SaveChangesAsync();
 
             }

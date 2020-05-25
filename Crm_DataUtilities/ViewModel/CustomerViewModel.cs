@@ -13,12 +13,14 @@ namespace Crm_DataUtilities.ViewModel
     public class CustomerViewModel
     {
 
-        public CustomerViewModel(tClienti c)
+        public CustomerViewModel(tCliente c)
         {
-            IdCliente = c.IdCliente;
+            IdCliente = c.Id;
             Nome = c.RagioneSociale;
             CittaDitta = c.Citta;
-            CodiceUniclima = c.CodiceUniklima;
+            CodiceUniclima = c.CodiceUniclima;
+            Email = c.IndirizzoEmail;
+
         }
             
 
@@ -34,27 +36,30 @@ namespace Crm_DataUtilities.ViewModel
         [Display(Name ="Citta Ditta")]
         public string CittaDitta { get; set; }
 
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
     }
 
 
     public class CustomerDetailsViewModel
     {
-        public CustomerDetailsViewModel(tClienti c)
+        public CustomerDetailsViewModel(tCliente c)
         {
-            this.Id = c.IdCliente;
+            this.Id = c.Id;
             this.RagioneSociale = c.RagioneSociale;
-            this.CodiceUniclima = c.CodiceUniklima;
+            this.CodiceUniclima = c.CodiceUniclima;
             this.Indirizzo = c.Indirizzo;
             this.CAP = c.CAP ?? 0;
             this.Citta = c.Citta;
-            this.Provincia = c.Provincia;
+            this.Provincia = c.Provincia;            
         }
 
         public int Id { get; set; }
         public string RagioneSociale { get; set; }
         public string CodiceUniclima { get; set; }
         public string Indirizzo { get; set; }
-        public double CAP { get; set; }
+        public int CAP { get; set; }
         public string Citta { get; set; }
         public string Provincia { get; set; }
 

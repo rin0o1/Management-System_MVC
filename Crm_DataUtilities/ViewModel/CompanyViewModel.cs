@@ -17,9 +17,9 @@ namespace Crm_DataUtilities.ViewModel
         {
             this.NomeDittaa = Company.NomeDitta;
             this.RagioneSocialeDitta = Company.RagioneSocialeDitta;
-            this.EmailDitta = Company.e_mailDitta;
+            this.EmailDitta = Company.EmailDitta;
             this.CittaDitta = Company.CittaDitta;
-            this.IdDitta = Company.idDitta;
+            this.IdDitta = Company.IdDitta;
         }
 
         public int IdDitta { get; set; }
@@ -36,7 +36,7 @@ namespace Crm_DataUtilities.ViewModel
         public CompanyViewModelDetails(tDitte Company)
         {
 
-            this.IdDitta = Company.idDitta;
+            this.IdDitta = Company.IdDitta;
             this.NomeDitta = Company.NomeDitta;
             this.RagioneSocialeDitta = Company.RagioneSocialeDitta;
             this.IndirizzoDitta = Company.IndirizzoDitta;
@@ -45,8 +45,8 @@ namespace Crm_DataUtilities.ViewModel
             this.ProvinciaDitta = Company.ProvinciaDitta;
             this.TelefonoDitta = Company.TelefonoDitta;
             this.FaxDitta = Company.FaxDitta;
-            this.UrlDitta = Company.URLDitta;
-            this.P_IvaDitta = Company.PIvaDitta;
+            this.UrlDitta = Company.UrlDitta;
+            this.P_IvaDitta = Company.P_IvaDitta;
             this.CodiceAgente = Company.CodiceAgente;
             this.Listino = Company.Listino;
             this.Logo = Company.Logo;

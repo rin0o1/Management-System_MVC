@@ -5,11 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d97b7dec00f243459fc3f521cb68796c" Name="Diagram1" ZoomLevel="59">
-        <EntityTypeShape EntityType="MyDataModel.tClienti" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MyDataModel.tCliente" Width="1.5" PointX="5.75" PointY="1.25" />
         <EntityTypeShape EntityType="MyDataModel.tDitte" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="MyDataModel.tListini" Width="1.5" PointX="3" PointY="2" />
-        <EntityTypeShape EntityType="MyDataModel.tPreventivi" Width="1.5" PointX="2.75" PointY="5.75" />
-        <AssociationConnector Association="MyDataModel.FK__tListini__IdDitt__1A14E395" />
+        <EntityTypeShape EntityType="MyDataModel.tPreventiveDetails" Width="1.5" PointX="8" PointY="2.5" />
+        <EntityTypeShape EntityType="MyDataModel.tProdoct" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="MyDataModel.tProva" Width="1.5" PointX="2.75" PointY="5.75" />
+        <AssociationConnector Association="MyDataModel.FK__tPreventi__IdCli__29572725" />
+        <AssociationConnector Association="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

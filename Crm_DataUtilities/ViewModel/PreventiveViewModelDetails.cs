@@ -9,13 +9,13 @@ namespace Crm_DataUtilities.ViewModel
     public class PreventiveViewModel
     {
         public PreventiveViewModel() { }
-        public PreventiveViewModel(tPreventivi preventive)
+        public PreventiveViewModel(tPreventiveDetails preventive)
         {
             this.IdPreventivo = preventive.IdPreventivo;
             this.NumeroPreventivo = preventive.NumeroPreventivo;
-            if (preventive.Data.HasValue)
+            if (preventive.Data_.HasValue)
             {
-                this.Data = preventive.Data.Value.ToShortDateString();
+                this.Data = preventive.Data_.Value.ToShortDateString();
             }
             else
             {
@@ -24,7 +24,7 @@ namespace Crm_DataUtilities.ViewModel
 
 
             this.Riferimento = preventive.Riferimento;
-            this.Listino = preventive.Listino;
+           
         }
 
 
@@ -48,57 +48,49 @@ namespace Crm_DataUtilities.ViewModel
     public class PreventiveDetailsViewModel
     {
         public PreventiveDetailsViewModel() { }
-        public PreventiveDetailsViewModel(tPreventivi p)
+        public PreventiveDetailsViewModel(tPreventiveDetails p)
         {
             this.IdPreventivo = p.IdPreventivo;
             this.NumeroPreventivo = p.NumeroPreventivo;
             
-            if (p.Data.HasValue)
+            if (p.Data_.HasValue)
             {                
-                this.Data = p.Data.Value.Date;
+                this.Data = p.Data_.Value.Date;
             }
             else
             {
                 this.Data = null;
             }
             
-            this.Durata = p.Durata;
+            this.Durata = p.Durata ?? 0;
             this.Oggetto = p.Oggetto;
             this.Allegati = p.Allegati;
             this.Riferimento = p.Riferimento;
             this.Progetto = p.Progetto;
             //this.IdOperatore = 1;
             this.Operatore = p.Operatore;
-            this.AddebitoTrasportato = p.AddebitoTrasporto;
+            this.AddebitoTrasportato = p.AddebitoTransporto;
             this.Pagamento = p.Pagamento;
             this.Consegna = p.Consegna;
             this.NotaApertura = p.NotaApertura;
             this.NotaChiusura = p.NotaChiusura;
-            this.NumeroCommissione = p.NumeroCommissione;
-
-            if (!String.IsNullOrEmpty(p.DataInizioLavori))
-            {
-                this.DataInizioLavori =p.DataInizioLavori;
-            }
-            else
-            {
-                this.DataInizioLavori = null;
-            }
+            this.NumeroCommissione = p.NumeroCommisione.ToString();
+                        
             this.Referenza = p.Referenza;
-            this.NoteAndamento = p.NoteAndamento;
+            
             this.TotaleArticoliListino = Convert.ToDouble(p.Totale);
             this.ImportoTotaleScontato = Convert.ToDouble( p.Variazione);
             this.ScontoGenerale = p.Sconto  ;
             this._IdCliente = Convert.ToInt32(p.IdCliente);
             this.Attenzione = p.Attenzione;
-            this.ListinoInVigore = p.Listino ;
+            
             //this._IdOrdine = 5;
         }
 
         public int          IdPreventivo          { get; set; }
         public string       NumeroPreventivo       { get; set; }
         public  DateTime?     Data                      { get; set; }
-        public string      Durata                    { get; set; }
+        public int      Durata                    { get; set; }
         public string       Oggetto                  { get; set; }
         public string       Riferimento               { get; set; }
         public string       Progetto              { get; set; }

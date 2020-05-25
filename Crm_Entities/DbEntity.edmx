@@ -5,101 +5,163 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MyDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="tClienti">
+        <EntityType Name="tCliente">
           <Key>
-            <PropertyRef Name="IdCliente" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RagioneSociale" Type="nvarchar" MaxLength="255" />
-          <Property Name="CodiceUniklima" Type="nvarchar" MaxLength="255" />
-          <Property Name="Indirizzo" Type="nvarchar" MaxLength="255" />
-          <Property Name="CAP" Type="float" />
-          <Property Name="Citta" Type="nvarchar" MaxLength="255" />
-          <Property Name="Provincia" Type="nvarchar" MaxLength="255" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RagioneSociale" Type="varchar" MaxLength="30" />
+          <Property Name="CodiceUniclima" Type="varchar" MaxLength="30" />
+          <Property Name="Categoria" Type="varchar" MaxLength="30" />
+          <Property Name="Classe" Type="int" />
+          <Property Name="Indirizzo" Type="varchar" MaxLength="30" />
+          <Property Name="CAP" Type="int" />
+          <Property Name="Citta" Type="varchar" MaxLength="30" />
+          <Property Name="Provincia" Type="varchar" MaxLength="30" />
+          <Property Name="P_Iva" Type="char" MaxLength="11" />
+          <Property Name="Banca" Type="varchar" MaxLength="30" />
+          <Property Name="CIN" Type="varchar" MaxLength="30" />
+          <Property Name="ABI" Type="varchar" MaxLength="30" />
+          <Property Name="CAB" Type="varchar" MaxLength="30" />
+          <Property Name="ContoCorrente" Type="varchar" MaxLength="30" />
+          <Property Name="IBAN" Type="char" MaxLength="27" />
+          <Property Name="TelefonoUfficio" Type="varchar" MaxLength="15" />
+          <Property Name="Telefax" Type="varchar" MaxLength="30" />
+          <Property Name="Conttato1" Type="varchar" MaxLength="15" />
+          <Property Name="Cellulare1" Type="varchar" MaxLength="15" />
+          <Property Name="Conttato2" Type="varchar" MaxLength="15" />
+          <Property Name="Cellulare2" Type="varchar" MaxLength="15" />
+          <Property Name="Contatto3" Type="varchar" MaxLength="15" />
+          <Property Name="Cellulare3" Type="varchar" MaxLength="15" />
+          <Property Name="Referente1" Type="varchar" MaxLength="30" />
+          <Property Name="Referente2" Type="varchar" MaxLength="30" />
+          <Property Name="Note1" Type="varchar" MaxLength="100" />
+          <Property Name="Note2" Type="varchar" MaxLength="100" />
+          <Property Name="Note3" Type="varchar" MaxLength="100" />
+          <Property Name="Note4" Type="varchar" MaxLength="100" />
+          <Property Name="Fornitori" Type="varchar" MaxLength="50" />
+          <Property Name="Titolari" Type="varchar" MaxLength="50" />
+          <Property Name="Soci" Type="varchar" MaxLength="50" />
+          <Property Name="Segretari" Type="varchar" MaxLength="50" />
+          <Property Name="Amministrativi" Type="varchar" MaxLength="50" />
+          <Property Name="UfficioTecnico" Type="varchar" MaxLength="20" />
+          <Property Name="IndirizzoEmail" Type="varchar" MaxLength="30" />
+          <Property Name="SitoInternet" Type="varchar" MaxLength="30" />
+          <Property Name="ConsensoDati" Type="varchar" MaxLength="50" />
+          <Property Name="Data_" Type="date" />
+          <Property Name="FatturatoGlobale" Type="float" />
+          <Property Name="s_GUID" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="tDitte">
           <Key>
-            <PropertyRef Name="idDitta" />
+            <PropertyRef Name="IdDitta" />
           </Key>
-          <Property Name="idDitta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NomeDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="RagioneSocialeDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="IndirizzoDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="CapDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="CittaDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="ProvinciaDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="TelefonoDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="FaxDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="URLDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="e-mailDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="PIvaDitta" Type="nvarchar" MaxLength="255" />
-          <Property Name="CodiceAgente" Type="nvarchar" MaxLength="255" />
-          <Property Name="Listino" Type="nvarchar" MaxLength="255" />
-          <Property Name="Logo" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdDitta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomeDitta" Type="varchar" MaxLength="30" />
+          <Property Name="RagioneSocialeDitta" Type="varchar" MaxLength="30" />
+          <Property Name="IndirizzoDitta" Type="varchar" MaxLength="30" />
+          <Property Name="CapDitta" Type="varchar" MaxLength="30" />
+          <Property Name="CittaDitta" Type="varchar" MaxLength="30" />
+          <Property Name="ProvinciaDitta" Type="varchar" MaxLength="30" />
+          <Property Name="TelefonoDitta" Type="varchar" MaxLength="30" />
+          <Property Name="FaxDitta" Type="varchar" MaxLength="30" />
+          <Property Name="UrlDitta" Type="varchar" MaxLength="30" />
+          <Property Name="EmailDitta" Type="varchar" MaxLength="30" />
+          <Property Name="P_IvaDitta" Type="varchar" MaxLength="30" />
+          <Property Name="CodiceAgente" Type="varchar" MaxLength="30" />
+          <Property Name="Listino" Type="varchar" MaxLength="30" />
+          <Property Name="Logo" Type="varchar" MaxLength="30" />
         </EntityType>
-        <EntityType Name="tListini">
-          <Key>
-            <PropertyRef Name="IdListino" />
-          </Key>
-          <Property Name="IdListino" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Codice" Type="varchar" MaxLength="50" />
-          <Property Name="Descrizione" Type="varchar" MaxLength="200" />
-          <Property Name="Prezzo" Type="varchar" MaxLength="50" />
-          <Property Name="IdDitta" Type="int" />
-        </EntityType>
-        <EntityType Name="tPreventivi">
+        <EntityType Name="tPreventiveDetails">
           <Key>
             <PropertyRef Name="IdPreventivo" />
           </Key>
           <Property Name="IdPreventivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdCliente" Type="float" />
-          <Property Name="Data" Type="datetime" />
-          <Property Name="IdOrdine" Type="float" />
-          <Property Name="NumeroPreventivo" Type="nvarchar" MaxLength="255" />
-          <Property Name="NumeroOrdine" Type="nvarchar" MaxLength="255" />
-          <Property Name="Riferimento" Type="nvarchar" MaxLength="255" />
-          <Property Name="Allegati" Type="nvarchar" MaxLength="255" />
-          <Property Name="Oggetto" Type="nvarchar" MaxLength="255" />
-          <Property Name="Attenzione" Type="nvarchar" MaxLength="255" />
-          <Property Name="Durata" Type="nvarchar" MaxLength="255" />
-          <Property Name="Confermato" Type="bit" Nullable="false" />
-          <Property Name="Operatore" Type="nvarchar" MaxLength="255" />
-          <Property Name="AddebitoTrasporto" Type="nvarchar" MaxLength="255" />
-          <Property Name="Totale" Type="money" />
-          <Property Name="Variazione" Type="nvarchar" MaxLength="255" />
-          <Property Name="Importo" Type="money" />
-          <Property Name="Pagamento" Type="nvarchar" MaxLength="255" />
-          <Property Name="Consegna" Type="nvarchar" MaxLength="255" />
-          <Property Name="NotaApertura" Type="nvarchar" MaxLength="255" />
-          <Property Name="NotaChiusura" Type="nvarchar" MaxLength="255" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="NumeroPreventivo" Type="varchar" MaxLength="30" />
+          <Property Name="NumeroOrdine" Type="varchar" MaxLength="30" />
+          <Property Name="Riferimento" Type="varchar" MaxLength="30" />
+          <Property Name="Allegati" Type="varchar" MaxLength="30" />
+          <Property Name="Oggetto" Type="varchar" MaxLength="30" />
+          <Property Name="Attenzione" Type="varchar" MaxLength="30" />
+          <Property Name="Data_" Type="date" />
+          <Property Name="Durata" Type="int" />
+          <Property Name="Confermato" Type="bit" />
+          <Property Name="Operatore" Type="varchar" MaxLength="30" />
+          <Property Name="AddebitoTransporto" Type="varchar" MaxLength="30" />
+          <Property Name="Totale" Type="float" />
+          <Property Name="Variazione" Type="float" />
+          <Property Name="Importo" Type="float" />
+          <Property Name="Pagamento" Type="varchar" MaxLength="30" />
+          <Property Name="Consegna" Type="varchar" MaxLength="30" />
+          <Property Name="NotaApertura" Type="varchar" MaxLength="30" />
+          <Property Name="NotaChiusura" Type="varchar" MaxLength="30" />
           <Property Name="Sconto" Type="float" />
-          <Property Name="Progetto" Type="nvarchar" MaxLength="255" />
-          <Property Name="DataInizioLavori" Type="nvarchar" MaxLength="255" />
-          <Property Name="NoteAndamento" Type="nvarchar" MaxLength="255" />
-          <Property Name="NumeroCommissione" Type="nvarchar" MaxLength="255" />
-          <Property Name="Referenza" Type="nvarchar" MaxLength="255" />
-          <Property Name="Listino" Type="nvarchar" MaxLength="255" />
+          <Property Name="Progetto" Type="varchar" MaxLength="30" />
+          <Property Name="DataInizioLavoro" Type="date" />
+          <Property Name="NoteAndamaneto" Type="varchar" MaxLength="100" />
+          <Property Name="Cartella" Type="varchar" MaxLength="30" />
+          <Property Name="NumeroCommisione" Type="int" />
+          <Property Name="Referenza" Type="varchar" MaxLength="30" />
+          <Property Name="Listino" Type="float" />
+          <Property Name="s_GUID" Type="varchar" MaxLength="10" />
         </EntityType>
-        <Association Name="FK__tListini__IdDitt__1A14E395">
+        <EntityType Name="tProdoct">
+          <Key>
+            <PropertyRef Name="IdProdotto" />
+          </Key>
+          <Property Name="IdProdotto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="30" />
+          <Property Name="NomeProdotto" Type="varchar" MaxLength="30" />
+          <Property Name="Descrizione" Type="varchar(max)" />
+          <Property Name="UM" Type="varchar" MaxLength="10" />
+          <Property Name="PrezzoPerUnita" Type="float" />
+          <Property Name="IdDitta" Type="int" />
+        </EntityType>
+        <EntityType Name="tProva">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__tPreventi__IdCli__29572725">
+          <End Role="tCliente" Type="Self.tCliente" Multiplicity="0..1" />
+          <End Role="tPreventiveDetails" Type="Self.tPreventiveDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tPreventiveDetails">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tProdoct__IdDitt__4BAC3F29">
           <End Role="tDitte" Type="Self.tDitte" Multiplicity="0..1" />
-          <End Role="tListini" Type="Self.tListini" Multiplicity="*" />
+          <End Role="tProdoct" Type="Self.tProdoct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tDitte">
-              <PropertyRef Name="idDitta" />
+              <PropertyRef Name="IdDitta" />
             </Principal>
-            <Dependent Role="tListini">
+            <Dependent Role="tProdoct">
               <PropertyRef Name="IdDitta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MyDataModelStoreContainer">
-          <EntitySet Name="tClienti" EntityType="Self.tClienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tCliente" EntityType="Self.tCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tDitte" EntityType="Self.tDitte" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tListini" EntityType="Self.tListini" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tPreventivi" EntityType="Self.tPreventivi" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__tListini__IdDitt__1A14E395" Association="Self.FK__tListini__IdDitt__1A14E395">
+          <EntitySet Name="tPreventiveDetails" EntityType="Self.tPreventiveDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tProdoct" EntityType="Self.tProdoct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tProva" EntityType="Self.tProva" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tPreventi__IdCli__29572725" Association="Self.FK__tPreventi__IdCli__29572725">
+            <End Role="tCliente" EntitySet="tCliente" />
+            <End Role="tPreventiveDetails" EntitySet="tPreventiveDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tProdoct__IdDitt__4BAC3F29" Association="Self.FK__tProdoct__IdDitt__4BAC3F29">
             <End Role="tDitte" EntitySet="tDitte" />
-            <End Role="tListini" EntitySet="tListini" />
+            <End Role="tProdoct" EntitySet="tProdoct" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -107,100 +169,164 @@
     <edmx:ConceptualModels>
       <Schema Namespace="MyDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MyDataEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tClienti" EntityType="MyDataModel.tClienti" />
+          <EntitySet Name="tCliente" EntityType="MyDataModel.tCliente" />
           <EntitySet Name="tDitte" EntityType="MyDataModel.tDitte" />
-          <EntitySet Name="tListini" EntityType="MyDataModel.tListini" />
-          <EntitySet Name="tPreventivi" EntityType="MyDataModel.tPreventivi" />
-          <AssociationSet Name="FK__tListini__IdDitt__1A14E395" Association="MyDataModel.FK__tListini__IdDitt__1A14E395">
+          <EntitySet Name="tPreventiveDetails" EntityType="MyDataModel.tPreventiveDetails" />
+          <EntitySet Name="tProdoct" EntityType="MyDataModel.tProdoct" />
+          <EntitySet Name="tProva" EntityType="MyDataModel.tProva" />
+          <AssociationSet Name="FK__tPreventi__IdCli__29572725" Association="MyDataModel.FK__tPreventi__IdCli__29572725">
+            <End Role="tCliente" EntitySet="tCliente" />
+            <End Role="tPreventiveDetails" EntitySet="tPreventiveDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tProdoct__IdDitt__4BAC3F29" Association="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29">
             <End Role="tDitte" EntitySet="tDitte" />
-            <End Role="tListini" EntitySet="tListini" />
+            <End Role="tProdoct" EntitySet="tProdoct" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="tClienti">
+        <EntityType Name="tCliente">
           <Key>
-            <PropertyRef Name="IdCliente" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RagioneSociale" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CodiceUniklima" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Indirizzo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CAP" Type="Double" />
-          <Property Name="Citta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Provincia" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RagioneSociale" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CodiceUniclima" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Classe" Type="Int32" />
+          <Property Name="Indirizzo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CAP" Type="Int32" />
+          <Property Name="Citta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Provincia" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="P_Iva" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="Banca" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CIN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ABI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CAB" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ContoCorrente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IBAN" Type="String" MaxLength="27" FixedLength="true" Unicode="false" />
+          <Property Name="TelefonoUfficio" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Telefax" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Conttato1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Cellulare1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Conttato2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Cellulare2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Contatto3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Cellulare3" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Referente1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Referente2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Note1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Note2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Note3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Note4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fornitori" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Titolari" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Soci" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Segretari" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amministrativi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UfficioTecnico" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IndirizzoEmail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SitoInternet" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ConsensoDati" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Data_" Type="DateTime" Precision="0" />
+          <Property Name="FatturatoGlobale" Type="Double" />
+          <Property Name="s_GUID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tPreventiveDetails" Relationship="MyDataModel.FK__tPreventi__IdCli__29572725" FromRole="tCliente" ToRole="tPreventiveDetails" />
         </EntityType>
         <EntityType Name="tDitte">
           <Key>
-            <PropertyRef Name="idDitta" />
+            <PropertyRef Name="IdDitta" />
           </Key>
-          <Property Name="idDitta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NomeDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="RagioneSocialeDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IndirizzoDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CapDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CittaDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ProvinciaDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="TelefonoDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FaxDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="URLDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="e_mailDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="PIvaDitta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="CodiceAgente" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Listino" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Logo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="tListini" Relationship="MyDataModel.FK__tListini__IdDitt__1A14E395" FromRole="tDitte" ToRole="tListini" />
+          <Property Name="IdDitta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomeDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="RagioneSocialeDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IndirizzoDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CapDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CittaDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ProvinciaDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FaxDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UrlDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EmailDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="P_IvaDitta" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CodiceAgente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Listino" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tProdoct" Relationship="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" FromRole="tDitte" ToRole="tProdoct" />
         </EntityType>
-        <EntityType Name="tListini">
-          <Key>
-            <PropertyRef Name="IdListino" />
-          </Key>
-          <Property Name="IdListino" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Codice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Descrizione" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Prezzo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdDitta" Type="Int32" />
-          <NavigationProperty Name="tDitte" Relationship="MyDataModel.FK__tListini__IdDitt__1A14E395" FromRole="tListini" ToRole="tDitte" />
-        </EntityType>
-        <EntityType Name="tPreventivi">
+        <EntityType Name="tPreventiveDetails">
           <Key>
             <PropertyRef Name="IdPreventivo" />
           </Key>
           <Property Name="IdPreventivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdCliente" Type="Double" />
-          <Property Name="Data" Type="DateTime" Precision="3" />
-          <Property Name="IdOrdine" Type="Double" />
-          <Property Name="NumeroPreventivo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NumeroOrdine" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Riferimento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Allegati" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Oggetto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Attenzione" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Durata" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Confermato" Type="Boolean" Nullable="false" />
-          <Property Name="Operatore" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="AddebitoTrasporto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Totale" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Variazione" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Importo" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="Pagamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Consegna" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NotaApertura" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NotaChiusura" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="NumeroPreventivo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroOrdine" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Riferimento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Allegati" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Oggetto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Attenzione" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Data_" Type="DateTime" Precision="0" />
+          <Property Name="Durata" Type="Int32" />
+          <Property Name="Confermato" Type="Boolean" />
+          <Property Name="Operatore" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="AddebitoTransporto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Totale" Type="Double" />
+          <Property Name="Variazione" Type="Double" />
+          <Property Name="Importo" Type="Double" />
+          <Property Name="Pagamento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Consegna" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NotaApertura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NotaChiusura" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Sconto" Type="Double" />
-          <Property Name="Progetto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="DataInizioLavori" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NoteAndamento" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NumeroCommissione" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Referenza" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Listino" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Progetto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DataInizioLavoro" Type="DateTime" Precision="0" />
+          <Property Name="NoteAndamaneto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Cartella" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCommisione" Type="Int32" />
+          <Property Name="Referenza" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Listino" Type="Double" />
+          <Property Name="s_GUID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tCliente" Relationship="MyDataModel.FK__tPreventi__IdCli__29572725" FromRole="tPreventiveDetails" ToRole="tCliente" />
         </EntityType>
-        <Association Name="FK__tListini__IdDitt__1A14E395">
+        <EntityType Name="tProdoct">
+          <Key>
+            <PropertyRef Name="IdProdotto" />
+          </Key>
+          <Property Name="IdProdotto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NomeProdotto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PrezzoPerUnita" Type="Double" />
+          <Property Name="IdDitta" Type="Int32" />
+          <NavigationProperty Name="tDitte" Relationship="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" FromRole="tProdoct" ToRole="tDitte" />
+        </EntityType>
+        <EntityType Name="tProva">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__tPreventi__IdCli__29572725">
+          <End Type="MyDataModel.tCliente" Role="tCliente" Multiplicity="0..1" />
+          <End Type="MyDataModel.tPreventiveDetails" Role="tPreventiveDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tCliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tPreventiveDetails">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tProdoct__IdDitt__4BAC3F29">
           <End Type="MyDataModel.tDitte" Role="tDitte" Multiplicity="0..1" />
-          <End Type="MyDataModel.tListini" Role="tListini" Multiplicity="*" />
+          <End Type="MyDataModel.tProdoct" Role="tProdoct" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tDitte">
-              <PropertyRef Name="idDitta" />
+              <PropertyRef Name="IdDitta" />
             </Principal>
-            <Dependent Role="tListini">
+            <Dependent Role="tProdoct">
               <PropertyRef Name="IdDitta" />
             </Dependent>
           </ReferentialConstraint>
@@ -211,16 +337,51 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MyDataModelStoreContainer" CdmEntityContainer="MyDataEntities">
-          <EntitySetMapping Name="tClienti">
-            <EntityTypeMapping TypeName="MyDataModel.tClienti">
-              <MappingFragment StoreEntitySet="tClienti">
+          <EntitySetMapping Name="tCliente">
+            <EntityTypeMapping TypeName="MyDataModel.tCliente">
+              <MappingFragment StoreEntitySet="tCliente">
+                <ScalarProperty Name="s_GUID" ColumnName="s_GUID" />
+                <ScalarProperty Name="FatturatoGlobale" ColumnName="FatturatoGlobale" />
+                <ScalarProperty Name="Data_" ColumnName="Data_" />
+                <ScalarProperty Name="ConsensoDati" ColumnName="ConsensoDati" />
+                <ScalarProperty Name="SitoInternet" ColumnName="SitoInternet" />
+                <ScalarProperty Name="IndirizzoEmail" ColumnName="IndirizzoEmail" />
+                <ScalarProperty Name="UfficioTecnico" ColumnName="UfficioTecnico" />
+                <ScalarProperty Name="Amministrativi" ColumnName="Amministrativi" />
+                <ScalarProperty Name="Segretari" ColumnName="Segretari" />
+                <ScalarProperty Name="Soci" ColumnName="Soci" />
+                <ScalarProperty Name="Titolari" ColumnName="Titolari" />
+                <ScalarProperty Name="Fornitori" ColumnName="Fornitori" />
+                <ScalarProperty Name="Note4" ColumnName="Note4" />
+                <ScalarProperty Name="Note3" ColumnName="Note3" />
+                <ScalarProperty Name="Note2" ColumnName="Note2" />
+                <ScalarProperty Name="Note1" ColumnName="Note1" />
+                <ScalarProperty Name="Referente2" ColumnName="Referente2" />
+                <ScalarProperty Name="Referente1" ColumnName="Referente1" />
+                <ScalarProperty Name="Cellulare3" ColumnName="Cellulare3" />
+                <ScalarProperty Name="Contatto3" ColumnName="Contatto3" />
+                <ScalarProperty Name="Cellulare2" ColumnName="Cellulare2" />
+                <ScalarProperty Name="Conttato2" ColumnName="Conttato2" />
+                <ScalarProperty Name="Cellulare1" ColumnName="Cellulare1" />
+                <ScalarProperty Name="Conttato1" ColumnName="Conttato1" />
+                <ScalarProperty Name="Telefax" ColumnName="Telefax" />
+                <ScalarProperty Name="TelefonoUfficio" ColumnName="TelefonoUfficio" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="ContoCorrente" ColumnName="ContoCorrente" />
+                <ScalarProperty Name="CAB" ColumnName="CAB" />
+                <ScalarProperty Name="ABI" ColumnName="ABI" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Banca" ColumnName="Banca" />
+                <ScalarProperty Name="P_Iva" ColumnName="P_Iva" />
                 <ScalarProperty Name="Provincia" ColumnName="Provincia" />
                 <ScalarProperty Name="Citta" ColumnName="Citta" />
                 <ScalarProperty Name="CAP" ColumnName="CAP" />
                 <ScalarProperty Name="Indirizzo" ColumnName="Indirizzo" />
-                <ScalarProperty Name="CodiceUniklima" ColumnName="CodiceUniklima" />
+                <ScalarProperty Name="Classe" ColumnName="Classe" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="CodiceUniclima" ColumnName="CodiceUniclima" />
                 <ScalarProperty Name="RagioneSociale" ColumnName="RagioneSociale" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -230,9 +391,9 @@
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="Listino" ColumnName="Listino" />
                 <ScalarProperty Name="CodiceAgente" ColumnName="CodiceAgente" />
-                <ScalarProperty Name="PIvaDitta" ColumnName="PIvaDitta" />
-                <ScalarProperty Name="e_mailDitta" ColumnName="e-mailDitta" />
-                <ScalarProperty Name="URLDitta" ColumnName="URLDitta" />
+                <ScalarProperty Name="P_IvaDitta" ColumnName="P_IvaDitta" />
+                <ScalarProperty Name="EmailDitta" ColumnName="EmailDitta" />
+                <ScalarProperty Name="UrlDitta" ColumnName="UrlDitta" />
                 <ScalarProperty Name="FaxDitta" ColumnName="FaxDitta" />
                 <ScalarProperty Name="TelefonoDitta" ColumnName="TelefonoDitta" />
                 <ScalarProperty Name="ProvinciaDitta" ColumnName="ProvinciaDitta" />
@@ -241,29 +402,20 @@
                 <ScalarProperty Name="IndirizzoDitta" ColumnName="IndirizzoDitta" />
                 <ScalarProperty Name="RagioneSocialeDitta" ColumnName="RagioneSocialeDitta" />
                 <ScalarProperty Name="NomeDitta" ColumnName="NomeDitta" />
-                <ScalarProperty Name="idDitta" ColumnName="idDitta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tListini">
-            <EntityTypeMapping TypeName="MyDataModel.tListini">
-              <MappingFragment StoreEntitySet="tListini">
                 <ScalarProperty Name="IdDitta" ColumnName="IdDitta" />
-                <ScalarProperty Name="Prezzo" ColumnName="Prezzo" />
-                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
-                <ScalarProperty Name="Codice" ColumnName="Codice" />
-                <ScalarProperty Name="IdListino" ColumnName="IdListino" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tPreventivi">
-            <EntityTypeMapping TypeName="MyDataModel.tPreventivi">
-              <MappingFragment StoreEntitySet="tPreventivi">
+          <EntitySetMapping Name="tPreventiveDetails">
+            <EntityTypeMapping TypeName="MyDataModel.tPreventiveDetails">
+              <MappingFragment StoreEntitySet="tPreventiveDetails">
+                <ScalarProperty Name="s_GUID" ColumnName="s_GUID" />
                 <ScalarProperty Name="Listino" ColumnName="Listino" />
                 <ScalarProperty Name="Referenza" ColumnName="Referenza" />
-                <ScalarProperty Name="NumeroCommissione" ColumnName="NumeroCommissione" />
-                <ScalarProperty Name="NoteAndamento" ColumnName="NoteAndamento" />
-                <ScalarProperty Name="DataInizioLavori" ColumnName="DataInizioLavori" />
+                <ScalarProperty Name="NumeroCommisione" ColumnName="NumeroCommisione" />
+                <ScalarProperty Name="Cartella" ColumnName="Cartella" />
+                <ScalarProperty Name="NoteAndamaneto" ColumnName="NoteAndamaneto" />
+                <ScalarProperty Name="DataInizioLavoro" ColumnName="DataInizioLavoro" />
                 <ScalarProperty Name="Progetto" ColumnName="Progetto" />
                 <ScalarProperty Name="Sconto" ColumnName="Sconto" />
                 <ScalarProperty Name="NotaChiusura" ColumnName="NotaChiusura" />
@@ -273,20 +425,40 @@
                 <ScalarProperty Name="Importo" ColumnName="Importo" />
                 <ScalarProperty Name="Variazione" ColumnName="Variazione" />
                 <ScalarProperty Name="Totale" ColumnName="Totale" />
-                <ScalarProperty Name="AddebitoTrasporto" ColumnName="AddebitoTrasporto" />
+                <ScalarProperty Name="AddebitoTransporto" ColumnName="AddebitoTransporto" />
                 <ScalarProperty Name="Operatore" ColumnName="Operatore" />
                 <ScalarProperty Name="Confermato" ColumnName="Confermato" />
                 <ScalarProperty Name="Durata" ColumnName="Durata" />
+                <ScalarProperty Name="Data_" ColumnName="Data_" />
                 <ScalarProperty Name="Attenzione" ColumnName="Attenzione" />
                 <ScalarProperty Name="Oggetto" ColumnName="Oggetto" />
                 <ScalarProperty Name="Allegati" ColumnName="Allegati" />
                 <ScalarProperty Name="Riferimento" ColumnName="Riferimento" />
                 <ScalarProperty Name="NumeroOrdine" ColumnName="NumeroOrdine" />
                 <ScalarProperty Name="NumeroPreventivo" ColumnName="NumeroPreventivo" />
-                <ScalarProperty Name="IdOrdine" ColumnName="IdOrdine" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
                 <ScalarProperty Name="IdPreventivo" ColumnName="IdPreventivo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tProdoct">
+            <EntityTypeMapping TypeName="MyDataModel.tProdoct">
+              <MappingFragment StoreEntitySet="tProdoct">
+                <ScalarProperty Name="IdDitta" ColumnName="IdDitta" />
+                <ScalarProperty Name="PrezzoPerUnita" ColumnName="PrezzoPerUnita" />
+                <ScalarProperty Name="UM" ColumnName="UM" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+                <ScalarProperty Name="NomeProdotto" ColumnName="NomeProdotto" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="IdProdotto" ColumnName="IdProdotto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tProva">
+            <EntityTypeMapping TypeName="MyDataModel.tProva">
+              <MappingFragment StoreEntitySet="tProva">
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

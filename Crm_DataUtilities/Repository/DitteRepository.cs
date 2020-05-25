@@ -29,7 +29,7 @@ namespace Crm_DataUtilities.Repository
 
         public tDitte GetCompanyFromId(int Id)
         {
-            return this.dbEntity.tDitte.FirstOrDefault(x=> x.idDitta== Id);
+            return this.dbEntity.tDitte.FirstOrDefault(x=> x.IdDitta== Id);
         }
 
         public void SaveCompany(tDitte Company, EnumUseful.typeOfDatabaseOperation typeOfDatabaseOperation)
@@ -38,12 +38,12 @@ namespace Crm_DataUtilities.Repository
             {
                 case EnumUseful.typeOfDatabaseOperation.EDIT:
                     tDitte CompanyToEdit = dbEntity.tDitte.FirstOrDefault(
-                        x=> x.idDitta== Company.idDitta
+                        x=> x.IdDitta == Company.IdDitta
                         );
 
                     if (CompanyToEdit!= null)
                     {
-                        CompanyToEdit.idDitta = Company.idDitta;
+                        CompanyToEdit.IdDitta = Company.IdDitta;
                         CompanyToEdit.NomeDitta = Company.NomeDitta;
                         CompanyToEdit.RagioneSocialeDitta = Company.RagioneSocialeDitta;
                         CompanyToEdit.IndirizzoDitta = Company.IndirizzoDitta;
@@ -52,9 +52,9 @@ namespace Crm_DataUtilities.Repository
                         CompanyToEdit.ProvinciaDitta = Company.ProvinciaDitta;
                         CompanyToEdit.TelefonoDitta = Company.TelefonoDitta;
                         CompanyToEdit.FaxDitta = Company.FaxDitta;
-                        CompanyToEdit.URLDitta = Company.URLDitta;
-                        CompanyToEdit.e_mailDitta = Company.e_mailDitta;
-                        CompanyToEdit.PIvaDitta = Company.PIvaDitta;
+                        CompanyToEdit.UrlDitta = Company.UrlDitta;
+                        CompanyToEdit.EmailDitta = Company.EmailDitta;
+                        CompanyToEdit.P_IvaDitta = Company.P_IvaDitta;
                         CompanyToEdit.CodiceAgente = Company.CodiceAgente;
                         CompanyToEdit.Listino = Company.Listino;
                         CompanyToEdit.Logo = Company.Logo;
