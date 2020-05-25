@@ -11,6 +11,8 @@ namespace Crm.Controllers
     public class HomeController : Controller
     {
         private string Title = "Home";
+
+        //add here code
         public ActionResult Index()
         {
 
