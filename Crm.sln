@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crm_Entities", "Crm_Entitie
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{23FE64EB-E171-4E26-8D86-961C28BC4789}"
 	ProjectSection(SolutionItems) = preProject
+		READ.ME = READ.ME
 		Regole.txt = Regole.txt
 	EndProjectSection
 EndProject

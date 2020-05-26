@@ -27,8 +27,14 @@ namespace Crm_Entities
     
         public virtual DbSet<tCliente> tCliente { get; set; }
         public virtual DbSet<tDitte> tDitte { get; set; }
+        public virtual DbSet<tMachine> tMachine { get; set; }
+        public virtual DbSet<tMachineState> tMachineState { get; set; }
         public virtual DbSet<tPreventiveDetails> tPreventiveDetails { get; set; }
-        public virtual DbSet<tProdoct> tProdoct { get; set; }
-        public virtual DbSet<tProva> tProva { get; set; }
+        public virtual DbSet<tProduct> tProduct { get; set; }
+        public virtual DbSet<tProductCategory> tProductCategory { get; set; }
+        public virtual DbSet<tRole> tRole { get; set; }
+        public virtual DbSet<tShift> tShift { get; set; }
+        public virtual DbSet<tStage> tStage { get; set; }
+        public virtual DbSet<tUser> tUser { get; set; }
     }
 }

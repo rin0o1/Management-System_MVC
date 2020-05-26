@@ -14,12 +14,6 @@ namespace Crm_Entities
     
     public partial class tDitte
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tDitte()
-        {
-            this.tProdoct = new HashSet<tProdoct>();
-        }
-    
         public int IdDitta { get; set; }
         public string NomeDitta { get; set; }
         public string RagioneSocialeDitta { get; set; }
@@ -35,8 +29,5 @@ namespace Crm_Entities
         public string CodiceAgente { get; set; }
         public string Listino { get; set; }
         public string Logo { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tProdoct> tProdoct { get; set; }
     }
 }

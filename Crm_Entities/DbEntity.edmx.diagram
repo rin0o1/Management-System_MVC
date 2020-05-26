@@ -5,13 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d97b7dec00f243459fc3f521cb68796c" Name="Diagram1" ZoomLevel="59">
-        <EntityTypeShape EntityType="MyDataModel.tCliente" Width="1.5" PointX="5.75" PointY="1.25" />
-        <EntityTypeShape EntityType="MyDataModel.tDitte" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="MyDataModel.tPreventiveDetails" Width="1.5" PointX="8" PointY="2.5" />
-        <EntityTypeShape EntityType="MyDataModel.tProdoct" Width="1.5" PointX="3" PointY="1.75" />
-        <EntityTypeShape EntityType="MyDataModel.tProva" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="MyDataModel.tCliente" Width="1.5" PointX="7.75" PointY="5.25" />
+        <EntityTypeShape EntityType="MyDataModel.tDitte" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MyDataModel.tMachine" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="MyDataModel.tMachineState" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="MyDataModel.tPreventiveDetails" Width="1.5" PointX="10" PointY="6.5" />
+        <EntityTypeShape EntityType="MyDataModel.tProduct" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="MyDataModel.tProductCategory" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="MyDataModel.tRole" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="MyDataModel.tShift" Width="1.5" PointX="7.5" PointY="1.25" />
+        <EntityTypeShape EntityType="MyDataModel.tStage" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="MyDataModel.tUser" Width="1.5" PointX="5.25" PointY="9.25" />
         <AssociationConnector Association="MyDataModel.FK__tPreventi__IdCli__29572725" />
-        <AssociationConnector Association="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" />
+        <AssociationConnector Association="MyDataModel.FK__tMachine__State__236943A5" />
+        <AssociationConnector Association="MyDataModel.FK__tShift__Machine__2645B050" />
+        <AssociationConnector Association="MyDataModel.FK__tProduct__Produc__19DFD96B" />
+        <AssociationConnector Association="MyDataModel.FK__tShift__Product__2739D489" />
+        <AssociationConnector Association="MyDataModel.FK__tUser__Role__2B0A656D" />
+        <AssociationConnector Association="MyDataModel.FK__tShift__IdStage__2EDAF651" />
+        <AssociationConnector Association="MyDataModel.FK__tShift__IdUser__2FCF1A8A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

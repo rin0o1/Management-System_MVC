@@ -12,16 +12,19 @@ namespace Crm_Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class tProdoct
+    public partial class tProductCategory
     {
-        public int IdProdotto { get; set; }
-        public string Categoria { get; set; }
-        public string NomeProdotto { get; set; }
-        public string Descrizione { get; set; }
-        public string UM { get; set; }
-        public Nullable<double> PrezzoPerUnita { get; set; }
-        public Nullable<int> IdDitta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tProductCategory()
+        {
+            this.tProduct = new HashSet<tProduct>();
+        }
     
-        public virtual tDitte tDitte { get; set; }
+        public int idProductCategory { get; set; }
+        public string Descrizione { get; set; }
+        public string Nome { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tProduct> tProduct { get; set; }
     }
 }

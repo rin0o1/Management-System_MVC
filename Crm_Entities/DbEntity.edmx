@@ -72,6 +72,22 @@
           <Property Name="Listino" Type="varchar" MaxLength="30" />
           <Property Name="Logo" Type="varchar" MaxLength="30" />
         </EntityType>
+        <EntityType Name="tMachine">
+          <Key>
+            <PropertyRef Name="idMachine" />
+          </Key>
+          <Property Name="idMachine" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="State" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tMachineState">
+          <Key>
+            <PropertyRef Name="idMachineState" />
+          </Key>
+          <Property Name="idMachineState" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameState" Type="varchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="tPreventiveDetails">
           <Key>
             <PropertyRef Name="IdPreventivo" />
@@ -106,25 +122,77 @@
           <Property Name="Listino" Type="float" />
           <Property Name="s_GUID" Type="varchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="tProdoct">
+        <EntityType Name="tProduct">
           <Key>
-            <PropertyRef Name="IdProdotto" />
+            <PropertyRef Name="idProduct" />
           </Key>
-          <Property Name="IdProdotto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Categoria" Type="varchar" MaxLength="30" />
-          <Property Name="NomeProdotto" Type="varchar" MaxLength="30" />
-          <Property Name="Descrizione" Type="varchar(max)" />
-          <Property Name="UM" Type="varchar" MaxLength="10" />
-          <Property Name="PrezzoPerUnita" Type="float" />
-          <Property Name="IdDitta" Type="int" />
+          <Property Name="idProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCategory" Type="int" />
+          <Property Name="ProductName" Type="varchar" MaxLength="30" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="50" />
+          <Property Name="ProductUM" Type="varchar" MaxLength="10" />
+          <Property Name="ProductPrice" Type="float" />
         </EntityType>
-        <EntityType Name="tProva">
+        <EntityType Name="tProductCategory">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="idProductCategory" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nome" Type="varchar" MaxLength="10" />
+          <Property Name="idProductCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="50" />
+          <Property Name="Nome" Type="varchar" MaxLength="30" />
         </EntityType>
+        <EntityType Name="tRole">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="10" />
+          <Property Name="Description" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tShift">
+          <Key>
+            <PropertyRef Name="idShift" />
+          </Key>
+          <Property Name="idShift" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartTimeShift" Type="datetime" />
+          <Property Name="EndTimeShift" Type="datetime" />
+          <Property Name="IdStage" Type="int" />
+          <Property Name="IdUser" Type="int" />
+        </EntityType>
+        <EntityType Name="tStage">
+          <Key>
+            <PropertyRef Name="idStage" />
+          </Key>
+          <Property Name="idStage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartStage" Type="datetime" />
+          <Property Name="EndStage" Type="datetime" />
+          <Property Name="NumberNiceProductValue" Type="int" />
+          <Property Name="NumberBadProductValue" Type="int" />
+          <Property Name="Machine" Type="int" />
+          <Property Name="Product" Type="int" />
+        </EntityType>
+        <EntityType Name="tUser">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
+          <Property Name="Surname" Type="varchar" MaxLength="30" />
+          <Property Name="Role" Type="int" />
+          <Property Name="IsAvaible" Type="bit" />
+        </EntityType>
+        <Association Name="FK__tMachine__State__236943A5">
+          <End Role="tMachineState" Type="Self.tMachineState" Multiplicity="0..1" />
+          <End Role="tMachine" Type="Self.tMachine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMachineState">
+              <PropertyRef Name="idMachineState" />
+            </Principal>
+            <Dependent Role="tMachine">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tPreventi__IdCli__29572725">
           <End Role="tCliente" Type="Self.tCliente" Multiplicity="0..1" />
           <End Role="tPreventiveDetails" Type="Self.tPreventiveDetails" Multiplicity="*" />
@@ -137,31 +205,121 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tProdoct__IdDitt__4BAC3F29">
-          <End Role="tDitte" Type="Self.tDitte" Multiplicity="0..1" />
-          <End Role="tProdoct" Type="Self.tProdoct" Multiplicity="*" />
+        <Association Name="FK__tProduct__Produc__19DFD96B">
+          <End Role="tProductCategory" Type="Self.tProductCategory" Multiplicity="0..1" />
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tDitte">
-              <PropertyRef Name="IdDitta" />
+            <Principal Role="tProductCategory">
+              <PropertyRef Name="idProductCategory" />
             </Principal>
-            <Dependent Role="tProdoct">
-              <PropertyRef Name="IdDitta" />
+            <Dependent Role="tProduct">
+              <PropertyRef Name="ProductCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tShift__IdStage__2EDAF651">
+          <End Role="tStage" Type="Self.tStage" Multiplicity="0..1" />
+          <End Role="tShift" Type="Self.tShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tStage">
+              <PropertyRef Name="idStage" />
+            </Principal>
+            <Dependent Role="tShift">
+              <PropertyRef Name="IdStage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tShift__IdUser__2FCF1A8A">
+          <End Role="tUser" Type="Self.tUser" Multiplicity="0..1" />
+          <End Role="tShift" Type="Self.tShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUser">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="tShift">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tShift__Machine__2645B050">
+          <End Role="tMachine" Type="Self.tMachine" Multiplicity="0..1" />
+          <End Role="tStage" Type="Self.tStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMachine">
+              <PropertyRef Name="idMachine" />
+            </Principal>
+            <Dependent Role="tStage">
+              <PropertyRef Name="Machine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tShift__Product__2739D489">
+          <End Role="tProduct" Type="Self.tProduct" Multiplicity="0..1" />
+          <End Role="tStage" Type="Self.tStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProduct">
+              <PropertyRef Name="idProduct" />
+            </Principal>
+            <Dependent Role="tStage">
+              <PropertyRef Name="Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tUser__Role__2B0A656D">
+          <End Role="tRole" Type="Self.tRole" Multiplicity="0..1" />
+          <End Role="tUser" Type="Self.tUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRole">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="tUser">
+              <PropertyRef Name="Role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MyDataModelStoreContainer">
           <EntitySet Name="tCliente" EntityType="Self.tCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tDitte" EntityType="Self.tDitte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMachine" EntityType="Self.tMachine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tMachineState" EntityType="Self.tMachineState" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tPreventiveDetails" EntityType="Self.tPreventiveDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tProdoct" EntityType="Self.tProdoct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tProva" EntityType="Self.tProva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tProduct" EntityType="Self.tProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tProductCategory" EntityType="Self.tProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tRole" EntityType="Self.tRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tShift" EntityType="Self.tShift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tStage" EntityType="Self.tStage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tUser" EntityType="Self.tUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tMachine__State__236943A5" Association="Self.FK__tMachine__State__236943A5">
+            <End Role="tMachineState" EntitySet="tMachineState" />
+            <End Role="tMachine" EntitySet="tMachine" />
+          </AssociationSet>
           <AssociationSet Name="FK__tPreventi__IdCli__29572725" Association="Self.FK__tPreventi__IdCli__29572725">
             <End Role="tCliente" EntitySet="tCliente" />
             <End Role="tPreventiveDetails" EntitySet="tPreventiveDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__tProdoct__IdDitt__4BAC3F29" Association="Self.FK__tProdoct__IdDitt__4BAC3F29">
-            <End Role="tDitte" EntitySet="tDitte" />
-            <End Role="tProdoct" EntitySet="tProdoct" />
+          <AssociationSet Name="FK__tProduct__Produc__19DFD96B" Association="Self.FK__tProduct__Produc__19DFD96B">
+            <End Role="tProductCategory" EntitySet="tProductCategory" />
+            <End Role="tProduct" EntitySet="tProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tShift__IdStage__2EDAF651" Association="Self.FK__tShift__IdStage__2EDAF651">
+            <End Role="tStage" EntitySet="tStage" />
+            <End Role="tShift" EntitySet="tShift" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tShift__IdUser__2FCF1A8A" Association="Self.FK__tShift__IdUser__2FCF1A8A">
+            <End Role="tUser" EntitySet="tUser" />
+            <End Role="tShift" EntitySet="tShift" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tShift__Machine__2645B050" Association="Self.FK__tShift__Machine__2645B050">
+            <End Role="tMachine" EntitySet="tMachine" />
+            <End Role="tStage" EntitySet="tStage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tShift__Product__2739D489" Association="Self.FK__tShift__Product__2739D489">
+            <End Role="tProduct" EntitySet="tProduct" />
+            <End Role="tStage" EntitySet="tStage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tUser__Role__2B0A656D" Association="Self.FK__tUser__Role__2B0A656D">
+            <End Role="tRole" EntitySet="tRole" />
+            <End Role="tUser" EntitySet="tUser" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -171,16 +329,46 @@
         <EntityContainer Name="MyDataEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tCliente" EntityType="MyDataModel.tCliente" />
           <EntitySet Name="tDitte" EntityType="MyDataModel.tDitte" />
+          <EntitySet Name="tMachine" EntityType="MyDataModel.tMachine" />
+          <EntitySet Name="tMachineState" EntityType="MyDataModel.tMachineState" />
           <EntitySet Name="tPreventiveDetails" EntityType="MyDataModel.tPreventiveDetails" />
-          <EntitySet Name="tProdoct" EntityType="MyDataModel.tProdoct" />
-          <EntitySet Name="tProva" EntityType="MyDataModel.tProva" />
+          <EntitySet Name="tProduct" EntityType="MyDataModel.tProduct" />
+          <EntitySet Name="tProductCategory" EntityType="MyDataModel.tProductCategory" />
+          <EntitySet Name="tRole" EntityType="MyDataModel.tRole" />
+          <EntitySet Name="tShift" EntityType="MyDataModel.tShift" />
+          <EntitySet Name="tStage" EntityType="MyDataModel.tStage" />
+          <EntitySet Name="tUser" EntityType="MyDataModel.tUser" />
           <AssociationSet Name="FK__tPreventi__IdCli__29572725" Association="MyDataModel.FK__tPreventi__IdCli__29572725">
             <End Role="tCliente" EntitySet="tCliente" />
             <End Role="tPreventiveDetails" EntitySet="tPreventiveDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__tProdoct__IdDitt__4BAC3F29" Association="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29">
-            <End Role="tDitte" EntitySet="tDitte" />
-            <End Role="tProdoct" EntitySet="tProdoct" />
+          <AssociationSet Name="FK__tMachine__State__236943A5" Association="MyDataModel.FK__tMachine__State__236943A5">
+            <End Role="tMachineState" EntitySet="tMachineState" />
+            <End Role="tMachine" EntitySet="tMachine" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tShift__Machine__2645B050" Association="MyDataModel.FK__tShift__Machine__2645B050">
+            <End Role="tMachine" EntitySet="tMachine" />
+            <End Role="tStage" EntitySet="tStage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tProduct__Produc__19DFD96B" Association="MyDataModel.FK__tProduct__Produc__19DFD96B">
+            <End Role="tProductCategory" EntitySet="tProductCategory" />
+            <End Role="tProduct" EntitySet="tProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tShift__Product__2739D489" Association="MyDataModel.FK__tShift__Product__2739D489">
+            <End Role="tProduct" EntitySet="tProduct" />
+            <End Role="tStage" EntitySet="tStage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tUser__Role__2B0A656D" Association="MyDataModel.FK__tUser__Role__2B0A656D">
+            <End Role="tRole" EntitySet="tRole" />
+            <End Role="tUser" EntitySet="tUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tShift__IdStage__2EDAF651" Association="MyDataModel.FK__tShift__IdStage__2EDAF651">
+            <End Role="tStage" EntitySet="tStage" />
+            <End Role="tShift" EntitySet="tShift" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tShift__IdUser__2FCF1A8A" Association="MyDataModel.FK__tShift__IdUser__2FCF1A8A">
+            <End Role="tUser" EntitySet="tUser" />
+            <End Role="tShift" EntitySet="tShift" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="tCliente">
@@ -250,7 +438,25 @@
           <Property Name="CodiceAgente" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Listino" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Logo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tProdoct" Relationship="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" FromRole="tDitte" ToRole="tProdoct" />
+        </EntityType>
+        <EntityType Name="tMachine">
+          <Key>
+            <PropertyRef Name="idMachine" />
+          </Key>
+          <Property Name="idMachine" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tMachineState" Relationship="MyDataModel.FK__tMachine__State__236943A5" FromRole="tMachine" ToRole="tMachineState" />
+          <NavigationProperty Name="tStage" Relationship="MyDataModel.FK__tShift__Machine__2645B050" FromRole="tMachine" ToRole="tStage" />
+        </EntityType>
+        <EntityType Name="tMachineState">
+          <Key>
+            <PropertyRef Name="idMachineState" />
+          </Key>
+          <Property Name="idMachineState" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameState" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tMachine" Relationship="MyDataModel.FK__tMachine__State__236943A5" FromRole="tMachineState" ToRole="tMachine" />
         </EntityType>
         <EntityType Name="tPreventiveDetails">
           <Key>
@@ -287,25 +493,75 @@
           <Property Name="s_GUID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tCliente" Relationship="MyDataModel.FK__tPreventi__IdCli__29572725" FromRole="tPreventiveDetails" ToRole="tCliente" />
         </EntityType>
-        <EntityType Name="tProdoct">
+        <EntityType Name="tProduct">
           <Key>
-            <PropertyRef Name="IdProdotto" />
+            <PropertyRef Name="idProduct" />
           </Key>
-          <Property Name="IdProdotto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Categoria" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="NomeProdotto" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Descrizione" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="PrezzoPerUnita" Type="Double" />
-          <Property Name="IdDitta" Type="Int32" />
-          <NavigationProperty Name="tDitte" Relationship="MyDataModel.FK__tProdoct__IdDitt__4BAC3F29" FromRole="tProdoct" ToRole="tDitte" />
+          <Property Name="idProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategory" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductUM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProductPrice" Type="Double" />
+          <NavigationProperty Name="tProductCategory" Relationship="MyDataModel.FK__tProduct__Produc__19DFD96B" FromRole="tProduct" ToRole="tProductCategory" />
+          <NavigationProperty Name="tStage" Relationship="MyDataModel.FK__tShift__Product__2739D489" FromRole="tProduct" ToRole="tStage" />
         </EntityType>
-        <EntityType Name="tProva">
+        <EntityType Name="tProductCategory">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="idProductCategory" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nome" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="idProductCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descrizione" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tProduct" Relationship="MyDataModel.FK__tProduct__Produc__19DFD96B" FromRole="tProductCategory" ToRole="tProduct" />
+        </EntityType>
+        <EntityType Name="tRole">
+          <Key>
+            <PropertyRef Name="idRole" />
+          </Key>
+          <Property Name="idRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tUser" Relationship="MyDataModel.FK__tUser__Role__2B0A656D" FromRole="tRole" ToRole="tUser" />
+        </EntityType>
+        <EntityType Name="tShift">
+          <Key>
+            <PropertyRef Name="idShift" />
+          </Key>
+          <Property Name="idShift" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartTimeShift" Type="DateTime" Precision="3" />
+          <Property Name="EndTimeShift" Type="DateTime" Precision="3" />
+          <Property Name="IdStage" Type="Int32" />
+          <Property Name="IdUser" Type="Int32" />
+          <NavigationProperty Name="tStage" Relationship="MyDataModel.FK__tShift__IdStage__2EDAF651" FromRole="tShift" ToRole="tStage" />
+          <NavigationProperty Name="tUser" Relationship="MyDataModel.FK__tShift__IdUser__2FCF1A8A" FromRole="tShift" ToRole="tUser" />
+        </EntityType>
+        <EntityType Name="tStage">
+          <Key>
+            <PropertyRef Name="idStage" />
+          </Key>
+          <Property Name="idStage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartStage" Type="DateTime" Precision="3" />
+          <Property Name="EndStage" Type="DateTime" Precision="3" />
+          <Property Name="NumberNiceProductValue" Type="Int32" />
+          <Property Name="NumberBadProductValue" Type="Int32" />
+          <Property Name="Machine" Type="Int32" />
+          <Property Name="Product" Type="Int32" />
+          <NavigationProperty Name="tMachine" Relationship="MyDataModel.FK__tShift__Machine__2645B050" FromRole="tStage" ToRole="tMachine" />
+          <NavigationProperty Name="tProduct" Relationship="MyDataModel.FK__tShift__Product__2739D489" FromRole="tStage" ToRole="tProduct" />
+          <NavigationProperty Name="tShift" Relationship="MyDataModel.FK__tShift__IdStage__2EDAF651" FromRole="tStage" ToRole="tShift" />
+        </EntityType>
+        <EntityType Name="tUser">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="IsAvaible" Type="Boolean" />
+          <NavigationProperty Name="tRole" Relationship="MyDataModel.FK__tUser__Role__2B0A656D" FromRole="tUser" ToRole="tRole" />
+          <NavigationProperty Name="tShift" Relationship="MyDataModel.FK__tShift__IdUser__2FCF1A8A" FromRole="tUser" ToRole="tShift" />
         </EntityType>
         <Association Name="FK__tPreventi__IdCli__29572725">
           <End Type="MyDataModel.tCliente" Role="tCliente" Multiplicity="0..1" />
@@ -319,15 +575,87 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tProdoct__IdDitt__4BAC3F29">
-          <End Type="MyDataModel.tDitte" Role="tDitte" Multiplicity="0..1" />
-          <End Type="MyDataModel.tProdoct" Role="tProdoct" Multiplicity="*" />
+        <Association Name="FK__tMachine__State__236943A5">
+          <End Type="MyDataModel.tMachineState" Role="tMachineState" Multiplicity="0..1" />
+          <End Type="MyDataModel.tMachine" Role="tMachine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tDitte">
-              <PropertyRef Name="IdDitta" />
+            <Principal Role="tMachineState">
+              <PropertyRef Name="idMachineState" />
             </Principal>
-            <Dependent Role="tProdoct">
-              <PropertyRef Name="IdDitta" />
+            <Dependent Role="tMachine">
+              <PropertyRef Name="State" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tShift__Machine__2645B050">
+          <End Type="MyDataModel.tMachine" Role="tMachine" Multiplicity="0..1" />
+          <End Type="MyDataModel.tStage" Role="tStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMachine">
+              <PropertyRef Name="idMachine" />
+            </Principal>
+            <Dependent Role="tStage">
+              <PropertyRef Name="Machine" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tProduct__Produc__19DFD96B">
+          <End Type="MyDataModel.tProductCategory" Role="tProductCategory" Multiplicity="0..1" />
+          <End Type="MyDataModel.tProduct" Role="tProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProductCategory">
+              <PropertyRef Name="idProductCategory" />
+            </Principal>
+            <Dependent Role="tProduct">
+              <PropertyRef Name="ProductCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tShift__Product__2739D489">
+          <End Type="MyDataModel.tProduct" Role="tProduct" Multiplicity="0..1" />
+          <End Type="MyDataModel.tStage" Role="tStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tProduct">
+              <PropertyRef Name="idProduct" />
+            </Principal>
+            <Dependent Role="tStage">
+              <PropertyRef Name="Product" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tUser__Role__2B0A656D">
+          <End Type="MyDataModel.tRole" Role="tRole" Multiplicity="0..1" />
+          <End Type="MyDataModel.tUser" Role="tUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tRole">
+              <PropertyRef Name="idRole" />
+            </Principal>
+            <Dependent Role="tUser">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tShift__IdStage__2EDAF651">
+          <End Type="MyDataModel.tStage" Role="tStage" Multiplicity="0..1" />
+          <End Type="MyDataModel.tShift" Role="tShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tStage">
+              <PropertyRef Name="idStage" />
+            </Principal>
+            <Dependent Role="tShift">
+              <PropertyRef Name="IdStage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tShift__IdUser__2FCF1A8A">
+          <End Type="MyDataModel.tUser" Role="tUser" Multiplicity="0..1" />
+          <End Type="MyDataModel.tShift" Role="tShift" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tUser">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="tShift">
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -406,6 +734,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tMachine">
+            <EntityTypeMapping TypeName="MyDataModel.tMachine">
+              <MappingFragment StoreEntitySet="tMachine">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="idMachine" ColumnName="idMachine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tMachineState">
+            <EntityTypeMapping TypeName="MyDataModel.tMachineState">
+              <MappingFragment StoreEntitySet="tMachineState">
+                <ScalarProperty Name="NameState" ColumnName="NameState" />
+                <ScalarProperty Name="idMachineState" ColumnName="idMachineState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tPreventiveDetails">
             <EntityTypeMapping TypeName="MyDataModel.tPreventiveDetails">
               <MappingFragment StoreEntitySet="tPreventiveDetails">
@@ -441,24 +787,68 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tProdoct">
-            <EntityTypeMapping TypeName="MyDataModel.tProdoct">
-              <MappingFragment StoreEntitySet="tProdoct">
-                <ScalarProperty Name="IdDitta" ColumnName="IdDitta" />
-                <ScalarProperty Name="PrezzoPerUnita" ColumnName="PrezzoPerUnita" />
-                <ScalarProperty Name="UM" ColumnName="UM" />
-                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
-                <ScalarProperty Name="NomeProdotto" ColumnName="NomeProdotto" />
-                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
-                <ScalarProperty Name="IdProdotto" ColumnName="IdProdotto" />
+          <EntitySetMapping Name="tProduct">
+            <EntityTypeMapping TypeName="MyDataModel.tProduct">
+              <MappingFragment StoreEntitySet="tProduct">
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductUM" ColumnName="ProductUM" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tProva">
-            <EntityTypeMapping TypeName="MyDataModel.tProva">
-              <MappingFragment StoreEntitySet="tProva">
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="id" ColumnName="id" />
+          <EntitySetMapping Name="tProductCategory">
+            <EntityTypeMapping TypeName="MyDataModel.tProductCategory">
+              <MappingFragment StoreEntitySet="tProductCategory">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+                <ScalarProperty Name="idProductCategory" ColumnName="idProductCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tRole">
+            <EntityTypeMapping TypeName="MyDataModel.tRole">
+              <MappingFragment StoreEntitySet="tRole">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="idRole" ColumnName="idRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tShift">
+            <EntityTypeMapping TypeName="MyDataModel.tShift">
+              <MappingFragment StoreEntitySet="tShift">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdStage" ColumnName="IdStage" />
+                <ScalarProperty Name="EndTimeShift" ColumnName="EndTimeShift" />
+                <ScalarProperty Name="StartTimeShift" ColumnName="StartTimeShift" />
+                <ScalarProperty Name="idShift" ColumnName="idShift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tStage">
+            <EntityTypeMapping TypeName="MyDataModel.tStage">
+              <MappingFragment StoreEntitySet="tStage">
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Machine" ColumnName="Machine" />
+                <ScalarProperty Name="NumberBadProductValue" ColumnName="NumberBadProductValue" />
+                <ScalarProperty Name="NumberNiceProductValue" ColumnName="NumberNiceProductValue" />
+                <ScalarProperty Name="EndStage" ColumnName="EndStage" />
+                <ScalarProperty Name="StartStage" ColumnName="StartStage" />
+                <ScalarProperty Name="idStage" ColumnName="idStage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tUser">
+            <EntityTypeMapping TypeName="MyDataModel.tUser">
+              <MappingFragment StoreEntitySet="tUser">
+                <ScalarProperty Name="IsAvaible" ColumnName="IsAvaible" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

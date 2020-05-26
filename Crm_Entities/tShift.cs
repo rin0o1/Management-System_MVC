@@ -12,9 +12,15 @@ namespace Crm_Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class tProva
+    public partial class tShift
     {
-        public int id { get; set; }
-        public string nome { get; set; }
+        public int idShift { get; set; }
+        public Nullable<System.DateTime> StartTimeShift { get; set; }
+        public Nullable<System.DateTime> EndTimeShift { get; set; }
+        public Nullable<int> IdStage { get; set; }
+        public Nullable<int> IdUser { get; set; }
+    
+        public virtual tStage tStage { get; set; }
+        public virtual tUser tUser { get; set; }
     }
 }

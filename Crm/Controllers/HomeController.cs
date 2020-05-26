@@ -10,7 +10,7 @@ namespace Crm.Controllers
 {
     public class HomeController : Controller
     {
-        private string Title = "Home";
+        private string Title = "FerriMarelli Produzione";
 
         //add here code
         public ActionResult Index()
