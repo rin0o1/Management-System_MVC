@@ -175,7 +175,9 @@
     <Content Include="Content\crm-graphic.css" />
     <Content Include="Content\crm-menu.css" />
     <Content Include="Content\FilterForDataVisualization.css" />
+    <Content Include="Content\HomeStyle.css" />
     <Content Include="Content\Icon.css" />
+    <Content Include="Content\Images\homeimg.jpg" />
     <Content Include="Content\Images\Icon\icon-email.png" />
     <Content Include="Content\Images\Icon\icon_add.png" />
     <Content Include="Content\Images\Icon\icon_eliminaelemento_Rosso.png" />

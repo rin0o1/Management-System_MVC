@@ -1,0 +1,67 @@
+﻿
+.mydiv {
+    height:80%;
+    width:80%;
+    margin-left:100px;
+    position:fixed;
+    background-image: url('Images/homeimg.jpg') ;
+    background-repeat: no-repeat;  
+    background-size: cover;
+    bottom:10px;
+}
+
+.labelMachineName1 {
+    text-align: center !important;
+    background-color: #e84685;
+    height: 30px;
+    width: 96px;
+    margin-left: 210px;
+    top: 36%;
+    position: fixed;
+}
+
+.labelMachineName2 {
+    text-align: center !important;
+    background-color: red;
+    height: 30px;
+    width: 96px;
+    margin-left: 150px;
+    top: 43%;
+    position: fixed;
+}
+.labelMachineName3 {
+    text-align: center !important;
+    background-color: #ec802b;
+    height: 30px;
+    width: 96px;
+    margin-left: 100px;
+    top: 50%;
+    position: fixed;
+}
+.labelMachineName4 {
+    
+    background-color: #f3b639;
+    height: 30px;
+    width: 96px;
+    margin-left: 31px;
+    top: 58%;
+    position: fixed;
+}
+
+.productionDataContainer {
+    background-color: #dce4e5;
+    width: 45%;
+    height: 80%;
+    position: fixed;
+    left: 50%;
+}
+
+
+.singleMachineData {
+    background-color: #f5f5f5;
+    height: 24%;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+
