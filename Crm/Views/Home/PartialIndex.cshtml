@@ -5,26 +5,68 @@
     string[] color = new string[] { "#e84685", "red", "#ec802b", "#f3b639" };
 }
 
+<style>
+
+   singeMachineData >div{
+       border:@color[0];
+   }
+
+</style>
+
 <div class="mydiv">
 
-    <div class="labelMachineName1"></div>
-    <div class="labelMachineName2"></div>
-    <div class="labelMachineName3"></div>
-    <div class="labelMachineName4"></div>
+    <div style="background-color:@color[0]" class="labelMachineName1"></div>
+    <div style="background-color:@color[1]" class="labelMachineName2"></div>
+    <div style="background-color:@color[2]" class="labelMachineName3"></div>
+    <div  style="background-color:@color[3]" class="labelMachineName4"></div>
 
     <div class="productionDataContainer col-md-12">
 
-        <div style="border : 3px solid @color[0];"  class="singleMachineData ">
+        <style>
 
-            
-            <div class="col-md-6" style="background-color:red">
+            .machineNameSpan {
+                border-bottom: 1px solid @color[0];
+            }
+            .nameContainer > input{
+                border:1px dashed @color[0];
+            }
+
+        </style>
+
+        <div style="border : 3px solid @color[0]; " class=" col-md-12 singleMachineData form-group">
+
+
+            <div style="margin-top:2px;" class="row">
+
+                <b style="width:30%;" class="col-md-6 machineNameSpan "> NOME MACCHINA  </b>
+
+                <div class="col-md-6">
+                    <div style="background-color:red; height:25px; width:40px;">
+                   </div>
+                </div>
 
             </div>
-            <div class="col-md-6"  style="background-color:blue">
+                      
 
+            <div class="dataheader noMargin col-md-5 row"   >
+                <div class="col-md-12 noMargin">
+                    <div class="col-md-12">
+                        <i class="userTitleStyle col-md-12 "> UTENTI  </i>
+                    </div>
+                    <div class="col-md-12  nameContainer">
+                        <input class="col-md-12 " type="text" readonly value="Marco" />
+                        <input class="col-md-12 " type="text" readonly value="Marco" />
+                        <input class="col-md-12" type="text" readonly value="Marco" />
+                    </div>
+                </div>
             </div>
-            
-            
+
+            <div class="col-md-offset-5" >
+                <canvas class="myCanvas" id="chart-area">
+
+                </canvas>
+            </div>
+
         </div>
 
         <div style="border : 3px solid @color[1];"  class="singleMachineData">
@@ -41,4 +83,45 @@
     </div>
 
 </div>
+<script>
+    var randomScalingFactor = function () {
+        return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),                                        
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                
+                    
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                'Bad',
+                'Good',
+                
+            ]
+        },
+        options: {
+            responsive: true
+        }
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('chart-area').getContext('2d');
+        window.myPie = new Chart(ctx, config);
+    };
+    
+    var colorNames = Object.keys(window.chartColors);
+   
+    
+</script>
 

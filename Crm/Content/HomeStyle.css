@@ -12,7 +12,7 @@
 
 .labelMachineName1 {
     text-align: center !important;
-    background-color: #e84685;
+   /*background-color: #e84685;*/
     height: 30px;
     width: 96px;
     margin-left: 210px;
@@ -22,7 +22,7 @@
 
 .labelMachineName2 {
     text-align: center !important;
-    background-color: red;
+    /*background-color: red;*/
     height: 30px;
     width: 96px;
     margin-left: 150px;
@@ -31,7 +31,7 @@
 }
 .labelMachineName3 {
     text-align: center !important;
-    background-color: #ec802b;
+    /*background-color: #ec802b;*/
     height: 30px;
     width: 96px;
     margin-left: 100px;
@@ -40,7 +40,7 @@
 }
 .labelMachineName4 {
     
-    background-color: #f3b639;
+    /*background-color: #f3b639;*/
     height: 30px;
     width: 96px;
     margin-left: 31px;
@@ -64,4 +64,45 @@
     margin-top: 2px;
 }
 
+.machineNameSpan {
+    font-size: 1em;
+    margin-top:2px;
+    
+}
 
+.dataheader {
+    margin-top: 10px;
+    height: 75%;
+}
+
+.inputMarginLeft {
+    margin-left:12px;
+}
+
+.noMargin {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.nameContainer {
+    overflow-y: hidden;
+    overflow-y: auto;
+}
+    .nameContainer > input {
+        margin-bottom: 1px;
+        margin-top: 1px;        
+        border-radius:5px;
+    }
+
+.userTitleStyle{
+
+    margin-bottom:7px;
+    padding-left:7px !important;
+
+}
+
+.myCanvas {
+
+    max-height: 110px !important;
+    width: 230px !important;    
+}

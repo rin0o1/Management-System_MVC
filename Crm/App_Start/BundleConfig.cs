@@ -34,7 +34,8 @@ namespace Crm
                       "~/Scripts/IconManagement.js",
                       "~/Scripts/Menu.js",
                       "~/Scripts/crm-utilities.js",
-                      "~/Scripts/CustomAsyncModal.js"
+                      "~/Scripts/CustomAsyncModal.js",
+                      "~/Scripts/chartJsUtils.js"
                 ));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

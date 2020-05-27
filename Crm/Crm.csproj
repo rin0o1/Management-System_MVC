@@ -216,6 +216,7 @@
     <Content Include="Content\toastr.less" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chartJsUtils.js" />
     <Content Include="Scripts\crm-utilities.js" />
     <Content Include="Scripts\CustomAsyncModal.js" />
     <Content Include="Scripts\index.js" />
