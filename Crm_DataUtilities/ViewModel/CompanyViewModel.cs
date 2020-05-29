@@ -68,8 +68,6 @@ namespace Crm_DataUtilities.ViewModel
         public string Listino { get; set; }
         public string Logo { get; set; }
 
-
-
     }
 
 }

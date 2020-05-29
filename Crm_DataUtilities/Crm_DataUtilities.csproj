@@ -55,12 +55,16 @@
     <Compile Include="Repository\DitteRepository.cs" />
     <Compile Include="Repository\PreventiveRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\StageRepository.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\PreventiveViewModelDetails.cs" />
+    <Compile Include="ViewModel\ProductionSituationModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\SendDataListinoViewModel.cs" />
+    <Compile Include="ViewModel\ShiftViewModel.cs" />
     <Compile Include="ViewModel\TestToRemoveViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\UtilityViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

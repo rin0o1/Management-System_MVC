@@ -27,6 +27,7 @@ namespace Crm_Entities
         public Nullable<int> NumberBadProductValue { get; set; }
         public Nullable<int> Machine { get; set; }
         public Nullable<int> Product { get; set; }
+        public Nullable<bool> IsProducing { get; set; }
     
         public virtual tMachine tMachine { get; set; }
         public virtual tProduct tProduct { get; set; }

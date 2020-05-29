@@ -170,6 +170,7 @@
           <Property Name="NumberBadProductValue" Type="int" />
           <Property Name="Machine" Type="int" />
           <Property Name="Product" Type="int" />
+          <Property Name="IsProducing" Type="bit" />
         </EntityType>
         <EntityType Name="tUser">
           <Key>
@@ -550,6 +551,7 @@
           <NavigationProperty Name="tMachine" Relationship="MyDataModel.FK__tShift__Machine__2645B050" FromRole="tStage" ToRole="tMachine" />
           <NavigationProperty Name="tProduct" Relationship="MyDataModel.FK__tShift__Product__2739D489" FromRole="tStage" ToRole="tProduct" />
           <NavigationProperty Name="tShift" Relationship="MyDataModel.FK__tShift__IdStage__2EDAF651" FromRole="tStage" ToRole="tShift" />
+          <Property Name="IsProducing" Type="Boolean" />
         </EntityType>
         <EntityType Name="tUser">
           <Key>
@@ -831,6 +833,7 @@
           <EntitySetMapping Name="tStage">
             <EntityTypeMapping TypeName="MyDataModel.tStage">
               <MappingFragment StoreEntitySet="tStage">
+                <ScalarProperty Name="IsProducing" ColumnName="IsProducing" />
                 <ScalarProperty Name="Product" ColumnName="Product" />
                 <ScalarProperty Name="Machine" ColumnName="Machine" />
                 <ScalarProperty Name="NumberBadProductValue" ColumnName="NumberBadProductValue" />
