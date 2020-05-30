@@ -20,13 +20,13 @@ namespace Crm_DataUtilities.Repository
 
         public IEnumerable <tStage> getAllStages()
         {
-            return this.dbEntity.tStage;
+            return this.dbEntity.tStage.Where(x=> x.IsProducing==true);
         }
 
         public tStage getStageFromId(int id) {
             return null;
         }
-
+        
 
     }
 }

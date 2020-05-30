@@ -65,7 +65,7 @@ namespace Crm.Controllers
 		
 	        if (!String.IsNullOrEmpty(filter)) 
 	        {
-		        AllCustomer= AllCustomer.Where(x=> x.CodiceUniclima.ToUpper().StartsWith(filter.ToUpper()));
+		        AllCustomer= AllCustomer.Where(x=> x.RagioneSociale.ToUpper().StartsWith(filter.ToUpper()));
 	        }
 
 		    foreach(var x in AllCustomer.ToList())
@@ -213,9 +213,8 @@ namespace Crm.Controllers
                     string DataToShow = item.Nome;
                     //string Optional = item.Email;
                     string Optional = "";
-                        int Id = item.IdCliente;
 
-                        ((List<object>)JsonResult.Data).Add(new { @datatoshow = DataToShow , @valueId = Id, @optional = Optional });
+                        ((List<object>)JsonResult.Data).Add(new { @datatoshow = DataToShow, @optional = Optional });
                     
                 }
             }

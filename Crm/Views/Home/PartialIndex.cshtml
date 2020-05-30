@@ -5,18 +5,7 @@
 
 @{
 
-    Model.Add(new ProductionSituationModel()
-    {
-        badProductValue=20,
-        machineName="Nome",
-        niceProductValue=30,
-        totalProduction=50,
-        productName="Prod",
-        machineStateDescription="Off",
-        idStage=6
-        
-    });
-    var a = Model;
+    
     string[] color = new string[] { "#e84685", "red", "#ec802b", "#f3b639" };
 
 }
@@ -33,20 +22,18 @@
 
     <div style="background-color:@color[0]" class="labelMachineName1"> <b> @Model[0].machineName </b> </div>
     <div style="background-color:@color[1]" class="labelMachineName2"><b> @Model[1].machineName </b> </div>
-    <div style="background-color:@color[2]" class="labelMachineName3"></div>
-    <div style="background-color:@color[3]" class="labelMachineName4"></div>
+    <div style="background-color:@color[2]" class="labelMachineName3"><b> @Model[2].machineName </b> </div>
+    <div style="background-color:@color[3]" class="labelMachineName4"><b> @Model[3].machineName </b> </div>
 
     <div class="productionDataContainer col-md-12">
-
         @{
-
             int i = 0;
             foreach (ProductionSituationModel item in Model)
             {
                 <style>
                     .machineNameSpan {
-
-                    border-bottom: 1px solid ;
+                    
+                    border-bottom: 2px solid ;
                 }
                     .nameContainer > input{
                 border:1px dashed @color[i];
@@ -57,8 +44,7 @@
                 <div style="border : 4px solid @color[i];" class=" col-md-12  singleMachineData form-group">
                     <div style="margin-top:2px;" class="row">
 
-                        <b style="" class="col-md-4 machineNameSpan "> @item.machineName  </b>
-
+                        <b style="background-color:@color[i]" class="col-md-4 machineNameSpan "> @item.machineName  </b>
 
                         <div class="col-md-2">
                                 @switch (item.machineStateDescription)
@@ -75,8 +61,8 @@
                         @if (item.machineStateDescription != "Off")
                         {
                             <div class="col-md-6">
-                                <div class="productNameLabel">
-                                    <i> LAVORANDO IL PRODOTTO  @item.productName </i>
+                                <div  class="productNameLabel">
+                                    <i> LAVORANDO:  @item.productName </i>
                                 </div>
                             </div>
                         }
@@ -84,160 +70,91 @@
                         {
                             <div class="col-md-6">
                                 <div class="productNameLabel">
-                                    <i> INIZIA UNA NUOVA ATTIVITA'</i>
+                                    <i> ATTVITA' INTERROTTA</i>
                                 </div>
                             </div>
                         }
                     </div>
 
-
                     <div class="col-md-5 noMargin canvasContainer">
-                        <canvas style="    margin-top: 10px;" class="myCanvas" id="chart-area1__@item.idStage"> </canvas>
-                        <canvas class="myCanvas" id="chart-area__@item.idStage"> </canvas>
-                        
+                        <canvas style=" margin-top: 10px;" class="myCanvas" id="chart-area1__@item.idStage">  </canvas>
+                        <canvas class="myCanvas" id="chart-area__@item.idStage"> </canvas>                        
                     </div>
-                    @if (item.machineStateDescription != "Off")
-                    {
+                    
                            <div class="dataheader noMargin col-md-offset-8">
-                                <div class="col-md-12 noMargin">
-                                    <div class="col-md-12">
-                                        <i class="userTitleStyle col-md-12 "> OPERATORI  </i>
-                                    </div>
-                                    <div class="col-md-12  nameContainer">
-                                        @if (item.users != null)
-                                        {
-
-                                            foreach (var u in item.users)
+                               <div style="background-color:@color[i]" class="col-md-12 noMargin userContainer ">
+                                   <div style="margin-bottom:5px;" class="col-md-12">
+                                       <b class="userTitleStyle col-md-12 "> OPERATORI  </b>
+                                   </div>
+                                   @if (item.machineStateDescription != "Off")
+                                   {
+                                       <div class="col-md-12  nameContainer">
+                                           @if (item.users != null)
                                             {
-                                                <input style="margin-bottom:10px;" class="col-md-12 " type="text" readonly value="@u.Name @u.Cognome" />
+                                               foreach (var u in item.users)
+                                               {
+                                                   <input style="margin-bottom:10px;" class="col-md-12 " type="text" readonly value="@u.Name @u.Cognome" />
+                                               }
                                             }
-                                        }
 
-
-                                    </div>
-                                </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <button style="margin-top:50px;"> INIZIA </button>
-                    }
+                                       </div>
+                                      }
+                                   </div>
+                        </div>                    
+                    
                 </div>
-
-                if (item.machineStateDescription != "Off")
-                {
-    <script>
-                    var config = {
-                        type: 'pie',
-                        data: {
-                            datasets: [{
-                                data: [
-
-                                    @item.badProductValue,
-                                    @item.niceProductValue
-                                ],
-                                backgroundColor: [
-                                    window.chartColors.red,
-                                    window.chartColors.orange,
-                                ],
-                                label: 'Dataset 1'
-                            }],
-                            labels: [
-                                'Bad',
-                                'Good',
-                            ]
-                        },
-                        options: {
-                            responsive: true
-                        }
-                    };
-
-                     var ctx = document.getElementById('chart-area__'+@item.idStage).getContext('2d');
-                    window.myPie = new Chart(ctx, config);
-
-                    	var DATA_COUNT = 12;
-
-		        var utils = Samples.utils;
-
-		        utils.srand(110);
-
-		        function getLineColor(ctx) {
-			        return utils.color(ctx.datasetIndex);
-		        }
-
-		        function alternatePointStyles(ctx) {
-			        var index = ctx.dataIndex;
-                    return 'rect';
-		        }
-
-		        function makeHalfAsOpaque(ctx) {
-			        return utils.transparentize(getLineColor(ctx));
-		        }
-
-		        function adjustRadiusBasedOnData(ctx) {
-			        var v = ctx.dataset.data[ctx.dataIndex];
-			        return v < 10 ? 5
-				        : v < 25 ? 7
-				        : v < 50 ? 9
-				        : v < 75 ? 11
-				        : 15;
-		        }
-
-		        function generateData() {
-			        return utils.numbers({
-				        count: DATA_COUNT,
-				        min: 0,
-                        max: 1000,
-                        data: ["800"]
-			        });
-		        }
-
-		        var data = {
-			        
-			        datasets: [{
-				        data: generateData()
-			        }]
-		        };
-
-		        var options = {
-			        legend: false,
-			        tooltips: true,
-			        elements: {
-				        line: {
-					        fill: false,
-					        backgroundColor: getLineColor,
-					        borderColor: getLineColor,
-				        },
-				        point: {
-					        backgroundColor: getLineColor,
-					        hoverBackgroundColor: makeHalfAsOpaque,
-					        radius: adjustRadiusBasedOnData,
-					        pointStyle: alternatePointStyles,
-					        hoverRadius: 15,
-				        }
-			        }
-		        };
-
-		        var chart = new Chart('chart-area1__'+@item.idStage, {
-			        type: 'line',
-			        data: data,
-			        options: options
-		        });
-
-
-
-    </script>}
                 
+                <script>
+                    addPieChart('chart-area__' +@item.idStage, @item.badProductValue, @item.niceProductValue,'@color[i]');
+                    addBarChart('chart-area1__' +@item.idStage, @item.totalProduction, '@color[i]')
+                </script>                
                 i++;
             }
+
         }
-
-
-
     </div>
 
 </div>
 
 
+<script>
+    var ControllerName = GetControllerName();
+    var Url = "/" + ControllerName + "/ReloadData";
+    var color = ['#e84685', 'red', '#ec802b', '#f3b639'];
+       
+    get_fb();
+    
+    function get_fb() {
+        var feedback = $.ajax({
+            type: "POST",
+            url: Url,
+            async: false
+        }).success(function (res) {
+
+            showData(res);
+            setTimeout(function () { get_fb(); }, 20000);
+
+        });
+    }
+
+    function showData(data) {
+
+        for (var i = 0; i < data.length; i++) {
+
+            var e = data[i].datatoshow;
+            var idStage_ = e.idStaege;
+            var totalValue = e.totalProduction;
+            var badProductValue = e.badProductValue;
+            var niceProductValue = e.niceProductValue;
+
+            var prefixIdPieChart = 'chart-area__' + idStage_;
+            var prefixIdBarChart = 'chart-area1__' + idStage_;
+
+            addPieChart(prefixIdPieChart,badProductValue, niceProductValue,color[i]);
+            addBarChart(prefixIdBarChart, totalValue, color[i]);
+
+        }
+    }
 
 
+</script>

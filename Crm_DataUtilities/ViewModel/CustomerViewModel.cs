@@ -20,7 +20,7 @@ namespace Crm_DataUtilities.ViewModel
             CittaDitta = c.Citta;
             CodiceUniclima = c.CodiceUniclima;
             Email = c.IndirizzoEmail;
-
+            TelefonoUfficio = c.TelefonoUfficio;
         }
             
 
@@ -38,6 +38,9 @@ namespace Crm_DataUtilities.ViewModel
 
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "TelefonoUfficio")]
+        public string TelefonoUfficio { get; set; }
 
     }
 

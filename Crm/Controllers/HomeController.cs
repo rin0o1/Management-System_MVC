@@ -61,6 +61,44 @@ namespace Crm.Controllers
             
         }
 
+        [HttpPost]
+        public JsonResult ReloadData()
+        {
+            var AllStage = _StageRepository.getAllStages();
+
+            List<ProductionSituationValueUpdateViewModel> data = new List<ProductionSituationValueUpdateViewModel>();
+
+            foreach (var item in AllStage.ToList())
+            {
+                data.Add(new ProductionSituationValueUpdateViewModel(item));
+            }
+
+            JsonResult JsonResult = new JsonResult()
+            {
+                Data = new { object_ = new object[0] },
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+
+            JsonResult.Data = new List<object>();
+
+            if (data != null && data.Count > 0)
+            {
+                foreach (var item in data)
+                {
+                    ProductionSituationValueUpdateViewModel DataToShow = item;
+                    //string Optional = item.Email;
+                    string Optional = "";
+                    int Id = item.idStaege;
+
+                    ((List<object>)JsonResult.Data).Add(new { @datatoshow = DataToShow, @valueId = Id, @optional = Optional });
+
+                }
+            }
+            return JsonResult;
+            
+
+        }
+
 
 
     }

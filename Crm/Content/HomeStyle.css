@@ -39,7 +39,7 @@
     position: fixed;
 }
 .labelMachineName4 {
-    
+    text-align: center !important;
     /*background-color: #f3b639;*/
     height: 30px;
     width: 96px;
@@ -150,4 +150,11 @@
     height: 32px;
     width: 32px;
     position: absolute;
+}
+
+
+.userContainer {
+    height: 96%;
+    text-align: center;
+    /*background-color: #ffc329e6;*/
 }

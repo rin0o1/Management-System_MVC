@@ -72,7 +72,7 @@ window.chartColors = {
 				if (this.rand() <= continuity) {
 					data.push(Math.round(dfactor * value) / dfactor);
 				} else {
-					data.push(null);
+					data.push(nu);
 				}
 			}
 
@@ -148,3 +148,69 @@ window.chartColors = {
 
 }(this));
 
+
+function addPieChart(idCanvas, badProductValue, niceProductValue, Color) {
+
+	var config = {
+		type: 'pie',
+		data: {
+			datasets: [{
+				data: [
+
+					badProductValue,
+					niceProductValue
+				],
+				backgroundColor: [
+					'f3b630',
+					Color,
+				],
+				label: 'Dataset 1'
+			}],
+			labels: [
+				'Bad',
+				'Good',
+			]
+		},
+		options: {
+			responsive: true
+		}
+	};
+
+	var ctx = document.getElementById(idCanvas).getContext('2d');
+	window.myPie = new Chart(ctx, config);
+
+}
+
+
+function addBarChart(idCanvas, totalProductValue, Color) {
+	var DATA_COUNT = 3;
+    function colorize(opaque, ctx) {
+        var v = ctx.dataset.data[ctx.dataIndex];
+        var c = Color;
+                       
+        return c;
+	}
+
+	var data = {
+		datasets: [{
+            data: [totalProductValue],
+		}]
+	};
+
+	var options = {
+		legend: false,
+		tooltips: false,
+		elements: {
+			rectangle: {
+				backgroundColor: colorize.bind(null, true),
+				borderColor: colorize.bind(null, true),
+				borderWidth: 4
+			}
+		}
+	};
+	var chart = new Chart(idCanvas, {
+		type: 'bar',
+		data: data,
+		options: options
+    });
+}
