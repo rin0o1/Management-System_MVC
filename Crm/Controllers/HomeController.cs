@@ -57,20 +57,24 @@ namespace Crm.Controllers
                 list.Add(new ProductionSituationModel(item));
             }
 
-            return list;
-            
+            return list;            
         }
 
         [HttpPost]
         public JsonResult ReloadData()
         {
             var AllStage = _StageRepository.getAllStages();
-
+            Random r = new Random();
             List<ProductionSituationValueUpdateViewModel> data = new List<ProductionSituationValueUpdateViewModel>();
 
-            foreach (var item in AllStage.ToList())
+            foreach (tStage item in AllStage.ToList())
             {
-                data.Add(new ProductionSituationValueUpdateViewModel(item));
+
+                ProductionSituationValueUpdateViewModel p = new ProductionSituationValueUpdateViewModel(item);
+                p.badProductValue = r.Next(Convert.ToInt32(item.NumberBadProductValue),100);
+                p.niceProductValue = r.Next(Convert.ToInt32(item.NumberNiceProductValue), 100);
+                p.totalProduction = p.badProductValue + p.niceProductValue;
+                data.Add(p);
             }
 
             JsonResult JsonResult = new JsonResult()
@@ -91,15 +95,11 @@ namespace Crm.Controllers
                     int Id = item.idStaege;
 
                     ((List<object>)JsonResult.Data).Add(new { @datatoshow = DataToShow, @valueId = Id, @optional = Optional });
-
                 }
             }
             return JsonResult;
             
-
         }
-
-
 
     }
 }

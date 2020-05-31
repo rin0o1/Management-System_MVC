@@ -156,7 +156,6 @@ function addPieChart(idCanvas, badProductValue, niceProductValue, Color) {
 		data: {
 			datasets: [{
 				data: [
-
 					badProductValue,
 					niceProductValue
 				],
@@ -167,8 +166,8 @@ function addPieChart(idCanvas, badProductValue, niceProductValue, Color) {
 				label: 'Dataset 1'
 			}],
 			labels: [
-				'Bad',
-				'Good',
+				'Bad ' +badProductValue,
+				'Good ' +niceProductValue,								
 			]
 		},
 		options: {
@@ -177,6 +176,7 @@ function addPieChart(idCanvas, badProductValue, niceProductValue, Color) {
 	};
 
 	var ctx = document.getElementById(idCanvas).getContext('2d');
+
 	window.myPie = new Chart(ctx, config);
 
 }
